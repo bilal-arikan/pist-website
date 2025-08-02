@@ -1,0 +1,6 @@
+/* Mobile (all devices) */
+@media (max-width: 767px) {
+  :root {
+    --element--card-padding: 1.5rem;
+  }
+}

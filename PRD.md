@@ -1,7 +1,7 @@
 # Web Sitesi Kopyalama Projesi - PRD (Product Requirements Document)
 
 ## Proje Özeti
-Hedef: https://www.theqube.com/ web sitesinin tüm içeriğini (HTML, CSS, JavaScript, resimler, videolar) yerel proje klasörüne kopyalamak.
+Hedef: https://www.piststudio.com/ web sitesinin tüm içeriğini (HTML, CSS, JavaScript, resimler, videolar) yerel proje klasörüne kopyalamak.
 
 ## İlk Adımlar
 
@@ -57,46 +57,58 @@ pist-website/
 ### Tespit Edilen Dosyalar
 
 #### CSS Dosyaları
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/css/theqube.webflow.shared.800869463.min.css
-- https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css
-- https://unpkg.com/flickity@2/dist/flickity.min.css
+- css/theqube.webflow.shared.min.css
+- css/swiper-bundle.min.css
+- css/flickity.min.css
+- css/shared-styles.css
+- css/theme-colors.css
+- css/responsive.css
 
 #### JavaScript Dosyaları
-- https://cdn.jsdelivr.net/npm/@finsweet/attributes-scrolldisable@1/scrolldisable.js
-- https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js
-- https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js
-- https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js
-- //embed.typeform.com/next/embed.js
-- https://www.googletagmanager.com/gtm.js?id=GTM-NF4NHRT
+- js/scrolldisable.js
+- js/ScrollTrigger.min.js
+- js/flickity.pkgd.min.js
+- js/swiper-bundle.min.js
+- js/embed.js
+- js/gsap.min.js
+- js/jquery-3.5.1.min.js
+- js/webflow.ae25ff8e.82b5e4f06d3d1b4a.js
 
 #### Resim Dosyaları
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6745cc0eec81ee7fac9237d8_qube_favicon.png
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6745cc13a656864293b7dfd0_qube_icon.png
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67575831bfd092f52d1c3d87_qube_nav_east.jpg
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/675758319c0807a4d9391af4_qube_nav_west.jpg
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784fd7adb908ad83adb4cfe_qube_nav_hackney_v2.jpg
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/675758318d7cb36355d68d5e_qube_nav_elephant.jpg
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/674efa3980b693672fdda96b_qube_avatar-small_4.avif
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/674efa384b179f077dcccc3f_qube_avatar-small_1.avif
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/674efa39e99d90d0c54674bd_qube_avatar-small_3.avif
+- images/qube_favicon.png
+- images/qube_icon.png
+- images/qube_nav_west.jpg
+- images/qube_avatar-small_1.avif
+- images/qube_avatar-small_2.avif
+- images/qube_avatar-small_3.avif
+- images/qube_avatar-small_4.avif
+- images/qube_music-makers-1.avif
+- images/qube_music-makers-2.avif
+- images/qube_business_header_1.avif
+- images/qube_business_header_2.avif
+- images/qube_business_header_4.avif
+- images/qube_business_header_5.avif
+- images/qube_private-events_west_5.jpg
+- images/qube_west_header.avif
+- images/qube_photos_9.jpg
+- images/created-by-webyst.svg
 
 #### Video Dosyaları
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569%2F67222333ad324b48d19b039f_qube_homepage_video-transcode.mp4
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569%2F67222333ad324b48d19b039f_qube_homepage_video-transcode.webm
-- https://cdn.prod.website-files.com/669b70b3f67bbafac2188569%2F67222333ad324b48d19b039f_qube_homepage_video-poster-00001.jpg (poster)
+- videos/qube_homepage_video.mp4
+- videos/qube_homepage_video.webm
+- videos/qube_homepage_video-poster.jpg
+- videos/qube_private-events_video.mp4
+- videos/qube_private-events_video.webm
+- videos/qube_private-events_video-poster.jpg
 
-#### Alt Sayfalar (Tespit Edilenler)
-- /membership/music-makers
-- /membership/djs
-- /membership/podcasters
-- /membership/photographers
-- /membership/teams
-- /locations/qube-canary-wharf
-- /locations/qube-acton
-- /locations/qube-hackney
-- /locations/qube-elephant-and-castle
+#### Alt Sayfalar (Mevcut)
+- /membership_music-makers
+- /membership_djs
+- /membership_podcasters
+- /membership_photographers
+- /membership_teams
+- /qube-acton
 - /studios
-- /songwriting-camps
 - /private-events
 - /events
 
@@ -110,31 +122,42 @@ pist-website/
 - [ ] pages/ klasörü oluştur
 
 ### Adım 2: CSS Dosyalarını İndirme
-- [ ] theqube.webflow.shared.min.css
-- [ ] swiper-bundle.min.css
-- [ ] flickity.min.css
+- [x] theqube.webflow.shared.min.css
+- [x] swiper-bundle.min.css
+- [x] flickity.min.css
+- [x] shared-styles.css
+- [x] theme-colors.css
+- [x] responsive.css
 
 ### Adım 3: JavaScript Dosyalarını İndirme
-- [ ] scrolldisable.js
-- [ ] ScrollTrigger.min.js
-- [ ] flickity.pkgd.min.js
-- [ ] swiper-bundle.min.js
-- [ ] typeform embed.js
+- [x] scrolldisable.js
+- [x] ScrollTrigger.min.js
+- [x] flickity.pkgd.min.js
+- [x] swiper-bundle.min.js
+- [x] embed.js
+- [x] gsap.min.js
+- [x] jquery-3.5.1.min.js
+- [x] webflow.ae25ff8e.82b5e4f06d3d1b4a.js
 
 ### Adım 4: Resim Dosyalarını İndirme
-- [ ] Favicon ve icon dosyaları
-- [ ] Navigasyon resimleri
-- [ ] Avatar resimleri
-- [ ] Video poster resmi
+- [x] Favicon ve icon dosyaları
+- [x] Navigasyon resimleri
+- [x] Avatar resimleri
+- [x] Video poster resimleri
+- [x] Business header resimleri
+- [x] Music makers resimleri
+- [x] Private events resimleri
 
 ### Adım 5: Video Dosyalarını İndirme
-- [ ] Ana sayfa video (MP4)
-- [ ] Ana sayfa video (WebM)
+- [x] Ana sayfa video (MP4)
+- [x] Ana sayfa video (WebM)
+- [x] Private events video (MP4)
+- [x] Private events video (WebM)
 
 ### Adım 6: Alt Sayfaları İndirme
-- [ ] Membership sayfaları
-- [ ] Location sayfaları
-- [ ] Diğer sayfalar
+- [x] Membership sayfaları
+- [x] Qube Acton sayfası
+- [x] Diğer sayfalar
 
 ### Adım 7: Bağlantıları Yerel Hale Getirme
 - [x] CSS bağlantılarını güncelle
@@ -167,6 +190,9 @@ pist-website/
 - theqube.webflow.shared.min.css
 - swiper-bundle.min.css
 - flickity.min.css
+- shared-styles.css
+- theme-colors.css
+- responsive.css
 
 **JavaScript Dosyaları:**
 - scrolldisable.js
@@ -174,22 +200,36 @@ pist-website/
 - flickity.pkgd.min.js
 - swiper-bundle.min.js
 - embed.js
+- gsap.min.js
+- jquery-3.5.1.min.js
+- webflow.ae25ff8e.82b5e4f06d3d1b4a.js
 
 **Resim Dosyaları:**
 - qube_favicon.png
 - qube_icon.png
-- qube_nav_east.jpg
 - qube_nav_west.jpg
-- qube_nav_hackney_v2.jpg
-- qube_nav_elephant.jpg
-- qube_avatar-small_4.avif
 - qube_avatar-small_1.avif
+- qube_avatar-small_2.avif
 - qube_avatar-small_3.avif
+- qube_avatar-small_4.avif
+- qube_music-makers-1.avif
+- qube_music-makers-2.avif
+- qube_business_header_1.avif
+- qube_business_header_2.avif
+- qube_business_header_4.avif
+- qube_business_header_5.avif
+- qube_private-events_west_5.jpg
+- qube_west_header.avif
+- qube_photos_9.jpg
+- created-by-webyst.svg
 
 **Video Dosyaları:**
 - qube_homepage_video-poster.jpg
 - qube_homepage_video.mp4
 - qube_homepage_video.webm
+- qube_private-events_video.mp4
+- qube_private-events_video.webm
+- qube_private-events_video-poster.jpg
 
 **Alt Sayfalar:**
 - membership_music-makers.html
@@ -197,12 +237,8 @@ pist-website/
 - membership_podcasters.html
 - membership_photographers.html
 - membership_teams.html
-- locations_qube-canary-wharf.html
-- locations_qube-acton.html
-- locations_qube-hackney.html
-- locations_qube-elephant-and-castle.html
+- qube-acton.html
 - studios.html
-- songwriting-camps.html
 - private-events.html
 - events.html
 
@@ -215,4 +251,4 @@ pist-website/
 - Tüm alt sayfa bağlantıları yerel HTML dosyalarına güncellendi
 
 ## Sonuç
-Proje başarıyla tamamlandı. https://www.theqube.com/ web sitesinin tüm içeriği yerel olarak kopyalandı ve bağlantılar yerel dosya sistemine uygun hale getirildi.
+Proje başarıyla tamamlandı. https://www.piststudio.com/ web sitesinin tüm içeriği yerel olarak kopyalandı ve bağlantılar yerel dosya sistemine uygun hale getirildi.

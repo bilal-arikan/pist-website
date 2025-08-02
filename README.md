@@ -1,6 +1,6 @@
 # Qube Studio Website
 
-Bu proje, https://www.theqube.com/ web sitesinin yerel kopyasıdır. Londra'daki müzik ve podcast stüdyolarının üyelik sistemini tanıtan bir web sitesidir.
+Bu proje, https://www.piststudio.com/ web sitesinin yerel kopyasıdır. Londra'daki müzik ve podcast stüdyolarının üyelik sistemini tanıtan bir web sitesidir.
 
 ## 📁 Proje Yapısı
 
@@ -118,7 +118,7 @@ Tüm bağlantılar yerel dosya sistemine göre ayarlanmıştır:
 
 ## 📝 Lisans
 
-Bu proje eğitim amaçlı oluşturulmuştur. Orijinal içerik https://www.theqube.com/ sitesine aittir.
+Bu proje eğitim amaçlı oluşturulmuştur. Orijinal içerik https://www.piststudio.com/ sitesine aittir.
 
 ## 🤝 Katkıda Bulunma
 

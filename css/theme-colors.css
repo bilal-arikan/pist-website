@@ -1,0 +1,48 @@
+/* theme dark */
+:root,
+[data-theme="dark"],
+[data-theme="invert"],
+[data-theme="light"] [data-theme="invert"] {
+  --theme--background: var(--swatch--black);
+  --theme--text: var(--swatch--white);
+  --theme--overlay-10: var(--swatch--white-10);
+  --theme--overlay-20: var(--swatch--white-20);
+  --theme--overlay-30: var(--swatch--white-30);
+  --theme--brand-1a: var(--swatch--brand-1a);
+  --theme--brand-1b: var(--swatch--brand-1b);
+  --theme--brand-2a: var(--swatch--brand-2a);
+  --theme--brand-2b: var(--swatch--brand-2b);
+  --theme--brand-3a: var(--swatch--brand-3a);
+  --theme--brand-3b: var(--swatch--brand-3b);
+  --theme--brand-4a: var(--swatch--brand-4a);
+  --theme--brand-4b: var(--swatch--brand-4b);
+}
+
+[data-theme="light"],
+[data-theme="dark"] [data-theme="invert"] {
+  --theme--background: var(--swatch--white);
+  --theme--text: var(--swatch--black);
+  --theme--overlay-10: var(--swatch--black-10);
+  --theme--overlay-20: var(--swatch--black-20);
+  --theme--overlay-30: var(--swatch--black-30);
+  --theme--brand-1a: var(--swatch--brand-1b);
+  --theme--brand-1b: var(--swatch--brand-1a);
+  --theme--brand-2a: var(--swatch--brand-2b);
+  --theme--brand-2b: var(--swatch--brand-2a);
+  --theme--brand-3a: var(--swatch--brand-3b);
+  --theme--brand-3b: var(--swatch--brand-3a);
+  --theme--brand-4a: var(--swatch--brand-4b);
+  --theme--brand-4b: var(--swatch--brand-4a);
+}
+
+/* Prevent changes for 'no-change' */
+[data-theme="unset"] {
+  /* Do not apply any theme-specific changes */
+  all: unset;
+}
+
+/* Apply colors */
+:is(c, :where([data-theme]:not([data-theme="inherit"])):not([data-theme="no-change"])) {
+  background-color: var(--theme--background);
+  color: var(--theme--text);
+}
