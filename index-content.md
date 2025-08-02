@@ -1,135 +1,159 @@
-# Qube Website - Ana Sayfa İçeriği
+# PİST Stüdyo Website - Ana Sayfa İçeriği
 
 ## Sayfa Başlığı ve Meta Bilgileri
 
-**Başlık:** Qube: Studio Membership in London | Music & Podcast Studios
+**Başlık:** PİST Stüdyo: İstanbul'da Profesyonel Müzik & Video Prodüksiyon Stüdyosu
 
-**Açıklama:** Qube is the world's first members' studio for music makers & podcasters. Enjoy monthly studio time, a curated community, and exclusive events in London.
+**Açıklama:** PİST Stüdyo, müzik yapımcıları, DJ'ler, podcaster'lar ve yaratıcılar için profesyonel stüdyo hizmetleri, eğitimler ve etkinlikler sunar. İstanbul Maslak'ta yer alan modern stüdyomuzda projelerinizi hayata geçirin.
 
 ## Ana İçerik
 
 ### Hero Bölümü
 
-**Üst Başlık:** Loved by 1,000+ members across London
+**Ana Başlık:** PİST: Yükselmeye Hazır mısın?
 
-**Ana Başlık:** Studio Membership for
+**Alt Başlık:** Projelerin ve hayallerin yükselişe geçmesi için buradayız. Her başarılı yolculuk, sağlam bir PİST'te başlar.
 
 **Değişen Metinler:**
-- music makers
-- DJs
-- podcasters
-- photographers
-- videographers
-- teams
-
-**Alt Başlık:** Monthly studio time. Curated community of 1,000+ creators. Exclusive events. All in one membership.
+- müzik yapımcıları
+- DJ'ler
+- podcaster'lar
+- fotoğrafçılar
+- video yapımcıları
+- yaratıcı ekipler
 
 **Butonlar:**
-- Apply now
-- Book a studio
+- Başla
+- Stüdyoyu Keşfet
 
 ### Hakkında Bölümü
 
-**Üst Başlık:** About
+**Üst Başlık:** Hakkımızda
 
-**Ana Başlık:** The world's first members' studio for *music makers & podcasters*
+**Ana Başlık:** Yaratıcılığınızı *yükselten stüdyo*
 
-**İçerik:** Meet Qube: a monthly membership that includes access to professional studios, a curated community, and exclusive events for creators across music and content. From producing your LP to filming your podcast episode, it all happens at Qube.
+**Biz Kimiz?**
+Müziğe, prodüksiyona ve etkinliklere tutkuyla bağlı, yaratıcı ve samimi bir ekibiz. Enerjimizi sizinle paylaşarak, birlikte daha yükseğe çıkıyoruz.
 
-**Buton:** Apply now
-**Alt Metin:** LIMITED SPACES AVAILABLE
+**Ne Yapıyoruz?**
+Canlı etkinlikler, profesyonel müzik ve video prodüksiyonları, hobi eğitimleri ve atölyeler düzenleyerek yaratıcılığınızı ve işinizi destekliyoruz.
 
-### Stüdyoları Keşfet Bölümü
+**Neden PİST?**
+Çünkü burası sadece bir stüdyo değil, hedeflerinize ulaşmanızı sağlayan bir roket pisti. Bizimle yükselişe geçmeniz için her detay düşünüldü.
 
-**Ana Başlık:** 80+ professional studios & creative spaces, *designed for creators*
+**Buton:** Hizmetleri Keşfet
 
-**Stüdyo Türleri:**
-1. **Music production *studios***
-2. **DJ booths & *Suites***
-3. **Content & *Podcast studios***
-4. **Event *spaces***
+### Hizmetler Bölümü
 
-**Buton:** Explore studios
+**Ana Başlık:** Profesyonel hizmetler, *yaratıcı çözümler*
 
-### Üyeler Bölümü
+**Hizmet Türleri:**
 
-**Üst Başlık:** Loved by 1,000+ members across London
+1. **Alan Kiralama**
+   - Etkinlikleriniz ve çekimleriniz için profesyonel sahne, stüdyo ve toplantı odaları
+   - **Buton:** Alanları Gör
 
-**Ana Başlık:** Making it at *Qube*
+2. **Müzik Prodüksiyon**
+   - Şarkı prodüksiyonu, aranje, kayıt ve profesyonel miks/mastering hizmetleri
+   - **Buton:** Müzik Paketleri
 
-**Üye Profilleri:**
-1. **Full Crate** - DJ / Producer
-2. **Ayame** - Content Creator
-3. **James Hype** - DJ / Producer
-4. **Jyoty** - DJ / Producer
+3. **Video Prodüksiyon**
+   - Profesyonel video çekimi, kurgu ve post-prodüksiyon hizmetleri
+   - **Buton:** Video Paketleri
+
+4. **Üyelik Avantajları**
+   - Özel indirimler, öncelikli rezervasyon ve özel etkinliklere erişim
+   - **Buton:** Üyelik Paketleri
+
+5. **Eğitim ve Atölyeler**
+   - Profesyonel müzik prodüksiyonu ve hobi eğitimleriyle kişisel gelişim
+   - **Buton:** Eğitimleri İncele
+
+### Galeri Bölümü
+
+**Ana Başlık:** Yaratıcı *dünyamıza* göz atın
+
+**İçerik:** Stüdyomuzdan ilham veren fotoğraf ve videolarla yaratıcı dünyamıza göz atın.
+
+**Buton:** Galeriye Git
 
 ### Etkinlikler Bölümü
 
-**Üst Başlık:** Events
+**Üst Başlık:** Yaklaşan Etkinlikler
 
-**Ana Başlık:** Exclusive events for *learning, networking & growth*
+**Ana Başlık:** Yaratıcılık ve *eğlenceyi* bir arada keşfedin
 
-**Alt Başlık:** Meet like-minded creators, industry experts, and brands who will help push your career forward at our exclusive monthly events.
+**Alt Başlık:** DJ partilerinden akustik performanslara, yaratıcı workshoplardan networking etkinliklerine kadar birçok farklı deneyimi yaşayın!
 
 **Etkinlik Türleri:**
 
-1. **Meet Your Creative Match**
-   - Artists, music producers, and songwriters found their next collaborator through our popular speed-networking event.
+1. **Ofis Sonrası DJ Parti**
+   - İş gününün stresini atın, müzikle rahatlayın
 
-2. **Songwriting Camps**
-   - Members collaborated with chart-topping writers like JinJin and Fiona Bevan, creating future hits and expanding their network.
+2. **Startup Networking Gecesi**
+   - Girişimciler ve yaratıcılarla tanışın, iş birliği fırsatları keşfedin
 
-3. **Unplugged Sessions**
-   - Relax and unwind during evening live performances by Qube's community of music makers, DJs, vocalists, and more.
+3. **Akustik Sahne Performansları**
+   - Canlı müzik deneyimi yaşayın, yetenekleri keşfedin
 
-**Buton:** See more events
+4. **CEO'lar ile İlham Sohbetleri**
+   - Başarılı iş insanlarından ilham alın
 
-### Hikayemiz Bölümü
+5. **Müzik Prodüksiyon Workshop**
+   - Profesyonel müzik yapımı tekniklerini öğrenin
 
-**Ana Başlık:** A new home for London's *creative community*
+**Buton:** Etkinlikleri Gör
 
-**İçerik:** 
-Qube founders, Amin and Nick, met in a dingy studio basement, bonding over the perfect snare sample and their shared frustrations as solo creators.
+### İletişim Bölümü
 
-Tired of empty studios, high rents, and isolation, they created Qube: a flexible, professional studio membership where creators can work, socialise, and inspire each other – together.
+**Ana Başlık:** Bizimle *iletişime* geçin
 
-**Buton:** Our story
+**İletişim Bilgileri:**
+📍 İstanbul, Maslak
+📞 +90 (XXX) XXX XX XX
+📧 info@piststudyo.com
+
+**Buton:** İletişime Geç
 
 ### Son Çağrı Bölümü
 
-**Ana Başlık:** Your *best work* is yet to come. Make it at Qube.
+**Ana Başlık:** Projelerinizi *hayata geçirme* zamanı geldi
 
-**Alt Başlık:** Monthly studio time. Private community. Exclusive events. All in one membership.
+**Alt Başlık:** Profesyonel stüdyo hizmetleri, yaratıcı topluluk ve ilham verici etkinliklerle yükselişe geçin. PİST'te her şey mümkün.
 
-**Buton:** Apply now
-**Alt Metin:** LIMITED SPACES AVAILABLE
+**Buton:** Hemen Başla
+**Alt Metin:** SINIRLI KONTENJAN
 
 ## Teknik Notlar
 
-- Sayfa Webflow ile oluşturulmuş
-- Google Tag Manager entegrasyonu mevcut
-- Typeform entegrasyonu (Apply now butonları için)
+- Modern HTML5/CSS3/JavaScript teknolojileri
+- Responsive tasarım (mobil uyumlu)
 - GSAP animasyonları
 - Swiper.js slider'ları
 - Flickity carousel'ları
-- Responsive tasarım
+- Google Tag Manager entegrasyonu
+- İletişim formu entegrasyonu
+- SEO optimizasyonu
 
 ## Kullanılan Görseller
 
-- Video: qube_homepage_video.mp4, qube_homepage_video.webm
-- Avatar görselleri: qube_avatar-small_1.avif, qube_avatar-small_3.avif, qube_avatar-small_4.avif
-- Stüdyo görselleri: qube_west_studio_1.avif, qube_soulection_camp.jpg, qube_content_day.jpg
-- Slider görselleri: qube_slider-5.avif, qube_slider-6.avif, qube_slider-8.avif
-- Topluluk görselleri: qube_community_full-crate.jpg, qube_community_ayame.jpg, qube_community_james-hype.jpg, qube_community_jyoty.jpg
-- Etkinlik görselleri: qube_events_meet-your-creative-match.jpg, qube_business_header_6.jpg, qube_events_unplugged.avif
-- CTA görseli: qube_cta.avif
+- Hero video: pist_homepage_video.mp4, pist_homepage_video.webm
+- Stüdyo görselleri: pist_studio_1.jpg, pist_studio_2.jpg, pist_studio_3.jpg
+- Hizmet görselleri: pist_music_production.jpg, pist_video_production.jpg, pist_event_space.jpg
+- Galeri görselleri: pist_gallery_1.jpg, pist_gallery_2.jpg, pist_gallery_3.jpg
+- Etkinlik görselleri: pist_dj_party.jpg, pist_networking.jpg, pist_acoustic.jpg
+- CTA görseli: pist_cta_background.jpg
+- Logo ve favicon: pist_logo.svg, pist_favicon.png
 
 ## JavaScript Fonksiyonları
 
-- Text animation (değişen metinler için)
-- Parallax slider
-- Swiper sliders (stüdyolar ve etkinlikler için)
-- Members slider (scroll-based)
-- GSAP scroll animations
-- Navbar scroll effects
+- Text animation (değişen meslek grupları için)
+- Hero video autoplay
+- Parallax slider (galeri için)
+- Swiper sliders (hizmetler ve etkinlikler için)
+- GSAP scroll animations (fade-in efektleri)
+- Navbar scroll effects (arka plan değişimi)
 - Component loaders (navbar ve footer için)
+- Form validation (iletişim formu için)
+- Smooth scrolling (sayfa içi navigasyon)
+- Mobile menu toggle
