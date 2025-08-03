@@ -9,7 +9,7 @@ pist-website/
 ├── css/                    # CSS dosyaları
 │   ├── flickity.min.css
 │   ├── swiper-bundle.min.css
-│   └── theqube.webflow.shared.min.css
+│   └── pist.shared.css
 ├── js/                     # JavaScript dosyaları
 │   ├── ScrollTrigger.min.js
 │   ├── embed.js

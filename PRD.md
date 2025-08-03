@@ -57,7 +57,7 @@ pist-website/
 ### Tespit Edilen Dosyalar
 
 #### CSS Dosyaları
-- css/theqube.webflow.shared.min.css
+- css/pist.shared.css
 - css/swiper-bundle.min.css
 - css/flickity.min.css
 - css/shared-styles.css
@@ -78,10 +78,10 @@ pist-website/
 - images/pist_favicon.png
 - images/pist_icon.png
 - images/pist_nav_west.jpg
-- images/pist_avatar-small_1.avif
-- images/pist_avatar-small_2.avif
-- images/pist_avatar-small_3.avif
-- images/pist_avatar-small_4.avif
+- images/avatar1.jpg
+- images/avatar2.jpg
+- images/avatar3.jpg
+- images/avatar4.jpg
 - images/pist_music-makers-1.avif
 - images/pist_music-makers-2.avif
 - images/pist_business_header_1.avif
@@ -90,7 +90,7 @@ pist-website/
 - images/pist_business_header_5.avif
 - images/pist_private-events_west_5.jpg
 - images/pist_west_header.avif
-- images/pist_photos_9.jpg
+- images/pist.jpg
 - images/created-by-webyst.svg
 
 #### Video Dosyaları
@@ -122,7 +122,7 @@ pist-website/
 - [ ] pages/ klasörü oluştur
 
 ### Adım 2: CSS Dosyalarını İndirme
-- [x] theqube.webflow.shared.min.css
+- [x] pist.shared.css
 - [x] swiper-bundle.min.css
 - [x] flickity.min.css
 - [x] shared-styles.css
@@ -187,7 +187,7 @@ pist-website/
 ### 2. İndirilen Dosyalar
 
 **CSS Dosyaları:**
-- theqube.webflow.shared.min.css
+- pist.shared.css
 - swiper-bundle.min.css
 - flickity.min.css
 - shared-styles.css
@@ -208,10 +208,10 @@ pist-website/
 - pist_favicon.png
 - pist_icon.png
 - pist_nav_west.jpg
-- pist_avatar-small_1.avif
-- pist_avatar-small_2.avif
-- pist_avatar-small_3.avif
-- pist_avatar-small_4.avif
+- avatar1.jpg
+- avatar2.jpg
+- avatar3.jpg
+- avatar4.jpg
 - pist_music-makers-1.avif
 - pist_music-makers-2.avif
 - pist_business_header_1.avif
@@ -220,7 +220,7 @@ pist-website/
 - pist_business_header_5.avif
 - pist_private-events_west_5.jpg
 - pist_west_header.avif
-- pist_photos_9.jpg
+- pist.jpg
 - created-by-webyst.svg
 
 **Video Dosyaları:**
