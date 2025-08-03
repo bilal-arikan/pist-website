@@ -156,7 +156,7 @@ pist-website/
 
 ### Adım 6: Alt Sayfaları İndirme
 - [x] Membership sayfaları
-- [x] Qube Acton sayfası
+- [x] Pist sayfası
 - [x] Diğer sayfalar
 
 ### Adım 7: Bağlantıları Yerel Hale Getirme

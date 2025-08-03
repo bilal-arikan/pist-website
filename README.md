@@ -1,4 +1,4 @@
-# Qube Studio Website
+# PİST Studio Website
 
 Bu proje, https://www.piststudio.com/ web sitesinin yerel kopyasıdır. Londra'daki müzik ve podcast stüdyolarının üyelik sistemini tanıtan bir web sitesidir.
 
@@ -134,4 +134,4 @@ Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
 
 ---
 
-**Not**: Bu proje, orijinal Qube Studio web sitesinin yerel bir kopyasıdır ve eğitim amaçlı kullanım içindir.
+**Not**: Bu proje, orijinal PİST Studio web sitesinin yerel bir kopyasıdır ve eğitim amaçlı kullanım içindir.
