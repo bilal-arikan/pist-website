@@ -75,31 +75,31 @@ pist-website/
 - js/webflow.ae25ff8e.82b5e4f06d3d1b4a.js
 
 #### Resim Dosyaları
-- images/qube_favicon.png
-- images/qube_icon.png
-- images/qube_nav_west.jpg
-- images/qube_avatar-small_1.avif
-- images/qube_avatar-small_2.avif
-- images/qube_avatar-small_3.avif
-- images/qube_avatar-small_4.avif
-- images/qube_music-makers-1.avif
-- images/qube_music-makers-2.avif
-- images/qube_business_header_1.avif
-- images/qube_business_header_2.avif
-- images/qube_business_header_4.avif
-- images/qube_business_header_5.avif
-- images/qube_private-events_west_5.jpg
-- images/qube_west_header.avif
-- images/qube_photos_9.jpg
+- images/pist_favicon.png
+- images/pist_icon.png
+- images/pist_nav_west.jpg
+- images/pist_avatar-small_1.avif
+- images/pist_avatar-small_2.avif
+- images/pist_avatar-small_3.avif
+- images/pist_avatar-small_4.avif
+- images/pist_music-makers-1.avif
+- images/pist_music-makers-2.avif
+- images/pist_business_header_1.avif
+- images/pist_business_header_2.avif
+- images/pist_business_header_4.avif
+- images/pist_business_header_5.avif
+- images/pist_private-events_west_5.jpg
+- images/pist_west_header.avif
+- images/pist_photos_9.jpg
 - images/created-by-webyst.svg
 
 #### Video Dosyaları
-- videos/qube_homepage_video.mp4
-- videos/qube_homepage_video.webm
-- videos/qube_homepage_video-poster.jpg
-- videos/qube_private-events_video.mp4
-- videos/qube_private-events_video.webm
-- videos/qube_private-events_video-poster.jpg
+- videos/pist_homepage_video.mp4
+- videos/pist_homepage_video.webm
+- videos/pist_homepage_video-poster.jpg
+- videos/pist_private-events_video.mp4
+- videos/pist_private-events_video.webm
+- videos/pist_private-events_video-poster.jpg
 
 #### Alt Sayfalar (Mevcut)
 - /membership_music-makers
@@ -205,31 +205,31 @@ pist-website/
 - webflow.ae25ff8e.82b5e4f06d3d1b4a.js
 
 **Resim Dosyaları:**
-- qube_favicon.png
-- qube_icon.png
-- qube_nav_west.jpg
-- qube_avatar-small_1.avif
-- qube_avatar-small_2.avif
-- qube_avatar-small_3.avif
-- qube_avatar-small_4.avif
-- qube_music-makers-1.avif
-- qube_music-makers-2.avif
-- qube_business_header_1.avif
-- qube_business_header_2.avif
-- qube_business_header_4.avif
-- qube_business_header_5.avif
-- qube_private-events_west_5.jpg
-- qube_west_header.avif
-- qube_photos_9.jpg
+- pist_favicon.png
+- pist_icon.png
+- pist_nav_west.jpg
+- pist_avatar-small_1.avif
+- pist_avatar-small_2.avif
+- pist_avatar-small_3.avif
+- pist_avatar-small_4.avif
+- pist_music-makers-1.avif
+- pist_music-makers-2.avif
+- pist_business_header_1.avif
+- pist_business_header_2.avif
+- pist_business_header_4.avif
+- pist_business_header_5.avif
+- pist_private-events_west_5.jpg
+- pist_west_header.avif
+- pist_photos_9.jpg
 - created-by-webyst.svg
 
 **Video Dosyaları:**
-- qube_homepage_video-poster.jpg
-- qube_homepage_video.mp4
-- qube_homepage_video.webm
-- qube_private-events_video.mp4
-- qube_private-events_video.webm
-- qube_private-events_video-poster.jpg
+- pist_homepage_video-poster.jpg
+- pist_homepage_video.mp4
+- pist_homepage_video.webm
+- pist_private-events_video.mp4
+- pist_private-events_video.webm
+- pist_private-events_video-poster.jpg
 
 **Alt Sayfalar:**
 - membership_music-makers.html

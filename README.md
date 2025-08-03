@@ -17,14 +17,14 @@ pist-website/
 │   ├── scrolldisable.js
 │   └── swiper-bundle.min.js
 ├── images/                 # Resim dosyaları
-│   ├── qube_favicon.png
-│   ├── qube_icon.png
-│   ├── qube_nav_*.jpg
-│   └── qube_avatar-small_*.avif
+│   ├── pist_favicon.png
+│   ├── pist_icon.png
+│   ├── pist_nav_*.jpg
+│   └── pist_avatar-small_*.avif
 ├── videos/                 # Video dosyaları
-│   ├── qube_homepage_video.mp4
-│   ├── qube_homepage_video.webm
-│   └── qube_homepage_video-poster.jpg
+│   ├── pist_homepage_video.mp4
+│   ├── pist_homepage_video.webm
+│   └── pist_homepage_video-poster.jpg
 ├── pages/                  # Alt sayfalar
 │   ├── membership_*.html
 │   ├── locations_*.html
