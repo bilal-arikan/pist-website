@@ -1,11 +1,48 @@
+<style>
+  .navbar_left_section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .navbar_menu_button {
+    display: none;
+  }
+  
+  @media screen and (max-width: 991px) {
+    .navbar_menu_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+    }
+    
+    .navbar_menu {
+      display: none;
+    }
+    
+    .navbar_buttons {
+      display: none;
+    }
+  }
+</style>
+
 <div data-animation="default" class="navbar_wrap w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav"
   data-easing="ease" data-collapse="medium" data-w-id="24fe6517-ba5e-6fad-e200-6e4df4256791" role="banner"
-  data-duration="500">
+  data-duration="500" style="background-color: transparent;">
   <div class="navbar_bg_overlay"></div>
   <div class="padding-global">
     <div class="w-layout-blockcontainer navbar_container w-container">
-      <div class="w-layout-grid navbar_layout"><a id="w-node-_24fe6517-ba5e-6fad-e200-6e4df4256796-f4256791" href="/"
-          aria-current="page" class="navbar_logo_link w-nav-brand w--current"><img src="../images/pist-logo.svg" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="32" width="111.7"></a>
+      <div class="w-layout-grid navbar_layout">
+        <div class="navbar_left_section">
+          <a id="w-node-_24fe6517-ba5e-6fad-e200-6e4df4256796-f4256791" href="/"
+            aria-current="page" class="navbar_logo_link w-nav-brand w--current"><img src="../images/pist-logo.svg" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="32" width="111.7"></a>
+          <div class="navbar_menu_button w-nav-button">
+            <div class="navbar_menu_icon w-icon-nav-menu"></div>
+          </div>
+        </div>
         <nav role="navigation" fs-scrolldisable-element="preserve" class="navbar_menu w-nav-menu">
           <div class="navbar_menu_content">
             <div class="navbar_menu_items">
@@ -45,6 +82,9 @@
               <a href="/pages/location-pist.html" class="navbar_link w-inline-block">
                 <div>PİST</div>
               </a>
+              <a href="/pages/who-we-are.html" class="navbar_link w-inline-block">
+                <div>Hakkımızda</div>
+              </a>
               <a href="/pages/studios.html" class="navbar_link w-inline-block">
                 <div>Stüdyolar</div>
               </a>
@@ -52,6 +92,9 @@
                 <div>Özel Etkinlikler</div>
               </a><a href="/pages/events.html" class="navbar_link w-inline-block">
                 <div>Etkinlikler</div>
+              </a>
+              <a href="/pages/contact.html" class="navbar_link w-inline-block">
+                <div>İletişim</div>
               </a>
             </div>
           </div>
@@ -65,9 +108,6 @@
                 <div class="button_text_absolute">Başvur</div>
               </div>
             </button></div>
-        </div>
-        <div class="navbar_menu_button w-nav-button">
-          <div class="navbar_menu_icon w-icon-nav-menu"></div>
         </div>
       </div>
     </div>
