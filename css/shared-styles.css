@@ -226,3 +226,32 @@ footer {
 .flickity-button {
   display: none;
 }
+
+/* SVG color fixes */
+svg {
+  color: inherit;
+}
+
+svg[fill="currentColor"] {
+  fill: currentColor;
+}
+
+svg[stroke="currentColor"] {
+  stroke: currentColor;
+}
+
+/* Ensure SVGs inherit text color */
+.socials_icon,
+.dropdown_icon {
+  color: inherit;
+}
+
+/* Fix for dark theme SVGs */
+[data-theme="dark"] svg[fill="currentColor"],
+:root svg[fill="currentColor"] {
+  fill: var(--theme--text, currentColor);
+}
+
+[data-theme="light"] svg[fill="currentColor"] {
+  fill: var(--theme--text, currentColor);
+}

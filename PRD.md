@@ -107,7 +107,7 @@ pist-website/
 - /membership_podcasters
 - /membership_photographers
 - /membership_teams
-- /qube-acton
+- /location-pist
 - /studios
 - /private-events
 - /events
@@ -237,7 +237,7 @@ pist-website/
 - membership_podcasters.html
 - membership_photographers.html
 - membership_teams.html
-- qube-acton.html
+- location-pist.html
 - studios.html
 - private-events.html
 - events.html
