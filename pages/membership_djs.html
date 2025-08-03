@@ -1672,6 +1672,20 @@ Change the color of the text here, instead of on Webflow for this to work */
   <script src="../js/swiper-bundle.min.js"></script>
   <script src="../js/typeform-embed.js"></script>
 
+
+  <script>
+    pageFunctions.executeFunctions();
+  </script>
+
+  <!-- Display current year -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const yrSpan = document.querySelector('.current-year');
+      const currentYr = new Date().getFullYear();
+      yrSpan.textContent = currentYr;
+    });
+  </script>
+
   <!-- Elements Intro -->
   <script>
     // Initialize GSAP
