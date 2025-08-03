@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="tr">
 
 <head>
   <meta charset="utf-8" />
@@ -45,22 +45,22 @@
   <div class="page-wrapper">
     <div class="global">
     </div>
-        <!-- Navbar Component -->
-        <div id="navbar-container"></div>
+    <!-- Navbar Component -->
+    <div id="navbar-container"></div>
 
-        <script>
-            // Navbar component loader
-            fetch('/components/navbar.html')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('navbar-container').innerHTML = data;
-                    // Navbar yüklendikten sonra navbar.js'i çalıştır
-                    if (window.initNavbar) {
-                        window.initNavbar();
-                    }
-                })
-                .catch(error => console.error('Navbar yüklenirken hata:', error));
-        </script>
+    <script>
+      // Navbar component loader
+      fetch('/components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('navbar-container').innerHTML = data;
+          // Navbar yüklendikten sonra navbar.js'i çalıştır
+          if (window.initNavbar) {
+            window.initNavbar();
+          }
+        })
+        .catch(error => console.error('Navbar yüklenirken hata:', error));
+    </script>
 
 
     <main class="main-wrapper">
@@ -133,7 +133,8 @@
                       <h1>PİST: Yükselmeye Hazır mısın?</h1>
                     </div>
                     <div class="margin-top margin-small">
-                      <p data-animate="" class="text-size-large">Projelerin ve hayallerin yükselişe geçmesi için buradayız. Her başarılı yolculuk, sağlam bir PİST'te başlar.</p>
+                      <p data-animate="" class="text-size-large">Projelerin ve hayallerin yükselişe geçmesi için
+                        buradayız. Her başarılı yolculuk, sağlam bir PİST'te başlar.</p>
                     </div>
                   </div>
                 </div>
@@ -159,41 +160,34 @@
         <div class="swiper-slider_gallery">
           <div class="swiper is-gallery">
             <div class="swiper-wrapper is-gallery">
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272e3ccad69d84cd9ba_pist_west_gallery_1.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272e3ccad69d84cd9ba_pist_west_gallery_1-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272e3ccad69d84cd9ba_pist_west_gallery_1.jpg 700w"
-                  alt="" class="gallery_image" /></div>
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d27291d2d951238c2bef_pist_west_gallery_2.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d27291d2d951238c2bef_pist_west_gallery_2-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d27291d2d951238c2bef_pist_west_gallery_2.jpg 700w"
-                  alt="" class="gallery_image" /></div>
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d2727fe3899e3946068d_pist_west_gallery_3.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d2727fe3899e3946068d_pist_west_gallery_3-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d2727fe3899e3946068d_pist_west_gallery_3.jpg 700w"
-                  alt="" class="gallery_image" /></div>
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272ff32052b65b92475_pist_west_gallery_4.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272ff32052b65b92475_pist_west_gallery_4-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272ff32052b65b92475_pist_west_gallery_4.jpg 700w"
-                  alt="" class="gallery_image" /></div>
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272b7ee0890a9bf4719_pist_west_gallery_5.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272b7ee0890a9bf4719_pist_west_gallery_5-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d272b7ee0890a9bf4719_pist_west_gallery_5.jpg 700w"
-                  alt="" class="gallery_image" /></div>
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d27287e2ed9af806455b_pist_west_gallery_6.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d27287e2ed9af806455b_pist_west_gallery_6-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d27287e2ed9af806455b_pist_west_gallery_6.jpg 700w"
-                  alt="" class="gallery_image" /></div>
-              <div class="swiper-slide is-gallery"><img
-                  src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d2744f25ca6a1e628d4f_pist_west_gallery_7.jpg"
-                  loading="lazy" sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
-                  srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d2744f25ca6a1e628d4f_pist_west_gallery_7-p-500.jpg 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d2744f25ca6a1e628d4f_pist_west_gallery_7.jpg 700w"
-                  alt="" class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_west_studio_1.avif" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_west_studio_1.avif 500w, ../images/pist_west_studio_1.avif 700w" alt=""
+                  class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_west_2.avif" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_west_2.avif 500w, ../images/pist_west_2.avif 700w" alt=""
+                  class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_hackney_gallery_1.jpg" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_hackney_gallery_1.jpg 500w, ../images/pist_hackney_gallery_1.jpg 700w" alt=""
+                  class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_hackney_gallery_2.jpg" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_hackney_gallery_2.jpg 500w, ../images/pist_hackney_gallery_2.jpg 700w" alt=""
+                  class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_hackney_gallery_3.jpg" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_hackney_gallery_3.jpg 500w, ../images/pist_hackney_gallery_3.jpg 700w" alt=""
+                  class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_hackney_gallery_4.jpg" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_hackney_gallery_4.jpg 500w, ../images/pist_hackney_gallery_4.jpg 700w" alt=""
+                  class="gallery_image" /></div>
+              <div class="swiper-slide is-gallery"><img src="../images/pist_hackney_gallery_5.jpg" loading="lazy"
+                  sizes="(max-width: 479px) 224px, (max-width: 767px) 358.3984375px, 627.1953125px"
+                  srcset="../images/pist_hackney_gallery_5.jpg 500w, ../images/pist_hackney_gallery_5.jpg 700w" alt=""
+                  class="gallery_image" /></div>
             </div>
           </div>
           <div class="swiper_navigation is-swiper-gallery">
@@ -262,17 +256,14 @@
                   <div class="align-center max-width-large">
                     <div class="margin-bottom margin-small">
                       <div data-animate="fade-in" class="upheading is-blue">
-                        <div>Highlights</div>
+                        <div>Hakkımızda</div>
                       </div>
                     </div>
                     <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                      <h2>Your space for focus <em>&amp; creativity</em></h2>
+                      <h2>Yaratıcılığınızı <em>yükselten stüdyo</em></h2>
                     </div>
                     <div class="margin-top margin-small">
-                      <p data-animate="fade-in" class="text-size-large">Tucked away from the city buzz is Qube West: a
-                        stylish converted warehouse packed with dozens of studios for music, photography, and content
-                        creation.<br /><br />As our original location, Qube West features our iconic Studio A and is
-                        frequented by many of our OG creators who helped build our community into what it is today.</p>
+                      <p data-animate="fade-in" class="text-size-large">Müziğe, prodüksiyona ve etkinliklere tutkuyla bağlı, yaratıcı ve samimi bir ekibiz. Enerjimizi sizinle paylaşarak, birlikte daha yükseğe çıkıyoruz.<br /><br />Canlı etkinlikler, profesyonel müzik ve video prodüksiyonları, hobi eğitimleri ve atölyeler düzenleyerek yaratıcılığınızı ve işinizi destekliyoruz. Çünkü burası sadece bir stüdyo değil, hedeflerinize ulaşmanızı sağlayan bir roket pisti.</p>
                     </div>
                   </div>
                 </div>
@@ -281,8 +272,8 @@
                     <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><button
                         data-tf-popup="xEeZApsc" class="button">
                         <div class="button_container">
-                          <div class="button_text">Apply now</div>
-                          <div class="button_text_absolute">Apply now</div>
+                          <div class="button_text">Hizmetleri Keşfet</div>
+                          <div class="button_text_absolute">Hizmetleri Keşfet</div>
                         </div>
                       </button>
                       <div class="margin-top margin-xxsmall">
@@ -360,34 +351,33 @@
                     </script>
                   </div>
                   <div class="parallax-slider_component">
-                    <div class="parallax-slider_slide"><img alt=""
-                        src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6790db48098af4e5c983179c_144f055d9beaa02824f6f4a6e7c33e56_THE_pist_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_042%20%281%29.avif"
+                    <div class="parallax-slider_slide"><img alt="" src="../images/pist_music-makers_1.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6790db48098af4e5c983179c_144f055d9beaa02824f6f4a6e7c33e56_THE_pist_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_042%20%281%29-p-500.avif 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6790db48098af4e5c983179c_144f055d9beaa02824f6f4a6e7c33e56_THE_pist_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_042%20%281%29-p-800.avif 800w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6790db48098af4e5c983179c_144f055d9beaa02824f6f4a6e7c33e56_THE_pist_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_042%20%281%29-p-1080.avif 1080w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6790db48098af4e5c983179c_144f055d9beaa02824f6f4a6e7c33e56_THE_pist_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_042%20%281%29-p-1600.avif 1600w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6790db48098af4e5c983179c_144f055d9beaa02824f6f4a6e7c33e56_THE_pist_MAIN_STUDIO_SHOOT_19.09.2021_EDITS_LOW-RES_042%20%281%29.avif 2172w"
+                        srcset="../images/pist_music-makers_1.avif 500w, ../images/pist_music-makers_1.avif 800w, ../images/pist_music-makers_1.avif 1080w, ../images/pist_music-makers_1.avif 1600w, ../images/pist_music-makers_1.avif 2172w"
                         class="image" />
                       <div class="parallax-slider_slide_content">
                         <div class="text-rich-text_general w-richtext">
                           <h3>Müzik <em>Prodüksiyon</em></h3>
-                          <p>Şarkı prodüksiyonu, aranje, kayıt ve profesyonel miks/mastering hizmetleri ile projelerinizi hayata geçirin.</p>
+                          <p>Şarkı prodüksiyonu, aranje, kayıt ve profesyonel miks/mastering hizmetleri ile
+                            projelerinizi hayata geçirin.</p>
                         </div>
                       </div>
                     </div>
-                    <div class="parallax-slider_slide"><img alt=""
-                        src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d0e087e2ed9af80445bf_49934e99a370027dc4c365dd1088cec2_pist_west_2.avif"
+                    <div class="parallax-slider_slide"><img alt="" src="../images/pist_west_2.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d0e087e2ed9af80445bf_49934e99a370027dc4c365dd1088cec2_pist_west_2-p-500.avif 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d0e087e2ed9af80445bf_49934e99a370027dc4c365dd1088cec2_pist_west_2-p-800.avif 800w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d0e087e2ed9af80445bf_49934e99a370027dc4c365dd1088cec2_pist_west_2-p-1080.avif 1080w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6784d0e087e2ed9af80445bf_49934e99a370027dc4c365dd1088cec2_pist_west_2.avif 1920w"
+                        srcset="../images/pist_west_2.avif 500w, ../images/pist_west_2.avif 800w, ../images/pist_west_2.avif 1080w, ../images/pist_west_2.avif 1920w"
                         class="image" />
                       <div class="parallax-slider_slide_content">
                         <div class="text-rich-text_general w-richtext">
                           <h3>Video <em>Prodüksiyon</em></h3>
-                          <p>Profesyonel video çekimi, kurgu ve post-prodüksiyon hizmetleri ile yaratıcı projelerinizi gerçekleştirin.</p>
+                          <p>Profesyonel video çekimi, kurgu ve post-prodüksiyon hizmetleri ile yaratıcı projelerinizi
+                            gerçekleştirin.</p>
                         </div>
                       </div>
                     </div>
-                    <div class="parallax-slider_slide"><img alt=""
-                        src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed.avif"
+                    <div class="parallax-slider_slide"><img alt="" src="../images/pist_podcasters_1.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed-p-500.avif 500w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed-p-800.avif 800w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed-p-1080.avif 1080w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed-p-1600.avif 1600w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed-p-2000.avif 2000w, https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/67a341193ee06b2739b4be04_West%20-%20240814%20Tobi%20Jay%20Fake%20Podcast%20-%20Pod%20A%203%20Compressed.avif 2059w"
+                        srcset="../images/pist_podcasters_1.avif 500w, ../images/pist_podcasters_1.avif 800w, ../images/pist_podcasters_1.avif 1080w, ../images/pist_podcasters_1.avif 1600w, ../images/pist_podcasters_1.avif 2000w, ../images/pist_podcasters_1.avif 2059w"
                         class="image" />
                       <div class="parallax-slider_slide_content">
                         <div class="text-rich-text_general w-richtext">
@@ -441,7 +431,8 @@
                       <h3 class="heading-style-h6 align-center">Üyelik Avantajları</h3>
                     </div>
                     <div class="margin-top margin-xxsmall">
-                      <p>Özel indirimler, öncelikli rezervasyon ve özel etkinliklere erişim gibi avantajlarla stüdyo kullanımınızı daha verimli hale getirin.</p>
+                      <p>Özel indirimler, öncelikli rezervasyon ve özel etkinliklere erişim gibi avantajlarla stüdyo
+                        kullanımınızı daha verimli hale getirin.</p>
                     </div>
                   </div>
                 </div>
@@ -452,7 +443,8 @@
                       <h3 class="heading-style-h6 align-center">Yaratıcı Etkinlikler</h3>
                     </div>
                     <div class="margin-top margin-xxsmall">
-                      <p>DJ partilerinden akustik performanslara, yaratıcı workshoplardan networking etkinliklerine kadar birçok farklı deneyim.</p>
+                      <p>DJ partilerinden akustik performanslara, yaratıcı workshoplardan networking etkinliklerine
+                        kadar birçok farklı deneyim.</p>
                     </div>
                   </div>
                 </div>
@@ -465,7 +457,8 @@
                       <h3 class="heading-style-h6 align-center">Teknik Destek</h3>
                     </div>
                     <div class="margin-top margin-xxsmall">
-                      <p>Profesyonel ses teknisyenlerimiz ve modern ekipmanlarımızla projelerinizde size destek oluyoruz.</p>
+                      <p>Profesyonel ses teknisyenlerimiz ve modern ekipmanlarımızla projelerinizde size destek
+                        oluyoruz.</p>
                     </div>
                   </div>
                 </div>
@@ -508,14 +501,14 @@
                 <div class="align-center max-width-large">
                   <div class="margin-bottom margin-small">
                     <div data-animate="fade-in" class="upheading">
-                      <div>Etkinlikler</div>
+                      <div>Yaklaşan Etkinlikler</div>
                     </div>
                   </div>
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Yaratıcı <em>buluşmalar ve networking</em></h2>
+                    <h2>Yaratıcılık ve <em>eğlenceyi</em> bir arada keşfedin</h2>
                   </div>
                   <div class="margin-top margin-small">
-                    <p data-animate="fade-in" class="text-size-large">Müzik endüstrisinden profesyonellerle tanışın, yeni projeler geliştirin ve kariyerinizi ilerletecek bağlantılar kurun.</p>
+                    <p data-animate="fade-in" class="text-size-large">DJ partilerinden akustik performanslara, yaratıcı workshoplardan networking etkinliklerine kadar birçok farklı deneyimi yaşayın!</p>
                   </div>
                 </div>
               </div>
@@ -580,42 +573,43 @@
                   <div class="swiper-wrapper is-events">
                     <div class="swiper-slide is-events">
                       <div data-animate="scale-in" class="event-story_element"><img
-                          src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6722548d0e6620f7f657af29_74950042be26855754f4a5864be71622_pist_events_meet-your-creative-match.jpg"
-                          loading="lazy" alt="" class="g_image_absolute" />
+                          src="../images/pist_events_meet-your-creative-match.jpg" loading="lazy" alt=""
+                          class="g_image_absolute" />
                         <div class="event-story_content">
                           <div class="text-rich-text_page w-richtext">
                             <h3>Yaratıcı Eşleşme</h3>
                           </div>
                           <div class="margin-top margin-xxsmall">
-                            <p class="text-size-small text-style-muted">Müzisyenler, prodüktörler ve söz yazarları hızlı networking etkinliklerimizde yeni iş ortakları buluyor.</p>
+                            <p class="text-size-small text-style-muted">Müzisyenler, prodüktörler ve söz yazarları hızlı
+                              networking etkinliklerimizde yeni iş ortakları buluyor.</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="swiper-slide is-events">
                       <div data-animate="scale-in" class="event-story_element"><img
-                          src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6722548de890a52fa96b3698_9e0c891c161937b18278730a1547f97a_pist_events_songwriting.avif"
-                          loading="lazy" alt="" class="g_image_absolute" />
+                          src="../images/pist_events_songwriting.avif" loading="lazy" alt="" class="g_image_absolute" />
                         <div class="event-story_content">
                           <div class="text-rich-text_page w-richtext">
                             <h3>Şarkı Yazma Kampları</h3>
                           </div>
                           <div class="margin-top margin-xxsmall">
-                            <p class="text-size-small text-style-muted">Deneyimli söz yazarları ve bestecilerle birlikte çalışarak yeni şarkılar yaratın ve network'ünüzü genişletin.</p>
+                            <p class="text-size-small text-style-muted">Deneyimli söz yazarları ve bestecilerle birlikte
+                              çalışarak yeni şarkılar yaratın ve network'ünüzü genişletin.</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="swiper-slide is-events">
                       <div data-animate="scale-in" class="event-story_element"><img
-                          src="https://cdn.prod.website-files.com/669b70b3f67bbafac2188569/6722548d640a3e1cef8975e7_98830a1fa3bf1c0068f71a5d92041e8b_pist_events_unplugged.avif"
-                          loading="lazy" alt="" class="g_image_absolute" />
+                          src="../images/pist_events_unplugged.avif" loading="lazy" alt="" class="g_image_absolute" />
                         <div class="event-story_content">
                           <div class="text-rich-text_page w-richtext">
                             <h3>Akustik Performanslar</h3>
                           </div>
                           <div class="margin-top margin-xxsmall">
-                            <p class="text-size-small text-style-muted">PİST topluluğundan müzisyenler, DJ'ler ve vokalistlerin canlı performanslarıyla keyifli akşamlar geçirin.</p>
+                            <p class="text-size-small text-style-muted">PİST topluluğundan müzisyenler, DJ'ler ve
+                              vokalistlerin canlı performanslarıyla keyifli akşamlar geçirin.</p>
                           </div>
                         </div>
                       </div>
@@ -930,10 +924,10 @@
                         });
 
                         const marker = new google.maps.Marker({
-                          position: { lat: 51.524172653636434, lng: -0.28219914399311036 },
+                          position: { lat: 41.1079, lng: 29.0096 },
                           icon: "../../images/pist_pin_west.svg",
                           map: map,
-                          title: "Qube West"
+                          title: "PİST Stüdyo"
                         });
                       }
                       window.initMap = initMap;
@@ -941,8 +935,7 @@
                   </div>
                 </div>
                 <div data-animate="fade-in" class="max-width-medium">
-                  <p class="text-size-large text-color-heading"><strong>Qube Acton<br /></strong>168 Dukes
-                    Road<br />London<br />W3 0SL<br /></p>
+                  <p class="text-size-large text-color-heading"><strong>PİST Stüdyo<br /></strong>Maslak Mahallesi<br />İstanbul<br />Türkiye<br /></p>
                 </div>
               </div>
             </div>
@@ -959,14 +952,14 @@
             <div class="padding-section is-top-bottom">
               <div class="image-cta_wrap">
                 <div>
-                  <div class="heading-style-h2">Find your</div>
+                  <div class="heading-style-h2">Projelerinizi</div>
                   <div class="text-change_wrap is-h2">
-                    <div class="text-change_text">sound</div>
-                    <div class="text-change_text">community</div>
-                    <div class="text-change_text">inspiration</div>
-                    <div class="text-change_text">focus</div>
-                    <div class="text-change_text">crew</div>
-                    <div class="text-change_text">sound</div>
+                    <div class="text-change_text">yükseltin</div>
+                    <div class="text-change_text">gerçekleştirin</div>
+                    <div class="text-change_text">hayata geçirin</div>
+                    <div class="text-change_text">geliştirin</div>
+                    <div class="text-change_text">tamamlayın</div>
+                    <div class="text-change_text">yükseltin</div>
                     <div class="custom-code w-embed w-script">
                       <script>
                         document.addEventListener('DOMContentLoaded', function () {
@@ -1006,19 +999,19 @@
                       </script>
                     </div>
                   </div>
-                  <div class="heading-style-h2">at Qube.</div>
+                  <div class="heading-style-h2">PİST'te.</div>
                 </div>
                 <div class="margin-top margin-small">
                   <div data-animate="fade-in" class="margin-top margin-medium">
                     <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><button
                         data-tf-popup="xEeZApsc" class="button">
                         <div class="button_container">
-                          <div class="button_text">Apply now</div>
-                          <div class="button_text_absolute">Apply now</div>
+                          <div class="button_text">Hemen Başla</div>
+                          <div class="button_text_absolute">Hemen Başla</div>
                         </div>
                       </button>
                       <div class="margin-top margin-xxsmall">
-                        <div class="button_under-text text-style-muted">LIMITED SPACES AVAILABLE</div>
+                        <div class="button_under-text text-style-muted">SINIRLI KONTENJAN</div>
                       </div>
                     </div>
                   </div>
@@ -1108,13 +1101,13 @@
   <div id="footer-container"></div>
 
   <script>
-      // Footer component loader
-      fetch('/components/footer.html')
-          .then(response => response.text())
-          .then(data => {
-              document.getElementById('footer-container').innerHTML = data;
-          })
-          .catch(error => console.error('Footer yüklenirken hata:', error));
+    // Footer component loader
+    fetch('/components/footer.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('footer-container').innerHTML = data;
+      })
+      .catch(error => console.error('Footer yüklenirken hata:', error));
   </script>
 </body>
 
