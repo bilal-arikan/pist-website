@@ -54,6 +54,10 @@
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById('navbar-container').innerHTML = data;
+                    // Navbar yüklendikten sonra navbar.js'i çalıştır
+                    if (window.initNavbar) {
+                        window.initNavbar();
+                    }
                 })
                 .catch(error => console.error('Navbar yüklenirken hata:', error));
         </script>
@@ -1291,6 +1295,7 @@
   </script><!-- Google Map API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoSXxGRDZYVmEO7Ysd0TutT7KY9xBQKWU&callback=initMap"
     async defer></script>
+  <script src="../js/navbar.js"></script>
 </body>
 
 </html>

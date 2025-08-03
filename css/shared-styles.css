@@ -48,6 +48,211 @@ input[type="file"]:focus-visible {
 }
 
 /* Make sure containers never lose their center alignment */
+
+/* Dropdown functionality styles */
+.w-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.w-dropdown-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.w-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  min-width: 280px;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+}
+
+.w-dropdown.w--open .w-dropdown-list {
+  display: block;
+}
+
+.dropdown_icon {
+  transition: transform 0.2s ease;
+}
+
+.w-dropdown.w--open .dropdown_icon {
+  transform: rotate(180deg);
+}
+
+.navbar_dropdown_link {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.2s ease;
+}
+
+.navbar_dropdown_link:hover {
+  background-color: #f5f5f5;
+}
+
+/* Mobile menu styles */
+.w-nav-button {
+  cursor: pointer;
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  z-index: 10000;
+  transition: all 0.2s ease;
+}
+
+.w-nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.w-nav-button:focus {
+  outline: 2px solid #4d65ff;
+  outline-offset: 2px;
+}
+
+.navbar_menu_icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  position: relative;
+}
+
+.navbar_menu_icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px;
+  height: 2px;
+  background-color: #333;
+  box-shadow: 0 -5px 0 #333, 0 5px 0 #333;
+  transition: all 0.3s ease;
+}
+
+.w-nav.w--open .navbar_menu_icon::before {
+  background-color: transparent;
+  box-shadow: 0 0 0 #333;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.w-nav.w--open .navbar_menu_icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 18px;
+  height: 2px;
+  background-color: #333;
+}
+
+/* Navbar container positioning */
+.navbar_wrap {
+  position: relative;
+  background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: none;
+}
+
+@media (max-width: 991px) {
+  .w-nav-button {
+    display: block;
+  }
+  
+  .w-nav-menu {
+    display: none;
+  }
+  
+  .w-nav-menu.w--open {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    z-index: 9999;
+    margin-top: 8px;
+  }
+  
+  .navbar_menu_content {
+    width: 100%;
+  }
+  
+  .navbar_menu_items {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .navbar_link {
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .navbar_link:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .w-dropdown {
+    width: 100%;
+  }
+  
+  .w-dropdown-list {
+    position: static;
+    display: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    background: #f8f9fa;
+    margin-top: 8px;
+    padding: 8px;
+  }
+  
+  .w-dropdown.w--open .w-dropdown-list {
+    display: block;
+  }
+  
+  .navbar_dropdown_toggle {
+    padding: 12px 16px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .navbar_dropdown_toggle:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .navbar_dropdown_link {
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+}
 .container-medium,
 .container-small,
 .container-large {

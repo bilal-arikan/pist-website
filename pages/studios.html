@@ -56,12 +56,6 @@
 
 <body data-theme="light">
   <div class="page-wrapper">
-    <div class="global">
-      <div class="css hide">
-        <!-- Ortak CSS stilleri artÄ±k harici dosyalarda -->
-      </div>
-    </div>
-
     <!-- Navbar Component -->
     <div id="navbar-container"></div>
     
@@ -71,29 +65,14 @@
         .then(response => response.text())
         .then(data => {
           document.getElementById('navbar-container').innerHTML = data;
+          // Navbar yüklendikten sonra navbar.js'i çalıştır
+          if (window.initNavbar) {
+            window.initNavbar();
+          }
         })
         .catch(error => console.error('Navbar yüklenirken hata:', error));
     </script>
 
-  <!-- Navbar color change on scroll -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navbar = document.querySelector('.navbar_wrap');
-
-      function handleScroll() {
-        if (window.scrollY > 16) {
-          // Apply the background color when scrolled more than 16px
-          navbar.style.backgroundColor = 'var(--theme--background)';
-        } else {
-          // Make it transparent when at the top
-          navbar.style.backgroundColor = 'transparent';
-        }
-      }
-
-      // Listen for scroll events
-      window.addEventListener('scroll', handleScroll);
-    });
-  </script>
     <main class="main-wrapper">
       <section class="filters_wrap">
         <div class="padding-global">
@@ -607,25 +586,9 @@
     });
   </script>
 
-  <!-- Navbar color change on scroll -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navbar = document.querySelector('.navbar_wrap');
 
-      function handleScroll() {
-        if (window.scrollY > 16) {
-          // Apply the background color when scrolled more than 16px
-          navbar.style.backgroundColor = 'var(--theme--background)';
-        } else {
-          // Make it transparent when at the top
-          navbar.style.backgroundColor = 'transparent';
-        }
-      }
-
-      // Listen for scroll events
-      window.addEventListener('scroll', handleScroll);
-    });
-  </script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/navbar-scroll.js"></script>
 </body>
 
 </html>
