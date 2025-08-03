@@ -10,6 +10,18 @@
   }
   
   @media screen and (max-width: 991px) {
+    .navbar_layout {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    
+    .navbar_left_section {
+      order: 1;
+      flex: 1;
+    }
+    
     .navbar_menu_button {
       display: flex;
       align-items: center;
@@ -17,14 +29,53 @@
       width: 40px;
       height: 40px;
       cursor: pointer;
+      order: 3;
+      margin-left: auto;
     }
     
     .navbar_menu {
-      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-color: var(--theme--background, #ffffff);
+      z-index: 9999;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .navbar_menu.w--open {
+      transform: translateX(0);
+    }
+    
+    .navbar_menu_content {
+      padding: 2rem;
+      padding-top: 5rem;
+    }
+    
+    .navbar_menu_items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
     
     .navbar_buttons {
       display: none;
+    }
+    
+    .navbar_dropdown_list {
+      position: static !important;
+      transform: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+    }
+    
+    .navbar_dropdown_wrap.w--open .navbar_dropdown_list {
+      display: block !important;
     }
   }
 </style>
@@ -40,12 +91,15 @@
           <a href="/"
             aria-current="page" class="navbar_logo_link w-nav-brand w--current">
             <img src="../images/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" ></a>
-          <div class="navbar_menu_button w-nav-button">
-            <div class="navbar_menu_icon w-icon-nav-menu"></div>
-          </div>
+        </div>
+        <div class="navbar_menu_button w-nav-button">
+          <div class="navbar_menu_icon w-icon-nav-menu"></div>
         </div>
         <nav role="navigation" fs-scrolldisable-element="preserve" class="navbar_menu w-nav-menu">
           <div class="navbar_menu_content">
+            <div class="navbar_menu_close" style="position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px;">
+              ×
+            </div>
             <div class="navbar_menu_items">
               <div data-hover="true" data-delay="200" data-w-id="24fe6517-ba5e-6fad-e200-6e4df425679c"
                 class="navbar_dropdown_wrap w-dropdown">
@@ -111,3 +165,56 @@
     </div>
   </div>
 </div>
+
+<script>
+// Mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+  const menuButton = document.querySelector('.navbar_menu_button');
+  const menu = document.querySelector('.navbar_menu');
+  const menuClose = document.querySelector('.navbar_menu_close');
+  const body = document.body;
+  
+  function openMenu() {
+    menu.classList.add('w--open');
+    body.style.overflow = 'hidden';
+  }
+  
+  function closeMenu() {
+    menu.classList.remove('w--open');
+    body.style.overflow = '';
+  }
+  
+  if (menuButton) {
+    menuButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (menu.classList.contains('w--open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
+  
+  if (menuClose) {
+    menuClose.addEventListener('click', function(e) {
+      e.preventDefault();
+      closeMenu();
+    });
+  }
+  
+  // Close menu when clicking on menu links
+  const menuLinks = document.querySelectorAll('.navbar_link, .navbar_dropdown_link');
+  menuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      closeMenu();
+    });
+  });
+  
+  // Close menu when clicking outside
+  menu.addEventListener('click', function(e) {
+    if (e.target === menu) {
+      closeMenu();
+    }
+  });
+});
+</script>
