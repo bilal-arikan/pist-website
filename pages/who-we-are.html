@@ -45,22 +45,64 @@
       </div>
     </div>
 
-    <!-- Navbar Component -->
-    <div id="navbar-container"></div>
-
-    <script>
-      // Navbar component loader
-      fetch('/components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('navbar-container').innerHTML = data;
-          // Navbar yüklendikten sonra navbar.js'i çalıştır
-          if (window.initNavbar) {
-            window.initNavbar();
-          }
-        })
-        .catch(error => console.error('Navbar yüklenirken hata:', error));
-    </script>
+    <!-- Navbar -->
+    <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
+      role="banner" class="navbar w-nav">
+      <div class="padding-global">
+        <div class="navbar_container">
+          <a href="../index.html" class="navbar_logo-link w-nav-brand">
+            <img src="../images/pist-logo.png" loading="lazy" alt="PİST Stüdyo Logo" class="navbar_logo" />
+          </a>
+          <nav role="navigation" class="navbar_menu w-nav-menu">
+            <div class="navbar_menu-left">
+              <div class="navbar_dropdown-wrapper">
+                <div data-hover="false" data-delay="0" class="navbar_dropdown w-dropdown">
+                  <div class="navbar_dropdown-toggle w-dropdown-toggle">
+                    <div class="navbar_dropdown-text">Üyelikler</div>
+                    <div class="navbar_dropdown-icon w-icon-dropdown-toggle"></div>
+                  </div>
+                  <nav class="navbar_dropdown-list w-dropdown-list">
+                    <div class="navbar_dropdown-links">
+                      <a href="../pages/membership_music-makers.html" class="navbar_dropdown-link w-dropdown-link">Müzik
+                        Yapımcıları</a>
+                      <a href="../pages/membership_djs.html" class="navbar_dropdown-link w-dropdown-link">DJ'ler</a>
+                      <a href="../pages/membership_podcasters.html"
+                        class="navbar_dropdown-link w-dropdown-link">Podcaster'lar</a>
+                      <a href="../pages/membership_photographers.html"
+                        class="navbar_dropdown-link w-dropdown-link">Fotoğrafçılar</a>
+                      <a href="../pages/membership_teams.html" class="navbar_dropdown-link w-dropdown-link">Ekipler</a>
+                    </div>
+                  </nav>
+                </div>
+              </div>
+              <a href="../pages/studios.html" class="navbar_link w-nav-link">Stüdyolar</a>
+              <a href="../pages/events.html" class="navbar_link w-nav-link">Etkinlikler</a>
+              <a href="../pages/who-we-are.html" class="navbar_link w-nav-link">Hakkımızda</a>
+              <a href="../pages/contact.html" class="navbar_link w-nav-link">İletişim</a>
+            </div>
+            <div class="navbar_menu-right">
+              <div data-wf--button-primary-typeform--variant="base" class="button_wrap">
+                <button data-tf-popup="xEeZApsc" class="button is-small">
+                  <div class="button_container">
+                    <div class="button_text">Başvur</div>
+                    <div class="button_text_absolute">Başvur</div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </nav>
+          <div class="navbar_menu-button w-nav-button">
+            <div class="menu-icon">
+              <div class="menu-icon_line-top"></div>
+              <div class="menu-icon_line-middle">
+                <div class="menu-icon_line-middle-inner"></div>
+              </div>
+              <div class="menu-icon_line-bottom"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <main class="main-wrapper">
       <!-- Hero Section -->
@@ -221,30 +263,87 @@
       </section>
     </main>
 
-    <!-- Footer Component -->
-    <div id="footer-container"></div>
-
-    <script>
-      // Footer component loader
-      fetch('/components/footer.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('footer-container').innerHTML = data;
-        })
-        .catch(error => console.error('Footer yüklenirken hata:', error));
-    </script>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="padding-global">
+        <div class="w-layout-blockcontainer container-large w-container">
+          <div class="padding-section_large">
+            <div class="footer_top">
+              <div class="footer_logo-section">
+                <a href="../index.html" class="footer_logo-link w-inline-block">
+                  <img src="../images/pist-logo.png" loading="lazy" alt="PİST Stüdyo Logo" class="footer_logo" />
+                </a>
+                <div class="footer_social-links">
+                  <a href="#" target="_blank" class="footer_social-link w-inline-block">
+                    <img src="../images/instagram-icon.svg" loading="lazy" alt="Instagram" class="footer_social-icon" />
+                  </a>
+                  <a href="#" target="_blank" class="footer_social-link w-inline-block">
+                    <img src="../images/linkedin-icon.svg" loading="lazy" alt="LinkedIn" class="footer_social-icon" />
+                  </a>
+                  <a href="#" target="_blank" class="footer_social-link w-inline-block">
+                    <img src="../images/tiktok-icon.svg" loading="lazy" alt="TikTok" class="footer_social-icon" />
+                  </a>
+                  <a href="#" target="_blank" class="footer_social-link w-inline-block">
+                    <img src="../images/youtube-icon.svg" loading="lazy" alt="YouTube" class="footer_social-icon" />
+                  </a>
+                </div>
+              </div>
+              <div class="footer_links-section">
+                <div class="footer_links-column">
+                  <div class="footer_links-title">Üyelikler</div>
+                  <a href="../pages/membership_music-makers.html" class="footer_link">Müzik Yapımcıları</a>
+                  <a href="../pages/membership_djs.html" class="footer_link">DJ'ler</a>
+                  <a href="../pages/membership_podcasters.html" class="footer_link">Podcaster'lar</a>
+                  <a href="../pages/membership_photographers.html" class="footer_link">Fotoğrafçılar</a>
+                  <a href="../pages/membership_teams.html" class="footer_link">Ekipler</a>
+                </div>
+                <div class="footer_links-column">
+                  <div class="footer_links-title">Keşfet</div>
+                  <a href="../pages/studios.html" class="footer_link">Stüdyolar</a>
+                  <a href="../pages/events.html" class="footer_link">Etkinlikler</a>
+                  <a href="../pages/private-events.html" class="footer_link">Özel Etkinlikler</a>
+                  <a href="../pages/location-pist.html" class="footer_link">Lokasyonlar</a>
+                </div>
+                <div class="footer_links-column">
+                  <div class="footer_links-title">Şirket</div>
+                  <a href="../pages/who-we-are.html" class="footer_link">Hakkımızda</a>
+                  <a href="../pages/contact.html" class="footer_link">İletişim</a>
+                </div>
+              </div>
+            </div>
+            <div class="footer_bottom">
+              <div class="footer_legal-links">
+                <a href="#" class="footer_legal-link">Gizlilik Politikası</a>
+                <a href="#" class="footer_legal-link">Şartlar ve Koşullar</a>
+              </div>
+              <div class="footer_copyright">
+                <div class="text-size-small">© <span id="current-year">2024</span> PİST Stüdyo. Tüm hakları saklıdır.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
   </div>
 
   <!-- Scripts -->
-  <script src="../js/jquery-3.5.1.min.js"></script>
-  <script src="../js/gsap.min.js"></script>
-  <script src="../js/ScrollTrigger.min.js"></script>
-  <script src="../js/swiper-bundle.min.js"></script>
-  <script src="../js/flickity.pkgd.min.js"></script>
-  <script src="../js/typeform-embed.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="//embed.typeform.com/next/embed.js"></script>
 
-  <!-- Animation Script -->
+  <!-- Main Script -->
   <script>
+    // Update current year
+    document.addEventListener('DOMContentLoaded', function() {
+      const currentYearElement = document.getElementById('current-year');
+      if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+      }
+    });
+
     // GSAP ScrollTrigger animations
     gsap.registerPlugin(ScrollTrigger);
 
@@ -276,9 +375,66 @@
         );
       });
     });
-  </script>
 
-  <script src="../js/navbar.js"></script>
+    // Navbar functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar');
+      const menuButton = document.querySelector('.navbar_menu-button');
+      const navMenu = document.querySelector('.navbar_menu');
+      const navLinks = document.querySelectorAll('.navbar_link, .navbar_dropdown-link');
+      
+      // Scroll effect
+      let lastScrollTop = 0;
+      window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 100) {
+          navbar.classList.add('navbar--scrolled');
+        } else {
+          navbar.classList.remove('navbar--scrolled');
+        }
+        
+        lastScrollTop = scrollTop;
+      });
+      
+      // Mobile menu toggle
+      if (menuButton && navMenu) {
+        menuButton.addEventListener('click', function() {
+          const isOpen = navMenu.classList.contains('w--open');
+          
+          if (isOpen) {
+            navMenu.classList.remove('w--open');
+            menuButton.classList.remove('w--open');
+            document.body.style.overflow = '';
+          } else {
+            navMenu.classList.add('w--open');
+            menuButton.classList.add('w--open');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      }
+      
+      // Close mobile menu when clicking on links
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          if (navMenu.classList.contains('w--open')) {
+            navMenu.classList.remove('w--open');
+            menuButton.classList.remove('w--open');
+            document.body.style.overflow = '';
+          }
+        });
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(event) {
+        if (!navbar.contains(event.target) && navMenu.classList.contains('w--open')) {
+          navMenu.classList.remove('w--open');
+          menuButton.classList.remove('w--open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+  </script>
   
 </body>
 
