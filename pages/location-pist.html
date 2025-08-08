@@ -46,21 +46,58 @@
     <div class="global">
     </div>
     <!-- Navbar Component -->
-    <div id="navbar-container"></div>
+    <link rel="stylesheet" href="../css/navbar.css">
 
-    <script>
-      // Navbar component loader
-      fetch('/components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('navbar-container').innerHTML = data;
-          // Navbar yüklendikten sonra navbar.js'i çalıştır
-          if (window.initNavbar) {
-            window.initNavbar();
-          }
-        })
-        .catch(error => console.error('Navbar yüklenirken hata:', error));
-    </script>
+    <div data-animation="default" class="navbar_wrap w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav"
+      data-easing="ease" data-collapse="medium" data-w-id="24fe6517-ba5e-6fad-e200-6e4df4256791" role="banner"
+      data-duration="500" style="background-color: transparent;">
+      <div class="navbar_bg_overlay"></div>
+      <div class="padding-global">
+        <div class="w-layout-blockcontainer navbar_container w-container">
+          <div class="w-layout-grid navbar_layout">
+            <div class="navbar_left_section">
+              <a href="/"
+                aria-current="page" class="navbar_logo_link w-nav-brand w--current">
+                <img src="../images/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" ></a>
+            </div>
+            <div class="navbar_menu_button w-nav-button">
+              <div class="navbar_menu_icon w-icon-nav-menu"></div>
+            </div>
+            <nav role="navigation" fs-scrolldisable-element="preserve" class="navbar_menu w-nav-menu">
+              <div class="navbar_menu_content">
+                <div class="navbar_menu_close" style="position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px;">
+                  ×
+                </div>
+                <div class="navbar_menu_items">
+                  <a href="/pages/location-pist.html" class="navbar_link w-inline-block">
+                    <div>Studio</div>
+                  </a>
+                  <a href="/pages/events.html" class="navbar_link w-inline-block">
+                    <div>Etkinlikler</div>
+                  </a>
+                  <a href="/pages/who-we-are.html" class="navbar_link w-inline-block">
+                    <div>Biz Kimiz</div>
+                  </a>
+                  <a href="/pages/contact.html" class="navbar_link w-inline-block">
+                    <div>İletişim</div>
+                  </a> 
+                </div>
+              </div>
+            </nav>
+            <div class="navbar_buttons">
+              <div data-wf--button-primary-typeform--variant="navbar"
+                class="button_wrap w-variant-5a400ffd-8258-ec1d-5d7b-1792bea91720"><button data-tf-popup="xEeZApsc"
+                  class="button w-variant-5a400ffd-8258-ec1d-5d7b-1792bea91720">
+                  <div class="button_container w-variant-5a400ffd-8258-ec1d-5d7b-1792bea91720">
+                    <div class="button_text">Başvur</div>
+                    <div class="button_text_absolute">Başvur</div>
+                  </div>
+                </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <main class="main-wrapper">
@@ -241,6 +278,20 @@
                       }
                     }
                   });
+  
+  // Google Maps initialization
+  window.initMap = function() {
+    const map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: { lat: 41.1079, lng: 29.0096 }
+    });
+    
+    new google.maps.Marker({
+      position: { lat: 41.1079, lng: 29.0096 },
+      map: map,
+      title: 'PİST Stüdyo'
+    });
+  };
                 });
               });
             </script>
@@ -967,20 +1018,148 @@
   </script><!-- Google Map API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoSXxGRDZYVmEO7Ysd0TutT7KY9xBQKWU&callback=initMap"
     async defer></script>
-  <script src="../js/navbar.js"></script>
+  <script>
+  // Simplified navbar functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar_wrap');
+    const menuButton = document.querySelector('.navbar_menu_button');
+    const menu = document.querySelector('.navbar_menu');
+    const menuClose = document.querySelector('.navbar_menu_close');
+    const body = document.body;
+    
+    // Scroll functionality
+    function handleScroll() {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }
+    window.addEventListener('scroll', handleScroll);
+    
+    // Mobile menu functionality
+    function toggleMenu() {
+      const isOpen = menu.classList.toggle('w--open');
+      body.style.overflow = isOpen ? 'hidden' : '';
+    }
+    
+    function closeMenu() {
+      menu.classList.remove('w--open');
+      body.style.overflow = '';
+    }
+    
+    // Event listeners
+    menuButton?.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMenu();
+    });
+    
+    menuClose?.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMenu();
+    });
+    
+    // Close menu on link clicks
+    document.querySelectorAll('.navbar_link, .navbar_dropdown_link').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+    
+    // Close menu when clicking outside
+    menu?.addEventListener('click', (e) => {
+      if (e.target === menu) closeMenu();
+    });
+  });
+  </script>
 
   <!-- Footer Component -->
-  <div id="footer-container"></div>
-
-  <script>
-    // Footer component loader
-    fetch('/components/footer.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('footer-container').innerHTML = data;
-      })
-      .catch(error => console.error('Footer yüklenirken hata:', error));
-  </script>
+  <link rel="stylesheet" href="../css/footer.css">
+  
+  <footer class="footer_wrap">
+    <div class="padding-global">
+      <div class="w-layout-blockcontainer container-large w-container">
+        <div class="padding-section is-footer">
+          <div class="footer_navigation_wrap">
+            <div class="w-layout-grid footer_nav_grid">
+              <div class="footer_nav_group">
+                <div class="footer_nav_group_heading">Katıl</div>
+                <div class="footer_link_list">
+                  <a href="/pages/membership_djs.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">DJ'ler</div>
+                  </a>
+                  <a href="/pages/membership_music-makers.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Müzik Yapımcıları</div>
+                  </a>
+                  <a href="/pages/membership_podcasters.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Podcaster'lar</div>
+                  </a>
+                  <a href="/pages/membership_photographers.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Fotoğrafçılar</div>
+                  </a>
+                  <a href="/pages/membership_teams.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Takımlar</div>
+                  </a>
+                </div>
+              </div>
+              <div class="footer_nav_group">
+                <div class="footer_nav_group_heading">Rezervasyon</div>
+                <div class="footer_link_list">
+                  <a href="/pages/studios.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Stüdyolar</div>
+                  </a>
+                  <a href="/pages/events.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Etkinlikler</div>
+                  </a>
+                  <a href="/pages/private-events.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Özel Etkinlikler</div>
+                  </a>
+                  <a href="/pages/location-pist.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Lokasyon</div>
+                  </a>
+                </div>
+              </div>
+              <div class="footer_nav_group">
+                <div class="footer_nav_group_heading">Şirket</div>
+                <div class="footer_link_list">
+                  <a href="/pages/who-we-are.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Biz Kimiz</div>
+                  </a>
+                  <a href="/pages/contact.html" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">İletişim</div>
+                  </a>
+                  <a href="#" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Gizlilik Politikası</div>
+                  </a>
+                  <a href="#" class="footer_link_element w-inline-block">
+                    <div class="footer_link_item">Şartlar ve Koşullar</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer_bottom_wrap">
+            <div class="footer_logo">
+              <img src="../images/logo-main.png" loading="lazy" alt="PİST Stüdyo Logo" class="footer_logo_image">
+            </div>
+            <div class="footer_cta_wrap">
+              <div class="footer_socials_wrap">
+                <a href="https://www.instagram.com/piststudyo/" target="_blank" class="footer_socials_link w-inline-block">
+                  <img src="../images/instagram-icon.svg" loading="lazy" alt="Instagram" class="footer_socials_icon">
+                </a>
+                <a href="https://www.linkedin.com/company/pist-studyo/" target="_blank" class="footer_socials_link w-inline-block">
+                  <img src="../images/linkedin-icon.svg" loading="lazy" alt="LinkedIn" class="footer_socials_icon">
+                </a>
+                <a href="https://www.youtube.com/@piststudyo" target="_blank" class="footer_socials_link w-inline-block">
+                  <img src="../images/youtube-icon.svg" loading="lazy" alt="YouTube" class="footer_socials_icon">
+                </a>
+                <a href="https://www.tiktok.com/@piststudyo" target="_blank" class="footer_socials_link w-inline-block">
+                  <img src="../images/tiktok-icon.svg" loading="lazy" alt="TikTok" class="footer_socials_icon">
+                </a>
+              </div>
+            </div>
+            <div class="footer_copyright">
+              <div class="text-size-small text-style-muted">© 2024 PİST Stüdyo. Tüm hakları saklıdır.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 
 </html>
