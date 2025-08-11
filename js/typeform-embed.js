@@ -4,7 +4,7 @@
   window.tf = window.tf || {};
   
   // Simple popup implementation
-  window.tf.popup = function(formId, options = {}) {
+  window.tf.popup = function(formId) {
     return {
       open: function() {
         // Create overlay
