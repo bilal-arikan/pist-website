@@ -16,7 +16,7 @@ pist-website/
 │   ├── flickity.pkgd.min.js
 │   ├── scrolldisable.js
 │   └── swiper-bundle.min.js
-├── images/                 # Resim dosyaları
+├── img/                 # Resim dosyaları
 │   ├── pist_favicon.png
 │   ├── pist_icon.png
 │   ├── pist_nav_*.jpg
@@ -105,7 +105,7 @@ Sunucu başlatıldıktan sonra tarayıcınızda `http://localhost:8080` adresine
 ### Dosya Düzenleme
 - CSS dosyaları `css/` klasöründe
 - JavaScript dosyaları `js/` klasöründe
-- Resimler `images/` klasöründe
+- Resimler `img/` klasöründe
 - Videolar `videos/` klasöründe
 - Alt sayfalar `pages/` klasöründe
 
@@ -113,7 +113,7 @@ Sunucu başlatıldıktan sonra tarayıcınızda `http://localhost:8080` adresine
 Tüm bağlantılar yerel dosya sistemine göre ayarlanmıştır:
 - CSS: `css/dosya-adi.css`
 - JS: `js/dosya-adi.js`
-- Resimler: `images/resim-adi.jpg`
+- Resimler: `img/resim-adi.jpg`
 - Sayfalar: `pages/sayfa-adi.html`
 
 ## 📝 Lisans

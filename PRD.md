@@ -37,7 +37,7 @@ pist-website/
 ├── index.html
 ├── css/
 ├── js/
-├── images/
+├── img/
 ├── videos/
 ├── fonts/
 └── pages/
@@ -75,23 +75,23 @@ pist-website/
 - js/webflow.ae25ff8e.82b5e4f06d3d1b4a.js
 
 #### Resim Dosyaları
-- images/pist_favicon.png
-- images/pist_icon.png
-- images/pist_nav_west.jpg
-- images/avatar1.jpg
-- images/avatar2.jpg
-- images/avatar3.jpg
-- images/avatar4.jpg
-- images/pist_music-makers-1.avif
-- images/pist_music-makers-2.avif
-- images/pist_business_header_1.avif
-- images/pist_business_header_2.avif
-- images/pist_business_header_4.avif
-- images/pist_business_header_5.avif
-- images/pist_private-events_west_5.jpg
-- images/pist_west_header.avif
-- images/pist.jpg
-- images/created-by-webyst.svg
+- img/pist_favicon.png
+- img/pist_icon.png
+- img/pist_nav_west.jpg
+- img/avatar1.jpg
+- img/avatar2.jpg
+- img/avatar3.jpg
+- img/avatar4.jpg
+- img/pist_music-makers-1.avif
+- img/pist_music-makers-2.avif
+- img/pist_business_header_1.avif
+- img/pist_business_header_2.avif
+- img/pist_business_header_4.avif
+- img/pist_business_header_5.avif
+- img/pist_private-events_west_5.jpg
+- img/pist_west_header.avif
+- img/pist.jpg
+- img/created-by-webyst.svg
 
 #### Video Dosyaları
 - videos/pist_homepage_video.mp4
@@ -117,7 +117,7 @@ pist-website/
 ### Adım 1: Klasör Yapısını Oluşturma
 - [ ] css/ klasörü oluştur
 - [ ] js/ klasörü oluştur
-- [ ] images/ klasörü oluştur
+- [ ] img/ klasörü oluştur
 - [ ] videos/ klasörü oluştur
 - [ ] pages/ klasörü oluştur
 
@@ -189,7 +189,7 @@ pist-website/
 ### 1. Klasör Yapısı
 - `css/` - CSS dosyaları
 - `js/` - JavaScript dosyaları
-- `images/` - Resim dosyaları
+- `img/` - Resim dosyaları
 - `videos/` - Video dosyaları
 - `pages/` - Alt sayfa HTML dosyaları
 
