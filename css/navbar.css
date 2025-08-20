@@ -4,14 +4,34 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background-color: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(15px);
   transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
 }
 
 .navbar_wrap.scrolled {
   background-color: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(15px);
+}
+
+.navbar_link,
+.navbar_dropdown_toggle {
+  color: white;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 14px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.navbar_link:hover,
+.navbar_dropdown_toggle:hover {
+  background-color: rgba(255, 87, 34, 0.2);
+  color: #FF5722;
 }
 
 .navbar_wrap.scrolled .navbar_link,

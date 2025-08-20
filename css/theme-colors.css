@@ -3,36 +3,36 @@
 [data-theme="dark"],
 [data-theme="invert"],
 [data-theme="light"] [data-theme="invert"] {
-  --theme--background: var(--swatch--black);
-  --theme--text: var(--swatch--white);
-  --theme--overlay-10: var(--swatch--white-10);
-  --theme--overlay-20: var(--swatch--white-20);
-  --theme--overlay-30: var(--swatch--white-30);
-  --theme--brand-1a: var(--swatch--brand-1a);
-  --theme--brand-1b: var(--swatch--brand-1b);
-  --theme--brand-2a: var(--swatch--brand-2a);
-  --theme--brand-2b: var(--swatch--brand-2b);
-  --theme--brand-3a: var(--swatch--brand-3a);
-  --theme--brand-3b: var(--swatch--brand-3b);
-  --theme--brand-4a: var(--swatch--brand-4a);
-  --theme--brand-4b: var(--swatch--brand-4b);
+  --theme--background: #121212;
+  --theme--text: #ffffff;
+  --theme--overlay-10: rgba(255, 255, 255, 0.1);
+  --theme--overlay-20: rgba(255, 255, 255, 0.2);
+  --theme--overlay-30: rgba(255, 255, 255, 0.3);
+  --theme--brand-1a: #FF5722; /* Turuncu ana renk */
+  --theme--brand-1b: #FF8A65; /* Turuncu açık ton */
+  --theme--brand-2a: #2196F3; /* Mavi vurgu rengi */
+  --theme--brand-2b: #64B5F6; /* Mavi açık ton */
+  --theme--brand-3a: #4CAF50; /* Yeşil vurgu rengi */
+  --theme--brand-3b: #81C784; /* Yeşil açık ton */
+  --theme--brand-4a: #9C27B0; /* Mor vurgu rengi */
+  --theme--brand-4b: #BA68C8; /* Mor açık ton */
 }
 
 [data-theme="light"],
 [data-theme="dark"] [data-theme="invert"] {
-  --theme--background: var(--swatch--white);
-  --theme--text: var(--swatch--black);
-  --theme--overlay-10: var(--swatch--black-10);
-  --theme--overlay-20: var(--swatch--black-20);
-  --theme--overlay-30: var(--swatch--black-30);
-  --theme--brand-1a: var(--swatch--brand-1b);
-  --theme--brand-1b: var(--swatch--brand-1a);
-  --theme--brand-2a: var(--swatch--brand-2b);
-  --theme--brand-2b: var(--swatch--brand-2a);
-  --theme--brand-3a: var(--swatch--brand-3b);
-  --theme--brand-3b: var(--swatch--brand-3a);
-  --theme--brand-4a: var(--swatch--brand-4b);
-  --theme--brand-4b: var(--swatch--brand-4a);
+  --theme--background: #f5f5f5;
+  --theme--text: #212121;
+  --theme--overlay-10: rgba(0, 0, 0, 0.1);
+  --theme--overlay-20: rgba(0, 0, 0, 0.2);
+  --theme--overlay-30: rgba(0, 0, 0, 0.3);
+  --theme--brand-1a: #FF8A65; /* Turuncu açık ton */
+  --theme--brand-1b: #FF5722; /* Turuncu ana renk */
+  --theme--brand-2a: #64B5F6; /* Mavi açık ton */
+  --theme--brand-2b: #2196F3; /* Mavi vurgu rengi */
+  --theme--brand-3a: #81C784; /* Yeşil açık ton */
+  --theme--brand-3b: #4CAF50; /* Yeşil vurgu rengi */
+  --theme--brand-4a: #BA68C8; /* Mor açık ton */
+  --theme--brand-4b: #9C27B0; /* Mor vurgu rengi */
 }
 
 /* Prevent changes for 'no-change' */

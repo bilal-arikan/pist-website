@@ -1,6 +1,10 @@
 /* Footer Styles */
 .footer_section {
   position: relative;
+  background-color: #121212;
+  padding: 60px 0 30px;
+  color: #ffffff;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer_bottom_wrap {
@@ -33,14 +37,32 @@
 .footer_link_element {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-  padding: 0.25rem 0.25rem 0.25rem 0;
-  transition: color 0.3s, padding 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
+  display: inline-block;
+  position: relative;
 }
 
 .footer_link_element:hover {
-  color: var(--theme--text);
-  padding-left: 0.25rem;
-  padding-right: 0;
+  color: #ffffff;
+  transform: translateX(5px);
+}
+
+.footer_link_element::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #FF5722;
+  transition: width 0.3s ease;
+}
+
+.footer_link_element:hover::after {
+  width: 100%;
 }
 
 .footer_link_element.is-button {
@@ -56,18 +78,23 @@
 }
 
 .footer_socials_link {
-  border: var(--element--border-width, 1px) solid var(--theme--overlay-20);
-  border-radius: 100vw;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
   justify-content: center;
   align-items: center;
   width: 3.5rem;
   height: 3.5rem;
-  transition: border-color 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.3s ease;
   display: flex;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
 }
 
 .footer_socials_link:hover {
-  border-color: var(--theme--text);
+  border-color: #FF5722;
+  background-color: #FF5722;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .footer_navigation_wrap {
@@ -81,9 +108,23 @@
 
 .footer_nav_group_heading {
   text-transform: uppercase;
-  margin-bottom: 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 1px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer_nav_group_heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #FF5722;
 }
 
 .footer_nav_group_wrap {

@@ -1,0 +1,126 @@
+# PİST Stüdyo - Ürün Gereksinim Dokümanı (PRD)
+## 1. Ürün Tanımı
+PİST Stüdyo, İstanbul'da yaratıcı profesyoneller için tasarlanmış, modern ve donanımlı bir stüdyo ve topluluk merkezidir. 2024 yılında kurulan PİST, müzik yapımcıları, DJ'ler, podcaster'lar, fotoğrafçılar, video yapımcıları ve diğer yaratıcı profesyoneller için özel olarak tasarlanmış bir çalışma, üretim ve networking alanı sunmaktadır.
+
+### 1.1 Vizyon ve Misyon
+Vizyon: İstanbul'u yaratıcı endüstrilerin merkezi haline getirmek ve yerel yeteneklerin küresel sahneye çıkmasına destek olmak.
+
+Misyon:
+
+- Yaratıcılığı desteklemek: En son teknoloji ile donatılmış stüdyolarda, yaratıcı profesyonellerin projelerini hayata geçirmelerine olanak sağlamak.
+- Topluluk oluşturmak: Farklı disiplinlerden yaratıcı profesyonelleri bir araya getirerek, işbirliği ve networking fırsatları yaratmak.
+### 1.2 Slogan
+"Projelerin ve hayallerin yükselişe geçmesi için buradayız. Her başarılı yolculuk, sağlam bir PİST'te başlar."
+
+## 2. Hedef Kitle
+PİST Stüdyo'nun hedef kitlesi şunları içermektedir:
+
+- Müzik yapımcıları ve besteciler
+- DJ'ler ve elektronik müzik sanatçıları
+- Podcaster'lar ve ses içeriği üreticileri
+- Fotoğrafçılar
+- Video yapımcıları ve yönetmenler
+- Yaratıcı ekipler ve ajanslar
+- Bağımsız sanatçılar ve içerik üreticileri
+## 3. Tesis Özellikleri
+### 3.1 Lokasyon
+PİST Stüdyo, İstanbul'un Maslak semtinde stratejik bir konumda yer almaktadır:
+
+Adres: Maslak, Ahi Evran Cd. No:5, 34475 Sarıyer/İstanbul
+
+### 3.2 Çalışma Saatleri
+- Pazartesi-Cuma: 09:00-22:00
+- Cumartesi: 10:00-20:00
+- Pazar: 12:00-18:00
+### 3.3 Stüdyo Alanları
+PİST Stüdyo, çeşitli yaratıcı disiplinler için özel olarak tasarlanmış modern stüdyo alanları sunmaktadır. Bu alanlar en son teknoloji ekipmanlarla donatılmıştır ve profesyonel üretim standartlarını karşılamaktadır.
+
+## 4. Sunulan Hizmetler
+### 4.1 Stüdyo Hizmetleri
+- Profesyonel ses kayıt stüdyoları
+- DJ kabinleri ve performans alanları
+- Podcast kayıt stüdyoları
+- Fotoğraf stüdyoları
+- Video prodüksiyon stüdyoları
+- Ortak çalışma alanları
+### 4.2 Etkinlikler
+PİST Stüdyo, yaratıcı topluluğu bir araya getiren çeşitli etkinlikler düzenlemektedir:
+
+- DJ partileri ve performanslar
+- Networking geceleri
+- Akustik performanslar
+- Yaratıcı atölyeler ve eğitimler
+- Üyelere özel etkinlikler
+### 4.3 Üyelik Sistemi
+PİST Stüdyo, bir üyelik sistemi üzerinden çalışmaktadır. Üyelik başvuruları online form üzerinden alınmakta ve değerlendirilmektedir. Üyelik, stüdyo alanlarına erişim ve özel etkinliklere katılım gibi ayrıcalıklar sunmaktadır.
+
+## 5. Web Sitesi İçeriği ve Yapısı
+### 5.1 Ana Sayfa
+Ana sayfa, PİST Stüdyo'nun genel tanıtımını yapmakta ve ziyaretçileri karşılamaktadır. İçeriğinde:
+
+- Slogan ve kısa tanıtım metni
+- Hedef kitle görselleri (müzik yapımcıları, DJ'ler, podcaster'lar, fotoğrafçılar, vb.)
+- Çağrı butonları ("Başvur", "Stüdyoyu Keşfet")
+- Arka planda stüdyo ortamını gösteren video
+### 5.2 Stüdyo Sayfası (location-pist.html)
+Bu sayfa, PİST Stüdyo'nun fiziksel alanları ve sunduğu imkanlar hakkında detaylı bilgi vermektedir:
+
+- Stüdyo görselleri ve tanıtım videoları
+- Google değerlendirmeleri (4.9/5.0 yıldız, 103 yorum)
+- Stüdyo alanlarının detaylı açıklamaları
+- Başvuru çağrısı
+### 5.3 Etkinlikler Sayfası (events.html)
+Bu sayfa, PİST Stüdyo'da düzenlenen etkinlikler hakkında bilgi vermektedir:
+
+- Yaklaşan etkinlikler listesi
+- Geçmiş etkinlikler arşivi
+- Etkinlik detayları (tarih, başlık, açıklama, görsel)
+- Etkinliklere katılım için çağrı butonları
+### 5.4 Biz Kimiz Sayfası (who-we-are.html)
+Bu sayfa, PİST Stüdyo'nun hikayesi, vizyonu ve misyonu hakkında bilgi vermektedir:
+
+- "İstanbul'un yaratıcı kalbi" sloganı
+- Kuruluş hikayesi (2024 yılında kurulduğu bilgisi)
+- Vizyon ve misyon açıklamaları
+- Yaratıcılığı destekleme ve topluluk oluşturma hedefleri
+### 5.5 İletişim Sayfası (contact.html)
+Bu sayfa, PİST Stüdyo ile iletişim kurma yolları hakkında bilgi vermektedir:
+
+- İletişim formu
+- Adres bilgileri
+- Telefon numarası (+90 541 863 67 53)
+- E-posta adresi ( info@piststudyo.com )
+- Çalışma saatleri
+## 6. Teknik Gereksinimler
+### 6.1 Web Sitesi Teknolojileri
+- HTML5, CSS3 ve JavaScript kullanılarak geliştirilmiş responsive tasarım
+- Webflow altyapısı
+- Swiper ve Flickity gibi slider/carousel kütüphaneleri
+- Responsive tasarım (mobil, tablet ve masaüstü uyumlu)
+### 6.2 Görsel ve Medya Gereksinimleri
+- Yüksek kaliteli stüdyo fotoğrafları
+- Tanıtım videoları
+- Logo ve marka görselleri
+- Etkinlik görselleri
+## 7. Pazarlama ve İletişim Stratejisi
+### 7.1 Değer Önerisi
+PİST Stüdyo, yaratıcı profesyonellere şu değerleri sunmaktadır:
+
+- En son teknoloji ile donatılmış profesyonel stüdyo alanları
+- Yaratıcı topluluk ile networking ve işbirliği fırsatları
+- Özel etkinlikler ve eğitimler
+- İstanbul'un merkezi konumunda erişilebilir bir yaratıcı merkez
+### 7.2 İletişim Kanalları
+- Web sitesi (piststudyo.com)
+- E-posta iletişimi ( info@piststudyo.com )
+- Telefon iletişimi (+90 541 863 67 53)
+- Online başvuru formu
+## 8. Gelecek Planları ve Genişleme
+Web sitesi içeriğinden doğrudan gelecek planları veya genişleme stratejileri belirtilmemiştir, ancak PİST Stüdyo'nun vizyonu doğrultusunda şu hedefler öngörülebilir:
+
+- İstanbul'da yaratıcı endüstrilerin gelişimine katkıda bulunmak
+- Yerel yeteneklerin küresel sahneye çıkmasına destek olmak
+- Yaratıcı topluluk ağını genişletmek
+- Etkinlik ve eğitim programlarını çeşitlendirmek
+## 9. Sonuç
+PİST Stüdyo, İstanbul'da yaratıcı profesyoneller için modern, donanımlı ve ilham verici bir merkez olarak konumlanmıştır. Sunduğu stüdyo alanları, etkinlikler ve topluluk oluşturma fırsatları ile yaratıcı endüstrilerin gelişimine katkıda bulunmayı hedeflemektedir. "Her başarılı yolculuk, sağlam bir PİST'te başlar" sloganıyla, yaratıcı profesyonellerin projelerini hayata geçirmeleri için gerekli altyapıyı ve desteği sunmaktadır.
