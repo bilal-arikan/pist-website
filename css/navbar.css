@@ -58,6 +58,24 @@
   gap: 20px;
 }
 
+.navbar_menu {
+  display: flex;
+  align-items: center;
+}
+
+.navbar_menu_content {
+  display: flex;
+  align-items: center;
+}
+
+.navbar_menu_items {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .navbar_buttons {
   display: flex;
   flex-direction: row;
@@ -87,8 +105,6 @@
     transform: none;
     transition: none;
     overflow-y: visible;
-    display: flex;
-    align-items: center;
   }
   
   .navbar_menu.w--open {
@@ -97,17 +113,9 @@
   
   .navbar_menu_content {
     padding: 0;
-    display: flex;
-    align-items: center;
   }
   
   .navbar_menu_items {
-    display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    align-items: center;
-    justify-content: flex-start;
+    gap: 1rem;
   }
-  
-
 }
