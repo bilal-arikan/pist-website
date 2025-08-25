@@ -47,8 +47,6 @@ input[type="file"]:focus-visible {
   padding-bottom: 100%;
 }
 
-/* Make sure containers never lose their center alignment */
-
 /* Button styles */
 .button {
   display: inline-flex;
@@ -118,10 +116,6 @@ input[type="file"]:focus-visible {
 
 .dropdown_icon {
   transition: transform 0.2s ease;
-}
-
-.w-dropdown.w--open .dropdown_icon {
-  transform: rotate(180deg);
 }
 
 

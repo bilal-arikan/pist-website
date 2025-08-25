@@ -76,19 +76,6 @@
     margin-right: 1rem;
   }
   
-  .navbar_menu_icon {
-    width: 1.5rem;
-    height: 1.5rem;
-    color: var(--theme--text, #333);
-  }
-  
-  .navbar_dropdown_list {
-    position: static !important;
-    display: block !important;
-    background: transparent !important;
-    box-shadow: none !important;
-  }
-  
   .navbar_menu_items {
     flex-direction: column;
     gap: 1rem;
@@ -137,5 +124,14 @@
   
   .navbar_menu {
     display: block;
+  }
+  
+  .navbar_menu_items {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  
+  .navbar_wrap {
+    padding: 1.5rem 0;
   }
 }

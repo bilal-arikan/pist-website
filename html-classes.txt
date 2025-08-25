@@ -1,0 +1,360 @@
+# PİST Stüdyo HTML Class ve Style Listesi
+
+## Genel Yapı
+
+### Sayfa Yapısı
+- page-wrapper
+- global
+- main-wrapper
+
+## Navbar
+- navbar_wrap
+- navbar_bg_overlay
+- padding-global
+- w-layout-blockcontainer
+- navbar_container
+- w-container
+- w-layout-grid
+- navbar_layout
+- navbar_left_section
+- navbar_logo_link
+- navbar_logo_svg
+- navbar_menu
+- navbar_menu_content
+- navbar_menu_items
+- navbar_link
+- navbar_buttons
+- button_wrap
+- button
+- button_container
+- button_text
+- scrolled
+
+## Ana Sayfa (index.html)
+
+### Hero Bölümü
+- home-hero_wrap
+- bg-video_element
+- w-background-video
+- w-background-video-atom
+- g_bg-overlay_element
+- home-hero_layout
+- padding-section
+- is-top-bottom
+- margin-bottom
+- margin-small
+- button-group
+- is-centered
+- members-upheading_element
+- members-upheading_image
+- is-moved
+- margin-left
+- margin-xsmall
+- text-size-small_mobile
+- heading-style-h1_display
+- text-change_wrap
+- text-change_text
+- custom-code
+- w-embed
+- w-script
+- margin-top
+- align-center
+- max-width-medium
+- text-size-xlarge
+- margin-large
+- is-2-buttons
+- w-variant-2a327968-c7e4-f546-2f21-f1f69ae89940
+- button_text_absolute
+- is-secondary
+- w-inline-block
+
+### About Bölümü
+- about_wrap
+- overflow-hidden
+- relative
+
+### Keşfet Bölümü
+- tricks-slider_wrap
+- tricks-slider_slide
+- image
+- tricks-slider_flex
+- text-size-huge
+- u-italic
+- text-size-small
+
+### Etkinlikler Bölümü
+- events_wrap
+- padding-global
+- container-large
+- padding-section
+- text-align-center
+- margin-bottom
+- margin-large
+- align-center
+- max-width-large
+- margin-small
+- upheading
+- text-rich-text_page
+- swiper-slider_events
+- custom-code
+- w-embed
+- w-script
+- swiper_arrow
+- is-next
+- is-prev
+- swiper_bullets
+- is-active
+- swiper_bullet
+- is-events
+- swiper-wrapper
+- swiper-slide
+- event-story_element
+- g_image_absolute
+- event-story_content
+- text-rich-text_page
+- margin-top
+- margin-xxsmall
+- text-size-small
+- text-style-muted
+
+## Footer
+- footer_section
+- padding-global
+- container-large
+- padding-vertical
+- padding-large
+- footer_wrap
+- socials_wrap
+- footer_socials_link
+- socials_icon
+- sr-only
+- footer_navigation_wrap
+- margin-bottom
+- margin-large
+- footer_nav_group_wrap
+- footer_nav_group_heading
+- footer_link_list
+- w-list-unstyled
+- footer_link_item
+- footer_link_element
+- is-button
+- w-inline-block
+- text-size-small
+- text-style-muted
+- current-year
+
+## İletişim Sayfası (contact.html)
+
+### Hero Bölümü
+- hero_wrap
+- g_bg-overlay_element
+- relative
+- padding-global
+- container-large
+- padding-section_header
+- is-large
+- text-align-center
+- margin-bottom
+- margin-medium
+- align-center
+- max-width-medium
+- text-rich-text_page
+- w-richtext
+- margin-top
+- margin-small
+- text-size-large
+- button-group
+- is-centered
+- button
+- button_text
+
+### İletişim Bilgileri
+- contact-info_wrap
+- overflow-hidden
+- padding-global
+- relative
+- container-large
+- padding-section
+- swiper-slider_contact-info
+- swiper
+- is-studio
+- swiper-wrapper
+- swiper-slide
+- studio-card_wrap
+- studio-card_content
+- text-rich-text_general
+- w-richtext
+
+## Etkinlikler Sayfası (events.html)
+
+### Hero Bölümü
+- hero_wrap
+- padding-global
+- container-large
+- padding-section_header
+- text-align-center
+- margin-bottom
+- margin-medium
+- align-center
+- max-width-large
+- text-rich-text_page
+- w-richtext
+- margin-top
+- margin-small
+- text-size-large
+- button-group
+- is-centered
+- button_wrap
+- button
+- button_container
+- button_text
+- button_text_absolute
+- margin-top
+- margin-xxsmall
+- button_under-text
+- text-style-muted
+
+### Etkinlikler Bölümü
+- events_wrap
+- u_section_radius_top
+- padding-global
+- container-small
+- padding-section
+- is-top
+- text-align-center
+- margin-bottom
+- margin-xxlarge
+- align-center
+- max-width-large
+- text-rich-text_page
+- w-richtext
+- w-dyn-list
+- g_empty-state
+- w-dyn-empty
+- text-size-medium
+- is-bottom
+- max-width-small
+- g_list
+- w-dyn-items
+- w-dyn-item
+- event-card_element
+- w-inline-block
+- event-card_image-wrap
+- g_image_absolute
+
+## Lokasyon Sayfası (location-pist.html)
+
+### Hero Bölümü
+- location-hero_wrap
+- bg-image_wrap
+- g_image_absolute
+- g_bg-overlay_element
+- relative
+- padding-global
+- container-large
+- padding-section_header
+- is-large
+- margin-bottom
+- margin-small
+- button-group
+- is-centered
+- w-layout-grid
+- g_google_wrap
+- text-size-small
+- text-padding-top
+- g_google_stars_wrap
+- text-align-center
+- margin-bottom
+- margin-medium
+- align-center
+- max-width-large
+- text-rich-text_page
+- margin-top
+- margin-small
+- text-size-large
+- button-group
+- is-centered
+- button_wrap
+- button
+- button_container
+- button_text
+- button_text_absolute
+- margin-top
+- margin-xxsmall
+- button_under-text
+- text-style-muted
+
+### Galeri Bölümü
+- gallery_wrap
+- overflow-hidden
+- swiper-slider_gallery
+- swiper
+- is-gallery
+- swiper-wrapper
+- swiper-slide
+- gallery_image
+
+## Hakkımızda Sayfası (who-we-are.html)
+
+### Hero Bölümü
+- hero_wrap
+- padding-global
+- container-large
+- padding-section_header
+- text-align-center
+- margin-bottom
+- margin-medium
+- align-center
+- max-width-large
+- text-rich-text_page
+- w-richtext
+- margin-top
+- margin-small
+- text-size-large
+
+### Hikaye Bölümü
+- section_about-story
+- padding-global
+- container-large
+- padding-section_xlarge
+- w-layout-grid
+- about-story_grid
+- about-story_content
+- margin-bottom
+- margin-medium
+- text-rich-text
+- w-richtext
+- about-story_image
+- image-cover
+
+### Misyon Bölümü
+- section_about-mission
+- padding-global
+- container-large
+- padding-section_xlarge
+- text-align-center
+- margin-bottom
+- margin-large
+- text-rich-text
+- w-richtext
+- w-layout-grid
+- mission_grid
+- mission_item
+- mission_icon
+- icon-embed
+- w-embed
+- text-rich-text
+- w-richtext
+
+## Inline Stiller
+- background-color: transparent
+- border-radius: 12px
+- box-shadow: 0 8px 24px rgba(0,0,0,0.1)
+- transition: transform 0.3s ease, box-shadow 0.3s ease
+- padding: 24px
+- font-weight: 600
+- margin-bottom: 12px
+- color: var(--theme--brand-1)
+- line-height: 1.6
+- background-color: rgba(0, 0, 0, 0.85)
+- backdrop-filter: blur(15px)

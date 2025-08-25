@@ -2,17 +2,17 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>DJ Üyelik Paketleri &amp; Yaratıcı Topluluk | PİST Stüdyo İstanbul</title>
+  <title>Podcast Studio Membership | Qube London</title>
   <meta
-    content="PİST Stüdyo'nun DJ üyelik paketlerine katılın. Profesyonel stüdyolara erişim, yaratıcı topluluk ve özel etkinliklerle İstanbul'da müzik kariyerinizi geliştirin."
+    content="Join Qube’s podcast studio membership. Access professional studios, connect with a private community of 1,000+ creators, and attend exclusive events in London."
     name="description" />
-  <meta content="DJ Üyelik Paketleri &amp; Yaratıcı Topluluk | PİST Stüdyo İstanbul" property="og:title" />
+  <meta content="Podcast Studio Membership | Qube London" property="og:title" />
   <meta
-    content="PİST Stüdyo'nun DJ üyelik paketlerine katılın. Profesyonel stüdyolara erişim, yaratıcı topluluk ve özel etkinliklerle İstanbul'da müzik kariyerinizi geliştirin."
+    content="Join Qube’s podcast studio membership. Access professional studios, connect with a private community of 1,000+ creators, and attend exclusive events in London."
     property="og:description" />
-  <meta content="DJ Üyelik Paketleri &amp; Yaratıcı Topluluk | PİST Stüdyo İstanbul" property="twitter:title" />
+  <meta content="Podcast Studio Membership | Qube London" property="twitter:title" />
   <meta
-    content="PİST Stüdyo'nun DJ üyelik paketlerine katılın. Profesyonel stüdyolara erişim, yaratıcı topluluk ve özel etkinliklerle İstanbul'da müzik kariyerinizi geliştirin."
+    content="Join Qube’s podcast studio membership. Access professional studios, connect with a private community of 1,000+ creators, and attend exclusive events in London."
     property="twitter:description" />
   <meta property="og:type" content="website" />
   <meta content="summary_large_image" name="twitter:card" />
@@ -20,16 +20,13 @@
   <meta content="Webflow" name="generator" />
   <link href="../css/pist.shared.css"
     rel="stylesheet" type="text/css" />
-  <link href="../css/shared-styles.css" rel="stylesheet" type="text/css" />
-  <link href="../css/theme-colors.css" rel="stylesheet" type="text/css" />
-  <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
   <script
     type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
   <link href="../img/pist_favicon.png"
     rel="shortcut icon" type="image/x-icon" />
   <link href="../img/pist_icon.png"
     rel="apple-touch-icon" />
-  <link href="../membership/djs" rel="canonical" /><!-- Global .js [DO NOT REMOVE]-->
+  <link href="../membership/podcasters" rel="canonical" /><!-- Global .js [DO NOT REMOVE]-->
   <script>
     (function (global) { global.pageFunctions = global.pageFunctions || { executed: {}, functions: {}, addFunction: function (id, fn) { if (!this.functions[id]) this.functions[id] = fn }, executeFunctions: function () { if (this.added) return; this.added = true; for (const id in this.functions) { if (!this.executed[id]) { try { this.functions[id](); this.executed[id] = true } catch (e) { console.error(`Error executing function ${id}:`, e) } } } } } })(window);
   </script>
@@ -44,23 +41,405 @@
 <body>
   <div class="page-wrapper">
     <div class="global">
+      <div class="css hide">
+        <div class="page_code_styles w-embed">
+          <style>
+            /* Improve font quality */
+            * {
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              -o-font-smoothing: antialiased;
+            }
 
+            /* Set color style to inherit */
+            .inherit-color * {
+              color: inherit;
+            }
+
+            /* Focus state style for keyboard navigation for the focusable elements */
+            *[tabindex]:focus-visible,
+            input[type="file"]:focus-visible {
+              outline: 0.125rem solid #4d65ff;
+              outline-offset: 0.125rem;
+            }
+
+            /* Get rid of top margin on first element in any rich text element */
+            .w-richtext> :not(div):first-child,
+            .w-richtext>div:first-child> :first-child {
+              margin-top: 0 !important;
+            }
+
+            /* Get rid of bottom margin on last element in any rich text element */
+            .w-richtext>:last-child,
+            .w-richtext ol li:last-child,
+            .w-richtext ul li:last-child {
+              margin-bottom: 0 !important;
+            }
+
+            /* Prevent all click and hover interaction with an element */
+            .pointer-events-off {
+              pointer-events: none;
+            }
+
+            /* Enables all click and hover interaction with an element */
+            .pointer-events-on {
+              pointer-events: auto;
+            }
+
+            /* Create a class of .div-square which maintains a 1:1 dimension of a div */
+            .div-square::after {
+              content: "";
+              display: block;
+              padding-bottom: 100%;
+            }
+
+            /* Make sure containers never lose their center alignment */
+            .container-medium,
+            .container-small,
+            .container-large {
+              margin-right: auto !important;
+              margin-left: auto !important;
+            }
+
+            a,
+            .w-input,
+            .w-select,
+            .w-tab-link,
+            .w-nav-link,
+            .w-dropdown-btn,
+            .w-dropdown-toggle,
+            .w-dropdown-link {
+              color: inherit;
+              text-decoration: inherit;
+              font-size: inherit;
+            }
+
+            /* Apply "..." after 3 lines of text */
+            .text-style-3lines {
+              display: -webkit-box;
+              overflow: hidden;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+            }
+
+            /* Apply "..." after 2 lines of text */
+            .text-style-2lines {
+              display: -webkit-box;
+              overflow: hidden;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+            }
+
+            /* Adds inline flex display */
+            .display-inlineflex {
+              display: inline-flex;
+            }
+
+            /* These classes are never overwritten */
+            .hide {
+              display: none !important;
+            }
+
+            @media screen and (max-width: 991px) {
+
+              .hide,
+              .hide-tablet {
+                display: none !important;
+              }
+            }
+
+            @media screen and (max-width: 767px) {
+              .hide-mobile-landscape {
+                display: none !important;
+              }
+            }
+
+            @media screen and (max-width: 479px) {
+              .hide-mobile {
+                display: none !important;
+              }
+            }
+
+            .margin-0 {
+              margin: 0rem !important;
+            }
+
+            .padding-0 {
+              padding: 0rem !important;
+            }
+
+            .spacing-clean {
+              padding: 0rem !important;
+              margin: 0rem !important;
+            }
+
+            .margin-top {
+              margin-right: 0rem !important;
+              margin-bottom: 0rem !important;
+              margin-left: 0rem !important;
+            }
+
+            .padding-top {
+              padding-right: 0rem !important;
+              padding-bottom: 0rem !important;
+              padding-left: 0rem !important;
+            }
+
+            .margin-right {
+              margin-top: 0rem !important;
+              margin-bottom: 0rem !important;
+              margin-left: 0rem !important;
+            }
+
+            .padding-right {
+              padding-top: 0rem !important;
+              padding-bottom: 0rem !important;
+              padding-left: 0rem !important;
+            }
+
+            .margin-bottom {
+              margin-top: 0rem !important;
+              margin-right: 0rem !important;
+              margin-left: 0rem !important;
+            }
+
+            .padding-bottom {
+              padding-top: 0rem !important;
+              padding-right: 0rem !important;
+              padding-left: 0rem !important;
+            }
+
+            .margin-left {
+              margin-top: 0rem !important;
+              margin-right: 0rem !important;
+              margin-bottom: 0rem !important;
+            }
+
+            .padding-left {
+              padding-top: 0rem !important;
+              padding-right: 0rem !important;
+              padding-bottom: 0rem !important;
+            }
+
+            .margin-horizontal {
+              margin-top: 0rem !important;
+              margin-bottom: 0rem !important;
+            }
+
+            .padding-horizontal {
+              padding-top: 0rem !important;
+              padding-bottom: 0rem !important;
+            }
+
+            .margin-vertical {
+              margin-right: 0rem !important;
+              margin-left: 0rem !important;
+            }
+
+            .padding-vertical {
+              padding-right: 0rem !important;
+              padding-left: 0rem !important;
+            }
+
+            /* Apply "..." at 100% width */
+            .truncate-width {
+              width: 100%;
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            /* Removes native scrollbar */
+            .no-scrollbar {
+              -ms-overflow-style: none;
+              overflow: -moz-scrollbars-none;
+            }
+
+            .no-scrollbar::-webkit-scrollbar {
+              display: none;
+            }
+
+            section,
+            header,
+            footer {
+              position: relative;
+            }
+
+            .flickity-viewport {
+              width: 100%;
+              overflow: visible !important;
+            }
+
+            .flickity-button {
+              display: none;
+            }
+          </style>
+        </div>
+        <div class="page_code_colors w-embed">
+          <style>
+            /* theme dark */
+            :root,
+            [data-theme="dark"],
+            [data-theme="invert"],
+            [data-theme="light"] [data-theme="invert"] {
+              --theme--background: var(--swatch--black);
+              --theme--text: var(--swatch--white);
+              --theme--overlay-10: var(--swatch--white-10);
+              --theme--overlay-20: var(--swatch--white-20);
+              --theme--overlay-30: var(--swatch--white-30);
+              --theme--brand-1a: var(--swatch--brand-1a);
+              --theme--brand-1b: var(--swatch--brand-1b);
+              --theme--brand-2a: var(--swatch--brand-2a);
+              --theme--brand-2b: var(--swatch--brand-2b);
+              --theme--brand-3a: var(--swatch--brand-3a);
+              --theme--brand-3b: var(--swatch--brand-3b);
+              --theme--brand-4a: var(--swatch--brand-4a);
+              --theme--brand-4b: var(--swatch--brand-4b);
+            }
+
+            [data-theme="light"],
+            [data-theme="dark"] [data-theme="invert"] {
+              --theme--background: var(--swatch--white);
+              --theme--text: var(--swatch--black);
+              --theme--overlay-10: var(--swatch--black-10);
+              --theme--overlay-20: var(--swatch--black-20);
+              --theme--overlay-30: var(--swatch--black-30);
+              --theme--brand-1a: var(--swatch--brand-1b);
+              --theme--brand-1b: var(--swatch--brand-1a);
+              --theme--brand-2a: var(--swatch--brand-2b);
+              --theme--brand-2b: var(--swatch--brand-2a);
+              --theme--brand-3a: var(--swatch--brand-3b);
+              --theme--brand-3b: var(--swatch--brand-3a);
+              --theme--brand-4a: var(--swatch--brand-4b);
+              --theme--brand-4b: var(--swatch--brand-4a);
+            }
+
+            /* Prevent changes for 'no-change' */
+            [data-theme="unset"] {
+              /* Do not apply any theme-specific changes */
+              all: unset;
+            }
+
+            /* Apply colors */
+            :is(c, :where([data-theme]:not([data-theme="inherit"])):not([data-theme="no-change"])) {
+              background-color: var(--theme--background);
+              color: var(--theme--text);
+            }
+          </style>
+        </div>
+        <div class="page_code_responsiivity w-embed">
+          <style>
+            /* Mobile (all devices) */
+            @media (max-width: 767px) {
+              :root {
+                --element--card-padding: 1.5rem;
+              }
+            }
+          </style>
+        </div>
+      </div>
     </div>
     <!-- Navbar Component -->
-    <div id="navbar-container"></div>
+    <link rel="stylesheet" href="../css/navbar.css">
+
+    <div data-animation="default" class="navbar_wrap w-nav" data-easing2="ease" fs-scrolldisable-element="smart-nav"
+      data-easing="ease" data-collapse="medium" data-w-id="24fe6517-ba5e-6fad-e200-6e4df4256791" role="banner"
+      data-duration="500" style="background-color: transparent;">
+      <div class="navbar_bg_overlay"></div>
+      <div class="padding-global">
+        <div class="w-layout-blockcontainer navbar_container w-container">
+          <div class="w-layout-grid navbar_layout">
+            <div class="navbar_left_section">
+              <a href="/"
+                aria-current="page" class="navbar_logo_link w-nav-brand w--current">
+                <img src="../img/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" ></a>
+            </div>
+            <div class="navbar_menu_button w-nav-button">
+              <div class="navbar_menu_icon w-icon-nav-menu"></div>
+            </div>
+            <nav role="navigation" fs-scrolldisable-element="preserve" class="navbar_menu w-nav-menu">
+              <div class="navbar_menu_content">
+                <div class="navbar_menu_close" style="position: absolute; top: 1rem; right: 1rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 24px;">
+                  ×
+                </div>
+                <div class="navbar_menu_items">
+                  <a href="/pages/location-pist.html" class="navbar_link w-inline-block">
+                    <div>Studio</div>
+                  </a>
+                  <a href="/pages/events.html" class="navbar_link w-inline-block">
+                    <div>Etkinlikler</div>
+                  </a>
+                  <a href="/pages/who-we-are.html" class="navbar_link w-inline-block">
+                    <div>Biz Kimiz</div>
+                  </a>
+                  <a href="/pages/contact.html" class="navbar_link w-inline-block">
+                    <div>İletişim</div>
+                  </a> 
+                </div>
+              </div>
+            </nav>
+            <div class="navbar_buttons">
+              <div data-wf--button-primary-typeform--variant="navbar"
+                class="button_wrap w-variant-5a400ffd-8258-ec1d-5d7b-1792bea91720"><button data-tf-popup="xEeZApsc"
+                  class="button w-variant-5a400ffd-8258-ec1d-5d7b-1792bea91720">
+                  <div class="button_container w-variant-5a400ffd-8258-ec1d-5d7b-1792bea91720">
+                    <div class="button_text">Başvur</div>
+                    <div class="button_text_absolute">Başvur</div>
+                  </div>
+                </button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <script>
-      // Navbar component loader
-      fetch('/components/navbar.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('navbar-container').innerHTML = data;
-          // Navbar yüklendikten sonra navbar.js'i çalıştır
-          if (window.initNavbar) {
-            window.initNavbar();
-          }
-        })
-        .catch(error => console.error('Navbar yüklenirken hata:', error));
+    // Simplified navbar functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const navbar = document.querySelector('.navbar_wrap');
+      const menuButton = document.querySelector('.navbar_menu_button');
+      const menu = document.querySelector('.navbar_menu');
+      const menuClose = document.querySelector('.navbar_menu_close');
+      const body = document.body;
+      
+      // Scroll functionality
+      function handleScroll() {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      }
+      window.addEventListener('scroll', handleScroll);
+      
+      // Mobile menu functionality
+      function toggleMenu() {
+        const isOpen = menu.classList.toggle('w--open');
+        body.style.overflow = isOpen ? 'hidden' : '';
+      }
+      
+      function closeMenu() {
+        menu.classList.remove('w--open');
+        body.style.overflow = '';
+      }
+      
+      // Event listeners
+      menuButton?.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+      });
+      
+      menuClose?.addEventListener('click', (e) => {
+        e.preventDefault();
+        closeMenu();
+      });
+      
+      // Close menu on link clicks
+      document.querySelectorAll('.navbar_link, .navbar_dropdown_link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+      });
+      
+      // Close menu when clicking outside
+      menu?.addEventListener('click', (e) => {
+        if (e.target === menu) closeMenu();
+      });
+    });
     </script>
 
 
@@ -72,23 +451,21 @@
               <div class="hero-images_images-wrap">
                 <div class="hero-images_image-list">
                   <div class="hero-images_image-wrap is-image-1"><img
-                      src="../img/Screenshot_2024-11-28_at_17.26.08.avif"
+                      src="../img/pist_content-creators_header_6.avif"
                       loading="eager" id="w-node-_22dd7f06-b027-de5e-db17-62b8e2708a83-e2708a7c" alt=""
-                      sizes="(max-width: 767px) 100vw, 750px"
-                      srcset="../img/Screenshot_2024-11-28_at_17.26.08.avif 500w, ../img/Screenshot_2024-11-28_at_17.26.08.avif 750w"
                       class="g_image_absolute" /></div>
                   <div class="hero-images_image-wrap is-image-2"><img
-                      src="../img/pist_djs_hero_1.avif"
+                      src="../img/pist_content-creators_header_5.avif"
                       loading="eager" id="w-node-_22dd7f06-b027-de5e-db17-62b8e2708a85-e2708a7c" alt=""
+                      sizes="(max-width: 400px) 100vw, 400px"
+                      srcset="../img/pist_content-creators_header_5.avif 500w, ../img/pist_content-creators_header_5.avif 800w, ../img/pist_content-creators_header_5.avif 960w"
                       class="g_image_absolute" /></div>
                   <div class="hero-images_image-wrap is-image-3"><img
-                      src="../img/pist_private-events_west_5.jpg"
+                      src="../img/pist_content-creators_header_4.avif"
                       loading="eager" id="w-node-_22dd7f06-b027-de5e-db17-62b8e2708a87-e2708a7c" alt=""
-                      sizes="(max-width: 767px) 100vw, 700px"
-                      srcset="../img/pist_private-events_west_5.jpg 500w, ../img/pist_private-events_west_5.jpg 700w"
                       class="g_image_absolute" /></div>
                   <div class="hero-images_image-wrap is-image-4"><img
-                      src="../img/pist_djs_hero_4.avif"
+                      src="../img/pist_content-creators_header_3.avif"
                       loading="eager" id="w-node-_22dd7f06-b027-de5e-db17-62b8e2708a89-e2708a7c" alt=""
                       class="g_image_absolute" /></div>
                 </div>
@@ -96,29 +473,31 @@
               <div class="hero-images_images-wrap images-wrapper-right">
                 <div class="hero-images_image-list image-list-right">
                   <div class="hero-images_image-wrap is-image-5"><img
-                      src="../img/pist_djs_hero_5.avif"
+                      src="../img/pist_content-creators_header_2.avif"
                       loading="lazy" id="w-node-_22dd7f06-b027-de5e-db17-62b8e2708a8d-e2708a7c" alt=""
+                      sizes="(max-width: 400px) 100vw, 400px"
+                      srcset="../img/pist_content-creators_header_2.avif 500w, ../img/pist_content-creators_header_2.avif 800w, ../img/pist_content-creators_header_2.avif 1057w"
                       class="g_image_absolute" /></div>
                   <div class="hero-images_image-wrap is-image-6"><img
-                      src="../img/pist_djs_hero_6.avif"
+                      src="../img/pist_content-creators_header_1.avif"
                       loading="lazy" id="w-node-_22dd7f06-b027-de5e-db17-62b8e2708a8f-e2708a7c" alt=""
                       class="g_image_absolute" /></div>
                 </div>
               </div>
               <div class="hero-images_wrap max-width-large">
                 <div class="text-rich-text_page w-richtext">
-                  <h1>DJ'ler için profesyonel stüdyo üyeliği &amp; <em>yaratıcı topluluk</em></h1>
+                  <h1>Studio subscription &amp; private community for <em>podcasters</em></h1>
                 </div>
                 <div class="margin-top margin-small">
                   <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><button
                       data-tf-popup="xEeZApsc" class="button">
                       <div class="button_container">
-                        <div class="button_text">Hemen Başvur</div>
-                        <div class="button_text_absolute">Hemen Başvur</div>
+                        <div class="button_text">Apply now</div>
+                        <div class="button_text_absolute">Apply now</div>
                       </div>
                     </button>
                     <div class="margin-top margin-xxsmall">
-                      <div class="button_under-text text-style-muted">SINIRLI KONTENJAN</div>
+                      <div class="button_under-text text-style-muted">LIMITED SPACES AVAILABLE</div>
                     </div>
                   </div>
                 </div>
@@ -151,54 +530,52 @@
         <div class="marquee_wrap">
           <div class="marquee_track">
             <div class="marquee_list">
-              <div class="marquee_flex is-orange">
+              <div class="marquee_flex is-pink">
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">DJs</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Podcasters</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Music producers</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">YouTubers</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">MCs</div>
-                </div>
-              </div>
-            </div>
-            <div class="marquee_list">
-              <div class="marquee_flex is-orange">
-                <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">DJs</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Influencers</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Music producers</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Founders</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">MCs</div>
-                </div>
-              </div>
-            </div>
-            <div class="marquee_list">
-              <div class="marquee_flex is-orange">
-                <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">DJs</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Voiceover Artists</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Music producers</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Gamers</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">MCs</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Marketers</div>
                 </div>
               </div>
             </div>
             <div class="marquee_list">
-              <div class="marquee_flex is-orange">
+              <div class="marquee_flex is-pink">
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">DJs</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Podcasters</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Music producers</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">YouTubers</div>
                 </div>
                 <div class="marquee_item">
-                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">MCs</div>
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Influencers</div>
+                </div>
+                <div class="marquee_item">
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Founders</div>
+                </div>
+                <div class="marquee_item">
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Voiceover Artists</div>
+                </div>
+                <div class="marquee_item">
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Gamers</div>
+                </div>
+                <div class="marquee_item">
+                  <div id="w-node-_6a748a77-0c54-4061-9762-5d3f00a346bb-00a346ba">Marketers</div>
                 </div>
               </div>
             </div>
@@ -213,21 +590,25 @@
                 <div class="text-align-center margin-bottom margin-large">
                   <div class="align-center max-width-large">
                     <div class="margin-bottom margin-small">
-                      <div data-animate="fade-in" class="upheading is-orange">
-                        <div>Üyelik</div>
+                      <div data-animate="fade-in" class="upheading is-pink">
+                        <div>Membership</div>
                       </div>
                     </div>
                     <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                      <h2>Profesyonel ekipman. Yaratıcı topluluk. <em>Tek üyelikte hepsi.</em></h2>
+                      <h2>Crisp audio. Pro studios. Creative community. <em>All in one membership.</em></h2>
                     </div>
                   </div>
                 </div>
                 <div class="align-center max-width-large">
                   <div class="margin-top margin-medium">
                     <div data-animate="fade-in" class="text-rich-text_page text-size-xlarge w-richtext">
-                      <p>En son teknoloji CDJ 3000'ler, miksaj masaları, monitörler ve daha fazlasıyla donatılmış profesyonel stüdyolarda mix yapın, kayıt alın ve canlı yayın gerçekleştirin. Işıklandırma ve etkileyici arka planlarla solo seanslarınızda veya arkadaşlarınızla birlikte atmosferi yaratın.</p>
-                      <p>Üyelik, aylık stüdyo zamanı, profesyonel kayıt imkanları ve müzik, prodüksiyon, şarkı yazımı alanlarında 1000+ yaratıcının paylaştığı lüks mekanlara erişimi içerir.</p>
-                      <p>Gece gündüz erişilebilir.</p>
+                      <p>Create pro-level content in beautiful, spacious studios designed for solo content batching,
+                        guest interviews, live streaming, and more. </p>
+                      <p>Record with confidence in soundproofed studios that blend comfort with clean sound and
+                        professional aesthetics.</p>
+                      <p>Membership includes monthly studio time in professional podcast studios, access to member
+                        spaces, and exclusive monthly events where you’ll mingle with our community of 1,000+ creators.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -236,12 +617,12 @@
                     <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><button
                         data-tf-popup="xEeZApsc" class="button">
                         <div class="button_container">
-                          <div class="button_text">Hemen Başvur</div>
-                          <div class="button_text_absolute">Hemen Başvur</div>
+                          <div class="button_text">Apply now</div>
+                          <div class="button_text_absolute">Apply now</div>
                         </div>
                       </button>
                       <div class="margin-top margin-xxsmall">
-                        <div class="button_under-text text-style-muted">SINIRLI KONTENJAN</div>
+                        <div class="button_under-text text-style-muted">LIMITED SPACES AVAILABLE</div>
                       </div>
                     </div>
                   </div>
@@ -316,24 +697,29 @@
                   </div>
                   <div class="parallax-slider_component">
                     <div class="parallax-slider_slide"><img alt=""
-                        src="../img/pist_djs_about_1.avif"
+                        src="../img/pist_podcasters_1.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="../img/pist_djs_about_1.avif 2708w"
+                        srcset="../img/pist_podcasters_1.avif 500w, ../img/pist_podcasters_1.avif 800w, ../img/pist_podcasters_1.avif 1080w, ../img/pist_podcasters_1.avif 1500w"
                         class="image" /></div>
                     <div class="parallax-slider_slide"><img alt=""
-                        src="../img/pist_photos_1.avif"
+                        src="../img/pist_podcasters_2.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="../img/pist_photos_1.avif 500w, ../img/pist_photos_1.avif 800w, ../img/pist_photos_1.avif 1080w, ../img/pist_photos_1.avif 1680w"
+                        srcset="../img/pist_podcasters_2.avif 500w, ../img/pist_podcasters_2.avif 800w, ../img/pist_podcasters_2.avif 1080w, ../img/pist_podcasters_2.avif 1600w, ../img/pist_podcasters_2.avif 2000w"
                         class="image" /></div>
                     <div class="parallax-slider_slide"><img alt=""
-                        src="../img/pist_djs_about_3.avif"
+                        src="../img/pist_podcasters_3.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="../img/pist_djs_about_3.avif 500w, ../img/pist_djs_about_3.avif 800w, ../img/pist_djs_about_3.avif 1080w, ../img/pist_djs_about_3.avif 1763w"
+                        srcset="../img/pist_podcasters_3.avif 500w, ../img/pist_podcasters_3.avif 800w, ../img/pist_podcasters_3.avif 1080w, ../img/pist_podcasters_3.avif 1586w"
                         class="image" /></div>
                     <div class="parallax-slider_slide"><img alt=""
-                        src="../img/pist_djs_about_4.avif"
+                        src="../img/pist_content-creators_about_4.avif"
                         sizes="(max-width: 991px) 100vw, 76vw"
-                        srcset="../img/pist_djs_about_4.avif 500w, ../img/pist_djs_about_4.avif 800w, ../img/pist_djs_about_4.avif 1080w, ../img/pist_djs_about_4.avif 1938w"
+                        srcset="../img/pist_content-creators_about_4.avif 500w, ../img/pist_content-creators_about_4.avif 800w, ../img/pist_content-creators_about_4.avif 1080w, ../img/pist_content-creators_about_4.avif 1401w"
+                        class="image" /></div>
+                    <div class="parallax-slider_slide"><img alt=""
+                        src="../img/pist_podcasters_5.avif"
+                        sizes="(max-width: 991px) 100vw, 76vw"
+                        srcset="../img/pist_podcasters_5.avif 500w, ../img/pist_podcasters_5.avif 800w, ../img/pist_podcasters_5.avif 1080w, ../img/pist_podcasters_5.avif 1875w"
                         class="image" /></div>
                   </div>
                   <div class="margin-top margin-medium">
@@ -354,12 +740,12 @@
               <div class="text-align-center margin-bottom margin-medium">
                 <div class="align-center max-width-large">
                   <div class="margin-bottom margin-small">
-                    <div data-animate="fade-in" class="upheading is-orange">
-                      <div>Avantajlar</div>
+                    <div data-animate="fade-in" class="upheading is-pink">
+                      <div>Benefits</div>
                     </div>
                   </div>
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Üyeliğinize <em>dahil olanlar</em></h2>
+                    <h2>Included in your <em>membership</em></h2>
                   </div>
                 </div>
               </div>
@@ -368,29 +754,33 @@
                   <div class="w-layout-grid g_icon-text_element is-small">
                     <p class="fa-icon is-medium"></p>
                     <div class="text-rich-text_page w-richtext">
-                      <h3>Dünya standartlarında stüdyolarda aylık seanslar</h3>
-                      <p>İstanbul'daki lokasyonumuzda stüdyo rezervasyonu yapın. Her alan benzersiz, tak-çalıştır stüdyolar sunar - sadece laptop'ınızı getirin.</p>
+                      <h3>Monthly studio sessions in world-class spaces</h3>
+                      <p>Book studios at any of our 4 locations across London. Each location features unique, plug &amp;
+                        play studios - just bring your laptop.</p>
                     </div>
                   </div>
                   <div class="w-layout-grid g_icon-text_element is-small">
                     <p class="fa-icon is-medium"></p>
                     <div class="text-rich-text_page w-richtext">
-                      <h3>Benzer düşünen müzik yapımcılarının özel topluluğu</h3>
-                      <p>Tüm üyeler yetenek, çalışma portföyü ve ortak değerler temelinde özenle seçilir; bu süreç daha fazla bağlantı ve işbirliği fırsatı sağlar.</p>
+                      <h3>Private community of like-minded music makers</h3>
+                      <p>All members are carefully selected based on talent, body of work, and shared values; this
+                        process ensures more opportunities for connection and collaboration.</p>
                     </div>
                   </div>
                   <div class="w-layout-grid g_icon-text_element is-small">
                     <p class="fa-icon is-medium"></p>
                     <div class="text-rich-text_page w-richtext">
-                      <h3>7/24 rezervasyon &amp; erişim</h3>
-                      <p>Uygulamamız üzerinden istediğiniz zaman alan rezervasyonu yapın. Önceden veya son dakika rezervasyon. Gündüz veya gece saat 2'de ziyaret edin. İhtiyacınız olduğunda kişisel stüdyonuz gibi.</p>
+                      <h3>24/7 booking &amp; access</h3>
+                      <p>Book spaces any time via our app. Book in advance or last minute. Visit us during the day or at
+                        2AM. It’s like having your own personal studio whenever you need it.</p>
                     </div>
                   </div>
                   <div class="w-layout-grid g_icon-text_element is-small">
                     <p class="fa-icon is-medium"></p>
                     <div class="text-rich-text_page w-richtext">
-                      <h3><strong>Güvenebileceğiniz yerinde destek</strong></h3>
-                      <p>Kurulum konusunda yardıma ihtiyacınız olsun, bir sorunla karşılaşın veya projenizi bitirmek için ekstra desteğe ihtiyaç duyun, samimi ve yerinde personelimiz tüm ihtiyaçlarınızda yardımcı olmaya hazır.</p>
+                      <h3><strong>On-site support you can trust</strong></h3>
+                      <p>Whether you need help getting set up, have an issue, or need extra support to finish your
+                        project, our friendly, on-site staff is ready to assist with all your needs.</p>
                     </div>
                   </div>
                 </div>
@@ -421,11 +811,11 @@
                 <div class="align-center max-width-large">
                   <div class="margin-bottom margin-small">
                     <div data-animate="fade-in" class="upheading">
-                      <div>Fiyatlandırma</div>
+                      <div>Pricing</div>
                     </div>
                   </div>
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2><em>Her seviye</em> için üyelikler, yeni başlayanlardan sektör profesyonellerine</h2>
+                    <h2>Memberships for <em>every level</em>, from up-and-comers to industry pros</h2>
                   </div>
                 </div>
               </div>
@@ -435,7 +825,7 @@
                     <div id="w-node-f974d56a-df13-4cd1-140d-e91afc31f646-fc31f62f" class="swiper-slide is-pricing">
                       <div data-animate="scale-in" class="pricing_element">
                         <div>
-                          <h3 class="heading-style-h4">Bireysel</h3>
+                          <h3 class="heading-style-h4">Individuals</h3>
                           <div class="margin-top margin-small">
                             <div class="g_line-divider"></div>
                           </div>
@@ -444,37 +834,38 @@
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p><strong>Aylık tahsis</strong> edilen stüdyo zamanı</p>
+                                  <p><strong>Monthly allocation</strong> of studio time</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p><strong>1,000+</strong> yaratıcının özenle seçilmiş topluluğu</p>
+                                  <p>Curated community of <strong>1,000+</strong> creatives</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p><strong>Tüm aylık etkinliklere</strong> davetiye (sadece üyeler)</p>
+                                  <p>Invitations to <strong>all monthly events</strong> (members only)</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Uygulamamız üzerinden <strong>7/24</strong> rezervasyon</p>
+                                  <p><strong>24/7</strong> booking via our app</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Onlarca premium stüdyo &amp; ortak çalışma alanına <strong>7/24</strong> erişim</p>
+                                  <p><strong>24/7</strong> access to dozens of premium studios &amp; coworking spaces
+                                  </p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Seçtiğiniz 1 PİST lokasyonuna erişim <sup>(veya %10 daha fazlasıyla tüm lokasyonlar)</sup></p>
+                                  <p>Access to 1 Qube location of your choice <sup>(or all 4 for 10% more)</sup></p>
                                 </div>
                               </div>
                             </div>
@@ -485,14 +876,14 @@
                             <div class="g_line-divider"></div>
                           </div>
                           <div class="margin-vertical margin-small">
-                            <div class="text-size-tiny text-style-muted text-align-center">Başlangıç fiyatı</div>
-                            <div class="text-size-huge text-weight-semibold text-align-center">₺2.500<span
-                                class="text-size-regular text-style-muted"> /ay</span></div>
+                            <div class="text-size-tiny text-style-muted text-align-center">Starting from</div>
+                            <div class="text-size-huge text-weight-semibold text-align-center">£120<span
+                                class="text-size-regular text-style-muted"> /mo</span></div>
                           </div>
                           <div class="button-group is-fullsize"><a href="/pricing" class="button w-inline-block">
                               <div class="button_container">
-                                <div class="button_text">Fiyatları İncele</div>
-                                <div class="button_text_absolute">Fiyatları İncele</div>
+                                <div class="button_text">Explore pricing</div>
+                                <div class="button_text_absolute">Explore pricing</div>
                               </div>
                             </a></div>
                         </div>
@@ -501,7 +892,7 @@
                     <div class="swiper-slide is-pricing">
                       <div data-animate="scale-in" data-theme="invert" class="pricing_element is-inverted">
                         <div>
-                          <h3 class="heading-style-h4">Takımlar</h3>
+                          <h3 class="heading-style-h4">Teams</h3>
                           <div class="margin-top margin-small">
                             <div class="g_line-divider"></div>
                           </div>
@@ -510,31 +901,31 @@
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>&quot;Bireysel&quot; paketindeki <strong>her şey</strong> dahil</p>
+                                  <p><strong>Everything </strong>included in &quot;Individual&quot;</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Takımınız için <strong>100 erişim kartına</strong> kadar</p>
+                                  <p>Up to <strong>100 access cards</strong> for your team</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Hesap üyeleri arasında <strong>stüdyo zamanı paylaşma</strong> imkanı</p>
+                                  <p>Ability to <strong>share studio time</strong> between account members</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Kolaylık &amp; huzur için <strong>öncelikli stüdyo rezervasyonu</strong></p>
+                                  <p><strong>Priority studio booking</strong> for convenience &amp; peace of mind</p>
                                 </div>
                               </div>
                               <div class="w-layout-grid g_icon-text_element is-small">
                                 <p class="fa-icon is-medium"></p>
                                 <div class="text-rich-text_page w-richtext">
-                                  <p>Kişiselleştirilmiş destek için <strong>özel hesap yöneticisi</strong></p>
+                                  <p><strong>Dedicated account manager</strong> for personalised support</p>
                                 </div>
                               </div>
                             </div>
@@ -545,14 +936,14 @@
                             <div class="g_line-divider"></div>
                           </div>
                           <div class="margin-vertical margin-small">
-                            <div class="text-size-tiny text-style-muted text-align-center">Başlangıç fiyatı</div>
-                            <div class="text-size-huge text-weight-semibold text-align-center">₺12.000 <span
-                                class="text-size-regular text-style-muted">+ KDV /ay</span></div>
+                            <div class="text-size-tiny text-style-muted text-align-center">Starting from</div>
+                            <div class="text-size-huge text-weight-semibold text-align-center">£550 <span
+                                class="text-size-regular text-style-muted">+ VAT /mo</span></div>
                           </div>
                           <div class="button-group is-fullsize"><a href="/pricing" class="button w-inline-block">
                               <div class="button_container">
-                                <div class="button_text">Fiyatları İncele</div>
-                                <div class="button_text_absolute">Fiyatları İncele</div>
+                                <div class="button_text">Explore pricing</div>
+                                <div class="button_text_absolute">Explore pricing</div>
                               </div>
                             </a></div>
                         </div>
@@ -648,47 +1039,49 @@
                 <div class="align-center max-width-large">
                   <div class="margin-bottom margin-small">
                     <div data-animate="fade-in" class="upheading is-green">
-                      <div>Başvuru süreci</div>
+                      <div>The application process</div>
                     </div>
                   </div>
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Nasıl <em>üye</em> olunur</h2>
+                    <h2>How to become a <em>member</em></h2>
                   </div>
                 </div>
               </div>
               <div data-animate="fade-in" class="w-layout-grid step_element">
                 <div>01</div>
                 <div class="max-width-small">
-                  <h3>Üyelik için başvuru</h3>
+                  <h3>Apply for membership</h3>
                 </div>
-                <div class="text-size-xlarge">Başvuru formumuzu doldurarak kendinizi ve çalışmalarınızı bize anlatın.
+                <div class="text-size-xlarge">Tell us about you and your work by filling out our application form.
                 </div>
               </div>
               <div data-animate="fade-in" class="w-layout-grid step_element">
                 <div>02</div>
                 <div class="max-width-small">
-                  <h3>Yüz yüze tur</h3>
+                  <h3>In-person tour</h3>
                 </div>
-                <div class="text-size-xlarge">Başvurunuz ön elemeyi geçerse, ekibimizle birlikte tur yapmaya davet edileceksiniz.</div>
+                <div class="text-size-xlarge">If your application is short-listed, you’ll be invited to take a tour with
+                  our team.</div>
               </div>
               <div data-animate="fade-in" class="w-layout-grid step_element">
                 <div>03</div>
                 <div class="max-width-small">
-                  <h3>Onay sürecinin son aşamaları</h3>
+                  <h3>Final stages of approval</h3>
                 </div>
-                <div class="text-size-xlarge">Onaylanırsa, PİST'e katılmaya ve stüdyolarımızı kullanmaya davet edileceksiniz.</div>
+                <div class="text-size-xlarge">If approved, you&#x27;ll be invited to join Qube and start using our
+                  studios. </div>
               </div>
               <div data-animate="fade-in" class="margin-top margin-xxlarge">
                 <div class="button-group is-centered">
                   <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><button
                       data-tf-popup="cZ1YzUHl" class="button">
                       <div class="button_container">
-                        <div class="button_text">Hemen Başvur</div>
-                        <div class="button_text_absolute">Hemen Başvur</div>
+                        <div class="button_text">Apply now</div>
+                        <div class="button_text_absolute">Apply now</div>
                       </div>
                     </button>
                     <div class="margin-top margin-xxsmall">
-                      <div class="button_under-text text-style-muted">SINIRLI KONTENJAN</div>
+                      <div class="button_under-text text-style-muted">LIMITED SPACES AVAILABLE</div>
                     </div>
                   </div>
                 </div>
@@ -711,7 +1104,7 @@
                       src="../img/avatar3.jpg"
                       alt="" class="members-upheading_image is-moved" />
                     <div class="margin-left margin-xsmall">
-                      <div class="text-size-small_mobile">İstanbul'da 1,000+ üyenin sevdiği topluluk</div>
+                      <div class="text-size-small_mobile">Loved by 1,000+ members across London</div>
                     </div>
                   </div>
                 </div>
@@ -719,10 +1112,10 @@
               <div class="text-align-center margin-bottom margin-xhuge">
                 <div class="align-center max-width-xlarge">
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>En iyi DJ'lerin <em>güvendiği</em> stüdyolar</h2>
+                    <h2>Create alongside the <em>chart-toppers</em></h2>
                   </div>
                   <div class="margin-top margin-small">
-                    <p data-animate="fade-in" class="text-size-large">Sektörde tanışmak, işbirliği yapmak ve anlamlı bağlantılar kurmak isteyen 1,000+ yerleşik ve yükselen DJ'nin özel topluluğuna katılın.</p>
+                    <p data-animate="fade-in" class="text-size-large"></p>
                   </div>
                 </div>
               </div>
@@ -844,112 +1237,112 @@
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_full-crate.jpg"
+                src="../img/pist_community_tam-kaur.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_full-crate.jpg 500w, ../img/pist_community_full-crate.jpg 800w, ../img/pist_community_full-crate.jpg 854w"
+                srcset="../img/pist_community_tam-kaur.jpg 500w, ../img/pist_community_tam-kaur.jpg 800w, ../img/pist_community_tam-kaur.jpg 1080w, ../img/pist_community_tam-kaur.jpg 1600w, ../img/pist_community_tam-kaur.jpg 1920w"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">Full Crate</div>
-                  <div class="text-size-small">DJ / Producer</div>
+                  <div class="text-size-huge u-italic">Tam Kaur</div>
+                  <div class="text-size-small">Self-Obsessed</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_jyoty.jpg"
+                src="../img/pist_community_shivani-pau.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_jyoty.jpg 500w, ../img/pist_community_jyoty.jpg 600w"
+                srcset="../img/pist_community_shivani-pau.jpg 500w, ../img/pist_community_shivani-pau.jpg 800w, ../img/pist_community_shivani-pau.jpg 1080w, ../img/pist_community_shivani-pau.jpg 1503w"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">Keyrah</div>
-                  <div class="text-size-small">DJ</div>
+                  <div class="text-size-huge u-italic">Shivani Pau</div>
+                  <div class="text-size-small">A Millenial Mind</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_james-hype.jpg"
+                src="../img/pist_community_milena-sanchez.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_james-hype.jpg 500w, ../img/pist_community_james-hype.jpg 800w, ../img/pist_community_james-hype.jpg 854w"
+                srcset="../img/pist_community_milena-sanchez.jpg 500w, ../img/pist_community_milena-sanchez.jpg 800w, ../img/pist_community_milena-sanchez.jpg 1080w, ../img/pist_community_milena-sanchez.jpg 1200w"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">James Hype</div>
-                  <div class="text-size-small">DJ / Producer</div>
+                  <div class="text-size-huge u-italic">Milena Sanchez</div>
+                  <div class="text-size-small">Milena&#x27;s Diary</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_tiffany-calver.avif"
+                src="../img/pist_community_ayame.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_tiffany-calver.avif 500w, ../img/pist_community_tiffany-calver.avif 600w"
+                srcset="../img/pist_community_ayame.jpg 500w, ../img/pist_community_ayame.jpg 800w, ../img/pist_community_ayame.jpg 854w"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">Tiffany Calver</div>
-                  <div class="text-size-small">DJ / Radio presenter</div>
+                  <div class="text-size-huge u-italic">Ayamé</div>
+                  <div class="text-size-small">In Ayamé We Trust</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_full-crate.jpg"
+                src="../img/pist_community_tam-kaur.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_full-crate.jpg 854w"
+                srcset="../img/pist_community_tam-kaur.jpg 500w, ../img/pist_community_tam-kaur.jpg 800w, ../img/pist_community_tam-kaur.jpg 1080w, ../img/pist_community_tam-kaur.jpg 1600w, ../img/pist_community_tam-kaur.jpg 1920w"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">Full Crate</div>
-                  <div class="text-size-small">Full Crate</div>
+                  <div class="text-size-huge u-italic">Tam Kaur</div>
+                  <div class="text-size-small">Tam Kaur</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_keyrah.avif"
+                src="../img/pist_community_shivani-pau.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_keyrah.avif 600w"
+                srcset="../img/pist_community_shivani-pau.jpg 500w, ../img/pist_community_shivani-pau.jpg 800w, ../img/pist_community_shivani-pau.jpg 1080w, ../img/pist_community_shivani-pau.jpg 1503w"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">Keyrah</div>
-                  <div class="text-size-small">Keyrah</div>
+                  <div class="text-size-huge u-italic">Shivani Pau</div>
+                  <div class="text-size-small">Shivani Pau</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_james-hype.jpg"
+                src="../img/pist_community_milena-sanchez.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_james-hype.jpg 854w"
+                srcset="../img/pist_community_milena-sanchez.jpg"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">James Hype</div>
-                  <div class="text-size-small">DJ / Producer</div>
+                  <div class="text-size-huge u-italic">Milena Sanchez</div>
+                  <div class="text-size-small">Milena&#x27;s Diary</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="tricks-slider_slide">
             <div class="tricks-slider_wrap"><img
-                src="../img/pist_community_tiffany-calver.avif"
+                src="../img/pist_community_ayame.jpg"
                 loading="lazy" alt="" sizes="(max-width: 479px) 100vw, (max-width: 991px) 86vw, 54vw"
-                srcset="../img/pist_community_tiffany-calver.avif 600w"
+                srcset="../img/pist_community_ayame.jpg"
                 class="image" />
               <div class="tricks-slider_flex">
                 <div>
-                  <div class="text-size-huge u-italic">Tiffany Calver</div>
-                  <div class="text-size-small">DJ / Radio presenter</div>
+                  <div class="text-size-huge u-italic">Ayamé</div>
+                  <div class="text-size-small">In Ayamé We Trust</div>
                 </div>
               </div>
             </div>
@@ -963,7 +1356,7 @@
               <div class="text-align-center margin-bottom margin-medium">
                 <div class="align-center max-width-large">
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Inside the <em>DJ</em> studios</h2>
+                    <h2>Inside our <em>podcast studios</em></h2>
                   </div>
                 </div>
               </div>
@@ -999,8 +1392,8 @@ Change the color of the text here, instead of on Webflow for this to work */
                 itemtype="https://schema.org/Question" class="accordion_element is-v2"><button
                   data-w-id="8487e636-b372-0168-1f3e-4b1e696b3cf1" role="button" aria-expanded="false"
                   class="accordion_button is-v2">
-                  <div itemprop="name" class="text-size-xlarge text-weight-semibold">Premium equipment that’s clean
-                    &amp; reliable</div>
+                  <div itemprop="name" class="text-size-xlarge text-weight-semibold">Top tier podcasting &amp; recording
+                    equipment </div>
                   <div class="accordion_icon_wrap is-v2"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
                       viewBox="0 0 24 24" fill="none" class="svg">
                       <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"
@@ -1012,9 +1405,8 @@ Change the color of the text here, instead of on Webflow for this to work */
                     class="accordion_answer is-v2">
                     <div class="max-width-large">
                       <div class="text-rich-text_page w-richtext">
-                        <p>Studios feature integrated live streaming and include industry standard equipment like
-                          Pioneer CDJ-3000s, mixers, monitors, premium AIAIAI headphones, and more. See all equipment.
-                        </p>
+                        <p>Content studios feature a mix of professional equipment including SM7B, SM7dB, and MV7+ Shure
+                          mics, Blackmagic Pocket Cinema 4K cameras, and more.</p>
                       </div>
                     </div>
                   </div>
@@ -1048,8 +1440,8 @@ Change the color of the text here, instead of on Webflow for this to work */
                 itemtype="https://schema.org/Question" class="accordion_element is-v2"><button
                   data-w-id="8487e636-b372-0168-1f3e-4b1e696b3cf1" role="button" aria-expanded="false"
                   class="accordion_button is-v2">
-                  <div itemprop="name" class="text-size-xlarge text-weight-semibold">Setups for recording, filming &amp;
-                    live streaming</div>
+                  <div itemprop="name" class="text-size-xlarge text-weight-semibold">4K video recording &amp; live
+                    streaming</div>
                   <div class="accordion_icon_wrap is-v2"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
                       viewBox="0 0 24 24" fill="none" class="svg">
                       <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"
@@ -1061,12 +1453,12 @@ Change the color of the text here, instead of on Webflow for this to work */
                     class="accordion_answer is-v2">
                     <div class="max-width-large">
                       <div class="text-rich-text_page w-richtext">
-                        <p>Just plug in your laptop and start recording or live streaming. At the end of your session,
-                          take the files home with you for easy editing, or for an added fee, send them to our editing
-                          team for extra polish. </p>
-                        <p><em>‍</em><strong><em>Studio availability</em>:</strong> Recording facilities are not
-                          available in all studios. Currently, recording is offered in our East location and DJ 2 in
-                          Hackney. </p>
+                        <p>Capture video content with crystal clear resolution every time. Confidently live stream in 4K
+                          without worrying about lags, glitches, or equipment issues. </p>
+                        <p>Our podcast studios offer varying equipment setups - from professional Shure microphones to
+                          audio mixers and cameras - depending on the specific studio location; <a
+                            href="/studios">explore</a> our different podcast studio options to find the perfect space
+                          for your project.</p>
                       </div>
                     </div>
                   </div>
@@ -1076,8 +1468,8 @@ Change the color of the text here, instead of on Webflow for this to work */
                 itemtype="https://schema.org/Question" class="accordion_element is-v2"><button
                   data-w-id="8487e636-b372-0168-1f3e-4b1e696b3cf1" role="button" aria-expanded="false"
                   class="accordion_button is-v2">
-                  <div itemprop="name" class="text-size-xlarge text-weight-semibold"> Club lighting &amp; trippy
-                    backdrops</div>
+                  <div itemprop="name" class="text-size-xlarge text-weight-semibold">Different backdrops &amp; setups
+                  </div>
                   <div class="accordion_icon_wrap is-v2"><svg xmlns="http://www.w3.org/2000/svg" width="100%"
                       viewBox="0 0 24 24" fill="none" class="svg">
                       <path d="M12 5V19M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"
@@ -1089,8 +1481,66 @@ Change the color of the text here, instead of on Webflow for this to work */
                     class="accordion_answer is-v2">
                     <div class="max-width-large">
                       <div class="text-rich-text_page w-richtext">
-                        <p>DJ studios come equipped with special FX lighting and Volta extended reality backdrops for
-                          creating a club vibe or trippy VR experiences.</p>
+                        <p>Choose from a diverse mix of content studios featuring different equipment and backdrops for
+                          all your content needs. You can even customise your set up at our Elephant location.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="margin-top margin-xxlarge">
+                <div class="max-width-large align-center">
+                  <h3 data-animate="fade-in" class="text-align-center">Premium add-ons for elevating your
+                    <em>podcast experience</em></h3>
+                </div>
+              </div>
+              <div class="margin-top margin-medium">
+                <div class="w-layout-grid features_layout">
+                  <div data-animate="fade-in" class="basic-feature_wrap">
+                    <p class="fa-icon is-medium"></p>
+                    <div class="margin-top margin-xsmall">
+                      <div class="align-center max-width-tiny">
+                        <h3 class="heading-style-h6 align-center">Videography services</h3>
+                      </div>
+                      <div class="margin-top margin-xxsmall">
+                        <p>Get a dedicated, in-house videographer to set up and record your session for you (24-hr
+                          delivery available).</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-animate="fade-in" class="basic-feature_wrap">
+                    <p class="fa-icon is-medium"></p>
+                    <div class="margin-top margin-xsmall">
+                      <div class="align-center max-width-tiny">
+                        <h3 class="heading-style-h6 align-center">Editing services</h3>
+                      </div>
+                      <div class="margin-top margin-xxsmall">
+                        <p>Have your audio and video files professionally cleaned and edited by our in-house team
+                          (includes up to 1 hour of edits; 5-day turnaround).</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-animate="fade-in" class="basic-feature_wrap">
+                    <p class="fa-icon is-medium"></p>
+                    <div class="margin-top margin-xsmall">
+                      <div class="align-center max-width-tiny">
+                        <h3 class="heading-style-h6 align-center">Social media clips</h3>
+                      </div>
+                      <div class="margin-top margin-xxsmall">
+                        <p>Share the best moments from your session with professionally edited clips for IG, TikTok, and
+                          YouTube.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div data-animate="fade-in" class="basic-feature_wrap">
+                    <p class="fa-icon is-medium"></p>
+                    <div class="margin-top margin-xsmall">
+                      <div class="align-center max-width-tiny">
+                        <h3 class="heading-style-h6 align-center">Hospitality packages</h3>
+                      </div>
+                      <div class="margin-top margin-xxsmall">
+                        <p>Set the mood for you and your guests with bespoke drink and canapé packages, plus access to
+                          our VIP lounge.</p>
                       </div>
                     </div>
                   </div>
@@ -1115,8 +1565,8 @@ Change the color of the text here, instead of on Webflow for this to work */
                     <h2>Exclusive events for <em>learning, networking &amp; growth</em></h2>
                   </div>
                   <div class="margin-top margin-small">
-                    <p data-animate="fade-in" class="text-size-large">Meet like-minded DJs, industry experts, and brands
-                      who will help push your career forward at our exclusive monthly events.</p>
+                    <p data-animate="fade-in" class="text-size-large">Meet like-minded creators, industry experts, and
+                      brands who will help push your career forward at our exclusive monthly events.</p>
                   </div>
                 </div>
               </div>
@@ -1181,48 +1631,47 @@ Change the color of the text here, instead of on Webflow for this to work */
                   <div class="swiper-wrapper is-events">
                     <div class="swiper-slide is-events">
                       <div data-animate="scale-in" class="event-story_element"><img
-                          src="../img/pist_dj_events_3.avif"
+                          src="../img/pist_events_fireside-chats.avif"
                           loading="lazy" alt="" class="g_image_absolute" />
                         <div class="event-story_content">
                           <div class="text-rich-text_page w-richtext">
-                            <h3>DJs Anonymous</h3>
+                            <h3>Fireside Chats</h3>
                           </div>
                           <div class="margin-top margin-xxsmall">
-                            <p class="text-size-small text-style-muted">Find connection in the sometimes lonely world of
-                              DJing by meeting fellow community members. The decks are open for you to share your
-                              tracks, experiences, and secret tricks with the group.</p>
+                            <p class="text-size-small text-style-muted">Meet top figures in the creative industries and
+                              get advice during open floor Q&amp;As. Recent guests include AGM Marketing Agency Founder,
+                              Daniel Ayim &amp; viral podcast host/YouTuber, Tam Kaur.</p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="swiper-slide is-events">
                       <div data-animate="scale-in" class="event-story_element"><img
-                          src="../img/pist_dj_events_2.avif"
+                          src="../img/pist_events_voice-recording-101.avif"
                           loading="lazy" alt="" class="g_image_absolute" />
                         <div class="event-story_content">
                           <div class="text-rich-text_page w-richtext">
-                            <h3>Beats &amp; Bears</h3>
+                            <h3>Voice Recording 101</h3>
                           </div>
                           <div class="margin-top margin-xxsmall">
-                            <p class="text-size-small text-style-muted">Join our regular open listening sessions to find
-                              out what our community is working on and to share what you’re up to in a relaxed setting.
-                            </p>
+                            <p class="text-size-small text-style-muted">We covered the essentials of perfecting your
+                              audio recording technique – from finding neutrality in your recording space to
+                              understanding your production pipeline. </p>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div class="swiper-slide is-events">
                       <div data-animate="scale-in" class="event-story_element"><img
-                          src="../img/pist_dj_events_1.jpg"
+                          src="../img/pist_events_headshot-day.avif"
                           loading="lazy" alt="" class="g_image_absolute" />
                         <div class="event-story_content">
                           <div class="text-rich-text_page w-richtext">
-                            <h3>B2B Open-Decks</h3>
+                            <h3>Headshot Day</h3>
                           </div>
                           <div class="margin-top margin-xxsmall">
-                            <p class="text-size-small text-style-muted">Go B2B with your DJ peers in open-door DJ
-                              sessions using our club-grade equipment. Bring your friends and showcase your mixing
-                              skills in a supportive and laid-back environment.</p>
+                            <p class="text-size-small text-style-muted">Members had a chance to snap up free headshots
+                              at our exclusive networking brunch, designed for women creators. </p>
                           </div>
                         </div>
                       </div>
@@ -1278,7 +1727,7 @@ Change the color of the text here, instead of on Webflow for this to work */
                   <p class="fa-icon is-medium"></p>
                   <div class="margin-top margin-xsmall">
                     <div class="align-center max-width-tiny">
-                      <h3 class="heading-style-h6 align-center">Get your set stream ready</h3>
+                      <h3 class="heading-style-h6 align-center">Get your session launch ready</h3>
                     </div>
                     <div class="margin-top margin-xxsmall hide-mobile-landscape">
                       <p>In fully soundproofed spaces featuring state-of-the-art equipment.</p>
@@ -1289,7 +1738,8 @@ Change the color of the text here, instead of on Webflow for this to work */
                   <p class="fa-icon is-medium"></p>
                   <div class="margin-top margin-xsmall">
                     <div class="align-center max-width-tiny">
-                      <h3 class="heading-style-h6 align-center">Feel confident hosting B2B sessions &amp; streams</h3>
+                      <h3 class="heading-style-h6 align-center">Feel confident hosting collab sessions &amp; meetings
+                      </h3>
                     </div>
                     <div class="margin-top margin-xxsmall hide-mobile-landscape">
                       <p>With beautiful, professional spaces that set the right vibe &amp; tone.</p>
@@ -1300,10 +1750,10 @@ Change the color of the text here, instead of on Webflow for this to work */
                   <p class="fa-icon is-medium"></p>
                   <div class="margin-top margin-xsmall">
                     <div class="align-center max-width-tiny">
-                      <h3 class="heading-style-h6 align-center">Make connections that will push your career forward</h3>
+                      <h3 class="heading-style-h6 align-center">Learn, grow &amp; connect with other creators</h3>
                     </div>
                     <div class="margin-top margin-xxsmall hide-mobile-landscape">
-                      <p>At weekly events with other creators, record labels, and brands.</p>
+                      <p>At exclusive monthly events that are only available to members.</p>
                     </div>
                   </div>
                 </div>
@@ -1350,7 +1800,7 @@ Change the color of the text here, instead of on Webflow for this to work */
         class="image-cta_section overflow-hidden"><img
           src="../img/pist_cta.jpg"
           alt="" sizes="(max-width: 1980px) 100vw, 1980px"
-          srcset="../img/pist_cta.jpg 500w, ../img/pist_cta.jpg 800w, ../img/pist_cta.jpg 1080w, ../img/pist_cta.jpg 3360w"
+          srcset="../img/pist_cta.jpg"
           class="g_image_absolute" />
         <div class="g_bg-overlay"></div>
         <div class="padding-global">
@@ -1358,11 +1808,11 @@ Change the color of the text here, instead of on Webflow for this to work */
             <div class="padding-section is-top-bottom">
               <div class="image-cta_wrap">
                 <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                  <h2>En <em>iyi çalışmanız</em> henüz gelmedi. PİST'te yapın.<span class="u-italic"></span></h2>
+                  <h2>Your <em>best work</em> is yet to come. Make it at Qube.<span class="u-italic"></span></h2>
                 </div>
                 <div class="margin-top margin-small">
-                  <p data-animate="fade-in" class="text-size-large text-color-heading">Aylık stüdyo zamanı. Özel
-                    topluluk. Özel etkinlikler. <br />Hepsi tek üyelikte.</p>
+                  <p data-animate="fade-in" class="text-size-large text-color-heading">Monthly studio time. Private
+                    community. Exclusive events. All in one membership.</p>
                   <div data-animate="fade-in" class="margin-top margin-medium">
                     <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><button
                         data-tf-popup="xEeZApsc" class="button">
@@ -1372,7 +1822,7 @@ Change the color of the text here, instead of on Webflow for this to work */
                         </div>
                       </button>
                       <div class="margin-top margin-xxsmall">
-                        <div class="button_under-text text-style-muted">SINIRLI KONTENJAN</div>
+                        <div class="button_under-text text-style-muted">LIMITED SPACES AVAILABLE</div>
                       </div>
                     </div>
                   </div>
@@ -1394,7 +1844,7 @@ Change the color of the text here, instead of on Webflow for this to work */
                     </div>
                   </div>
                   <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Sorularınızın <em>cevapları</em></h2>
+                    <h2><em>Answers</em> to your questions</h2>
                   </div>
                 </div>
               </div>
@@ -1635,17 +2085,121 @@ Change the color of the text here, instead of on Webflow for this to work */
     </main>
     
     <!-- Footer Component -->
-    <div id="footer-container"></div>
+    <link rel="stylesheet" href="../css/footer.css">
     
-    <script>
-      // Footer component loader
-      fetch('/components/footer.html')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('footer-container').innerHTML = data;
-        })
-        .catch(error => console.error('Footer yüklenirken hata:', error));
-    </script>
+    <section data-theme="dark" class="footer_section">
+      <div class="padding-global">
+        <div class="w-layout-blockcontainer container-large w-container">
+          <div class="padding-vertical padding-large">
+            <div class="footer_wrap">
+              <div class="socials_wrap">
+                <a href="https://www.instagram.com/pist.istanbul/" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="100%" fill="currentColor" class="socials_icon">
+                    <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                  </svg>
+                  <div class="sr-only">Instagram</div>
+                </a>
+                <a href="https://www.linkedin.com/company/piststudyo/" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="100%" fill="currentColor" class="socials_icon">
+                    <path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3zM447.9 448h-92.7V302.4c0-34.7-.7-79.2-48.3-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.8V148.9h89.1v40.8h1.3c12.4-23.5 42.7-48.3 87.9-48.3 94 0 111.3 61.9 111.3 142.3V448z"></path>
+                  </svg>
+                  <div class="sr-only">LinkedIn</div>
+                </a>
+                <a href="https://www.youtube.com/@piststudyo" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="100%" fill="CurrentColor" class="socials_icon">
+                    <path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3zm-317.5 213.5V175.2l142.7 81.2-142.7 81.2z"></path>
+                  </svg>
+                  <div class="sr-only">YouTube</div>
+                </a>
+                <a href="https://www.tiktok.com/@piststudyo" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="100%" fill="currentColor" class="socials_icon">
+                    <path d="M448 209.9a210.1 210.1 0 0 1 -122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z"></path>
+                  </svg>
+                  <div class="sr-only">TikTok</div>
+                </a>
+              </div>
+              <div class="w-layout-grid footer_navigation_wrap margin-bottom margin-large">
+                <div class="footer_nav_group_wrap">
+                  <div class="footer_nav_group_heading">Katıl</div>
+                  <ul role="list" class="footer_link_list w-list-unstyled">
+                    <li class="footer_link_item">
+                      <button data-tf-popup="xEeZApsc" class="footer_link_element is-button">
+                        <div>Başvur</div>
+                      </button>
+                    </li>
+                    <li class="footer_link_item">
+                      <a href="/pages/who-we-are.html" class="footer_link_element w-inline-block">
+                        <div>Üyelerimizle Tanış</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="footer_nav_group_wrap">
+                  <div class="footer_nav_group_heading">Rezervasyon</div>
+                  <ul role="list" class="footer_link_list w-list-unstyled">
+                    <li class="footer_link_item">
+                      <a href="/pages/studios.html" class="footer_link_element w-inline-block">
+                        <div>Stüdyolar</div>
+                      </a>
+                    </li>
+                    <li class="footer_link_item">
+                      <a href="/pages/events.html" class="footer_link_element w-inline-block">
+                        <div>Etkinlikler</div>
+                      </a>
+                    </li>
+                    <li class="footer_link_item">
+                      <a href="/pages/private-events.html" class="footer_link_element w-inline-block">
+                        <div>Özel Etkinlikler</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="footer_nav_group_wrap">
+                  <div class="footer_nav_group_heading">Lokasyon</div>
+                  <ul role="list" class="footer_link_list w-list-unstyled">
+                    <li class="footer_link_item">
+                      <a href="/pages/location-pist.html" class="footer_link_element w-inline-block">
+                        <div>Maslak</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="footer_nav_group_wrap">
+                  <div class="footer_nav_group_heading">Şirket</div>
+                  <ul role="list" class="footer_link_list w-list-unstyled">
+                    <li class="footer_link_item">
+                      <a href="/pages/who-we-are.html" class="footer_link_element w-inline-block">
+                        <div>Biz Kimiz</div>
+                      </a>
+                    </li>
+                    <li class="footer_link_item">
+                      <a href="/pages/contact.html" class="footer_link_element w-inline-block">
+                        <div>İletişim</div>
+                      </a>
+                    </li>
+                    <li class="footer_link_item">
+                      <a href="#" class="footer_link_element w-inline-block">
+                        <div>Gizlilik Politikası</div>
+                      </a>
+                    </li>
+                    <li class="footer_link_item">
+                      <a href="#" class="footer_link_element w-inline-block">
+                        <div>Şartlar ve Koşullar</div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="footer_bottom_wrap">
+                <div class="footer_copyright_wrap">
+                  <div class="footer_copyright_text">© <span class="current-year">2023</span> PİST Stüdyo. Tüm hakları saklıdır.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=669b70b3f67bbafac2188569"
     type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
@@ -1712,8 +2266,9 @@ Change the color of the text here, instead of on Webflow for this to work */
     });
   </script>
 
-  <!-- Navbar functionality -->
-<script src="../js/navbar.js"></script>
+  <!-- Navbar color change on scroll -->
+  <script src="../js/navbar.js"></script>
+  
 </body>
 
 </html>
