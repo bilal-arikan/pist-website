@@ -8,130 +8,94 @@ Bu proje, https://www.piststudio.com/ web sitesinin yerel kopyasıdır. Londra'd
 pist-website/
 ├── css/                    # CSS dosyaları
 │   ├── flickity.min.css
+│   ├── footer.css
+│   ├── navbar.css
+│   ├── pist.shared.css
+│   ├── responsive.css
+│   ├── shared-styles.css
 │   ├── swiper-bundle.min.css
-│   └── pist.shared.css
+│   └── theme-colors.css
 ├── js/                     # JavaScript dosyaları
 │   ├── ScrollTrigger.min.js
 │   ├── embed.js
 │   ├── flickity.pkgd.min.js
+│   ├── gsap.min.js
+│   ├── jquery-3.5.1.min.js
+│   ├── navbar.js
 │   ├── scrolldisable.js
-│   └── swiper-bundle.min.js
-├── img/                 # Resim dosyaları
-│   ├── pist_favicon.png
-│   ├── pist_icon.png
-│   ├── pist_nav_*.jpg
-│   └── pist_avatar-small_*.avif
+│   ├── swiper-bundle.min.js
+│   └── typeform-embed.js
+├── img/                    # Resim dosyaları
 ├── videos/                 # Video dosyaları
-│   ├── pist_homepage_video.mp4
-│   ├── pist_homepage_video.webm
-│   └── pist_homepage_video-poster.jpg
 ├── pages/                  # Alt sayfalar
-│   ├── membership_*.html
-│   ├── locations_*.html
-│   └── *.html
-├── index.html             # Ana sayfa
-├── PRD.md                 # Proje gereksinimleri belgesi
-└── README.md              # Bu dosya
+│   ├── contact.html
+│   ├── events.html
+│   ├── location-pist.html
+│   └── who-we-are.html
+├── pages_DISABLED/         # Devre dışı bırakılmış sayfalar
+├── index.html              # Ana sayfa
+├── PRD.md                  # Proje gereksinimleri belgesi
+└── README.md               # Bu dosya
 ```
 
 ## 🚀 Kurulum ve Çalıştırma
 
 ### Gereksinimler
 - Web tarayıcısı
-- HTTP sunucusu (Python, Node.js, veya PowerShell)
+- HTTP sunucusu
 
 ### Yerel Sunucu Başlatma
 
-#### PowerShell ile:
-```powershell
-# Proje dizinine gidin
-cd c:\Users\Bilal\Desktop\Projects\pist-website
-
-# HTTP sunucusunu başlatın
-$listener = New-Object System.Net.HttpListener
-$listener.Prefixes.Add('http://localhost:8080/')
-$listener.Start()
-Write-Host 'Sunucu http://localhost:8080/ adresinde başlatıldı'
-```
-
-#### Python ile (eğer kuruluysa):
 ```bash
-# Python 3
-python -m http.server 8080
+# Node.js ile
+npx serve
 
-# Python 2
-python -m SimpleHTTPServer 8080
-```
-
-#### Node.js ile (eğer kuruluysa):
-```bash
-npx http-server -p 8080
+# veya
+npx http-server
 ```
 
 ### Tarayıcıda Görüntüleme
-Sunucu başlatıldıktan sonra tarayıcınızda `http://localhost:8080` adresine gidin.
+Sunucu başlatıldıktan sonra tarayıcınızda sunucunun verdiği URL adresine gidin.
 
 ## 🎯 Özellikler
 
-- **Responsive Tasarım**: Mobil ve masaüstü uyumlu
-- **Video Arka Plan**: Ana sayfada otomatik oynatılan video
-- **Interaktif Navigasyon**: Dropdown menüler ve hover efektleri
-- **Carousel/Slider**: Swiper ve Flickity kütüphaneleri
-- **Animasyonlar**: GSAP ScrollTrigger ile scroll animasyonları
-- **Form Entegrasyonu**: Typeform embed desteği
+- Responsive tasarım (mobil/masaüstü)
+- Video arka plan
+- İnteraktif navigasyon
+- Carousel/Slider (Swiper, Flickity)
+- Animasyonlar (GSAP ScrollTrigger)
+- Form entegrasyonu
 
 ## 📋 İçerik
 
-### Ana Sayfalar
-- **Ana Sayfa** (`index.html`): Studio üyelik tanıtımı
-- **Membership**: Müzik yapımcıları, DJ'ler, podcaster'lar için üyelikler
-- **Locations**: Canary Wharf, Acton, Hackney, Elephant & Castle lokasyonları
-- **Studios**: Stüdyo rezervasyon sistemi
-- **Events**: Etkinlikler ve workshoplar
+### Sayfalar
+- Ana Sayfa: Stüdyo üyelik tanıtımı
+- İletişim: Stüdyo lokasyonları ve iletişim bilgileri
+- Etkinlikler: Workshop ve etkinlik takvimi
+- Lokasyonlar: Stüdyo konumları
 
 ### Teknik Detaylar
-- **CSS Framework**: Webflow CSS + özel stiller
-- **JavaScript Kütüphaneleri**: 
-  - GSAP ScrollTrigger (animasyonlar)
-  - Swiper.js (slider)
-  - Flickity (carousel)
-  - Typeform (form entegrasyonu)
-- **Medya Formatları**: 
-  - Resimler: JPG, PNG, AVIF
-  - Videolar: MP4, WebM
+- CSS: Özel stiller + yardımcı kütüphaneler
+- JavaScript: GSAP, Swiper, Flickity, jQuery
+- Medya: JPG, PNG, AVIF, MP4, WebM
 
 ## 🔧 Geliştirme
 
-### Dosya Düzenleme
-- CSS dosyaları `css/` klasöründe
-- JavaScript dosyaları `js/` klasöründe
-- Resimler `img/` klasöründe
-- Videolar `videos/` klasöründe
-- Alt sayfalar `pages/` klasöründe
-
-### Bağlantı Yapısı
-Tüm bağlantılar yerel dosya sistemine göre ayarlanmıştır:
-- CSS: `css/dosya-adi.css`
-- JS: `js/dosya-adi.js`
-- Resimler: `img/resim-adi.jpg`
-- Sayfalar: `pages/sayfa-adi.html`
+### Dosya Yapısı
+- `css/`: Stil dosyaları
+- `js/`: JavaScript dosyaları
+- `img/`: Görseller
+- `pages/`: Alt sayfalar
+- `videos/`: Video dosyaları
 
 ## 📝 Lisans
 
-Bu proje eğitim amaçlı oluşturulmuştur. Orijinal içerik https://www.piststudio.com/ sitesine aittir.
+Bu proje eğitim amaçlıdır. Orijinal içerik https://www.piststudio.com/ sitesine aittir.
 
-## 🤝 Katkıda Bulunma
+## 🤝 Katkı ve İletişim
 
-1. Bu repository'yi fork edin
-2. Feature branch oluşturun (`git checkout -b feature/yeni-ozellik`)
-3. Değişikliklerinizi commit edin (`git commit -am 'Yeni özellik eklendi'`)
-4. Branch'inizi push edin (`git push origin feature/yeni-ozellik`)
-5. Pull Request oluşturun
-
-## 📞 İletişim
-
-Sorularınız için issue açabilir veya pull request gönderebilirsiniz.
+Geliştirme önerileri için issue açabilir veya pull request gönderebilirsiniz.
 
 ---
 
-**Not**: Bu proje, orijinal PİST Studio web sitesinin yerel bir kopyasıdır ve eğitim amaçlı kullanım içindir.
+**Not**: Bu proje, PİST Studio web sitesinin yerel bir kopyasıdır ve eğitim amaçlıdır.
