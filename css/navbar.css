@@ -36,9 +36,7 @@
   color: white;
 }
 
-.navbar_wrap.scrolled .navbar_logo_svg {
-  filter: brightness(0) invert(1);
-}
+
 
 .navbar_left_section {
   display: flex;
