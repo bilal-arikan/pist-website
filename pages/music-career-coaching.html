@@ -60,6 +60,19 @@
             border-color: #ff6b35;
         }
 
+        /* Hero Layout Base + Responsive Styles */
+        .hero-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-media {
+            display: flex;
+            justify-content: center;
+        }
+
         /* Hero Layout Responsive Styles */
         @media (max-width: 1024px) {
             .hero-layout {
@@ -434,7 +447,7 @@
 
         /* Başvuru CTA Styles */
         #basvuru {
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            background: linear-gradient(135deg, #FF5722 0%, #cc7960 100%);
             color: white;
             margin-top: 4rem;
         }
@@ -658,7 +671,7 @@
         /* Başvuru bölümü özel stilleri */
         #basvuru {
             text-align: center !important;
-            background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+            background: linear-gradient(135deg, #FF5722 0%, #E64A19 100%) !important;
             color: white !important;
             margin-top: 4rem !important;
             padding: 80px 20px !important;
@@ -788,51 +801,53 @@
                 <div class="padding-global">
                     <div class="w-layout-blockcontainer container-large w-container">
                         <div class="padding-section">
-                            <div class="text-align-center">
-                                <div class="margin-bottom margin-medium">
-                                    <div class="align-center max-width-large">
-                                        
-                                        <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                                            <h1>Müzik Kariyer <em>Koçluğu Programı</em></h1>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="align-center max-width-xlarge">
-                                    <div data-animate="fade-in" class="text-rich-text_page text-size-large w-richtext">
-                                        <p>Kariyer stratejini netleştir, üretim disiplinini kur, yayın ve sahne planını akıllıca kurgula. Amatör ya da profesyonel — bulunduğun yerden bir üst seviyeye çıkman için 1'e 1 destek.</p>
-                                    </div>
-                                </div>
-                                <div class="margin-top margin-large">
-                                    <div data-animate="fade-in" class="button-group is-2-buttons">
-                                        <div data-wf--button-primary-typeform--variant="fullsize" class="button_wrap">
-                                            <a href="#basvuru" class="button w-variant-2a327968-c7e4-f546-2f21-f1f69ae89940">
-                                                <div class="button_container">
-                                                    <div class="button_text">Başvuru Formu</div>
-                                                    <div class="button_text_absolute">Başvuru Formu</div>
+                            <div class="hero-layout">
+                                <div class="hero-content">
+                                    <div class="text-align-center">
+                                        <div class="margin-bottom margin-medium">
+                                            <div class="align-center max-width-large">
+                                            
+                                                <div data-animate="fade-in" class="text-rich-text_page w-richtext">
+                                                    <h1>Müzik Kariyer <em>Koçluğu Programı</em></h1>
                                                 </div>
-                                            </a>
-                                        </div>
-                                        <a href="#icerik" class="button is-secondary w-inline-block">
-                                            <div class="button_container">
-                                                <div class="button_text">Program Detayları</div>
-                                                <div class="button_text_absolute">Program Detayları</div>
                                             </div>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="margin-top margin-large">
-                                    <div data-animate="fade-in" class="hero-media" style="display: flex; justify-content: center;">
-                                        <div class="media" aria-label="Dikey kapak video"
-                                            style="position: relative; width: 100%; max-width: 400px; aspect-ratio: 9/16; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-                                            <video src="../videos/music-career-coaching-reels.mp4"
-                                                style="width:100%; height:100%; object-fit:cover; border-radius:20px;" autoplay muted
-                                                loop playsinline controls></video>
-                                            <div class="tiny"
-                                                style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%); opacity:.7; color: white; font-size: 12px; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px;">
-                                                Dikey video (9:16)</div>
+                                        </div>
+                                        <div class="align-center max-width-xlarge">
+                                            <div data-animate="fade-in" class="text-rich-text_page text-size-large w-richtext">
+                                                <p>Kariyer stratejini netleştir, üretim disiplinini kur, yayın ve sahne planını akıllıca kurgula. Amatör ya da profesyonel — bulunduğun yerden bir üst seviyeye çıkman için 1'e 1 destek.</p>
+                                            </div>
+                                        </div>
+                                        <div class="margin-top margin-large">
+                                            <div data-animate="fade-in" class="button-group is-2-buttons">
+                                                <div data-wf--button-primary-typeform--variant="fullsize" class="button_wrap">
+                                                    <a href="#basvuru" class="button w-variant-2a327968-c7e4-f546-2f21-f1f69ae89940">
+                                                        <div class="button_container">
+                                                            <div class="button_text">Başvuru Formu</div>
+                                                            <div class="button_text_absolute">Başvuru Formu</div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <a href="#icerik" class="button is-secondary w-inline-block">
+                                                    <div class="button_container">
+                                                        <div class="button_text">Program Detayları</div>
+                                                        <div class="button_text_absolute">Program Detayları</div>
+                                                    </div>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div data-animate="fade-in" class="hero-media">
+                                    <div class="media" aria-label="Dikey kapak video"
+                                        style="position: relative; width: 100%; max-width: 400px; aspect-ratio: 9/16; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                                        <video src="../videos/music-career-coaching-reels.mp4"
+                                            style="width:100%; height:100%; object-fit:cover; border-radius:20px;" autoplay muted
+                                            loop playsinline controls></video>
+                                        <div class="tiny"
+                                            style="position:absolute; bottom:10px; left:50%; transform:translateX(-50%); opacity:.7; color: white; font-size: 12px; background: rgba(0,0,0,0.5); padding: 4px 8px; border-radius: 4px;"></div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -914,7 +929,7 @@
                             </div>
                             <div class="align-center max-width-xlarge">
                                 <div data-animate="fade-in" class="text-rich-text_page text-size-large w-richtext">
-                                    <p>Kısa bir form, hızlı bir ön görüşme, net bir başlangıç.</p>
+                                    <p style="text-align:center;">Kısa bir form, hızlı bir ön görüşme, net bir başlangıç.</p>
                                 </div>
                             </div>
                             <div data-animate="fade-in" class="margin-top margin-large">
@@ -957,7 +972,7 @@
                             </div>
                             <div class="align-center max-width-xlarge">
                                 <div data-animate="fade-in" class="text-rich-text_page text-size-large w-richtext">
-                                    <p>Seans seans kişiye göre uyarlanan dinamik bir çerçeve.</p>
+<p style="text-align:center;">Seans seans kişiye göre uyarlanan dinamik bir çerçeve.</p>
                                 </div>
                             </div>
                             <div data-animate="fade-in" class="margin-top margin-large">
@@ -1030,9 +1045,9 @@
                             </div>
                             <div data-animate="fade-in" class="margin-top margin-large">
                                 <div class="instructor">
-                                    <div class="avatar"><img src="../img/egitmen.jpg" alt="Eğitmen foto"
+<div class="avatar"><img src="../img/avatar4.jpg" alt="Eğitmen foto"
                                             style="width:100%;height:100%;object-fit:cover;"></div>
-                                    <h3 style="margin:0;">[Ad Soyad]</h3>
+<h3 style="margin:0;">Yiğit Can Kiremitci</h3>
                                     <div class="align-center max-width-xlarge">
                                         <div class="text-rich-text_page text-size-large w-richtext">
                                             <p>Prodüktör, eğitmen ve sahne sanatçısı. Pop, indie R&B
@@ -1156,7 +1171,7 @@
                             <div class="margin-top margin-medium">
                                 <div data-animate="fade-in" class="button-group is-centered">
                                     <div class="button_wrap">
-                                        <a href="https://forms.gle/your-form-id" target="_blank" rel="noopener" class="button">
+                                        <a href="https://www.paytr.com/link/YxqoI0g" target="_blank" rel="noopener" class="button">
                                             <div class="button_container">
                                                 <div class="button_text">Formu Doldur</div>
                                                 <div class="button_text_absolute">Formu Doldur</div>
