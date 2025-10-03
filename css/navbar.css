@@ -53,7 +53,7 @@
 
 .navbar_layout {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   gap: 20px;
