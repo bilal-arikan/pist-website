@@ -32,6 +32,17 @@
   <link href="../img/pist_favicon.png" rel="shortcut icon" type="image/x-icon" />
   <link href="../img/pist_icon.png" rel="apple-touch-icon" />
   <link href="../events" rel="canonical" />
+  <style>
+    .form-wrap { padding-top: 60px; max-width: 1200px; margin-inline: auto; padding-left: 24px; padding-right: 24px; }
+    .form-wrap h1 { margin-top: 0; text-align: center; }
+    .form-wrap p { text-align: center; margin-bottom: 24px; color: #666; }
+    /* Extend the form beyond viewport height to fit full Google Form */
+    .form-frame { width: 100%; height: calc(100vh + 700px); min-height: 1600px; border: 0; background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-radius: 12px; }
+    @media (max-width: 768px) { 
+      .form-wrap { padding-top: 80px; }
+      .form-frame { height: calc(100vh + 1000px); min-height: 2000px; }
+    }
+  </style>
   <script>
     (function (global) { global.pageFunctions = global.pageFunctions || { executed: {}, functions: {}, addFunction: function (id, fn) { if (!this.functions[id]) this.functions[id] = fn }, executeFunctions: function () { if (this.added) return; this.added = true; for (const id in this.functions) { if (!this.executed[id]) { try { this.functions[id](); this.executed[id] = true } catch (e) { console.error(`Error executing function ${id}:`, e) } } } } } })(window);
   </script>
@@ -125,182 +136,12 @@
       </div>
     </div>
 
-
-
     <main class="main-wrapper">
-      <section class="hero_wrap">
-        <div class="padding-global">
-          <div class="w-layout-blockcontainer container-large w-container">
-            <div class="padding-section_header">
-              <div class="text-align-center margin-bottom margin-medium">
-                <div class="align-center max-width-large">
-                  <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h1>Yaratıcı buluşmalar için <em>özel etkinlikler</em></h1>
-                  </div>
-                  <div class="margin-top margin-small">
-                    <p data-animate="fade-in" class="text-size-large">PİST Stüdyo'nun özel etkinliklerine katılın.
-                      Yaratıcılığınızı geliştirin, yeni bağlantılar kurun ve İstanbul'un yaratıcı topluluğuyla buluşun.
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div class="button-group is-centered">
-                <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><a
-                    href="https://forms.gle/TNnzWQLfTKT2eqTH9" target="_blank" class="button">
-                    <div class="button_container">
-                      <div class="button_text">Hemen Katıl</div>
-                      <div class="button_text_absolute">Hemen Katıl</div>
-                    </div>
-                  </a>
-                  <div class="margin-top margin-xxsmall">
-                    <div class="button_under-text text-style-muted">SINIRLI KONTENJAN</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section data-theme="light" class="events_wrap u_section_radius_top">
-        <div class="padding-global">
-          <div class="w-layout-blockcontainer container-small w-container">
-            <div class="padding-section is-top">
-              <div class="text-align-center margin-bottom margin-xxlarge">
-                <div class="align-center max-width-large">
-                  <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Yaklaşan etkinlikler <em>PİST'te</em></h2>
-                  </div>
-                </div>
-              </div>
-              <div class="w-dyn-list">
-                <div class="g_empty-state w-dyn-empty">
-                  <div class="text-size-medium">Şu anda planlanmış etkinlik bulunmuyor. Yakında yeni etkinlikler için
-                    tekrar kontrol edin!</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section data-theme="light" class="events_wrap">
-        <div class="padding-global">
-          <div class="w-layout-blockcontainer container-small w-container">
-            <div class="padding-section is-bottom">
-              <div class="text-align-center margin-bottom margin-xxlarge">
-                <div class="align-center max-width-small">
-                  <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                    <h2>Geçmiş etkinliklerimiz <em>kaçırdıklarınız</em></h2>
-                  </div>
-                </div>
-              </div>
-              <div class="w-dyn-list">
-                <div role="list" class="g_list w-dyn-items">
-                  <div role="listitem" class="w-dyn-item"><a href="/events/sound-sisters-music-production-masterclass"
-                      class="event-card_element w-inline-block">
-                      <div class="event-card_image-wrap"><img src="../img/event5.jpg" class="g_image_absolute" />
-                        <div class="g_card-tag_wrap">
-                          <div class="g_card-tag_element">
-                            <p class="fa-icon"></p>
-                            <div fs-cmsfilter-field="mebership" class="g_card-tag_text">Sadece Üyeler</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="event-card_content_wrap">
-                        <div class="relative">
-                          <div class="text-style-muted">13 Kasım 2025</div>
-                          <div class="margin-top margin-xxsmall">
-                            <h3 class="heading-style-h5">Ofis Sonrası DJ Parti</h3>
-                          </div>
-                          <div class="margin-top margin-tiny">
-                            <p>Yoğun iş gününün ardından müzikle rahatlayın. DJ'lerimizin performansları eşliğinde
-                              networking yapın.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </a></div>
-                  <div role="listitem" class="w-dyn-item"><a href="/events/r-b-choir-recital-with-olga-vocal-coach"
-                      class="event-card_element w-inline-block">
-                      <div class="event-card_image-wrap"><img src="../img/event3.jpg" loading="lazy" alt=""
-                          sizes="100vw" srcset="" class="g_image_absolute" />
-                        <div class="g_card-tag_wrap">
-                          <div class="g_card-tag_element">
-                            <p class="fa-icon"></p>
-                            <div fs-cmsfilter-field="mebership" class="g_card-tag_text">Sadece Üyeler</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="event-card_content_wrap">
-                        <div class="relative">
-                          <div class="text-style-muted">6 Şubat 2025</div>
-                          <div class="margin-top margin-xxsmall">
-                            <h3 class="heading-style-h5">Startup Networking Gecesi</h3>
-                          </div>
-                          <div class="margin-top margin-tiny">
-                            <p>Girişimciler, yatırımcılar ve sektör liderleri bir araya geliyor. Projelerinizi paylaşın
-                              ve iş ortaklıkları kurun.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </a></div>
-                  <div role="listitem" class="w-dyn-item"><a href="/events/creative-goal-setting-with-mad4u"
-                      class="event-card_element w-inline-block">
-                      <div class="event-card_image-wrap"><img src="../img/event6.jpg" loading="lazy" alt=""
-                          class="g_image_absolute" />
-                        <div class="g_card-tag_wrap">
-                          <div class="g_card-tag_element">
-                            <p class="fa-icon"></p>
-                            <div fs-cmsfilter-field="mebership" class="g_card-tag_text">Sadece Üyeler</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="event-card_content_wrap">
-                        <div class="relative">
-                          <div class="text-style-muted">29 Ocak 2025</div>
-                          <div class="margin-top margin-xxsmall">
-                            <h3 class="heading-style-h5">Akustik Sahne Performansları</h3>
-                          </div>
-                          <div class="margin-top margin-tiny">
-                            <p>Akşam saatlerinde canlı performanslarla rahatlayın. PİST topluluğunun müzisyenleri sahne
-                              alıyor.</p>
-                          </div>
-                        </div>
-                      </div>
-                    </a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section data-theme="dark" data-w-id="f98023d5-b227-6df2-28a1-b13591870ac0"
-        class="image-cta_section overflow-hidden"><img src="../img/pist_cta.jpg" class="g_image_absolute" />
-        <div class="g_bg-overlay"></div>
-        <div class="padding-global">
-          <div class="w-layout-blockcontainer container-large w-container">
-            <div class="padding-section is-top-bottom">
-              <div class="image-cta_wrap">
-                <div data-animate="fade-in" class="text-rich-text_page w-richtext">
-                  <h2>PİST Stüdyo ekibine katıl</h2>
-                </div>
-                <div class="margin-top margin-small">
-                  <p data-animate="fade-in" class="text-size-large text-color-heading">Yaratıcıların buluştuğu, büyüdüğü
-                    ve birlikte başarıya ulaştığı alanlar inşa ediyoruz. Bu yolculukta bize katıl.</p>
-                  <div data-animate="fade-in" class="margin-top margin-medium">
-                    <div data-wf--button-primary-typeform--variant="base" class="button_wrap"><a
-                        href="https://forms.gle/TNnzWQLfTKT2eqTH9" target="_blank" class="button">
-                        <div class="button_container">
-                          <div class="button_text">CV Gönder</div>
-                          <div class="button_text_absolute">CV Gönder</div>
-                        </div>
-                      </a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+    <section class="form-wrap">
+      <!-- Google Form embed -->
+      <iframe class="form-frame" src="https://docs.google.com/forms/d/e/1FAIpQLSda8q_UBZiTGaXcDaW9_ZJQbjMsSUbQT3c2CBghGdxXgdGBjQ/viewform?embedded=true" allowfullscreen>Yükleniyor…</iframe>
+    </section>
+  </main>
 
     <!-- Footer -->
     <section data-theme="dark" class="footer_section">
