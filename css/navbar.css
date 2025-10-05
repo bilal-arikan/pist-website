@@ -1,17 +1,17 @@
-/* Mobile menu overlay */
+/* Overlay for mobile menu */
 .navbar_menu_overlay {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 1049;
-  background: rgba(18, 18, 18, 0.45);
-  backdrop-filter: blur(12px);
-  opacity: 0;
+  background: rgba(18,18,18,0.45);
+  backdrop-filter: blur(10px);
   transition: opacity 0.25s;
-  pointer-events: none;
+  opacity: 0;
 }
-.navbar_menu_overlay.is-active {
+.navbar_menu_overlay.active {
+  display: block;
   opacity: 1;
-  pointer-events: auto;
 }
 .navbar_wrap {
   position: fixed;
