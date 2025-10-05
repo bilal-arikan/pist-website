@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', function() {
     overlay.className = 'navbar_menu_overlay';
     document.body.appendChild(overlay);
   }
+  // Add a container for overlay links
+  let overlayLinks = document.createElement('div');
+  overlayLinks.className = 'navbar_menu_overlay_links';
+  overlay.appendChild(overlayLinks);
 
   // Create a menu button if it doesn't exist
   if (!menuButton) {
@@ -36,6 +40,16 @@ document.addEventListener('DOMContentLoaded', function() {
     menuButton.classList.add('is-active');
     menuButton.setAttribute('aria-expanded', 'true');
     overlay.classList.add('active');
+    // Clone menu links into overlayLinks for background effect
+    overlayLinks.innerHTML = '';
+    const menuLinks = menu?.querySelectorAll('.navbar_link');
+    if (menuLinks && menuLinks.length) {
+      menuLinks.forEach(link => {
+        const span = document.createElement('span');
+        span.textContent = link.textContent.trim();
+        overlayLinks.appendChild(span);
+      });
+    }
     document.documentElement.style.overflow = 'hidden';
   }
 
@@ -44,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     menuButton.classList.remove('is-active');
     menuButton.setAttribute('aria-expanded', 'false');
     overlay.classList.remove('active');
+    overlayLinks.innerHTML = '';
     document.documentElement.style.overflow = '';
   }
 
