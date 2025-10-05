@@ -72,12 +72,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+
+  // Tek bir toggle fonksiyonu ile menü ve overlay aç/kapa
+  function toggleMenu() {
+    if (menu.classList.contains('w--open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+
   menuButton.addEventListener('click', function(e) {
-    const isOpen = menu?.classList.toggle('w--open');
-    menuButton.classList.toggle('is-active');
-    menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    if (isOpen) document.documentElement.style.overflow = 'hidden'; else document.documentElement.style.overflow = '';
+    e.stopPropagation();
+    toggleMenu();
   });
+
+  // Overlay'e tıklayınca menüyü kapat
+  if (menuOverlay) {
+    menuOverlay.addEventListener('click', function(e) {
+      closeMenu();
+    });
+  }
 
   // Close menu when clicking on links inside
   menu?.addEventListener('click', function(e) {
