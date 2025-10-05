@@ -37,11 +37,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.documentElement.style.overflow = '';
   }
 
+  // Overlay handling
+  let overlay = document.querySelector('.navbar_overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'navbar_overlay';
+    document.body.appendChild(overlay);
+  }
+
+  function showOverlay() {
+    overlay.classList.add('is-visible');
+  }
+
+  function hideOverlay() {
+    overlay.classList.remove('is-visible');
+  }
+
   menuButton.addEventListener('click', function(e) {
     const isOpen = menu?.classList.toggle('w--open');
     menuButton.classList.toggle('is-active');
     menuButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    if (isOpen) document.documentElement.style.overflow = 'hidden'; else document.documentElement.style.overflow = '';
+    if (isOpen) {
+      document.documentElement.style.overflow = 'hidden';
+      showOverlay();
+    } else {
+      document.documentElement.style.overflow = '';
+      hideOverlay();
+    }
   });
 
   // Close menu when clicking on links inside
@@ -55,6 +77,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!menu || !menuButton) return;
     const isInside = menu.contains(e.target) || menuButton.contains(e.target) || document.querySelector('.navbar_left_section')?.contains(e.target);
     if (!isInside && menu.classList.contains('w--open')) closeMenu();
+  });
+
+  // Close when clicking the overlay
+  overlay.addEventListener('click', function() {
+    if (menu.classList.contains('w--open')) closeMenu();
   });
 
   // Close on escape
