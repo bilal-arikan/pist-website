@@ -77,6 +77,100 @@
   justify-content: flex-start;
 }
 
+/* Desktop improvements */
+.navbar_menu_items .navbar_link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 12px;
+}
+
+/* Mobile: show hamburger and stack menu */
+@media screen and (max-width: 991px) {
+  .navbar_menu_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-left: auto;
+    position: relative;
+    z-index: 1100;
+  }
+
+  .navbar_menu_button .menu-icon {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    display: block;
+    position: relative;
+  }
+  .navbar_menu_button .menu-icon::before,
+  .navbar_menu_button .menu-icon::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .navbar_menu_button .menu-icon::before { top: -7px; }
+  .navbar_menu_button .menu-icon::after { top: 7px; }
+
+  /* Hidden by default on mobile */
+  .navbar_menu {
+    position: fixed;
+    inset: 0 0 auto 0;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    gap: 18px;
+    z-index: 1050;
+    overflow-y: auto;
+  }
+
+  .navbar_menu.w--open {
+    display: flex;
+  }
+
+  .navbar_menu_items {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+  }
+
+  .navbar_menu_items .navbar_link {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+  }
+
+  /* When open, animate hamburger to X */
+  .navbar_menu_button.is-active .menu-icon {
+    background: transparent;
+  }
+  .navbar_menu_button.is-active .menu-icon::before {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .navbar_menu_button.is-active .menu-icon::after {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+}
+
 .navbar_buttons {
   display: flex;
   flex-direction: row;
