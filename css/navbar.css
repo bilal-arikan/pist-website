@@ -1,3 +1,18 @@
+/* Mobile menu overlay */
+.navbar_menu_overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1049;
+  background: rgba(18, 18, 18, 0.45);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+.navbar_menu_overlay.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
 .navbar_wrap {
   position: fixed;
   top: 0;
@@ -9,21 +24,6 @@
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 10px 0;
-/* Overlay for mobile menu */
-.navbar_menu_overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(18,18,18,0.55);
-  backdrop-filter: blur(10px);
-  z-index: 1049;
-  transition: opacity 0.25s;
-  opacity: 0;
-}
-.navbar_menu_overlay.w--open {
-  display: block;
-  opacity: 1;
-}
 }
 
 .navbar_wrap.scrolled {
@@ -155,12 +155,6 @@
 
   .navbar_menu.w--open {
     display: flex;
-  }
-  .navbar_menu_overlay {
-    display: none;
-  }
-  .navbar_menu_overlay.w--open {
-    display: block;
   }
 
   .navbar_menu_items {
