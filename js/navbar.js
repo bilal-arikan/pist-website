@@ -20,16 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!menuOverlay) {
     menuOverlay = document.createElement('div');
     menuOverlay.className = 'navbar_menu_overlay';
-    menuOverlay.style.display = 'none';
-    menuOverlay.style.position = 'fixed';
-    menuOverlay.style.top = '0';
-    menuOverlay.style.left = '0';
-    menuOverlay.style.width = '100vw';
-    menuOverlay.style.height = '100vh';
-    menuOverlay.style.background = 'rgba(0,0,0,0.5)';
-    menuOverlay.style.zIndex = '1049';
-    menuOverlay.style.transition = 'opacity 0.2s';
-    menuOverlay.style.opacity = '0';
     document.body.appendChild(menuOverlay);
   }
 
@@ -52,8 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
       navbar.style.backdropFilter = 'blur(15px)';
     }
     if (menuOverlay) {
-      menuOverlay.style.display = 'block';
-      setTimeout(() => { menuOverlay.style.opacity = '1'; }, 10);
+      menuOverlay.classList.add('active');
     }
   }
 
@@ -67,8 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
       navbar.style.backdropFilter = '';
     }
     if (menuOverlay) {
-      menuOverlay.style.opacity = '0';
-      setTimeout(() => { menuOverlay.style.display = 'none'; }, 200);
+      menuOverlay.classList.remove('active');
     }
   }
 

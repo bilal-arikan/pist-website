@@ -1,3 +1,20 @@
+/* Mobile menu overlay */
+.navbar_menu_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 1049;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: none;
+}
+.navbar_menu_overlay.active {
+  display: block;
+  opacity: 1;
+}
 .navbar_wrap {
   position: fixed;
   top: 0;
