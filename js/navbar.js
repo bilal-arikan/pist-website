@@ -23,11 +23,16 @@ document.addEventListener('DOMContentLoaded', function() {
   setScrollClass();
   window.addEventListener('scroll', setScrollClass);
 
+
   function openMenu() {
     menu?.classList.add('w--open');
     menuButton.classList.add('is-active');
     menuButton.setAttribute('aria-expanded', 'true');
     document.documentElement.style.overflow = 'hidden';
+    if (navbar) {
+      navbar.style.backgroundColor = 'rgba(0,0,0,0.97)';
+      navbar.style.backdropFilter = 'blur(15px)';
+    }
   }
 
   function closeMenu() {
@@ -35,6 +40,10 @@ document.addEventListener('DOMContentLoaded', function() {
     menuButton.classList.remove('is-active');
     menuButton.setAttribute('aria-expanded', 'false');
     document.documentElement.style.overflow = '';
+    if (navbar) {
+      navbar.style.backgroundColor = '';
+      navbar.style.backdropFilter = '';
+    }
   }
 
   menuButton.addEventListener('click', function(e) {
