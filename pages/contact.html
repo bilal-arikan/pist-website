@@ -161,6 +161,107 @@
     </div>
 
     <main class="main-wrapper">
+      <section class="home-hero_wrap">
+        <div data-poster-url="../videos/pist_homepage_video-poster.jpg"
+          data-video-urls="../videos/pist_homepage_video.mp4,../videos/pist_homepage_video.webm" data-autoplay="true"
+          data-loop="true" data-wf-ignore="true" class="bg-video_element w-background-video w-background-video-atom">
+          <video id="644eedef-6a4e-ebbf-7383-e99aeefa71ec-video" autoplay="" loop=""
+            style="background-image:url(&quot;../videos/pist_homepage_video-poster.jpg&quot;)" muted="" playsinline=""
+            data-wf-ignore="true" data-object-fit="cover">
+            <source src="../videos/pist_homepage_video.mp4" data-wf-ignore="true" />
+            <source src="../videos/pist_homepage_video.webm" data-wf-ignore="true" />
+          </video></div>
+        <div class="g_bg-overlay_element"></div>
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="home-hero_layout">
+              <div class="padding-section is-top-bottom">
+                <div class="margin-bottom margin-small">
+                  <div class="button-group is-centered">
+                    <div class="members-upheading_element"><img src="../img/avatar4.jpg" alt=""
+                        class="members-upheading_image" /><img src="../img/avatar1.jpg" alt=""
+                        class="members-upheading_image is-moved" /><img src="../img/avatar3.jpg" alt=""
+                        class="members-upheading_image is-moved" />
+                      <div class="margin-left margin-xsmall">
+                        <div class="text-size-small_mobile">İstanbul'un yaratıcı merkezi</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="heading-style-h1_display">PİST: Türkiye'de ilk paylaşımlı stüdyo</div>
+                <div class="text-change_wrap">
+                  <div class="text-change_text">müzik yapımcıları</div>
+                  <div class="text-change_text">DJ'ler</div>
+                  <div class="text-change_text">podcaster'lar</div>
+                  <div class="text-change_text">fotoğrafçılar</div>
+                  <div class="text-change_text">video yapımcıları</div>
+                  <div class="text-change_text">yaratıcı ekipler</div>
+                  <div class="text-change_text">sanatçılar</div>
+                  <div class="text-change_text">müzik yapımcıları</div>
+                  <div class="custom-code w-embed w-script">
+                    <script>
+                      document.addEventListener('DOMContentLoaded', function () {
+                        const texts = document.querySelectorAll('.text-change_text');
+                        let currentIndex = 0;
+                        const height = 1.125; // Height of the text in em
+                        const transitionDuration = 600; // 0.5 seconds for the transition
+                        const visibilityDuration = 1200; // 1.2 seconds for each text being visible
+
+                        function animateText() {
+                          currentIndex++;
+                          // If we reach the last element (which is the same as the first), reset after animation
+                          if (currentIndex === texts.length) {
+                            texts.forEach(text => {
+                              text.style.transition = 'none'; // Disable transition for instant reset
+                              text.style.transform = 'translateY(0)';
+                            });
+                            currentIndex = 1; // Reset to the first text (index 1)
+                            // Wait a tiny bit before applying the transition again
+                            setTimeout(() => {
+                              texts.forEach((text, index) => {
+                                text.style.transition = `transform ${transitionDuration}ms ease-in-out`;
+                                text.style.transform = `translateY(-${height * currentIndex}em)`;
+                              });
+                            }, 50);
+                          } else {
+                            texts.forEach((text, index) => {
+                              text.style.transition = `transform ${transitionDuration}ms ease-in-out`;
+                              text.style.transform = `translateY(-${height * currentIndex}em)`;
+                            });
+                          }
+                        }
+
+                        // Set interval to change the text every 1.2 + 0.5 seconds (visibility + transition)
+                        setInterval(animateText, visibilityDuration + transitionDuration);
+                      });
+                    </script>
+                  </div>
+                </div>
+                <div class="margin-top margin-xsmall">
+                  <div class="align-center max-width-medium">
+                    <p class="text-size-xlarge">Projelerin ve hayallerin yükselişe geçmesi için buradayız. Her başarılı yolculuk, sağlam bir PİST'te başlar.</p>
+                  </div>
+                </div>
+                <div class="margin-top margin-large">
+                    <div class="button-group is-2-buttons">
+                    <div data-wf--button-primary-typeform--variant="fullsize" class="button_wrap"><a href="https://docs.google.com/forms/d/e/1FAIpQLSe8KbFNqbtA_p-4tk3E0kO6QqzVrdWQ0IFoDJtxOiZVZKQ-iw/viewform?embedded=true" id="apply-open"
+                        class="button w-variant-2a327968-c7e4-f546-2f21-f1f69ae89940">
+                        <div class="button_container">
+                          <div class="button_text">İletişime Geç</div>
+                          <div class="button_text_absolute">İletişime Geç</div>
+                        </div>
+                      </a></div><a href="../pages/location-pist.html" class="button w-variant-2a327968-c7e4-f546-2f21-f1f69ae89940 w-inline-block">
+                      <div class="button_container">
+                        <div class="button_text">Stüdyoyu Gez</div>
+                        <div class="button_text_absolute">Stüdyoyu Gez</div>
+                      </div>
+                    </a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section class="contact-info_wrap overflow-hidden">
         <div class="padding-global relative">
