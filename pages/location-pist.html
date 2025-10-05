@@ -47,8 +47,8 @@
   <div class="page-wrapper">
     <div class="global">
     </div>
-    <!-- Navbar -->
-    <link rel="stylesheet" href="../css/navbar.css">
+
+    <!-- Navbar (index.html ve events.html ile aynı yapı) -->
     <div class="navbar_wrap" role="banner" style="background-color: transparent;">
       <div class="navbar_bg_overlay"></div>
       <div class="padding-global">
@@ -56,98 +56,48 @@
           <div class="w-layout-grid navbar_layout">
             <div class="navbar_left_section">
               <a href="../index.html" class="navbar_logo_link">
-                <img src="../img/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" ></a>
+                <img src="../img/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" />
+              </a>
             </div>
+            <button class="navbar_menu_button" aria-expanded="false" aria-label="Menüyü aç">
+              <span class="menu-icon" aria-hidden="true"></span>
+            </button>
             <div class="navbar_menu_overlay"></div>
             <div class="navbar_menu_panel">
-              <div class="navbar_menu_overlay"></div>
-              <div class="navbar_menu_panel">
-                <nav role="navigation" class="navbar_menu">
-                  <div class="navbar_menu_content">
-                    <div class="navbar_menu_items" lang="tr">
-                      <a href="location-pist.html" class="navbar_link">
-                        <div lang="en">Stüdyo</div>
-                      </a>
-                      <a href="events.html" class="navbar_link">
-                        <div>Etkinlikler</div>
-                      </a>
-                      <a href="calendars.html" class="navbar_link">
-                        <div>Takvim</div>
-                      </a>
-                      <a href="services.html" class="navbar_link">
-                        <div>Hizmetlerimiz</div>
-                      </a>
-                      <a href="music-career-coaching.html" class="navbar_link">
-                        <div>Programlar</div>
-                      </a>
-                      <a href="who-we-are.html" class="navbar_link">
-                        <div>Biz Kimiz</div>
-                      </a>
-                      <a href="contact.html" class="navbar_link">
-                        <div>İletişim</div>
-                      </a> 
-                    </div>
+              <nav role="navigation" class="navbar_menu">
+                <div class="navbar_menu_content">
+                  <div class="navbar_menu_items" lang="tr">
+                    <a href="location-pist.html" class="navbar_link">
+                      <div lang="en">Stüdyo</div>
+                    </a>
+                    <a href="events.html" class="navbar_link">
+                      <div>Etkinlikler</div>
+                    </a>
+                    <a href="calendars.html" class="navbar_link">
+                      <div>Takvim</div>
+                    </a>
+                    <a href="services.html" class="navbar_link">
+                      <div>Hizmetlerimiz</div>
+                    </a>
+                    <a href="music-career-coaching.html" class="navbar_link">
+                      <div>Programlar</div>
+                    </a>
+                    <a href="who-we-are.html" class="navbar_link">
+                      <div>Biz Kimiz</div>
+                    </a>
+                    <a href="contact.html" class="navbar_link">
+                      <div>İletişim</div>
+                    </a>
                   </div>
-                </nav>
-              </div>
+                </div>
+              </nav>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-<br><br><br>
-      <section class="gallery_wrap overflow-hidden">
-        <div class="page-wrapper">
-            <div class="global"></div>
-            <!-- Navbar -->
-            <div class="navbar_wrap" role="banner" style="background-color: transparent;">
-              <div class="navbar_bg_overlay"></div>
-              <div class="padding-global">
-                <div class="w-layout-blockcontainer navbar_container w-container">
-                  <div class="w-layout-grid navbar_layout">
-                    <div class="navbar_left_section">
-                      <a href="../index.html" class="navbar_logo_link">
-                        <img src="../img/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" />
-                      </a>
-                    </div>
-                    <!-- Overlay and mobile menu panel -->
-                    <div class="navbar_menu_overlay"></div>
-                    <div class="navbar_menu_panel">
-                      <nav role="navigation" class="navbar_menu">
-                        <div class="navbar_menu_content">
-                          <div class="navbar_menu_items" lang="tr">
-                            <a href="location-pist.html" class="navbar_link">
-                              <div lang="en">Stüdyo</div>
-                            </a>
-                            <a href="events.html" class="navbar_link">
-                              <div>Etkinlikler</div>
-                            </a>
-                            <a href="calendars.html" class="navbar_link">
-                              <div>Takvim</div>
-                            </a>
-                            <a href="services.html" class="navbar_link">
-                              <div>Hizmetlerimiz</div>
-                            </a>
-                            <a href="music-career-coaching.html" class="navbar_link">
-                              <div>Programlar</div>
-                            </a>
-                            <a href="who-we-are.html" class="navbar_link">
-                              <div>Biz Kimiz</div>
-                            </a>
-                            <a href="contact.html" class="navbar_link">
-                              <div>İletişim</div>
-                            </a>
-                          </div>
-                        </div>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
+      <!-- Banner sonrası içerik devam ediyor -->
           <div class="custom-code w-embed w-script">
             <script>
               pageFunctions.addFunction('sliderGallery', function () {
@@ -842,42 +792,10 @@
     });
   </script>
 
-  <!-- Navbar color change on scroll -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navbar = document.querySelector('.navbar_wrap');
-
-      function handleScroll() {
-        if (window.scrollY > 16) {
-          // Apply the background color when scrolled more than 16px
-          navbar.style.backgroundColor = 'var(--theme--background)';
-        } else {
-          // Make it transparent when at the top
-          navbar.style.backgroundColor = 'transparent';
-        }
-      }
-
-      // Listen for scroll events
-      window.addEventListener('scroll', handleScroll);
-    });
-  </script><!-- Google Map API -->
+  <!-- Google Map API -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoSXxGRDZYVmEO7Ysd0TutT7KY9xBQKWU&callback=initMap"
     async defer></script>
-  <script>
-  // Simplified navbar functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    const navbar = document.querySelector('.navbar_wrap');
-    const menuButton = document.querySelector('.navbar_menu_button');
-    const menu = document.querySelector('.navbar_menu');
-    const menuClose = document.querySelector('.navbar_menu_close');
-    const body = document.body;
-    
-    // Scroll functionality
-    function handleScroll() {
-      navbar.classList.toggle('scrolled', window.scrollY > 50);
-    }
-    window.addEventListener('scroll', handleScroll);
-    
+  
     // Mobile menu functionality
     function toggleMenu() {
       const isOpen = menu.classList.toggle('w--open');
@@ -1071,16 +989,8 @@
         );
       });
 
-      // Navbar functionality
-      document.addEventListener('DOMContentLoaded', function() {
-        const navbar = document.querySelector('.navbar_wrap');
-        
-        // Scroll functionality
-        function handleScroll() {
-          navbar.classList.toggle('scrolled', window.scrollY > 50);
-        }
-        window.addEventListener('scroll', handleScroll);
-      });
+      <!-- Navbar işlevselliği için navbar.js eklendi -->
+      <script src="../js/navbar.js"></script>
     </script>
 </body>
 
