@@ -1,19 +1,24 @@
 /* Mobile menu overlay */
+/* Overlay sadece menü genişliğinde ve sağdan gelsin */
 .navbar_menu_overlay {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100vw;
+  right: 0;
   height: 100vh;
-  background: rgba(0,0,0,0.5);
+  width: 320px;
+  max-width: 90vw;
+  background: rgba(0,0,0,0.95);
   z-index: 1049;
   opacity: 0;
-  transition: opacity 0.2s;
+  transform: translateX(100%);
+  transition: opacity 0.2s, transform 0.3s cubic-bezier(.4,0,.2,1);
   display: none;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.18);
 }
 .navbar_menu_overlay.active {
   display: block;
   opacity: 1;
+  transform: translateX(0);
 }
 .navbar_wrap {
   position: fixed;
