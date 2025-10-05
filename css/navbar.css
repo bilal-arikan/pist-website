@@ -283,3 +283,16 @@
     gap: 1rem;
   }
 }
+
+@media (max-width: 768px) {
+  .navbar_menu_button {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 1050;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+}
