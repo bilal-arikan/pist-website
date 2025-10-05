@@ -50,7 +50,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 2000;
+  z-index: 1000;
   background-color: rgba(18, 18, 18, 0.85);
   backdrop-filter: blur(15px);
   transition: all 0.3s ease;
@@ -214,24 +214,11 @@
   }
 }
 
-/* Masaüstünde: overlay gizli, panel akışa katılsın (çocuklar görünsün) */
+/* Masaüstünde panel ve overlay gizli */
 @media screen and (min-width: 992px) {
-  /* Overlay kapalı kalsın */
+  .navbar_menu_panel,
   .navbar_menu_overlay {
     display: none !important;
-  }
-  /* Panel, çocukları normal akışta gösterecek şekilde davranmalı */
-  .navbar_menu_panel {
-    display: contents !important; /* panel kutusu kaldırılır, içindeki .navbar_menu görünür */
-    position: static;
-    height: auto;
-    width: auto;
-    max-width: none;
-    background: transparent;
-    box-shadow: none;
-    transform: none;
-    padding: 0;
-    gap: 0;
   }
   .navbar_menu {
     display: flex !important;

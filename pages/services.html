@@ -397,7 +397,7 @@
       border-radius: 12px;
       background: #f7f7f7;
       border: 1px solid #eee;
-      padding: 12px;
+      padding: 12px 0; /* yatay padding yok: sondaki boş alanı engelle */
       overflow-x: auto;
       overflow-y: hidden;
       /* height runtime'da JS ile ayarlanır */
@@ -420,6 +420,9 @@
       padding: 0 12px; /* sağ/sol nefes */
     }
 
+    /* Son sayfada sağ padding yok: ekstra kaymayı kes */
+    .pdf_page_wrap:last-child { padding-right: 0; }
+
     .pdf_page {
       position: relative;
       display: block;
@@ -431,6 +434,8 @@
       flex: 0 0 auto;
       /* Zoom yerine düz görünüm; gölge yumuşak geçer */
       transition: box-shadow 300ms ease;
+      /* Canvas keskinliği için tarayıcı ipuçları */
+      image-rendering: optimizeQuality;
     }
 
     /* Desktop: her ekranda iki sayfa yan yana */
@@ -625,9 +630,12 @@
 
       // Helper: fit width with device pixel ratio for crisp rendering
       function renderPage(page, containerHeight) {
-        const viewport = page.getViewport({ scale: 1 });
-        const scale = Math.max(0.1, containerHeight / viewport.height);
-        const scaledViewport = page.getViewport({ scale });
+  const viewport = page.getViewport({ scale: 1 });
+  const displayedScale = Math.max(0.1, containerHeight / viewport.height);
+  // Slightly over-sample to improve text sharpness
+  const oversample = 1.05;
+  const effectiveScale = displayedScale * oversample;
+  const scaledViewport = page.getViewport({ scale: effectiveScale });
 
         const wrap = document.createElement('div');
         wrap.className = 'pdf_page_wrap';
@@ -636,8 +644,19 @@
         canvas.className = 'pdf_page';
         const context = canvas.getContext('2d');
 
-  // Cap DPR on mobile to avoid huge canvases (prevents iOS memory pressure reloads)
-  const dpr = isMobile() ? 1 : (window.devicePixelRatio || 1);
+        // Adaptive DPR with safety caps: improve sharpness without memory spikes
+        const mobile = isMobile();
+        const nativeDpr = window.devicePixelRatio || 1;
+        let dpr = mobile ? Math.min(1.25, nativeDpr) : nativeDpr;
+        // Hard cap by total pixel area (~3.7MP mobile, ~8MP desktop)
+        const maxPixels = mobile ? 3_700_000 : 8_000_000;
+        const targetW = Math.floor(scaledViewport.width * dpr);
+        const targetH = Math.floor(scaledViewport.height * dpr);
+        let pixelArea = targetW * targetH;
+        if (pixelArea > maxPixels) {
+          const scaleDown = Math.sqrt(maxPixels / pixelArea);
+          dpr = dpr * scaleDown;
+        }
         canvas.width = Math.max(1, Math.floor(scaledViewport.width * dpr));
         canvas.height = Math.max(1, Math.floor(scaledViewport.height * dpr));
         canvas.style.width = `${Math.floor(scaledViewport.width)}px`;
@@ -678,10 +697,20 @@
             .then(page => renderPage(page, containerHeight))
             .then(node => {
               wrapRefs[pageIndex] = node;
-              // Insert in order
-              const before = wrapRefs.slice(0, pageIndex).filter(Boolean).length;
-              if (before === viewer.children.length) viewer.appendChild(node);
-              else viewer.insertBefore(node, viewer.children[before]);
+              // If a placeholder exists for this index, replace it
+              const ph = viewer.querySelector(`.pdf_page_wrap[data-page-index="${pageIndex}"]`);
+              if (ph && ph.parentNode === viewer) {
+                viewer.replaceChild(node, ph);
+                return;
+              }
+              // Otherwise insert in order by counting existing rendered wraps (not counter)
+              const children = Array.from(viewer.children).filter(el => el.classList && el.classList.contains('pdf_page_wrap'));
+              const before = children.filter((el) => {
+                const idx = el.dataset && el.dataset.pageIndex ? parseInt(el.dataset.pageIndex, 10) : children.indexOf(el);
+                return idx < pageIndex;
+              }).length;
+              if (before >= children.length) viewer.appendChild(node);
+              else viewer.insertBefore(node, children[before]);
             });
         }
 
@@ -694,15 +723,22 @@
           const io = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
               if (!entry.isIntersecting) return;
-              const idx = [...viewer.children].indexOf(entry.target);
+              let idx = -1;
+              if (entry.target.dataset && entry.target.dataset.pageIndex) {
+                idx = parseInt(entry.target.dataset.pageIndex, 10);
+              } else {
+                // fallback by order
+                const list = Array.from(viewer.querySelectorAll('.pdf_page_wrap'));
+                idx = list.indexOf(entry.target);
+              }
               if (idx >= 0 && idx < pdf.numPages) {
                 mountPage(idx).catch(()=>{});
               }
             });
           }, { root: viewer, rootMargin: '200px', threshold: 0.01 });
 
-          // Create placeholders for all pages to enable IO
-          for (let p = 0; p < pdf.numPages; p++) {
+          // Create placeholders for remaining pages to enable IO
+          for (let p = prerenderCount; p < pdf.numPages; p++) {
             if (wrapRefs[p]) {
               io.observe(wrapRefs[p]);
               continue;
@@ -711,9 +747,12 @@
             placeholder.className = 'pdf_page_wrap';
             placeholder.style.minWidth = '100%';
             placeholder.style.minHeight = containerHeight + 'px';
+            placeholder.dataset.pageIndex = String(p);
             viewer.appendChild(placeholder);
             io.observe(placeholder);
           }
+          // Son placeholder gözden kalktığında yeni node eklemeyelim
+          // IO mountPage çağırıp gerçek sayfayı yerleştirince placeholder yerini alır; sonunda fazla eleman kalmaz
         }).catch(err => { throw err; });
       }
 
