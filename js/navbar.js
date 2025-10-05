@@ -1,7 +1,8 @@
 // Navbar functionality
 document.addEventListener('DOMContentLoaded', function() {
   const navbar = document.querySelector('.navbar_wrap');
-  const menu = document.querySelector('.navbar_menu');
+  const menuPanel = document.querySelector('.navbar_menu_panel');
+  const menu = menuPanel ? menuPanel.querySelector('.navbar_menu') : document.querySelector('.navbar_menu');
   let menuButton = document.querySelector('.navbar_menu_button');
 
   // Create a menu button if it doesn't exist
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   function openMenu() {
-    menu?.classList.add('w--open');
+    menuPanel?.classList.add('active');
     menuButton.classList.add('is-active');
     menuButton.setAttribute('aria-expanded', 'true');
     document.documentElement.style.overflow = 'hidden';
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function closeMenu() {
-    menu?.classList.remove('w--open');
+    menuPanel?.classList.remove('active');
     menuButton.classList.remove('is-active');
     menuButton.setAttribute('aria-expanded', 'false');
     document.documentElement.style.overflow = '';
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Tek bir toggle fonksiyonu ile menü ve overlay aç/kapa
   function toggleMenu() {
-    if (menu.classList.contains('w--open')) {
+    if (menuPanel && menuPanel.classList.contains('active')) {
       closeMenu();
     } else {
       openMenu();
