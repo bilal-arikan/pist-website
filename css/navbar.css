@@ -138,14 +138,16 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: transparent;
+    width: 40px;
+    height: 40px;
+    background: rgba(0,0,0,0.45); /* light zeminlerde ikon görünür olsun */
     border: none;
     cursor: pointer;
     margin-left: auto;
     position: relative;
     z-index: 1100;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
   }
 
   .navbar_menu_button .menu-icon {

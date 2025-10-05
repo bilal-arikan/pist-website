@@ -42,22 +42,6 @@
   <link rel="stylesheet" href="../css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../css/flickity.min.css" />
   
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar_wrap');
-        if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
-          navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.85)';
-          navbar.style.backdropFilter = 'blur(15px)';
-        } else {
-          navbar.classList.remove('scrolled');
-          navbar.style.backgroundColor = 'transparent';
-          navbar.style.backdropFilter = 'none';
-        }
-      });
-    });
-  </script>
 
 
 </head>
@@ -67,23 +51,7 @@
     <div class="global">
     </div>
     
-    <script>
-      // Navbar scroll effect
-      document.addEventListener('DOMContentLoaded', function() {
-        const navbar = document.querySelector('.navbar_wrap');
-        
-        function handleScroll() {
-          if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-          } else {
-            navbar.classList.remove('scrolled');
-          }
-        }
-        
-        window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial check
-      });
-    </script>
+    
 
     <!-- Navbar -->
     <div class="navbar_wrap" role="banner" style="background-color: transparent;">
@@ -386,6 +354,7 @@
   <script src="../js/flickity.pkgd.min.js"></script>
   <script src="../js/swiper-bundle.min.js"></script>
   <script src="../js/embed.js"></script>
+  <script src="../js/navbar.js"></script>
   <!-- script src="//embed.typeform.com/next/embed.js"></script-->
 
   <script>
