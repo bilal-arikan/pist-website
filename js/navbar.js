@@ -15,6 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
     left && left.insertAdjacentElement('afterend', menuButton);
   }
 
+  // Create overlay for mobile menu
+  let menuOverlay = document.querySelector('.navbar_menu_overlay');
+  if (!menuOverlay) {
+    menuOverlay = document.createElement('div');
+    menuOverlay.className = 'navbar_menu_overlay';
+    menuOverlay.style.display = 'none';
+    menuOverlay.style.position = 'fixed';
+    menuOverlay.style.top = '0';
+    menuOverlay.style.left = '0';
+    menuOverlay.style.width = '100vw';
+    menuOverlay.style.height = '100vh';
+    menuOverlay.style.background = 'rgba(0,0,0,0.5)';
+    menuOverlay.style.zIndex = '1049';
+    menuOverlay.style.transition = 'opacity 0.2s';
+    menuOverlay.style.opacity = '0';
+    document.body.appendChild(menuOverlay);
+  }
+
   function setScrollClass() {
     if (!navbar) return;
     navbar.classList.toggle('scrolled', window.scrollY > 50);
@@ -33,6 +51,10 @@ document.addEventListener('DOMContentLoaded', function() {
       navbar.style.backgroundColor = 'rgba(0,0,0,0.97)';
       navbar.style.backdropFilter = 'blur(15px)';
     }
+    if (menuOverlay) {
+      menuOverlay.style.display = 'block';
+      setTimeout(() => { menuOverlay.style.opacity = '1'; }, 10);
+    }
   }
 
   function closeMenu() {
@@ -43,6 +65,10 @@ document.addEventListener('DOMContentLoaded', function() {
     if (navbar) {
       navbar.style.backgroundColor = '';
       navbar.style.backdropFilter = '';
+    }
+    if (menuOverlay) {
+      menuOverlay.style.opacity = '0';
+      setTimeout(() => { menuOverlay.style.display = 'none'; }, 200);
     }
   }
 
@@ -59,10 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (target) closeMenu();
   });
 
-  // Close when clicking outside the menu
+  // Close when clicking outside the menu or on overlay
   document.addEventListener('click', function(e) {
     if (!menu || !menuButton) return;
     const isInside = menu.contains(e.target) || menuButton.contains(e.target) || document.querySelector('.navbar_left_section')?.contains(e.target);
+    if (menuOverlay && e.target === menuOverlay && menu.classList.contains('w--open')) {
+      closeMenu();
+      return;
+    }
     if (!isInside && menu.classList.contains('w--open')) closeMenu();
   });
 
