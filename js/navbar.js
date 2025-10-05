@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
     menuButton.setAttribute('aria-expanded', 'true');
     document.documentElement.style.overflow = 'hidden';
     if (navbar) {
-      navbar.style.backgroundColor = 'rgba(0,0,0,0.97)';
+      navbar.style.backgroundColor = 'rgba(170, 59, 127, 0.97)';
       navbar.style.backdropFilter = 'blur(15px)';
     }
     if (menuOverlay) {
