@@ -168,25 +168,47 @@
   .navbar_menu_button .menu-icon::before { top: -7px; }
   .navbar_menu_button .menu-icon::after { top: 7px; }
 
-  /* Hidden by default on mobile */
+
+  /* Sadece panel mobilde görünsün, klasik menü gizlensin */
+  .navbar_menu_panel {
+    display: flex;
+  }
   .navbar_menu {
-    position: fixed;
-    inset: 0 0 auto 0;
-    top: 64px;
-    left: 0;
-    right: 0;
-    background: rgba(0,0,0,0.95);
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 24px 16px;
-    gap: 18px;
-    z-index: 1050;
-    overflow-y: auto;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    position: static;
+    padding: 0;
+    gap: 0;
   }
-
-  .navbar_menu.w--open {
-    display: flex;
+  /* Masaüstünde panel ve overlay gizli */
+  @media screen and (min-width: 992px) {
+    .navbar_menu_panel,
+    .navbar_menu_overlay {
+      display: none !important;
+    }
+    .navbar_menu {
+      display: flex !important;
+      flex-direction: row;
+      position: static;
+      background: none;
+      box-shadow: none;
+      width: auto;
+      padding: 0;
+      gap: 0;
+    }
+    .navbar_menu_items {
+      flex-direction: row;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: flex-start;
+      width: auto;
+      max-width: none;
+      text-align: left;
+    }
   }
 
   .navbar_menu_items {
