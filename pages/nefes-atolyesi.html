@@ -12,12 +12,49 @@
   <link href="../css/footer.css" rel="stylesheet" type="text/css" />
   <link rel="shortcut icon" href="../img/pist_favicon.png" type="image/x-icon" />
   <style>
+  /* Smooth scroll for in-page anchors */
+  html { scroll-behavior: smooth; }
+  /* Ensure anchored sections stop nicely below navbar */
+  #detaylar { scroll-margin-top: 80px; }
     .hero_wrap.is-event {
       position: relative;
       min-height: 55vh;
       display: flex;
       align-items: center;
       overflow: hidden;
+    }
+    @media (min-width: 992px) {
+      .hero_wrap.is-event {
+        justify-content: center;
+      }
+      .hero_wrap.is-event .hero_content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+      }
+      .hero_wrap.is-event .container-large,
+      .hero_wrap.is-event .padding-section_header,
+      .hero_wrap.is-event .text-align-center,
+      .hero_wrap.is-event .align-center,
+      .hero_wrap.is-event .text-rich-text_page,
+      .hero_wrap.is-event .w-richtext {
+        width: 100%;
+        max-width: 700px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+        display: block;
+      }
+      .hero_wrap.is-event .button-group {
+        justify-content: center !important;
+        width: 100%;
+      }
+      /* Spacing between hero buttons */
+      .hero_wrap.is-event .button-group .button + .button { margin-left: 12px; }
     }
     .hero_bg {
       position: absolute; inset: 0; z-index: 0; opacity: .35; object-fit: cover; width: 100%; height: 100%;
@@ -59,6 +96,92 @@
       .event-detail_grid > div:last-child .margin-top,
       .event-detail_grid > div:last-child .button-group { display: flex; justify-content: center; }
     }
+
+    /* Desktop: force center-align for hero title, subtitle and CTA */
+    @media (min-width: 992px) {
+      .hero_wrap.is-event .text-align-center,
+      .hero_wrap.is-event .text-rich-text_page,
+      .hero_wrap.is-event .w-richtext { text-align: center !important; }
+
+      .hero_wrap.is-event .align-center,
+      .hero_wrap.is-event .text-rich-text_page > *,
+      .hero_wrap.is-event .w-richtext > * { margin-left: auto !important; margin-right: auto !important; }
+
+      .hero_wrap.is-event .button-group,
+      .hero_wrap.is-event .button-group.is-centered { display: flex !important; justify-content: center !important; }
+    }
+
+    /* Landing sections - scoped styles */
+    .lp_section { padding: 48px 0; }
+    .lp_section[data-theme="dark"] { background: #0b0b0b; color: #fff; }
+    .lp_section[data-theme="light"] { background: #fff; color: #111; }
+
+      /* PİST Hakkında refined layout */
+      .pist-about_wrap { max-width: 900px; margin: 0 auto; }
+      .pist-logo { width: 96px; height: auto; opacity: .95; margin: 0 auto 16px; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,.25)); }
+      .pist-about_lead { opacity: .92; }
+      
+      .about_detail_grid { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; text-align: left; }
+      @media (min-width: 992px){ .about_detail_grid { grid-template-columns: 1fr 1fr; gap: 24px; } }
+      .about_detail_card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px; }
+      .about_detail_card h3 { margin-top: 0; font-size: 1.05rem; }
+
+    .benefits_grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  .benefit_card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 18px; text-align: center; }
+    .lp_section[data-theme="light"] .benefit_card { background: #fafafa; border-color: #eee; }
+    @media (min-width: 992px) { .benefits_grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+    
+
+    .instructor_grid { display: grid; grid-template-columns: 1fr; gap: 24px; align-items: center; }
+    .instructor_img { width: 100%; max-width: 520px; border-radius: 14px; box-shadow: 0 10px 30px rgba(0,0,0,.12); display: block; }
+    @media (min-width: 992px) { .instructor_grid { grid-template-columns: 1fr 1.1fr; gap: 40px; } }
+
+    .program_flow h3 { margin-top: 0.75rem; }
+    .program_flow h4 { margin-top: 1.1rem; }
+
+    /* Better contrast for secondary button on light instructor section */
+    .instructor_section[data-theme="light"] .button.is-secondary {
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.45);
+      color: #111;
+    }
+    .instructor_section[data-theme="light"] .button.is-secondary .button_text { color: inherit; }
+    .instructor_section[data-theme="light"] .button.is-secondary:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .faq_list { max-width: 840px; margin: 0 auto; }
+    .faq_item { border-bottom: 1px solid rgba(0,0,0,.1); }
+    .faq_section[data-theme="light"] .faq_item { border-color: #e6e6e6; }
+    .faq_q { width: 100%; text-align: left; background: transparent; border: none; font-weight: 600; padding: 16px 0; cursor: pointer; }
+    .faq_a { display: none; padding: 0 0 14px; color: #444; }
+    .faq_item.is-open .faq_a { display: block; }
+    
+    /* Desktop centering for Program and FAQ sections */
+    @media (min-width: 992px) {
+      /* Program Akışı */
+      #program .program_flow {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      #program .program_flow ul {
+        list-style-position: inside;
+        padding-left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-block;
+        text-align: left; /* keep bullets readable inside a centered block */
+      }
+      /* SSS */
+      #sss .faq_list { text-align: center; }
+      #sss .faq_q { text-align: center; }
+      #sss .faq_a { text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -96,7 +219,7 @@
       </div>
     </div>
 
-    <main class="main-wrapper">
+  <main class="main-wrapper" id="top">
       <!-- Hero -->
       <section class="hero_wrap is-event">
         <img class="hero_bg" src="../img/nefes-beden.png" alt="Sesine Sağlık Atölyesi arkaplan" />
@@ -114,7 +237,10 @@
                   </div>
                   <div class="button-group is-centered margin-top margin-medium">
                     <a href="#" class="button js-buy-ticket" data-paytr="https://www.paytr.com/link/YxqoI0g">
-                      <div class="button_text">Bilet Al</div>
+                      <div class="button_text">Katıl</div>
+                    </a>
+                    <a href="#detaylar" class="button is-secondary">
+                      <div class="button_text">Detaylı Bilgi</div>
                     </a>
                   </div>
                 </div>
@@ -124,8 +250,8 @@
         </div>
       </section>
 
-      <!-- Details -->
-      <section data-theme="light">
+      <!-- Details (moved up) -->
+  <section data-theme="light" id="detaylar">
         <div class="padding-global">
           <div class="w-layout-blockcontainer container-large w-container">
             <div class="padding-section">
@@ -149,7 +275,7 @@
                   </div>
                   <div class="margin-top margin-medium">
                     <a href="#" class="button js-buy-ticket" data-paytr="https://www.paytr.com/link/YxqoI0g">
-                      <div class="button_text">Bilet Al</div>
+                      <div class="button_text">Katıl</div>
                     </a>
                   </div>
                 </div>
@@ -158,6 +284,189 @@
           </div>
         </div>
       </section>
+
+      <!-- Landing: Why join / benefits -->
+      <section class="lp_section" data-theme="dark">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section">
+              <div class="text-align-center margin-bottom margin-large">
+                <h2 data-animate="fade-in">Bu Atölye Kime Göre?</h2>
+                <p class="text-size-large" data-animate="fade-in">Sesini daha bilinçli kullanmak, sahnede güven kazanmak ve şarkılara gerçek bir anlam katmak isteyen herkes için.</p>
+              </div>
+              <div class="benefits_grid">
+                <div class="benefit_card" data-animate="fade-in">
+                  <h3>Doğru Nefes</h3>
+                  <p>Nefes–beden dengesini kur, sesine güç ve esneklik kazandır.</p>
+                </div>
+                <div class="benefit_card" data-animate="fade-in">
+                  <h3>Teknik + Yorum</h3>
+                  <p>Şan tekniğini duyguyla buluştur, şarkılara kendi hikâyeni kat.</p>
+                </div>
+                <div class="benefit_card" data-animate="fade-in">
+                  <h3>Sahne Güveni</h3>
+                  <p>Postür, ifade ve enerji yönetimiyle sahnede özgürleş.</p>
+                </div>
+              </div>
+              <div class="button-group is-centered margin-top margin-large">
+                <a href="#" class="button js-buy-ticket" data-paytr="https://www.paytr.com/link/YxqoI0g"><div class="button_text">Katıl</div></a>
+                <a href="#program" class="button is-secondary"><div class="button_text">Program Akışı</div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      
+
+      <!-- Landing: Program details -->
+      <section class="lp_section" data-theme="light" id="program">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section">
+              <h2 class="text-align-center" data-animate="fade-in">Program Akışı</h2>
+              <div class="program_flow w-richtext" data-animate="fade-in">
+                <h3>Şan Grup Dersi 1. Oturum</h3>
+                <h4>1. Oturum – A. Nefes ve Beden</h4>
+                <ul>
+                  <li>Doğru nefes nasıl alınır (4-7-8 tekniği uygulaması)</li>
+                  <li>Nefes ve beden ilişkisi</li>
+                  <li>Diyafram kası ve diyafram destekli nefes nedir</li>
+                  <li>Doğru nefesin önemi</li>
+                  <li>Beden, zihin ve ses ilişkisi</li>
+                </ul>
+                <h4>1. Oturum – B. Ses Eğitimi ve Şan Tekniği</h4>
+                <ul>
+                  <li>Ses nasıl oluşur</li>
+                  <li>Ses teli anatomisi, ses sağlığı nasıl korunur</li>
+                  <li>Ses eğitimi nedir</li>
+                  <li>Ses doğru tonda nasıl kullanılır</li>
+                  <li>Şan nedir</li>
+                  <li>Doğru teknikle şarkı söylemenin önemi</li>
+                </ul>
+                <h4>2. Oturum – Nefes ve Ses Egzersizleri</h4>
+                <ul>
+                  <li>Legato, staccato, oktav egzersizleri</li>
+                  <li>Nüanslar</li>
+                  <li>Sesin elastikiyeti ve diyafram hâkimiyeti</li>
+                </ul>
+                <h4>3. Oturum – Diksiyon ve Artikülasyon</h4>
+                <ul>
+                  <li>Eser üzerinde uygulamalı anlatım</li>
+                  <li>Şarkıların hikâyesi ve duygusu üzerine çalışma</li>
+                </ul>
+                <h4>4. Oturum – Müzikalite, Nüans ve Belcanto</h4>
+                <ul>
+                  <li>Sahne duruşu, postür ve tiyatral yaklaşım</li>
+                  <li>Sesi enstrüman olarak kullanma becerisi</li>
+                </ul>
+              </div>
+              <div class="button-group is-centered margin-top margin-large">
+                <a href="#" class="button js-buy-ticket" data-paytr="https://www.paytr.com/link/YxqoI0g"><div class="button_text">Katıl</div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Landing: Instructor bio (moved below Program) -->
+      <section class="lp_section instructor_section" data-theme="light" id="egitmen">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="instructor_grid">
+              <div class="instructor_media" data-animate="fade-in">
+                <img src="../img/elif-hoca.jpeg" alt="Eğitmen Elif — portre" class="instructor_img" />
+              </div>
+              <div class="instructor_content" data-animate="fade-in">
+                <h2>Elif Demirel Kimdir?</h2><br>
+                <div class="w-richtext">
+                  <p>Müziğe gitar ve piyano ile başlayan Elif, yıllar içinde yalnızca yorumlayan değil; anlatan bir müzisyen olma yolunu seçti. 2019’da Haliç Üniversitesi Konservatuvarı Opera ve Konser Şarkıcılığı bölümünden mezun oldu. Klasik vokal eğitiminden aldığı güçlü teknik altyapıyı; modern, sıcak ve çok yönlü bir ifade diliyle harmanladı.</p>
+                  <p>Batı müziği, armoni, şan ve solfej bilgisini Türk müziği repertuarlarıyla buluştururken; Burak Bilgili, Pietro Di Bianco ve Cüneyt Ünsal gibi isimlerle çalışarak sahne duruşu, stil ve yorumunu derinleştirdi.</p>
+                  <p>Elif için şarkı yazarlığı, duygunun ve hikâyenin en samimi hâlidir. Melodiler iç sesin dışa vurumuna, sözler gerçek hikâyelere dönüşür. Onun atölyelerinde samimiyet, açıklık ve keşif duygusu ön plandadır; hem bireysel hem de evrensel anlatılara yer açılır.</p>
+                </div>
+                <div class="button-group margin-top margin-medium">
+                  <a href="#program" class="button is-secondary"><div class="button_text">Programı Gör</div></a>
+                  <a href="#" class="button js-buy-ticket" data-paytr="https://www.paytr.com/link/YxqoI0g"><div class="button_text">Katıl</div></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Landing: PİST Hakkında (moved above SSS, expanded) -->
+      <section class="lp_section pist_about_section" data-theme="dark" id="pist-hakkinda">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section text-align-center pist-about_wrap">
+              <img src="../img/logo-main.png" alt="PİST Stüdyo" class="pist-logo" data-animate="fade-in" />
+              <h2 data-animate="fade-in">PİST Hakkında</h2>
+              <p class="text-size-large pist-about_lead" data-animate="fade-in">PİST Stüdyo, Maslak’ta müzik üretimi, sahne ve paylaşım için bir buluşma noktasıdır. Sanatçıları ve meraklıları bir araya getirir; atölyeler, etkinlikler ve topluluk buluşmaları düzenler.</p>
+
+              <div class="about_detail_grid">
+                <div class="about_detail_card" data-animate="fade-in">
+                  <h3>Ne Sunuyoruz?</h3>
+                  <ul>
+                    <li>Profesyonel kayıt ve prova imkânı</li>
+                    <li>Atölye ve seminerlerle sürekli gelişim</li>
+                    <li>Topluluk buluşmaları ve sahne deneyimi</li>
+                  </ul>
+                </div>
+                <div class="about_detail_card" data-animate="fade-in">
+                  <h3>Neredeyiz?</h3>
+                  <p>Maslak, İstanbul — ulaşımı kolay, merkezi bir konum.</p>
+                  <p><a href="https://maps.google.com/?q=P%C4%B0ST%20St%C3%BCdyo%20Maslak" target="_blank" rel="noopener" class="back-to-events-link">Haritada aç →</a></p>
+                </div>
+              </div>
+
+              
+
+              <div class="button-group is-centered margin-top margin-large" data-animate="fade-in">
+                <a href="#" class="button is-secondary js-open-info" data-url="who-we-are.html" data-title="Biz Kimiz"><div class="button_text">Biz Kimiz</div></a>
+                <a href="#" class="button js-open-info" data-url="contact.html" data-title="İletişim"><div class="button_text">İletişim</div></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Landing: FAQs -->
+      <section class="lp_section faq_section" data-theme="light" id="sss">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section">
+              <h2 class="text-align-center" data-animate="fade-in">Sıkça Sorulan Sorular</h2>
+              <div class="faq_list">
+                <div class="faq_item" data-accordion>
+                  <button class="faq_q" aria-expanded="false">Kimler katılabilir?</button>
+                  <div class="faq_a"><p>Sesini doğru kullanmak, yorum gücünü artırmak ve sahne güveni kazanmak isteyen herkes katılabilir. Ön bilgi zorunlu değildir.</p></div>
+                </div>
+                <div class="faq_item" data-accordion>
+                  <button class="faq_q" aria-expanded="false">Yer ve tarih nedir?</button>
+                  <div class="faq_a"><p>PİST Stüdyo, Maslak. Tarih: 11 Ekim 2025. Kapı açılış: 19:00.</p></div>
+                </div>
+                <div class="faq_item" data-accordion>
+                  <button class="faq_q" aria-expanded="false">Yanımda ne getirmeliyim?</button>
+                  <div class="faq_a"><p>Rahat kıyafetler, notlar için küçük bir defter/kalem ve su şişesi yeterli.</p></div>
+                </div>
+                <div class="faq_item" data-accordion>
+                  <button class="faq_q" aria-expanded="false">İptal/iade koşulları nelerdir?</button>
+                  <div class="faq_a"><p>Biletler devredilebilir. Etkinlikten 1 gün önceye kadar yapılan iptallerde geri ödeme yapılır. Tarih değişikliği veya iptal durumunda katılımcılara bilgilendirme veya geri ödeme hemen yapılır.</p></div>
+                </div>
+              </div>
+              <div class="text-align-center margin-top margin-medium">
+                <a href="#detaylar" class="back-to-events-link on-light" aria-label="Hakkında bölümüne dön">↑ Başa dön</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      
+
+      
     </main>
 
     <!-- Ticket Modal Overlay -->
@@ -175,6 +484,22 @@
           <div class="modal-fallback" id="ticket-fallback">
             <p>Ödeme penceresi açılmıyorsa lütfen yeni pencerede deneyin.</p>
             <a href="https://www.paytr.com/link/YxqoI0g" target="_blank" rel="noopener" class="button is-secondary">Yeni pencerede aç</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info Modal Overlay (for PİST Hakkında buttons) -->
+    <div class="modal-overlay" id="info-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle">
+      <div class="modal-dialog" role="document" tabindex="-1" style="max-width: 900px; height: 85vh;">
+        <div class="modal-header">
+          <div class="modal-title" id="infoModalTitle">Bilgi</div>
+          <button class="modal-close" type="button" aria-label="Kapat">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="iframe-wrap">
+            <div class="spinner" aria-hidden="true"></div>
+            <iframe src="" title="Bilgi penceresi" loading="lazy"></iframe>
           </div>
         </div>
       </div>
@@ -227,6 +552,17 @@
       gsap.registerPlugin(ScrollTrigger);
       gsap.utils.toArray('[data-animate="fade-in"]').forEach(el => {
         gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:.8, scrollTrigger:{trigger:el, start:'top 85%'}});
+      });
+
+      // Simple FAQ accordion (scoped to this page)
+      document.querySelectorAll('.faq_item [class~="faq_q"]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.closest('.faq_item');
+          const open = item.classList.contains('is-open');
+          document.querySelectorAll('.faq_item.is-open').forEach(i => { if (i!==item) i.classList.remove('is-open'); });
+          item.classList.toggle('is-open', !open);
+          btn.setAttribute('aria-expanded', String(!open));
+        });
       });
     });
   </script>
@@ -289,6 +625,56 @@
       document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
 
       // Hide spinner when iframe loads (even if cross-origin)
+      if (iframe) iframe.addEventListener('load', ()=>{ if (spinner) spinner.style.display = 'none'; });
+    })();
+  </script>
+  <script>
+    // Info modal overlay for PİST Hakkında buttons
+    (function(){
+      const modal = document.getElementById('info-modal');
+      const dialog = modal ? modal.querySelector('.modal-dialog') : null;
+      const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+      const iframe = modal ? modal.querySelector('iframe') : null;
+      const spinner = modal ? modal.querySelector('.spinner') : null;
+      const titleEl = modal ? modal.querySelector('#infoModalTitle') : null;
+      const triggers = document.querySelectorAll('a.js-open-info');
+      let lastFocus = null;
+
+      function openModal(url, title){
+        if(!modal || !iframe || !url) return;
+        lastFocus = document.activeElement;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        if (spinner) spinner.style.display = 'grid';
+        if (titleEl && title) titleEl.textContent = title;
+        iframe.src = url;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        if (closeBtn) closeBtn.focus({preventScroll:true});
+      }
+
+      function closeModal(){
+        if(!modal || !iframe) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        iframe.src = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') {
+          lastFocus.focus({preventScroll:true});
+        }
+      }
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+          openModal(btn.getAttribute('data-url'), btn.getAttribute('data-title'));
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+      if (modal) modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
       if (iframe) iframe.addEventListener('load', ()=>{ if (spinner) spinner.style.display = 'none'; });
     })();
   </script>

@@ -39,6 +39,18 @@
       .event-detail_grid > div:last-child .margin-top,
       .event-detail_grid > div:last-child .button-group { display: flex; justify-content: center; }
     }
+    /* Desktop: force center-align for hero title, subtitle and CTA */
+    @media (min-width: 992px) {
+      .hero_wrap.is-event { justify-content: center; }
+      .hero_wrap.is-event .hero_content { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center; }
+      .hero_wrap.is-event .container-large,
+      .hero_wrap.is-event .padding-section_header,
+      .hero_wrap.is-event .text-align-center,
+      .hero_wrap.is-event .align-center,
+      .hero_wrap.is-event .text-rich-text_page,
+      .hero_wrap.is-event .w-richtext { width: 100%; max-width: 700px; margin-left: auto !important; margin-right: auto !important; text-align: center !important; display: block; }
+      .hero_wrap.is-event .button-group { justify-content: center !important; width: 100%; }
+    }
   </style>
 </head>
 <body>
