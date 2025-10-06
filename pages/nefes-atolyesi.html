@@ -16,6 +16,7 @@
   html { scroll-behavior: smooth; }
   /* Ensure anchored sections stop nicely below navbar */
   #detaylar { scroll-margin-top: 80px; }
+  #hakkinda { scroll-margin-top: 120px; }
     .hero_wrap.is-event {
       position: relative;
       min-height: 55vh;
@@ -156,8 +157,8 @@
     .faq_list { max-width: 840px; margin: 0 auto; }
     .faq_item { border-bottom: 1px solid rgba(0,0,0,.1); }
     .faq_section[data-theme="light"] .faq_item { border-color: #e6e6e6; }
-    .faq_q { width: 100%; text-align: left; background: transparent; border: none; font-weight: 600; padding: 16px 0; cursor: pointer; }
-    .faq_a { display: none; padding: 0 0 14px; color: #444; }
+  .faq_q { width: 100%; text-align: center; background: transparent; border: none; font-weight: 600; padding: 16px 0; cursor: pointer; }
+  .faq_a { display: none; padding: 0 0 14px; color: #444; text-align: center; }
     .faq_item.is-open .faq_a { display: block; }
     
     /* Desktop centering for Program and FAQ sections */
@@ -182,6 +183,14 @@
       #sss .faq_q { text-align: center; }
       #sss .faq_a { text-align: center; }
     }
+
+    /* Bonus section: center grid and limit width */
+    .bonus_section .benefits_grid { max-width: 900px; margin-left: auto; margin-right: auto; grid-template-columns: 1fr; }
+    @media (min-width: 768px) { .bonus_section .benefits_grid { grid-template-columns: repeat(2, 1fr); gap: 20px; } }
+
+    /* Reduce vertical gap between Bonus and SSS */
+    .bonus_section .padding-section { padding-bottom: 24px; }
+    .faq_section .padding-section { padding-top: 24px; }
   </style>
 </head>
 <body>
@@ -264,12 +273,12 @@
                 </div>
                 <div>
                   <div data-animate="fade-in" class="text-rich-text w-richtext">
-                    <h2>Hakkında</h2>
+                    <h2 id="hakkinda">Hakkında</h2>
                     <p>Vokal, kelimeleri şarkıya dönüştürmekten daha fazlasıdır; o, ruhun bir ifadesidir. Bu atölyede, sesinizin en derin kaynaklarına inerek bir yolculuğa çıkacaksınız. Doğru nefesle sesinizi beslemeyi, bedeninizin sahnedeki duruşunu ve enerjisini en verimli şekilde kullanmayı ve söylediğiniz her sözün ardındaki anlamı dinleyiciye samimiyetle ulaştırmayı deneyimleyeceksiniz.</p>
                     <ul>
-                      <li>Tarih: 11 Ekim 2025</li>
+                      <li>Tarih: 11 Ekim 2025 Cumartesi</li>
                       <li>Yer: PİST Stüdyo, Maslak</li>
-                      <li>Kapı Açılış: 19:00</li>
+                      <li>Süre: 16:00-20:00 (4 saat)</li>
                     </ul>
                     <p>Sesinizle kendi hikayenizi yazmak için bize katılın.</p>
                   </div>
@@ -432,6 +441,33 @@
         </div>
       </section>
 
+      <!-- Landing: Bonuslar -->
+      <section class="lp_section bonus_section" data-theme="light" id="bonus">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section">
+              <div class="text-align-center margin-bottom margin-large">
+                <h2 data-animate="fade-in">Bonuslar</h2>
+                <p class="text-size-large" data-animate="fade-in">Bu atölyeye özel iki güzel jestimiz var.</p>
+              </div>
+              <div class="benefits_grid">
+                <div class="benefit_card" data-animate="fade-in">
+                  <h3>%20 İndirim Kuponu</h3>
+                  <p>Tüm katılımcılara PİST Hizmetleri için %20 indirim kuponu veriyoruz.</p>
+                </div>
+                <div class="benefit_card" data-animate="fade-in">
+                  <h3>1 Ay Ücretsiz Koro</h3>
+                  <p>Koromuza dahil olmak isteyenlere 1 ay ücretsiz koro eğitimi hediye ediyoruz.</p>
+                </div>
+              </div>
+              <div class="text-align-center margin-top margin-large">
+                <small class="text-style-muted" style="opacity:.8;">Detaylar ve kullanım koşulları atölye günü paylaşılacaktır.</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Landing: FAQs -->
       <section class="lp_section faq_section" data-theme="light" id="sss">
         <div class="padding-global">
@@ -457,7 +493,7 @@
                 </div>
               </div>
               <div class="text-align-center margin-top margin-medium">
-                <a href="#detaylar" class="back-to-events-link on-light" aria-label="Hakkında bölümüne dön">↑ Başa dön</a>
+                <a href="#hakkinda" class="back-to-events-link on-light" aria-label="Hakkında bölümüne dön">↑ Başa dön</a>
               </div>
             </div>
           </div>
@@ -550,9 +586,36 @@
       document.querySelectorAll('.current-year').forEach(el => el.textContent = currentYear);
 
       gsap.registerPlugin(ScrollTrigger);
+      // Generic fade-in, but skip Bonus section to avoid double-animating
       gsap.utils.toArray('[data-animate="fade-in"]').forEach(el => {
+        if (el.closest('.bonus_section')) return;
         gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:.8, scrollTrigger:{trigger:el, start:'top 85%'}});
       });
+
+      // Bonus section grouped animations (heading + cards with stagger)
+      const bonusSection = document.querySelector('.bonus_section');
+      if (bonusSection) {
+        const headingEls = bonusSection.querySelectorAll('h2, .text-size-large');
+        if (headingEls.length) {
+          gsap.from(headingEls, {
+            opacity: 0,
+            y: 24,
+            duration: .7,
+            stagger: .1,
+            scrollTrigger: { trigger: bonusSection, start: 'top 85%' }
+          });
+        }
+        const cards = bonusSection.querySelectorAll('.benefit_card');
+        if (cards.length) {
+          gsap.from(cards, {
+            opacity: 0,
+            y: 22,
+            duration: .7,
+            stagger: .15,
+            scrollTrigger: { trigger: bonusSection, start: 'top 80%' }
+          });
+        }
+      }
 
       // Simple FAQ accordion (scoped to this page)
       document.querySelectorAll('.faq_item [class~="faq_q"]').forEach(btn => {
