@@ -193,10 +193,12 @@
     .faq_section .padding-section { padding-top: 24px; }
 
     /* Pre-registration form styles */
-    .form_grid{display:grid;grid-template-columns:1fr;gap:12px}
-    .form_field{display:flex;flex-direction:column;gap:6px}
-    .form_field label{font-size:.9rem;opacity:.85}
-    .form_field input{appearance:none;border:1px solid #ccc;border-radius:10px;padding:10px 12px;font-size:1rem}
+  .form_grid{display:grid;grid-template-columns:1fr;gap:12px}
+  .form_field{display:flex;flex-direction:column;gap:6px}
+  .form_field label{font-size:.9rem;opacity:.85}
+  .form_field input{appearance:none;border:1px solid #bbb;border-radius:10px;padding:10px 12px;font-size:1rem;color:#111;background:#fff;}
+  .form_field input::placeholder{color:#6b6b6b;opacity:1}
+  .form_field input:focus{outline:none;border-color:#111;box-shadow:0 0 0 3px rgba(17,17,17,.08)}
     .modal-dialog .step{display:none}
     .modal-dialog .step.is-active{display:block}
     .note-muted{font-size:.9rem;opacity:.8}
