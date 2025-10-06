@@ -191,6 +191,15 @@
     /* Reduce vertical gap between Bonus and SSS */
     .bonus_section .padding-section { padding-bottom: 24px; }
     .faq_section .padding-section { padding-top: 24px; }
+
+    /* Pre-registration form styles */
+    .form_grid{display:grid;grid-template-columns:1fr;gap:12px}
+    .form_field{display:flex;flex-direction:column;gap:6px}
+    .form_field label{font-size:.9rem;opacity:.85}
+    .form_field input{appearance:none;border:1px solid #ccc;border-radius:10px;padding:10px 12px;font-size:1rem}
+    .modal-dialog .step{display:none}
+    .modal-dialog .step.is-active{display:block}
+    .note-muted{font-size:.9rem;opacity:.8}
   </style>
 </head>
 <body>
@@ -505,19 +514,64 @@
       
     </main>
 
-    <!-- Ticket Modal Overlay -->
-    <div class="modal-overlay" id="ticket-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ticketModalTitle">
+    <!-- Pre-Registration Modal Overlay -->
+    <div class="modal-overlay" id="prereg-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="preregTitle">
+      <div class="modal-dialog" role="document" tabindex="-1" style="max-width: 720px; height: auto; max-height: 85vh;">
+        <div class="modal-header">
+          <div class="modal-title" id="preregTitle">Ön kayıt formunu doldur</div>
+          <button class="modal-close" type="button" aria-label="Kapat">×</button>
+        </div>
+        <div class="modal-body" style="padding:16px;">
+          <!-- Step 1: Form -->
+          <div class="step step-form is-active">
+            <form id="prereg-form">
+              <div class="form_grid">
+                <div class="form_field">
+                  <label for="prereg-name">İsim Soyisim</label>
+                  <input id="prereg-name" name="name" type="text" required placeholder="Adınız Soyadınız" />
+                </div>
+                <div class="form_field">
+                  <label for="prereg-email">E-posta</label>
+                  <input id="prereg-email" name="email" type="email" required placeholder="ornek@mail.com" />
+                </div>
+                <div class="form_field">
+                  <label for="prereg-phone">Cep Telefonu</label>
+                  <input id="prereg-phone" name="phone" type="tel" required placeholder="05xx xxx xx xx" />
+                </div>
+              </div>
+              <div class="button-group margin-top margin-medium">
+                <button type="submit" class="button"><div class="button_text">Gönder</div></button>
+              </div>
+              <p class="note-muted margin-top margin-small">Bilgileriniz yalnızca etkinlik iletişimi için kullanılacaktır.</p>
+            </form>
+          </div>
+          <!-- Step 2: Confirmation -->
+          <div class="step step-confirm">
+            <div class="w-richtext">
+              <p>Hemen ödeme yapmak ve yerinizi ayırtmak için aşağıdaki <strong>Ödeme Yap</strong> butonuna tıklayın. Kontenjan <strong><span id="participant-count">0</span>/20</strong>'dir.</p>
+              <p>Ödeme iade garantisi vardır. İptal durumunda iletişim numaralarımızdan bizimle iletişime geçerek geri ödeme alabilirsiniz.</p>
+            </div>
+            <div class="button-group margin-top margin-medium">
+              <a href="#" class="button js-open-payment" data-paytr="https://www.paytr.com/link/YxqoI0g"><div class="button_text">Ödeme Yap</div></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Modal Overlay (iframe) -->
+    <div class="modal-overlay" id="payment-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
       <div class="modal-dialog" role="document" tabindex="-1">
         <div class="modal-header">
-          <div class="modal-title" id="ticketModalTitle">Bilet Satın Al</div>
+          <div class="modal-title" id="paymentModalTitle">Ödeme</div>
           <button class="modal-close" type="button" aria-label="Kapat">×</button>
         </div>
         <div class="modal-body">
           <div class="iframe-wrap">
             <div class="spinner" aria-hidden="true"></div>
-            <iframe src="" title="Bilet ödeme penceresi" loading="lazy"></iframe>
+            <iframe src="" title="Ödeme penceresi" loading="lazy"></iframe>
           </div>
-          <div class="modal-fallback" id="ticket-fallback">
+          <div class="modal-fallback" id="payment-fallback">
             <p>Ödeme penceresi açılmıyorsa lütfen yeni pencerede deneyin.</p>
             <a href="https://www.paytr.com/link/YxqoI0g" target="_blank" rel="noopener" class="button is-secondary">Yeni pencerede aç</a>
           </div>
@@ -630,65 +684,83 @@
     });
   </script>
   <script>
-    // Simple modal logic for PayTR overlay
+    // Pre-registration modal logic
     (function(){
-      const modal = document.getElementById('ticket-modal');
-      const dialog = modal ? modal.querySelector('.modal-dialog') : null;
+      const modal = document.getElementById('prereg-modal');
       const closeBtn = modal ? modal.querySelector('.modal-close') : null;
-      const iframe = modal ? modal.querySelector('iframe') : null;
-      const spinner = modal ? modal.querySelector('.spinner') : null;
-      const fallback = document.getElementById('ticket-fallback');
+      const formStep = modal ? modal.querySelector('.step-form') : null;
+      const confirmStep = modal ? modal.querySelector('.step-confirm') : null;
+      const form = document.getElementById('prereg-form');
+      const countEl = document.getElementById('participant-count');
       const triggers = document.querySelectorAll('a.js-buy-ticket');
       let lastFocus = null;
-      const PAYTR_URL = 'https://www.paytr.com/link/YxqoI0g';
 
-      function openModal(url){
-        if(!modal || !iframe) return;
-        lastFocus = document.activeElement;
-        // Lock scroll
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-        // Reset state
-        if (spinner) spinner.style.display = 'grid';
-        if (fallback) fallback.classList.remove('is-visible');
-        iframe.src = url || PAYTR_URL;
-        modal.classList.add('is-open');
-        modal.setAttribute('aria-hidden','false');
-        // Focus close for accessibility
-        if (closeBtn) closeBtn.focus({preventScroll:true});
-        // Fallback timeout if iframe blocked
-        setTimeout(()=>{ if (fallback) fallback.classList.add('is-visible'); }, 6000);
+      const STORAGE_KEY = 'pist_katilimcilar_nefes';
+      function getList(){
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); } catch(e){ return []; }
+      }
+      function setList(arr){
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(arr)); } catch(e){}
+      }
+      function addParticipant(entry){
+        const list = getList();
+        list.push(entry);
+        setList(list);
+        return list.length;
+      }
+      function updateCount(){
+        const c = getList().length;
+        if (countEl) countEl.textContent = String(c);
       }
 
+      function openModal(){
+        if(!modal) return;
+        lastFocus = document.activeElement;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        // reset to step 1
+        formStep?.classList.add('is-active');
+        confirmStep?.classList.remove('is-active');
+        modal.querySelector('#prereg-name')?.focus({preventScroll:true});
+        updateCount();
+      }
       function closeModal(){
-        if(!modal || !iframe) return;
+        if(!modal) return;
         modal.classList.remove('is-open');
         modal.setAttribute('aria-hidden','true');
-        iframe.src = '';
-        // Unlock scroll
         document.documentElement.style.overflow = '';
         document.body.style.overflow = '';
-        if (lastFocus && typeof lastFocus.focus === 'function') {
-          lastFocus.focus({preventScroll:true});
-        }
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({preventScroll:true});
       }
 
       // Wire triggers
       triggers.forEach(btn => {
-        btn.addEventListener('click', (e)=>{
-          e.preventDefault();
-          const url = btn.getAttribute('data-paytr') || PAYTR_URL;
-          openModal(url);
-        });
+        btn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); });
+      });
+
+      // Form submit
+      form?.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = form.querySelector('#prereg-name')?.value?.trim();
+        const email = form.querySelector('#prereg-email')?.value?.trim();
+        const phone = form.querySelector('#prereg-phone')?.value?.trim();
+        if (!name || !email || !phone) return;
+        const entry = { name, email, phone, ts: Date.now() };
+        addParticipant(entry);
+        updateCount();
+        // go to step 2
+        formStep?.classList.remove('is-active');
+        confirmStep?.classList.add('is-active');
+        // focus payment button
+        modal.querySelector('.step-confirm .button')?.focus({preventScroll:true});
       });
 
       // Close interactions
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
       if (modal) modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
       document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
-
-      // Hide spinner when iframe loads (even if cross-origin)
-      if (iframe) iframe.addEventListener('load', ()=>{ if (spinner) spinner.style.display = 'none'; });
     })();
   </script>
   <script>
@@ -738,6 +810,56 @@
       if (closeBtn) closeBtn.addEventListener('click', closeModal);
       if (modal) modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
       document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
+      if (iframe) iframe.addEventListener('load', ()=>{ if (spinner) spinner.style.display = 'none'; });
+    })();
+  </script>
+  <script>
+    // Payment modal overlay logic
+    (function(){
+      const modal = document.getElementById('payment-modal');
+      const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+      const iframe = modal ? modal.querySelector('iframe') : null;
+      const spinner = modal ? modal.querySelector('.spinner') : null;
+      const fallback = document.getElementById('payment-fallback');
+      const triggers = document.querySelectorAll('a.js-open-payment');
+      let lastFocus = null;
+      const PAYTR_URL = 'https://www.paytr.com/link/YxqoI0g';
+
+      function openPayment(url){
+        if(!modal || !iframe) return;
+        lastFocus = document.activeElement;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        if (spinner) spinner.style.display = 'grid';
+        if (fallback) fallback.classList.remove('is-visible');
+        iframe.src = url || PAYTR_URL;
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        if (closeBtn) closeBtn.focus({preventScroll:true});
+        setTimeout(()=>{ if (fallback) fallback.classList.add('is-visible'); }, 6000);
+      }
+
+      function closePayment(){
+        if(!modal || !iframe) return;
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        iframe.src = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({preventScroll:true});
+      }
+
+      triggers.forEach(btn => {
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+          const url = btn.getAttribute('data-paytr') || PAYTR_URL;
+          openPayment(url);
+        });
+      });
+
+      if (closeBtn) closeBtn.addEventListener('click', closePayment);
+      if (modal) modal.addEventListener('click', (e)=>{ if (e.target === modal) closePayment(); });
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closePayment(); });
       if (iframe) iframe.addEventListener('load', ()=>{ if (spinner) spinner.style.display = 'none'; });
     })();
   </script>
