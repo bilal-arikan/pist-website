@@ -65,9 +65,11 @@
         /* Hero Layout Base + Responsive Styles */
         .hero-layout {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
+            /* Single column so video sits below heading/description/CTAs */
+            grid-template-columns: 1fr;
             gap: 40px;
             align-items: center;
+            justify-items: center; /* center inner blocks */
         }
 
         .hero-media {
@@ -78,7 +80,7 @@
         /* Hero Layout Responsive Styles */
         @media (max-width: 1024px) {
             .hero-layout {
-                grid-template-columns: 1fr 350px !important;
+                grid-template-columns: 1fr !important;
                 gap: 40px !important;
             }
         }
@@ -91,7 +93,7 @@
             }
 
             .hero-media {
-                order: -1;
+                /* no reordering; keep video below text */
                 display: flex;
                 justify-content: center;
             }
@@ -780,8 +782,8 @@
                                                 <a href="services.html" class="navbar_link">
                                                     <div>Hizmetlerimiz</div>
                                                 </a>
-                                                <a href="music-career-coaching.html" class="navbar_link">
-                                                    <div>Programlar</div>
+                                                <a href="duyurular.html" class="navbar_link">
+                                                    <div>Duyurular</div>
                                                 </a>
                                                 <a href="who-we-are.html" class="navbar_link">
                                                     <div>Biz Kimiz</div>
@@ -793,6 +795,8 @@
                                         </div>
                                     </nav>
                                 </div>
+                                <!-- Mobile menu button (hamburger) -->
+                                <button class="navbar_menu_button" aria-label="Menüyü aç/kapat"><span class="menu-icon"></span></button>
                             </div>
                         </div>
                     </div>
@@ -1197,6 +1201,7 @@
     <script src="../js/flickity.pkgd.min.js"></script>
     <script src="../js/swiper-bundle.min.js"></script>
     <script src="../js/embed.js"></script>
+    <script src="../js/navbar.js"></script>
     <!-- <script src="//embed.typeform.com/next/embed.js"></script> -->
 
 
@@ -1267,54 +1272,7 @@
     </script><!-- Google Map API -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCoSXxGRDZYVmEO7Ysd0TutT7KY9xBQKWU&callback=initMap"
         async defer></script>
-    <script>
-        // Simplified navbar functionality
-        document.addEventListener('DOMContentLoaded', function () {
-            const navbar = document.querySelector('.navbar_wrap');
-            const menuButton = document.querySelector('.navbar_menu_button');
-            const menu = document.querySelector('.navbar_menu');
-            const menuClose = document.querySelector('.navbar_menu_close');
-            const body = document.body;
-
-            // Scroll functionality
-            function handleScroll() {
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
-            }
-            window.addEventListener('scroll', handleScroll);
-
-            // Mobile menu functionality
-            function toggleMenu() {
-                const isOpen = menu.classList.toggle('w--open');
-                body.style.overflow = isOpen ? 'hidden' : '';
-            }
-
-            function closeMenu() {
-                menu.classList.remove('w--open');
-                body.style.overflow = '';
-            }
-
-            // Event listeners
-            menuButton?.addEventListener('click', (e) => {
-                e.preventDefault();
-                toggleMenu();
-            });
-
-            menuClose?.addEventListener('click', (e) => {
-                e.preventDefault();
-                closeMenu();
-            });
-
-            // Close menu on link clicks
-            document.querySelectorAll('.navbar_link, .navbar_dropdown_link').forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-
-            // Close menu when clicking outside
-            menu?.addEventListener('click', (e) => {
-                if (e.target === menu) closeMenu();
-            });
-        });
-    </script>
+    <!-- inline simplified navbar script removed; using shared navbar.js instead -->
 
     <!-- Footer -->
     <section data-theme="dark" class="footer_section">
