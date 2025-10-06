@@ -93,15 +93,17 @@ document.addEventListener('DOMContentLoaded', function() {
   document.addEventListener('click', function(e) {
     if (!menu || !menuButton) return;
     const isInside = menu.contains(e.target) || menuButton.contains(e.target) || document.querySelector('.navbar_left_section')?.contains(e.target);
-    if (menuOverlay && e.target === menuOverlay && menu.classList.contains('w--open')) {
+    // If clicked directly on overlay while menu is open
+    if (menuOverlay && e.target === menuOverlay && (menuPanel && menuPanel.classList.contains('active'))) {
       closeMenu();
       return;
     }
-    if (!isInside && menu.classList.contains('w--open')) closeMenu();
+    // Clicked outside while menu is open
+    if (!isInside && (menuPanel && menuPanel.classList.contains('active'))) closeMenu();
   });
 
   // Close on escape
   document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape' && menu?.classList.contains('w--open')) closeMenu();
+    if (e.key === 'Escape' && (menuPanel && menuPanel.classList.contains('active'))) closeMenu();
   });
 });

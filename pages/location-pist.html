@@ -60,149 +60,42 @@
             </div>
             <div class="navbar_menu_overlay"></div>
             <div class="navbar_menu_panel">
-              <div class="navbar_menu_overlay"></div>
-              <div class="navbar_menu_panel">
-                <nav role="navigation" class="navbar_menu">
-                  <div class="navbar_menu_content">
-                    <div class="navbar_menu_items" lang="tr">
-                      <a href="location-pist.html" class="navbar_link">
-                        <div lang="en">Stüdyo</div>
-                      </a>
-                      <a href="events.html" class="navbar_link">
-                        <div>Etkinlikler</div>
-                      </a>
-                      <a href="calendars.html" class="navbar_link">
-                        <div>Takvim</div>
-                      </a>
-                      <a href="services.html" class="navbar_link">
-                        <div>Hizmetlerimiz</div>
-                      </a>
-                      <a href="music-career-coaching.html" class="navbar_link">
-                        <div>Programlar</div>
-                      </a>
-                      <a href="who-we-are.html" class="navbar_link">
-                        <div>Biz Kimiz</div>
-                      </a>
-                      <a href="contact.html" class="navbar_link">
-                        <div>İletişim</div>
-                      </a> 
-                    </div>
+              <nav role="navigation" class="navbar_menu">
+                <div class="navbar_menu_content">
+                  <div class="navbar_menu_items" lang="tr">
+                    <a href="location-pist.html" class="navbar_link">
+                      <div lang="en">Stüdyo</div>
+                    </a>
+                    <a href="events.html" class="navbar_link">
+                      <div>Etkinlikler</div>
+                    </a>
+                    <a href="calendars.html" class="navbar_link">
+                      <div>Takvim</div>
+                    </a>
+                    <a href="services.html" class="navbar_link">
+                      <div>Hizmetlerimiz</div>
+                    </a>
+                    <a href="music-career-coaching.html" class="navbar_link">
+                      <div>Programlar</div>
+                    </a>
+                    <a href="who-we-are.html" class="navbar_link">
+                      <div>Biz Kimiz</div>
+                    </a>
+                    <a href="contact.html" class="navbar_link">
+                      <div>İletişim</div>
+                    </a> 
                   </div>
-                </nav>
-              </div>
+                </div>
+              </nav>
             </div>
+            <button class="navbar_menu_button"><span class="menu-icon"></span></button>
           </div>
         </div>
       </div>
     </div>
-
-<br><br><br>
-      <section class="gallery_wrap overflow-hidden">
-        <div class="page-wrapper">
-            <div class="global"></div>
-            <!-- Navbar -->
-            <div class="navbar_wrap" role="banner" style="background-color: transparent;">
-              <div class="navbar_bg_overlay"></div>
-              <div class="padding-global">
-                <div class="w-layout-blockcontainer navbar_container w-container">
-                  <div class="w-layout-grid navbar_layout">
-                    <div class="navbar_left_section">
-                      <a href="../index.html" class="navbar_logo_link">
-                        <img src="../img/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" />
-                      </a>
-                    </div>
-                    <!-- Overlay and mobile menu panel -->
-                    <div class="navbar_menu_overlay"></div>
-                    <div class="navbar_menu_panel">
-                      <nav role="navigation" class="navbar_menu">
-                        <div class="navbar_menu_content">
-                          <div class="navbar_menu_items" lang="tr">
-                            <a href="location-pist.html" class="navbar_link">
-                              <div lang="en">Stüdyo</div>
-                            </a>
-                            <a href="events.html" class="navbar_link">
-                              <div>Etkinlikler</div>
-                            </a>
-                            <a href="calendars.html" class="navbar_link">
-                              <div>Takvim</div>
-                            </a>
-                            <a href="services.html" class="navbar_link">
-                              <div>Hizmetlerimiz</div>
-                            </a>
-                            <a href="music-career-coaching.html" class="navbar_link">
-                              <div>Programlar</div>
-                            </a>
-                            <a href="who-we-are.html" class="navbar_link">
-                              <div>Biz Kimiz</div>
-                            </a>
-                            <a href="contact.html" class="navbar_link">
-                              <div>İletişim</div>
-                            </a>
-                          </div>
-                        </div>
-                      </nav>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="custom-code w-embed w-script">
-            <script>
-              pageFunctions.addFunction('sliderGallery', function () {
-                $(".swiper-slider_gallery").each(function () {
-                  const galleryElement = $(this);
-                  const swiper = new Swiper(galleryElement.find(".swiper")[0], {
-                    speed: 1000,
-                    loop: true,
-                    slidesPerView: 'auto',
-                    spaceBetween: 40,
-                    autoplay: {
-                      delay: 3000,
-                      disableOnInteraction: false,
-                    },
-                    centeredSlides: true, // Centers slides properly
-                    centeredSlidesBounds: true, // Ensures slides stay within bounds when centering
-                    navigation: {
-                      nextEl: galleryElement.find(".swiper_arrow.is-next")[0],
-                      prevEl: galleryElement.find(".swiper_arrow.is-prev")[0],
-                    },
-                    breakpoints: {
-                      240: {
-                        spaceBetween: 20
-                      },
-                      320: {
-                        spaceBetween: 24
-                      },
-                      768: {
-                        spaceBetween: 32
-                      },
-                      1024: {
-                        spaceBetween: 40
-                      }
-                    }
-                  });
-  
-  // Google Maps initialization
-  window.initMap = function() {
-    const map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 15,
-      center: { lat: 41.1079, lng: 29.0196 }
-    });
     
-    new google.maps.Marker({
-      position: { lat: 41.1079, lng: 29.0196 },
-      map: map,
-      title: 'PİST Stüdyo'
-    });
-  };
-                });
-              });
-            </script>
-          </div>
-        </div>
-      </section>
+    
+<br><br><br>
       <section data-theme="light" class="explore-studios_wrap overflow-hidden">
         <div class="padding-global">
           <div class="w-layout-blockcontainer container-large w-container">
@@ -432,14 +325,12 @@
                         <li>
                           <img class="equipment-thumb" src="../img/prod1.jpg" alt="Konsol" />
                           <div><strong>KonsoI / I/O:</strong> SSL2 Ses Kartı</div>
-                        </li>
-                        <li>
-                          <img class="equipment-thumb" src="../img/prod2.jpg" alt="Monitörler" />
+                        </div>
                           <div><strong>Bilgisayar</strong> IMac 2015 Late 21,5' Intel I9 İşlemci, 32GB Ram</div>
                         </li>                        
                         <li>
                           <img class="equipment-thumb" src="../img/prod2.jpg" alt="Monitörler" />
-                          <div><strong>Monitörler:</strong> Focal Alpha 80, KRK Rokit (reference)</div>
+                        </div>
                         </li>
                         <li>
                           <img class="equipment-thumb" src="../img/prod3.jpg" alt="Mikrofonlar" />
@@ -668,6 +559,8 @@
               <div class="image-cta_wrap">
                 <div>
                   <div class="heading-style-h2">Projelerinizi</div>
+                  <!-- Shared navbar interactions -->
+                  <script src="../js/navbar.js"></script>
                   <div class="text-change_wrap is-h2">
                     <div class="text-change_text">yükseltin</div>
                     <div class="text-change_text">gerçekleştirin</div>

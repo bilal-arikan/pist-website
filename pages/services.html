@@ -112,7 +112,7 @@
         </div>
       </section>
 
-      <!-- PDF Viewer Section -->
+      <!-- PDF Viewer Section (original) -->
       <section class="section_pdf_viewer" style="margin-top: 40px;">
         <div class="padding-global">
           <div class="w-layout-blockcontainer container-large w-container">
@@ -266,7 +266,7 @@
                   </div>
                   <div class="margin-top margin-medium">
                     <div class="button_wrap">
-                      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe8KbFNqbtA_p-4tk3E0kO6QqzVrdWQ0IFoDJtxOiZVZKQ-iw/viewform?embedded=true" class="button apply-open-btn">
+                      <a href="contact.html" class="button">
                         <div class="button_container">
                           <div class="button_text">İletişime Geç</div>
                         </div>
@@ -331,9 +331,8 @@
   <script src="../js/ScrollTrigger.min.js"></script>
   <script src="../js/swiper-bundle.min.js"></script>
   <script src="../js/flickity.pkgd.min.js"></script>
-  
-  <!-- PDF.js (CDN, UMD v3 for compatibility) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" integrity="sha512-O5jW1tFNnWgWiiO0j97mejS6j8mKikaQ/Dz7H4Q7Ir3U2kSXJt2Tj3LQWkKnU+2Gd0lOQ5ZurRJtDX3cZj3p7Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- PDF.js (CDN) - original viewer dependency -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script>
     // Configure worker for PDF.js (CDN path)
     if (window['pdfjsLib']) {
@@ -386,142 +385,373 @@
       window.addEventListener('scroll', handleScroll);
     });
   </script>
+  <script src="../js/navbar.js"></script>
+
+  <script>
+    // Render local PDF into stacked canvases with scroll-snap (original implementation)
+    window.addEventListener('load', function () {
+      const viewer = document.getElementById('pdf-viewer');
+      if (!viewer) return;
+
+      const pdfUrl = '../docs/services.pdf';
+      let attemptedAltCdn = false;
+      let fallbackEngaged = false;
+      
+      // Helper: mobile check
+      function isMobile() { return window.innerWidth <= 767; }
+
+      function setMessage(text) { viewer.innerHTML = `<div class="pdf_message">${text}</div>`; }
+
+      function showEmbedFallback() {
+        fallbackEngaged = true;
+        viewer.innerHTML = '';
+        const wrapper = document.createElement('div');
+        wrapper.style.width = '100%';
+        wrapper.style.height = '80vh';
+        wrapper.style.borderRadius = '8px';
+        wrapper.style.overflow = 'hidden';
+        const iframe = document.createElement('iframe');
+        iframe.src = pdfUrl + '#toolbar=0&navpanes=0&scrollbar=0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = '0';
+        iframe.setAttribute('title', 'PDF');
+        wrapper.appendChild(iframe);
+        viewer.appendChild(wrapper);
+      }
+
+      // Helper: fit width with device pixel ratio for crisp rendering
+      function renderPage(page, containerHeight) {
+        const viewport = page.getViewport({ scale: 1 });
+        const displayedScale = Math.max(0.1, containerHeight / viewport.height);
+        const oversample = 1.05; // Slightly over-sample to improve text sharpness
+        const effectiveScale = displayedScale * oversample;
+        const scaledViewport = page.getViewport({ scale: effectiveScale });
+
+        const wrap = document.createElement('div');
+        wrap.className = 'pdf_page_wrap';
+
+        const canvas = document.createElement('canvas');
+        canvas.className = 'pdf_page';
+        const context = canvas.getContext('2d');
+
+        // Adaptive DPR with safety caps: improve sharpness without memory spikes
+        const mobile = isMobile();
+        const nativeDpr = window.devicePixelRatio || 1;
+        let dpr = mobile ? Math.min(1.25, nativeDpr) : nativeDpr;
+        const maxPixels = mobile ? 3700000 : 8000000; // ~3.7MP mobile, ~8MP desktop
+        const targetW = Math.floor(scaledViewport.width * dpr);
+        const targetH = Math.floor(scaledViewport.height * dpr);
+        let pixelArea = targetW * targetH;
+        if (pixelArea > maxPixels) {
+          const scaleDown = Math.sqrt(maxPixels / pixelArea);
+          dpr = dpr * scaleDown;
+        }
+        canvas.width = Math.max(1, Math.floor(scaledViewport.width * dpr));
+        canvas.height = Math.max(1, Math.floor(scaledViewport.height * dpr));
+        canvas.style.width = `${Math.floor(scaledViewport.width)}px`;
+        canvas.style.height = `${Math.floor(scaledViewport.height)}px`;
+        context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+        const renderContext = { canvasContext: context, viewport: scaledViewport };
+        return page.render(renderContext).promise.then(() => { wrap.appendChild(canvas); return wrap; });
+      }
+
+      function renderDocument(pdf) {
+        const mobile = isMobile();
+        const baseRatio = 0.85;
+        const ratio = mobile ? baseRatio * 0.8 : baseRatio;
+        const desired = Math.floor(window.innerHeight * ratio);
+        const containerHeight = Math.max(200, desired);
+        viewer.style.height = (containerHeight + 24) + 'px';
+        viewer.innerHTML = '';
+
+        const prerenderCount = mobile ? 2 : pdf.numPages;
+        const wrapRefs = new Array(pdf.numPages).fill(null);
+
+        function mountPage(pageIndex) {
+          if (wrapRefs[pageIndex]) return Promise.resolve();
+          const pageNum = pageIndex + 1;
+          return pdf.getPage(pageNum)
+            .then(page => renderPage(page, containerHeight))
+            .then(node => {
+              wrapRefs[pageIndex] = node;
+              const ph = viewer.querySelector(`.pdf_page_wrap[data-page-index="${pageIndex}"]`);
+              if (ph && ph.parentNode === viewer) { viewer.replaceChild(node, ph); return; }
+              const children = Array.from(viewer.children).filter(el => el.classList && el.classList.contains('pdf_page_wrap'));
+              const before = children.filter((el) => {
+                const idx = el.dataset && el.dataset.pageIndex ? parseInt(el.dataset.pageIndex, 10) : children.indexOf(el);
+                return idx < pageIndex;
+              }).length;
+              if (before >= children.length) viewer.appendChild(node); else viewer.insertBefore(node, children[before]);
+            });
+        }
+
+        const tasks = [];
+        for (let i = 0; i < prerenderCount; i++) tasks.push(mountPage(i));
+
+        return Promise.all(tasks).then(() => {
+          if (!mobile) return;
+          const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (!entry.isIntersecting) return;
+              let idx = -1;
+              if (entry.target.dataset && entry.target.dataset.pageIndex) { idx = parseInt(entry.target.dataset.pageIndex, 10); }
+              else { const list = Array.from(viewer.querySelectorAll('.pdf_page_wrap')); idx = list.indexOf(entry.target); }
+              if (idx >= 0 && idx < pdf.numPages) { mountPage(idx).catch(()=>{}); }
+            });
+          }, { root: viewer, rootMargin: '200px', threshold: 0.01 });
+
+          for (let p = prerenderCount; p < pdf.numPages; p++) {
+            if (wrapRefs[p]) { io.observe(wrapRefs[p]); continue; }
+            const placeholder = document.createElement('div');
+            placeholder.className = 'pdf_page_wrap';
+            placeholder.style.minWidth = '100%';
+            placeholder.style.minHeight = containerHeight + 'px';
+            placeholder.dataset.pageIndex = String(p);
+            viewer.appendChild(placeholder);
+            io.observe(placeholder);
+          }
+        }).catch(err => { throw err; });
+      }
+
+      const libHardFailTimer = setTimeout(() => {
+        console.warn('PDF.js kütüphanesi yüklenemedi; gömülü iframe fallback devreye alınıyor.');
+        showEmbedFallback();
+      }, 8000);
+
+      let loadingInProgress = false;
+      function initAndLoad() {
+        if (loadingInProgress) return;
+        if (fallbackEngaged) return;
+        if (!window['pdfjsLib']) {
+          if (fallbackEngaged) return;
+          setMessage('PDF görüntüleyici hazırlanıyor…');
+          if (!attemptedAltCdn) {
+            attemptedAltCdn = true;
+            try {
+              const s = document.createElement('script');
+              s.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
+              s.async = true; document.head.appendChild(s);
+            } catch (e) { console.warn('Alternatif CDN yüklenemedi:', e); }
+          }
+          return setTimeout(initAndLoad, 200);
+        }
+        try {
+          if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          }
+        } catch (e) { console.warn('PDF worker yapılandırması atlandı:', e); }
+
+        clearTimeout(libHardFailTimer);
+        loadingInProgress = true;
+        let timedOut = false;
+        let triedNoWorker = false;
+
+        const timer = setTimeout(() => {
+          timedOut = true;
+          console.warn('PDF yükleme zaman aşımı; worker devre dışı bırakılarak tekrar denenecek.');
+          if (!triedNoWorker) {
+            triedNoWorker = true;
+            try { pdfjsLib.disableWorker = true; } catch(_){}
+            setMessage('PDF yeniden yükleniyor…');
+            loadViaFetch();
+          }
+        }, 8000);
+
+        const hardFailTimer = setTimeout(() => {
+          console.warn('PDF görüntüleyici fallback: gömülü iframe ile açılıyor.');
+          showEmbedFallback();
+        }, 15000);
+
+        function loadViaFetch() {
+          setMessage('PDF yükleniyor…');
+          fetch(pdfUrl, { cache: 'no-store' })
+            .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.arrayBuffer(); })
+            .then(data => pdfjsLib.getDocument({ data }).promise)
+            .then(pdf => {
+              clearTimeout(timer);
+              const result = renderDocument(pdf);
+              return result.then(() => {
+                clearTimeout(hardFailTimer);
+                initActivePageObserver();
+                loadingInProgress = false;
+              });
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              console.error('PDF yüklenemedi:', err);
+              clearTimeout(hardFailTimer);
+              loadingInProgress = false;
+              viewer.innerHTML = '';
+              const msg = document.createElement('div');
+              msg.className = 'pdf_message';
+              msg.innerHTML = "PDF yüklenemedi. Lütfen sayfayı yenileyin veya <button class='button' style='margin-left:8px'>Gömmeli Görüntüle</button>";
+              viewer.appendChild(msg);
+              const btn = msg.querySelector('button');
+              if (btn) btn.addEventListener('click', showEmbedFallback);
+            });
+        }
+
+        loadViaFetch();
+
+        function initActivePageObserver() {
+          const wraps = Array.from(viewer.querySelectorAll('.pdf_page_wrap'));
+          if (!wraps.length) return;
+          const isHorizontal = true;
+          const mobile = isMobile();
+
+          let counter = viewer.querySelector('.pdf_counter');
+          if (!counter) {
+            counter = document.createElement('div');
+            counter.className = 'pdf_counter';
+            counter.textContent = `1 / ${wraps.length}`;
+            viewer.appendChild(counter);
+          }
+
+          let lastActive = null;
+          let lastIndex = -1;
+
+          function updateActive() {
+            const rect = viewer.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            let best = null; let bestDist = Infinity;
+            wraps.forEach(w => {
+              const r = w.getBoundingClientRect();
+              const px = isHorizontal ? (r.left + r.width / 2) : (r.top + r.height / 2);
+              const cx = isHorizontal ? centerX : centerY;
+              const dist = Math.abs(px - cx);
+              if (dist < bestDist) { bestDist = dist; best = w; }
+            });
+            wraps.forEach(w => w.classList.toggle('active', w === best));
+            if (best && best !== lastActive) {
+              const idxNow = wraps.indexOf(best);
+              const forward = (lastIndex >= 0 && idxNow > lastIndex);
+              const dir = forward ? 'dir-right' : 'dir-left';
+              if (lastActive) {
+                lastActive.classList.remove('entering','dir-right','dir-left');
+                lastActive.classList.add('leaving', dir);
+                setTimeout(() => lastActive && lastActive.classList.remove('leaving','dir-right','dir-left'), 300);
+              }
+              best.classList.remove('leaving','dir-right','dir-left');
+              best.classList.add('entering', dir);
+              setTimeout(() => best && best.classList.remove('entering','dir-right','dir-left'), 420);
+              lastActive = best;
+              lastIndex = idxNow;
+              counter.textContent = `${idxNow + 1} / ${wraps.length}`;
+            }
+          }
+
+          updateActive();
+          viewer.addEventListener('scroll', () => { if (mobile) return; requestAnimationFrame(updateActive) }, { passive: true });
+          window.addEventListener('resize', () => { requestAnimationFrame(updateActive); });
+
+          if (!mobile) {
+            window.addEventListener('keydown', (e) => {
+              if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+              e.preventDefault();
+              const active = lastActive || wraps[0];
+              let idx = wraps.indexOf(active);
+              if (e.key === 'ArrowRight') idx = Math.min(wraps.length - 1, idx + 1);
+              if (e.key === 'ArrowLeft') idx = Math.max(0, idx - 1);
+              const target = wraps[idx];
+              if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+            });
+          }
+        }
+      }
+
+      initAndLoad();
+      let resizeTimer;
+      window.addEventListener('resize', () => { if (isMobile()) return; clearTimeout(resizeTimer); resizeTimer = setTimeout(initAndLoad, 300); }, { passive: true });
+      window.addEventListener('orientationchange', () => { setTimeout(initAndLoad, 300); });
+    });
+  </script>
+  <script>
+    // Sağ tık menüsünü PDF görüntüleyici üzerinde devre dışı bırak
+    document.addEventListener('DOMContentLoaded', function(){
+      const viewer = document.getElementById('pdf-viewer');
+      if (viewer) { viewer.addEventListener('contextmenu', function(e){ e.preventDefault(); }); }
+    });
+  </script>
+
+  <!-- Başvur Modal (homepage overlay form) -->
+  <div id="apply-modal" style="position: fixed; inset: 0; display: none; z-index: 9999;">
+    <div class="apply-modal_overlay" style="position: absolute; inset: 0; background: rgba(0,0,0,0);"></div>
+    <div class="apply-modal_container" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title" style="position: relative; width: auto; max-width: 760px; height: 90vh; margin: 5vh auto; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.35);">
+      <button type="button" class="apply-modal_close" aria-label="Kapat" style="position: absolute; top: 12px; right: 12px; z-index: 2; background: rgba(0,0,0,0.6); color: #fff; border: 0; border-radius: 8px; padding: 8px 12px; font-weight: 600; cursor: pointer;">Kapat</button>
+      <iframe id="apply-modal-frame" title="Başvuru Formu" src="" style="width: 100%; height: 100%; border: 0; background: #fff;"></iframe>
+    </div>
+  </div>
+  <script>
+    // İletişim formu overlay: anasayfadakiyle aynı davranış
+    document.addEventListener('DOMContentLoaded', function() {
+      const openBtns = Array.from(document.querySelectorAll('#apply-open, .apply-open-btn'));
+      const modal = document.getElementById('apply-modal');
+      const overlay = modal?.querySelector('.apply-modal_overlay');
+      const closeBtn = modal?.querySelector('.apply-modal_close');
+      const frame = document.getElementById('apply-modal-frame');
+
+      function openModal(url) {
+        if (!modal || !frame) return;
+        frame.src = url;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal || !frame) return;
+        modal.style.display = 'none';
+        frame.src = '';
+        document.body.style.overflow = '';
+      }
+
+      if (openBtns.length) {
+        openBtns.forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = btn.getAttribute('href');
+            openModal(url);
+          });
+        });
+      }
+
+      closeBtn?.addEventListener('click', closeModal);
+      overlay?.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('openApply') === '1' && openBtns[0]) {
+          const url = openBtns[0].getAttribute('href');
+          if (url) openModal(url);
+        }
+      } catch (err) { /* ignore */ }
+    });
+  </script>
 
   <style>
-    /* PDF Viewer */
-    .pdf_viewer {
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-      margin: 0 auto;
-      border-radius: 12px;
-      background: #f7f7f7;
-      border: 1px solid #eee;
-      padding: 12px 0; /* yatay padding yok: sondaki boş alanı engelle */
-      overflow-x: auto;
-      overflow-y: hidden;
-      /* height runtime'da JS ile ayarlanır */
-      display: flex;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-      gap: 0;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-
-    .pdf_page_wrap {
-      flex: 0 0 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-      box-sizing: border-box;
-      padding: 0 12px; /* sağ/sol nefes */
-    }
-
-    /* Son sayfada sağ padding yok: ekstra kaymayı kes */
+    /* PDF Viewer (original styles) */
+    .pdf_viewer { position: relative; width: 100%; max-width: 100%; margin: 0 auto; border-radius: 12px; background: #f7f7f7; border: 1px solid #eee; padding: 12px 0; overflow-x: auto; overflow-y: hidden; display: flex; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; gap: 0; box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
+    .pdf_page_wrap { flex: 0 0 100%; display: flex; align-items: center; justify-content: center; scroll-snap-align: start; scroll-snap-stop: always; box-sizing: border-box; padding: 0 12px; }
     .pdf_page_wrap:last-child { padding-right: 0; }
-
-    .pdf_page {
-      position: relative;
-      display: block;
-      width: auto; /* genişlik JS ile atanır */
-      background: white;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-      flex: 0 0 auto;
-      /* Zoom yerine düz görünüm; gölge yumuşak geçer */
-      transition: box-shadow 300ms ease;
-      /* Canvas keskinliği için tarayıcı ipuçları */
-      image-rendering: optimizeQuality;
-    }
-
-    /* Desktop: her ekranda iki sayfa yan yana */
-    @media (min-width: 992px) {
-      .pdf_page_wrap {
-        flex: 0 0 50%;
-      }
-      /* Desktop'ta animasyonları kapat */
-      .pdf_page_wrap.entering .pdf_page,
-      .pdf_page_wrap.leaving .pdf_page { animation: none !important; }
-    }
-
-    /* Aktif sayfa vurgusu */
-    .pdf_page_wrap.active .pdf_page {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.12);
-    }
-
-    /* Sayfa sayacı */
-    .pdf_counter {
-      position: absolute;
-      bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.55);
-      color: #fff;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      font-size: 12px;
-      line-height: 1;
-      letter-spacing: .3px;
-      backdrop-filter: saturate(140%) blur(6px);
-      -webkit-backdrop-filter: saturate(140%) blur(6px);
-      pointer-events: none;
-      user-select: none;
-    }
-
-    /* Yumuşak kayma + hafif motion blur */
-    @keyframes glide-in-right {
-      0% { transform: translateX(24px); filter: blur(4px); opacity: 0.9; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-      70% { transform: translateX(-4px); filter: blur(1px); opacity: 1; box-shadow: 0 10px 28px rgba(0,0,0,0.16); }
-      100% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
-    }
-    @keyframes glide-in-left {
-      0% { transform: translateX(-24px); filter: blur(4px); opacity: 0.9; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-      70% { transform: translateX(4px); filter: blur(1px); opacity: 1; box-shadow: 0 10px 28px rgba(0,0,0,0.16); }
-      100% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
-    }
-    @keyframes glide-out-left {
-      0% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
-      100% { transform: translateX(-16px); filter: blur(2px); opacity: 0.94; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    }
-    @keyframes glide-out-right {
-      0% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
-      100% { transform: translateX(16px); filter: blur(2px); opacity: 0.94; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    }
+    .pdf_page { position: relative; display: block; width: auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); flex: 0 0 auto; transition: box-shadow 300ms ease; image-rendering: optimizeQuality; }
+    @media (min-width: 992px) { .pdf_page_wrap { flex: 0 0 50%; } .pdf_page_wrap.entering .pdf_page, .pdf_page_wrap.leaving .pdf_page { animation: none !important; } }
+    .pdf_page_wrap.active .pdf_page { box-shadow: 0 6px 24px rgba(0,0,0,0.12); }
+    .pdf_counter { position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.55); color: #fff; padding: 4px 10px; border-radius: 9999px; font-size: 12px; line-height: 1; letter-spacing: .3px; backdrop-filter: saturate(140%) blur(6px); -webkit-backdrop-filter: saturate(140%) blur(6px); pointer-events: none; user-select: none; }
+    @keyframes glide-in-right { 0% { transform: translateX(24px); filter: blur(4px); opacity: 0.9; box-shadow: 0 2px 12px rgba(0,0,0,0.06); } 70% { transform: translateX(-4px); filter: blur(1px); opacity: 1; box-shadow: 0 10px 28px rgba(0,0,0,0.16); } 100% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); } }
+    @keyframes glide-in-left { 0% { transform: translateX(-24px); filter: blur(4px); opacity: 0.9; box-shadow: 0 2px 12px rgba(0,0,0,0.06); } 70% { transform: translateX(4px); filter: blur(1px); opacity: 1; box-shadow: 0 10px 28px rgba(0,0,0,0.16); } 100% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); } }
+    @keyframes glide-out-left { 0% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); } 100% { transform: translateX(-16px); filter: blur(2px); opacity: 0.94; box-shadow: 0 2px 12px rgba(0,0,0,0.06); } }
+    @keyframes glide-out-right { 0% { transform: translateX(0); filter: blur(0); opacity: 1; box-shadow: 0 6px 24px rgba(0,0,0,0.12); } 100% { transform: translateX(16px); filter: blur(2px); opacity: 0.94; box-shadow: 0 2px 12px rgba(0,0,0,0.06); } }
     .pdf_page_wrap.entering.dir-right .pdf_page { animation: glide-in-right 360ms cubic-bezier(.2,.7,.2,1); }
     .pdf_page_wrap.entering.dir-left .pdf_page { animation: glide-in-left 360ms cubic-bezier(.2,.7,.2,1); }
     .pdf_page_wrap.leaving.dir-right .pdf_page { animation: glide-out-left 260ms ease-out; }
     .pdf_page_wrap.leaving.dir-left .pdf_page { animation: glide-out-right 260ms ease-out; }
-
-    .pdf_message {
-      text-align: center;
-      color: #666;
-      padding: 24px 12px;
-    }
-
-    /* Basit kopyalama/indir detayı engelleri */
-    .pdf_viewer, .pdf_viewer * {
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-user-drag: none;
-    }
-
-    @media (max-width: 991px) {
-      .pdf_viewer {
-        max-width: 100%;
-        max-height: 70vh;
-      }
-    }
-
-    @media (max-width: 767px) {
-      .pdf_viewer {
-        padding: 8px;
-        max-height: 65vh;
-      }
-    }
+    .pdf_message { text-align: center; color: #666; padding: 24px 12px; }
+    .pdf_viewer, .pdf_viewer * { user-select: none; -webkit-user-select: none; -webkit-user-drag: none; }
+    @media (max-width: 991px) { .pdf_viewer { max-width: 100%; max-height: 70vh; } }
+    @media (max-width: 767px) { .pdf_viewer { padding: 8px; max-height: 65vh; } }
     .services_grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -568,6 +798,10 @@
       margin: 0;
     }
 
+    .service_image_wrap { margin-bottom: 1rem; border-radius: 10px; overflow: hidden; }
+    .service_image { width: 100%; height: 180px; object-fit: cover; display: block; }
+    @media (min-width: 991px) { .service_image { height: 220px; } }
+
     @media (max-width: 991px) {
       .services_grid {
         grid-template-columns: repeat(2, 1fr);
@@ -589,429 +823,6 @@
     }
   </style>
   
-  <script src="../js/navbar.js"></script>
-
-  <script>
-    // Render local PDF into stacked canvases with scroll-snap
-    window.addEventListener('load', function () {
-      const viewer = document.getElementById('pdf-viewer');
-      if (!viewer) return;
-
-      const pdfUrl = '../docs/services.pdf'; // Put your PDF here
-  let attemptedAltCdn = false;
-  let fallbackEngaged = false;
-  
-      // Helper: mobile check
-      function isMobile() {
-        return window.innerWidth <= 767;
-      }
-
-      function setMessage(text) {
-        viewer.innerHTML = `<div class="pdf_message">${text}</div>`;
-      }
-
-      function showEmbedFallback() {
-        fallbackEngaged = true;
-        viewer.innerHTML = '';
-        const wrapper = document.createElement('div');
-        wrapper.style.width = '100%';
-        wrapper.style.height = '80vh';
-        wrapper.style.borderRadius = '8px';
-        wrapper.style.overflow = 'hidden';
-        const iframe = document.createElement('iframe');
-        iframe.src = pdfUrl + '#toolbar=0&navpanes=0&scrollbar=0';
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = '0';
-        iframe.setAttribute('title', 'PDF');
-        wrapper.appendChild(iframe);
-        viewer.appendChild(wrapper);
-      }
-
-      // Helper: fit width with device pixel ratio for crisp rendering
-      function renderPage(page, containerHeight) {
-  const viewport = page.getViewport({ scale: 1 });
-  const displayedScale = Math.max(0.1, containerHeight / viewport.height);
-  // Slightly over-sample to improve text sharpness
-  const oversample = 1.05;
-  const effectiveScale = displayedScale * oversample;
-  const scaledViewport = page.getViewport({ scale: effectiveScale });
-
-        const wrap = document.createElement('div');
-        wrap.className = 'pdf_page_wrap';
-
-        const canvas = document.createElement('canvas');
-        canvas.className = 'pdf_page';
-        const context = canvas.getContext('2d');
-
-        // Adaptive DPR with safety caps: improve sharpness without memory spikes
-        const mobile = isMobile();
-        const nativeDpr = window.devicePixelRatio || 1;
-        let dpr = mobile ? Math.min(1.25, nativeDpr) : nativeDpr;
-        // Hard cap by total pixel area (~3.7MP mobile, ~8MP desktop)
-        const maxPixels = mobile ? 3_700_000 : 8_000_000;
-        const targetW = Math.floor(scaledViewport.width * dpr);
-        const targetH = Math.floor(scaledViewport.height * dpr);
-        let pixelArea = targetW * targetH;
-        if (pixelArea > maxPixels) {
-          const scaleDown = Math.sqrt(maxPixels / pixelArea);
-          dpr = dpr * scaleDown;
-        }
-        canvas.width = Math.max(1, Math.floor(scaledViewport.width * dpr));
-        canvas.height = Math.max(1, Math.floor(scaledViewport.height * dpr));
-        canvas.style.width = `${Math.floor(scaledViewport.width)}px`;
-        canvas.style.height = `${Math.floor(scaledViewport.height)}px`;
-        context.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-        const renderContext = {
-          canvasContext: context,
-          viewport: scaledViewport,
-        };
-
-        return page.render(renderContext).promise.then(() => {
-          wrap.appendChild(canvas);
-          return wrap;
-        });
-      }
-
-      function renderDocument(pdf) {
-        // Tek sayfa görünümü.
-        // Masaüstü: ~%85, Mobil: %20 daha küçük (~%68)
-        const mobile = isMobile();
-        const baseRatio = 0.85;
-        const ratio = mobile ? baseRatio * 0.8 : baseRatio;
-        const desired = Math.floor(window.innerHeight * ratio);
-        const containerHeight = Math.max(200, desired);
-        // viewer yüksekliğini iç padding dahil ayarla (12px üst + 12px alt)
-        viewer.style.height = (containerHeight + 24) + 'px';
-        viewer.innerHTML = '';
-
-        // Mobile: pre-render only first 2 pages, lazy render others on intersection
-        const prerenderCount = mobile ? 2 : pdf.numPages;
-        const wrapRefs = new Array(pdf.numPages).fill(null);
-
-        function mountPage(pageIndex) {
-          if (wrapRefs[pageIndex]) return Promise.resolve();
-          const pageNum = pageIndex + 1;
-          return pdf.getPage(pageNum)
-            .then(page => renderPage(page, containerHeight))
-            .then(node => {
-              wrapRefs[pageIndex] = node;
-              // If a placeholder exists for this index, replace it
-              const ph = viewer.querySelector(`.pdf_page_wrap[data-page-index="${pageIndex}"]`);
-              if (ph && ph.parentNode === viewer) {
-                viewer.replaceChild(node, ph);
-                return;
-              }
-              // Otherwise insert in order by counting existing rendered wraps (not counter)
-              const children = Array.from(viewer.children).filter(el => el.classList && el.classList.contains('pdf_page_wrap'));
-              const before = children.filter((el) => {
-                const idx = el.dataset && el.dataset.pageIndex ? parseInt(el.dataset.pageIndex, 10) : children.indexOf(el);
-                return idx < pageIndex;
-              }).length;
-              if (before >= children.length) viewer.appendChild(node);
-              else viewer.insertBefore(node, children[before]);
-            });
-        }
-
-        const tasks = [];
-        for (let i = 0; i < prerenderCount; i++) tasks.push(mountPage(i));
-
-        return Promise.all(tasks).then(() => {
-          if (!mobile) return; // desktop already fully rendered
-          // Lazy render remaining pages when near viewport
-          const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-              if (!entry.isIntersecting) return;
-              let idx = -1;
-              if (entry.target.dataset && entry.target.dataset.pageIndex) {
-                idx = parseInt(entry.target.dataset.pageIndex, 10);
-              } else {
-                // fallback by order
-                const list = Array.from(viewer.querySelectorAll('.pdf_page_wrap'));
-                idx = list.indexOf(entry.target);
-              }
-              if (idx >= 0 && idx < pdf.numPages) {
-                mountPage(idx).catch(()=>{});
-              }
-            });
-          }, { root: viewer, rootMargin: '200px', threshold: 0.01 });
-
-          // Create placeholders for remaining pages to enable IO
-          for (let p = prerenderCount; p < pdf.numPages; p++) {
-            if (wrapRefs[p]) {
-              io.observe(wrapRefs[p]);
-              continue;
-            }
-            const placeholder = document.createElement('div');
-            placeholder.className = 'pdf_page_wrap';
-            placeholder.style.minWidth = '100%';
-            placeholder.style.minHeight = containerHeight + 'px';
-            placeholder.dataset.pageIndex = String(p);
-            viewer.appendChild(placeholder);
-            io.observe(placeholder);
-          }
-          // Son placeholder gözden kalktığında yeni node eklemeyelim
-          // IO mountPage çağırıp gerçek sayfayı yerleştirince placeholder yerini alır; sonunda fazla eleman kalmaz
-        }).catch(err => { throw err; });
-      }
-
-      // If the core library never loads, fallback after a while
-      const libHardFailTimer = setTimeout(() => {
-        console.warn('PDF.js kütüphanesi yüklenemedi; gömülü iframe fallback devreye alınıyor.');
-        showEmbedFallback();
-      }, 8000);
-
-      let loadingInProgress = false;
-      function initAndLoad() {
-        if (loadingInProgress) return;
-        if (fallbackEngaged) return; // Fallback aktifse yeniden deneme
-        if (!window['pdfjsLib']) {
-          if (fallbackEngaged) return;
-          setMessage('PDF görüntüleyici hazırlanıyor…');
-          // Bir kere alternatif CDN dene
-          if (!attemptedAltCdn) {
-            attemptedAltCdn = true;
-            try {
-              const s = document.createElement('script');
-              s.src = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js';
-              s.async = true;
-              document.head.appendChild(s);
-            } catch (e) {
-              console.warn('Alternatif CDN yüklenemedi:', e);
-            }
-          }
-          // Biraz bekleyip tekrar dene
-          return setTimeout(initAndLoad, 200);
-        }
-        try {
-          if (!pdfjsLib.GlobalWorkerOptions.workerSrc) {
-            pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-          }
-        } catch (e) {
-          console.warn('PDF worker yapılandırması atlandı:', e);
-        }
-
-        clearTimeout(libHardFailTimer);
-  loadingInProgress = true;
-  let timedOut = false;
-        let triedNoWorker = false;
-
-        const timer = setTimeout(() => {
-          timedOut = true;
-          console.warn('PDF yükleme zaman aşımı; worker devre dışı bırakılarak tekrar denenecek.');
-          if (!triedNoWorker) {
-            triedNoWorker = true;
-            try { pdfjsLib.disableWorker = true; } catch(_){}
-            setMessage('PDF yeniden yükleniyor…');
-            loadViaFetch();
-          }
-        }, 8000);
-
-        // Overall fallback watchdog
-        const hardFailTimer = setTimeout(() => {
-          console.warn('PDF görüntüleyici fallback: gömülü iframe ile açılıyor.');
-          showEmbedFallback();
-        }, 15000);
-
-        function loadViaFetch() {
-          setMessage('PDF yükleniyor…');
-          fetch(pdfUrl, { cache: 'no-store' })
-            .then(res => { if (!res.ok) throw new Error('HTTP ' + res.status); return res.arrayBuffer(); })
-            .then(data => pdfjsLib.getDocument({ data }).promise)
-            .then(pdf => {
-              clearTimeout(timer);
-              const result = renderDocument(pdf);
-              // When pages rendered, clear hardFailTimer and init page-active tracker
-              return result.then(() => {
-                clearTimeout(hardFailTimer);
-                initActivePageObserver();
-                loadingInProgress = false;
-              });
-            })
-            .catch(err => {
-              clearTimeout(timer);
-              console.error('PDF yüklenemedi:', err);
-              clearTimeout(hardFailTimer);
-              loadingInProgress = false;
-              // Show message with manual fallback link
-              viewer.innerHTML = '';
-              const msg = document.createElement('div');
-              msg.className = 'pdf_message';
-              msg.innerHTML = "PDF yüklenemedi. Lütfen sayfayı yenileyin veya <button class='button' style='margin-left:8px'>Gömmeli Görüntüle</button>";
-              viewer.appendChild(msg);
-              const btn = msg.querySelector('button');
-              if (btn) btn.addEventListener('click', showEmbedFallback);
-            });
-        }
-
-        loadViaFetch();
-
-        function initActivePageObserver() {
-          const wraps = Array.from(viewer.querySelectorAll('.pdf_page_wrap'));
-          if (!wraps.length) return;
-          const isHorizontal = true;
-          const mobile = isMobile();
-
-          // Counter UI
-          let counter = viewer.querySelector('.pdf_counter');
-          if (!counter) {
-            counter = document.createElement('div');
-            counter.className = 'pdf_counter';
-            counter.textContent = `1 / ${wraps.length}`;
-            viewer.appendChild(counter);
-          }
-
-          let lastActive = null;
-          let lastIndex = -1;
-
-          function updateActive() {
-            const rect = viewer.getBoundingClientRect();
-            const centerX = rect.left + rect.width / 2;
-            const centerY = rect.top + rect.height / 2;
-            let best = null;
-            let bestDist = Infinity;
-            wraps.forEach(w => {
-              const r = w.getBoundingClientRect();
-              const px = isHorizontal ? (r.left + r.width / 2) : (r.top + r.height / 2);
-              const cx = isHorizontal ? centerX : centerY;
-              const dist = Math.abs(px - cx);
-              if (dist < bestDist) { bestDist = dist; best = w; }
-            });
-            wraps.forEach(w => w.classList.toggle('active', w === best));
-            if (best && best !== lastActive) {
-              // Trigger activation animation flag
-              const idxNow = wraps.indexOf(best);
-              const forward = (lastIndex >= 0 && idxNow > lastIndex);
-              const dir = forward ? 'dir-right' : 'dir-left';
-              // mark outgoing
-              if (lastActive) {
-                lastActive.classList.remove('entering','dir-right','dir-left');
-                lastActive.classList.add('leaving', dir);
-                setTimeout(() => lastActive && lastActive.classList.remove('leaving','dir-right','dir-left'), 300);
-              }
-              // mark incoming
-              best.classList.remove('leaving','dir-right','dir-left');
-              best.classList.add('entering', dir);
-              setTimeout(() => best && best.classList.remove('entering','dir-right','dir-left'), 420);
-              lastActive = best;
-              lastIndex = idxNow;
-              // Update counter
-              counter.textContent = `${idxNow + 1} / ${wraps.length}`;
-            }
-          }
-
-          updateActive();
-          viewer.addEventListener('scroll', () => {
-            if (mobile) return; // reduce work on mobile
-            requestAnimationFrame(updateActive)
-          }, { passive: true });
-          window.addEventListener('resize', () => {
-            // Recompute on resize
-            requestAnimationFrame(updateActive);
-          });
-
-          // Keyboard navigation (left/right)
-          if (!mobile) {
-            window.addEventListener('keydown', (e) => {
-              if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-              e.preventDefault();
-              const active = lastActive || wraps[0];
-              let idx = wraps.indexOf(active);
-              if (e.key === 'ArrowRight') idx = Math.min(wraps.length - 1, idx + 1);
-              if (e.key === 'ArrowLeft') idx = Math.max(0, idx - 1);
-              const target = wraps[idx];
-              if (target) target.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-            });
-          }
-        }
-      }
-
-      // Initial load
-      initAndLoad();
-
-      // Re-render on resize/orientation with mobile guard to avoid infinite re-renders
-      let resizeTimer;
-      window.addEventListener('resize', () => {
-        // Many mobile browsers fire resize on URL bar show/hide; skip re-render on mobile
-        if (isMobile()) return;
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(initAndLoad, 300);
-      }, { passive: true });
-      // On mobile, only re-init on orientation change
-      window.addEventListener('orientationchange', () => {
-        setTimeout(initAndLoad, 300);
-      });
-    });
-  </script>
-  <script>
-    // Sağ tık menüsünü PDF görüntüleyici üzerinde devre dışı bırakalım (kolay indirmeyi caydırmak için)
-    document.addEventListener('DOMContentLoaded', function(){
-      const viewer = document.getElementById('pdf-viewer');
-      if (viewer) {
-        viewer.addEventListener('contextmenu', function(e){ e.preventDefault(); });
-      }
-    });
-  </script>
-  
-  <!-- Başvur Modal (homepage overlay form) -->
-  <div id="apply-modal" style="position: fixed; inset: 0; display: none; z-index: 9999;">
-    <div class="apply-modal_overlay" style="position: absolute; inset: 0; background: rgba(0,0,0,0);"></div>
-    <div class="apply-modal_container" role="dialog" aria-modal="true" aria-labelledby="apply-modal-title" style="position: relative; width: auto; max-width: 760px; height: 90vh; margin: 5vh auto; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.35);">
-      <button type="button" class="apply-modal_close" aria-label="Kapat" style="position: absolute; top: 12px; right: 12px; z-index: 2; background: rgba(0,0,0,0.6); color: #fff; border: 0; border-radius: 8px; padding: 8px 12px; font-weight: 600; cursor: pointer;">Kapat</button>
-      <iframe id="apply-modal-frame" title="Başvuru Formu" src="" style="width: 100%; height: 100%; border: 0; background: #fff;"></iframe>
-    </div>
-  </div>
-  
-  <script>
-    // İletişim formu overlay: anasayfadakiyle aynı davranış
-    document.addEventListener('DOMContentLoaded', function() {
-      const openBtns = Array.from(document.querySelectorAll('#apply-open, .apply-open-btn'));
-      const modal = document.getElementById('apply-modal');
-      const overlay = modal?.querySelector('.apply-modal_overlay');
-      const closeBtn = modal?.querySelector('.apply-modal_close');
-      const frame = document.getElementById('apply-modal-frame');
-
-      function openModal(url) {
-        if (!modal || !frame) return;
-        frame.src = url;
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal || !frame) return;
-        modal.style.display = 'none';
-        frame.src = '';
-        document.body.style.overflow = '';
-      }
-
-      if (openBtns.length) {
-        openBtns.forEach(btn => {
-          btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            const url = btn.getAttribute('href');
-            openModal(url);
-          });
-        });
-      }
-
-      closeBtn?.addEventListener('click', closeModal);
-      overlay?.addEventListener('click', closeModal);
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') closeModal();
-      });
-
-      // Dev helper: ?openApply=1 parametresi ile otomatik açma
-      try {
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('openApply') === '1' && openBtns[0]) {
-          const url = openBtns[0].getAttribute('href');
-          if (url) openModal(url);
-        }
-      } catch (err) { /* ignore */ }
-    });
-  </script>
 </body>
 
 </html>

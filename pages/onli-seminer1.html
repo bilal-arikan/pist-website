@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8" />
+  <title>Online Seminer 1 | PİST Stüdyo</title>
+  <meta name="description" content="Online Seminer 1 detayları: 21 Eylül 2025, PİST Stüdyo çevrim içi buluşması." />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="../css/pist.shared.css" rel="stylesheet" type="text/css" />
+  <link href="../css/shared-styles.css" rel="stylesheet" type="text/css" />
+  <link href="../css/theme-colors.css" rel="stylesheet" type="text/css" />
+  <link href="../css/responsive.css" rel="stylesheet" type="text/css" />
+  <link href="../css/navbar.css" rel="stylesheet" type="text/css" />
+  <link href="../css/footer.css" rel="stylesheet" type="text/css" />
+  <link rel="shortcut icon" href="../img/pist_favicon.png" type="image/x-icon" />
+  <style>
+    .hero_wrap.is-event { position: relative; min-height: 55vh; display: flex; align-items: center; overflow: hidden; }
+    .hero_bg { position: absolute; inset: 0; z-index: 0; opacity: .35; object-fit: cover; width: 100%; height: 100%; }
+    .hero_overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at top, rgba(0,0,0,.5), rgba(0,0,0,.85)); z-index: 1; }
+    .hero_content { position: relative; z-index: 2; }
+    .event-detail_grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    @media (min-width: 992px) { .event-detail_grid { grid-template-columns: 1.2fr 1fr; gap: 40px; } }
+    .event-detail_img { width: 100%; height: auto; border-radius: 12px; display: block; }
+    .back-to-events-link { font-size: .875rem; color: rgba(255,255,255,.8); text-decoration: none; }
+    .back-to-events-link:hover { color: #fff; text-decoration: underline; text-underline-offset: 2px; }
+    .back-to-events-link.on-light { color: rgba(0,0,0,.6); }
+    .back-to-events-link.on-light:hover { color: rgba(0,0,0,.85); text-decoration: underline; text-underline-offset: 2px; }
+    /* Modal styles */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: none; align-items: center; justify-content: center; z-index: 9999; padding: 16px; }
+    .modal-overlay.is-open { display: flex; }
+    .modal-dialog { background: #0a0a0a; color: #fff; width: 92vw; max-width: 560px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,.5); position: relative; overflow: hidden; }
+    .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .modal-title { font-size: 1rem; opacity: .95; }
+    .modal-close { appearance: none; border: 0; background: transparent; color: #fff; font-size: 22px; line-height: 1; cursor: pointer; padding: 6px 10px; border-radius: 8px; }
+    .modal-close:hover { background: rgba(255,255,255,.08); }
+    .modal-body { padding: 18px; }
+    /* Desktop: center-align detail texts and headings */
+    @media (min-width: 992px) {
+      .event-detail_grid > div:last-child { text-align: center; }
+      .event-detail_grid > div:last-child .w-richtext { text-align: center; }
+      .event-detail_grid > div:last-child .margin-top,
+      .event-detail_grid > div:last-child .button-group { display: flex; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="navbar_wrap" role="banner" style="background-color: transparent;">
+      <div class="navbar_bg_overlay"></div>
+      <div class="padding-global">
+        <div class="w-layout-blockcontainer navbar_container w-container">
+          <div class="w-layout-grid navbar_layout">
+            <div class="navbar_left_section">
+              <a href="../index.html" class="navbar_logo_link">
+                <img src="../img/logo-main.png" alt="PİST Stüdyo Logo" class="navbar_logo_svg" height="48" />
+              </a>
+            </div>
+            <div class="navbar_menu_overlay"></div>
+            <div class="navbar_menu_panel">
+              <nav role="navigation" class="navbar_menu">
+                <div class="navbar_menu_content">
+                  <div class="navbar_menu_items" lang="tr">
+                    <a href="location-pist.html" class="navbar_link"><div lang="en">Stüdyo</div></a>
+                    <a href="events.html" class="navbar_link"><div>Etkinlikler</div></a>
+                    <a href="calendars.html" class="navbar_link"><div>Takvim</div></a>
+                    <a href="services.html" class="navbar_link"><div>Hizmetlerimiz</div></a>
+                    <a href="music-career-coaching.html" class="navbar_link"><div>Programlar</div></a>
+                    <a href="who-we-are.html" class="navbar_link"><div>Biz Kimiz</div></a>
+                    <a href="contact.html" class="navbar_link"><div>İletişim</div></a>
+                  </div>
+                </div>
+              </nav>
+            </div>
+            <button class="navbar_menu_button"><span class="menu-icon"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main class="main-wrapper">
+      <section class="hero_wrap is-event">
+        <img class="hero_bg" src="../img/online-seminer1.png" alt="Online Seminer 1 arkaplan" />
+        <div class="hero_overlay"></div>
+        <div class="padding-global hero_content">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section_header">
+              <div class="text-align-center margin-bottom margin-medium">
+                <div class="align-center max-width-large">
+                  <div data-animate="fade-in" class="text-rich-text_page w-richtext">
+                    <h1>Online Seminer 1</h1>
+                  </div>
+                  <div class="margin-top margin-small">
+                    <p data-animate="fade-in" class="text-size-large">21 Eylül 2025 | Çevrim içi</p>
+                  </div>
+                  <div class="button-group is-centered margin-top margin-medium">
+                    <a href="#" class="button js-no-ticket">
+                      <div class="button_text">Bilet Al</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-theme="light">
+        <div class="padding-global">
+          <div class="w-layout-blockcontainer container-large w-container">
+            <div class="padding-section">
+              <div class="margin-bottom margin-small">
+                <a href="events.html#siradaki-baslik" class="back-to-events-link on-light" aria-label="Etkinliklere geri dön">← Etkinliklere geri dön</a>
+              </div>
+              <div class="event-detail_grid">
+                <div>
+                  <img src="../img/online-seminer1.png" alt="Online Seminer 1 görseli" class="event-detail_img" />
+                </div>
+                <div>
+                  <div data-animate="fade-in" class="text-rich-text w-richtext">
+                    <h2>Hakkında</h2>
+                    <p>Bu seminerde yaratıcı üretimi sürdürülebilir kılan alışkanlıklar, ilhamı besleyen günlük rutinler ve yol haritası oluşturma üzerine konuşacağız. Kısa sunumların ardından soru-cevap ile devam edeceğiz.</p>
+                    <ul>
+                      <li>Tarih: 21 Eylül 2025</li>
+                      <li>Yer: Çevrim içi</li>
+                      <li>Süre: 60 dk</li>
+                    </ul>
+                    <p>Kayıtlar kapandı. Aşağıdaki butona tıklayarak bilgilendirme mesajını görebilirsiniz.</p>
+                  </div>
+                  <div class="margin-top margin-medium">
+                    <a href="#" class="button js-no-ticket">
+                      <div class="button_text">Bilet Al</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section data-theme="dark" class="footer_section">
+      <div class="padding-global">
+        <div class="w-layout-blockcontainer container-large w-container">
+          <div class="padding-vertical padding-large">
+            <div class="footer_wrap">
+              <div class="socials_wrap">
+                <a href="https://www.instagram.com/pist.istanbul/" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="100%" fill="currentColor" class="socials_icon"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/company/piststudyo/" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="100%" fill="currentColor" class="socials_icon"><path d="M100.3 448H7.4V148.9h92.9zM53.8 108.1C24.1 108.1 0 83.5 0 53.8a53.8 53.8 0 0 1 107.6 0c0 29.7-24.1 54.3-53.8 54.3z"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@piststudyo" target="_blank" class="footer_socials_link w-inline-block">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="100%" fill="CurrentColor" class="socials_icon"><path d="M549.7 124.1c-6.3-23.7-24.8-42.3-48.3-48.6C458.8 64 288 64 288 64S117.2 64 74.6 75.5c-23.5 6.3-42 24.9-48.3 48.6-11.4 42.9-11.4 132.3-11.4 132.3s0 89.4 11.4 132.3c6.3 23.7 24.8 41.5 48.3 47.8C117.2 448 288 448 288 448s170.8 0 213.4-11.5c23.5-6.3 42-24.2 48.3-47.8 11.4-42.9 11.4-132.3 11.4-132.3s0-89.4-11.4-132.3z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="footer_image_wrap"></div>
+          </div>
+          <div class="g_line-divider"></div>
+          <div class="padding-vertical padding-medium">
+            <div class="footer_bottom_wrap">
+              <div class="text-size-small text-style-muted">Telif Hakkı ©<span class="current-year">2025</span> PİST Stüdyo. Tüm hakları saklıdır.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../js/jquery-3.5.1.min.js"></script>
+  <script src="../js/gsap.min.js"></script>
+  <script src="../js/ScrollTrigger.min.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const currentYear = new Date().getFullYear();
+      document.querySelectorAll('.current-year').forEach(el => el.textContent = currentYear);
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('[data-animate="fade-in"]').forEach(el => {
+        gsap.fromTo(el, {opacity:0, y:30}, {opacity:1, y:0, duration:.8, scrollTrigger:{trigger:el, start:'top 85%'}});
+      });
+    });
+  </script>
+  <script>
+    // No-ticket modal overlay for this event detail
+    (function(){
+      const modal = document.createElement('div');
+      modal.className = 'modal-overlay';
+      modal.id = 'no-ticket-modal';
+      modal.setAttribute('aria-hidden','true');
+      modal.setAttribute('role','dialog');
+      modal.setAttribute('aria-modal','true');
+      modal.innerHTML = `
+        <div class="modal-dialog" role="document" tabindex="-1">
+          <div class="modal-header">
+            <div class="modal-title">Bilet Bilgisi</div>
+            <button class="modal-close" type="button" aria-label="Kapat">×</button>
+          </div>
+          <div class="modal-body">
+            <p style="margin:0 0 12px; font-size:1rem; line-height:1.5;">Bu etkinlik için uygun bilet bulunamadı.</p>
+            <a href="#" class="button is-secondary js-close-modal"><div class="button_text">Tamam</div></a>
+          </div>
+        </div>`;
+
+      document.body.appendChild(modal);
+      const closeBtn = modal.querySelector('.modal-close');
+      const okBtn = modal.querySelector('.js-close-modal');
+      const triggers = document.querySelectorAll('a.js-no-ticket');
+      let lastFocus = null;
+
+      function openModal(){
+        lastFocus = document.activeElement;
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden','false');
+        closeBtn && closeBtn.focus({preventScroll:true});
+      }
+      function closeModal(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden','true');
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus({preventScroll:true});
+      }
+
+      triggers.forEach(btn => btn.addEventListener('click', (e)=>{ e.preventDefault(); openModal(); }));
+      closeBtn && closeBtn.addEventListener('click', closeModal);
+      okBtn && okBtn.addEventListener('click', (e)=>{ e.preventDefault(); closeModal(); });
+      modal.addEventListener('click', (e)=>{ if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal(); });
+    })();
+  </script>
+</body>
+</html>
