@@ -2,7 +2,13 @@
 
 /* Import existing CSS files */
 @import "../styles/shared-styles.css";
+@import "../styles/pist.shared.css";
+@import "../styles/theme-colors.css";
+@import "../styles/navbar.css";
+@import "../styles/footer.css";
+@import "../styles/responsive.css";
 @import "../styles/swiper-bundle.min.css";
+@import "../styles/flickity.min.css";
 
 :root {
   --background: #ffffff;
