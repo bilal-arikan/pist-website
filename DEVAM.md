@@ -110,8 +110,39 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 |---|---|---|
 | 1 | **Gerçek e-posta adresi** | `src/_data/site.js` içinde `info@piststudio.com` yazılı, teyit edilmedi. Alan adında Google Workspace kurulu. |
 | 2 | **Aydınlatma metni** | 9 köşeli parantezli alan boş. **Avukat incelemesi şart.** Şirket unvanı henüz yok. |
-| 3 | **Ana sayfa parlaklığı** | "Soluk" geri bildirimi üzerine 5 düzeltme yapıldı (commit `f0060f5`). Kullanıcı son kontrolü yapmadı. Hâlâ soluksa: başlık rengini saf beyaza yaklaştır, kalkış sahnesinin genel parlaklığını artır. |
+| 3 | ~~Ana sayfa parlaklığı~~ | **Çözüldü** (commit `3ed3c01`). Nedeni renk değil, yığın bağlamı hatasıydı — aşağıya bakın. Elde tutulan iki koz (başlığı beyaza yaklaştırmak, sahneyi parlatmak) **gereksiz**; ikisi de yanlış teşhise dayanıyordu. |
 | 4 | **Hero uzunluğu** | 400vh. Ayarlanabilir tek sayı: `src/assets/css/home.css` içinde `.hero{height:400vh}`. |
+| 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. `text-transform:uppercase` + `lang="tr"` sonucu. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu, karara bağlanmadı. |
+
+### Ana sayfa parlaklığı — kapanış notu (6 Eylül 2026)
+
+Sorun **renk değerlerinde değildi.** Ölçümde başlık zaten `--tx` (`#F2E9F6`)
+ve tam opaklıktaydı; metni karartan hiçbir `opacity`, `filter` ya da ata öğe
+yoktu. Font smoothing ve `text-shadow` varyantları A/B ile denendi, görünür
+fark vermedi.
+
+**Gerçek neden:** `.hero-stage` `position:sticky`. Sticky kendi yığın bağlamını
+açıyor ve `z-index:auto` ile 0 seviyesinde boyanıyor. Bu yüzden içindeki
+`.wrap{z-index:2}` bağlamın dışına çıkamıyordu; `.hero-scrim{z-index:1}` ise
+kardeş olarak daha üstte boyanıyordu. Yani metin, perdenin **altında** kalıyordu.
+Perdenin metin bölgesindeki bileşik alfası ~0,9 — başlığın, lede'nin ve amber
+butonun üzerine neredeyse opak bir `#07040F` tabakası düşüyordu.
+
+**Düzeltme:** `.hero-stage`'e `z-index:2`. Tek satır. Perde artık yalnızca
+sahneyi karartıyor, metni değil. Marka token'larına ve perde değerlerine
+dokunulmadı.
+
+> Ders: `position:sticky` ve `position:fixed` yığın bağlamı açar. Bir kardeşe
+> verilen `z-index`, bağlam içindeki torunun `z-index`'ini her zaman yener.
+
+**Doğrulanamayan:** Önizleme paneli bu oturumda kapalıydı. Panel gizliyken
+tarayıcı sayfayı render etmiyor — `requestAnimationFrame` hiç çalışmıyor ve
+programatik scroll sonrası ekran görüntüleri boş geliyor. Bu yüzden yalnızca
+**hero'nun duruş hâli** (scroll 0) gözle doğrulandı; onun için kare geçerli.
+**Kalkış animasyonunun kendisi, tırmanış kareleri ve hero altı hâlâ gözle
+görülmedi.** Aynı engel marka klasöründeki `DEVAM.md`'de de kayıtlı — prototip
+de bu yüzden kontrol edilememişti. Bir sonraki oturumda önizleme panelini
+**açık tutun**, yoksa bu bölüm yine doğrulanamaz.
 
 ---
 
