@@ -1,6 +1,6 @@
 # Pist Studio sitesi — devir belgesi
 
-**Son güncelleme:** 6 Eylül 2026
+**Son güncelleme:** 6 Eylül 2026 (2. oturum)
 **Dal:** `yeni-site` · **Canlı dal:** `pist` (dokunulmadı)
 
 Bu belge yeni bir oturumun sıfırdan başlamadan devam edebilmesi için yazıldı.
@@ -35,18 +35,33 @@ Sonra: **http://127.0.0.1:8794/tr/**
 
 Eleventy 3 kurulumu, kaynak `src/`, çıktı `_site/`. Derleme ~0,3 saniye.
 
-**Tamamlanan sayfalar (10, hepsi Türkçe):**
+**Tamamlanan sayfalar (20, iki dil):**
 
-| URL | Dosya |
-|---|---|
-| `/tr/` | `src/tr/index.njk` — kalkış hero'su |
-| `/tr/urunler/` | `src/tr/urunler.njk` |
-| `/tr/ses/` | `src/tr/ses.njk` |
-| `/tr/hakkinda/` | `src/tr/hakkinda.njk` |
-| `/tr/blog/` | `src/tr/blog.njk` |
-| `/tr/blog/<slug>/` | `src/blog/tr/*.md` — 3 yazı |
-| `/tr/iletisim/` | `src/tr/iletisim.njk` |
-| `/tr/aydinlatma-metni/` | `src/tr/yasal/aydinlatma-metni.md` |
+| Rol | Türkçe | English |
+|---|---|---|
+| Kök (dil yönlendirmesi) | `/` | `/` |
+| Ana sayfa | `/tr/` | `/en/` |
+| Products | `/tr/urunler/` | `/en/products/` |
+| Sound | `/tr/ses/` | `/en/sound/` |
+| Hakkında | `/tr/hakkinda/` | `/en/about/` |
+| Blog | `/tr/blog/` | `/en/blog/` |
+| Yazı | 3 yazı | 1 yazı (canvas) |
+| İletişim | `/tr/iletisim/` | `/en/contact/` |
+| Aydınlatma / Privacy | `/tr/aydinlatma-metni/` | `/en/privacy/` |
+| 404 | `/404.html` (tek sayfa, iki dil) | ← aynı |
+| sitemap | `/sitemap.xml` (18 URL) | ← aynı |
+
+Blog yazılarının üçü de Türkçe yazıldı; yalnızca **canvas yazısı** İngilizceye
+çevrildi. Gerekçe içerik notunda: organik trafik Türkiye'den gelecek, teknik
+yazının ise uluslararası arama karşılığı var.
+
+**Kök `/`** tarayıcı diline bakıp `/tr/` ya da `/en/`'e yönlendiriyor; elle
+yapılan dil seçimi `localStorage`'da (`pist-dil`) hatırlanıyor. Sayfa `noindex`,
+JS kapalıysa iki dile de bağlantı veriyor.
+
+**Eski URL'ler:** 18 eski sayfadan gerçek karşılığı olan 6'sı meta-refresh
+saplamasıyla yönlendiriliyor (`src/_data/yonlendirmeler.js`). Kalan 12'si —
+kapanan stüdyonun etkinlik ve eğitim sayfaları — bilerek 404'e düşüyor.
 
 **Kalkış sahnesi** (`src/assets/js/takeoff.js`): saf Canvas 2D, kütüphane yok.
 Kamera yalnızca hero yüksekliği (400vh) boyunca yükseliyor; sonrasında sayfa
@@ -89,30 +104,35 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 
 ## 4. Sırada ne var
 
-1. **İngilizce sayfalar.** Yapı hazır (`src/en/`, `i18n.js` içinde `en` tanımlı).
-   Metinlerin tamamı yazılı — bkz. bölüm 7.
-2. **Kök `/` dil yönlendirmesi** — tarayıcı diline göre `/tr/` veya `/en/`,
-   seçimi `localStorage`'da hatırla.
-3. **404 sayfası** — tek sayfa, iki dil.
-4. **Spotify betiği** — `scripts/fetch-spotify.mjs` (henüz yok).
-   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC` ("Pist Projects").
-   Client credentials akışı, derleme anında JSON üretir, anahtar Secrets'ta.
-5. **Form arka ucu** — Güzel Hosting'de PHP.
-   `src/assets/js/form.js` içindeki `ENDPOINT` boş, doldurulacak.
-6. **Eski URL yönlendirmeleri** — 20 eski sayfa için 301 haritası.
-7. **Yayın** — bkz. bölüm 6.
+Canlıya çıkmayı **engelleyenler** (bölüm 5'teki tabloda gerekçeleri var):
 
----
+1. **Aydınlatma metni** — köşeli parantezli alanlar + avukat incelemesi.
+   Şirket unvanı olmadan veri sorumlusu alanı doldurulamıyor.
+2. **Gerçek e-posta adresi** — form artık `site.email`e mailto atıyor,
+   yani adres yanlışsa iletişim tamamen kopuk.
+
+Engellemeyenler:
+
+3. **Spotify betiği** — `scripts/fetch-spotify.mjs` (henüz yok).
+   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC`. Şu an Ses sayfasında
+   Spotify'a düz bağlantı var, katalog çekilmiyor.
+4. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
+   `form.js` içindeki `teslim` kısmı değişir, doğrulama aynen kalır.
+   Ama o an KVKK yükümlülüğü de geri geliyor (bkz. bölüm 5).
+5. **İngilizce blog** — şu an tek yazı. Diğer ikisi bilinçli olarak
+   Türkçe kaldı; istenirse çevrilir.
 
 ## 5. Karar bekleyen konular
 
 | # | Konu | Not |
 |---|---|---|
-| 1 | **Gerçek e-posta adresi** | `src/_data/site.js` içinde `info@piststudio.com` yazılı, teyit edilmedi. Alan adında Google Workspace kurulu. |
-| 2 | **Aydınlatma metni** | 9 köşeli parantezli alan boş. **Avukat incelemesi şart.** Şirket unvanı henüz yok. |
-| 3 | ~~Ana sayfa parlaklığı~~ | **Çözüldü** (commit `3ed3c01`). Nedeni renk değil, yığın bağlamı hatasıydı — aşağıya bakın. Elde tutulan iki koz (başlığı beyaza yaklaştırmak, sahneyi parlatmak) **gereksiz**; ikisi de yanlış teşhise dayanıyordu. |
+| 1 | **Gerçek e-posta adresi** ⛔ | `src/_data/site.js` içinde `info@piststudio.com`, teyit edilmedi. **Artık launch'ı engelliyor:** form mailto'ya çevrildi, yani bu adres yanlışsa sitenin tek iletişim yolu kopuk. |
+| 2 | **Aydınlatma metni** ⛔ | 5 köşeli parantezli alan boş, **avukat incelemesi şart**, şirket unvanı yok. Metin mailto'ya göre revize edildi (yurt dışına aktarım ve açık rıza bölümleri kaldırıldı) ama parantezler duruyor. Alternatif: form + hukuk sayfalarını launch'tan çıkarıp doğrudan e-postayla çıkmak. |
+| 3 | ~~Ana sayfa parlaklığı~~ | **Çözüldü** (commit `3ed3c01`). Yığın bağlamı hatasıydı — aşağıya bakın. |
 | 4 | **Hero uzunluğu** | 400vh. Ayarlanabilir tek sayı: `src/assets/css/home.css` içinde `.hero{height:400vh}`. |
-| 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. `text-transform:uppercase` + `lang="tr"` sonucu. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu, karara bağlanmadı. |
+| 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu. |
+| 6 | **Apex'e geçiş** | Launch `www.piststudio.com` üzerinden yapılıyor; `site.url` CNAME ile hizalandı. Apex'e (`piststudio.com`) geçiş DNS değişikliği gerektiriyor (Squarespace, erişim Bilal'de) ve ayrı, bilinçli bir taşıma olarak planlandı. |
+| 7 | **Yönlendirilmeyen 12 eski sayfa** | Karşılığı olmadığı için 404'e düşüyorlar. Liste ve gerekçe `src/_data/yonlendirmeler.js` başındaki yorumda. İtiraz varsa oradan eklenir. |
 
 ### Ana sayfa parlaklığı — kapanış notu (6 Eylül 2026)
 
@@ -148,30 +168,60 @@ de bu yüzden kontrol edilememişti. Bir sonraki oturumda önizleme panelini
 
 ## 6. Yayın planı
 
-Site şu anda **GitHub Pages**'te, `pist` dalının kökünden yayınlanıyor.
-Alan adı `piststudio.com`, DNS **Squarespace Domains**'te, erişim **Bilal**'de.
+Site **GitHub Pages**'te, `pist` dalının kökünden yayınlanıyor.
+Alan adı `www.piststudio.com`, DNS **Squarespace Domains**'te, erişim **Bilal**'de.
 
-`.github/workflows/deploy.yml` hazır ama **etkin değil**. Etkinleşmesi için:
+Teknik taraf hazır. Sıra şu:
 
-**Adım 1 — Bilal yapacak.** Repo ayarlarında:
-`Settings → Pages → Build and deployment → Source`
+### Adım 0 — Önce bunlar kapanmalı (bizde)
+
+- [ ] **Gerçek e-posta adresi teyit edilsin** → `src/_data/site.js`.
+      Form mailto'ya gittiği için bu yanlışsa site sessizce iletişimsiz kalır.
+- [ ] **Aydınlatma metni** → avukat + şirket unvanı.
+      Ya doldurulur, ya da form + hukuk sayfaları launch'tan çıkarılır.
+
+### Adım 1 — Bilal yapacak (tek tık)
+
+Repo ayarlarında `Settings → Pages → Build and deployment → Source`
 değerini *Deploy from a branch* yerine **GitHub Actions** yap.
 
 > ⚠️ Bu ayar değişince site, workflow ilk kez çalışana kadar boşa düşer.
-> O yüzden **önce workflow hazır olmalı**, sonra ayar değişmeli, hemen
-> ardından workflow çalıştırılmalı. Kesinti bir iki dakikayla sınırlı kalır.
+> Workflow zaten hazır (`.github/workflows/deploy.yml`), o yüzden ayarı
+> değiştirdikten hemen sonra Adım 2'yi yap. Kesinti bir iki dakika.
 
-**Adım 2 — Biz yapacağız.** `yeni-site` dalını `pist`e merge edip push et.
+> Not: Pages özel alan adı ayarı `www.piststudio.com` olarak kalmalı.
+> `CNAME` dosyası `_site`'a kopyalanıyor, yani artifact'ta da bulunuyor.
+
+### Adım 2 — Biz yapacağız
+
+```bash
+git checkout pist
+git merge yeni-site
+git push
+```
+
 Workflow `pist` dalına push'ta tetikleniyor.
 
-**Geri dönüş:** eski site `pist` dalının geçmişinde duruyor
-(commit `899304e`). Ayrıca yerel yedeği kullanıcıda.
+> Merge sırasında eski site dosyaları (`index.html`, `pages/`, `css/`, `js/`,
+> `img/`, `videos/`) repoda kalmaya devam edecek — ama artifact `_site`
+> olduğu için **yayına çıkmayacaklar.** Temiz kesit budur; ayrıca silmeye
+> gerek yok. İstenirse merge sonrası ayrı bir temizlik commit'i atılır.
+
+### Adım 3 — Yayın sonrası
+
+- [ ] `https://www.piststudio.com/` kök yönlendirmesi çalışıyor mu
+- [ ] `/tr/` ve `/en/` açılıyor mu, dil değiştirici doğru sayfaya gidiyor mu
+- [ ] Search Console'a `sitemap.xml` gönder
+- [ ] Yönlendirilen 6 eski URL yeni hedefine düşüyor mu
+- [ ] Gerçek telefonda kalkış animasyonunun performansı ölç (hiç ölçülmedi)
+
+**Geri dönüş:** eski site `pist` dalının geçmişinde duruyor (commit `899304e`).
+Ayrıca yerel yedeği kullanıcıda.
 
 ### Alternatif (Bilal'e ihtiyaç duymayan)
 Workflow'u, çıktıyı `pist` dalının köküne commit edecek şekilde değiştir.
-Ayar değişikliği gerekmez, ama git geçmişi üretilen dosyalarla dolar.
-
----
+Ayar değişikliği gerekmez, ama git geçmişi üretilen dosyalarla dolar ve
+eski dosyalarla çakışmayı elle çözmek gerekir.
 
 ## 7. İçerik nerede
 
@@ -194,16 +244,17 @@ Ayar değişikliği gerekmez, ama git geçmişi üretilen dosyalarla dolar.
 ## 8. Bilinen durumlar
 
 - **Eski site dosyaları hâlâ repoda** (`index.html`, `pages/`, `css/`, `js/`,
-  `img/`, `videos/`). `pist` dalında canlı olduğu için silinmedi. Yeni site
-  yayına girince temizlenecek.
-- **`pages_DISABLED/` ve `pages/katilimcilar.html` silindi** (commit `899304e`,
-  canlıya alındı). İlkinde başka bir stüdyonun ("Qube London") marka adı
-  geçiyordu, ikincisi "gizli" olmasına rağmen herkese açıktı.
-- **`robots.txt` eklendi**, sitemap henüz yok.
-- Canonical `www.piststudio.com`'dan apex'e (`piststudio.com`) geçilmesi
-  planlandı; Search Console'da yeni mülk eklenmeli.
-
----
+  `img/`, `videos/`). `pist` dalında canlı olduğu için silinmedi. Actions
+  dağıtımına geçilince artifact `_site` olacağı için yayına çıkmayacaklar.
+- **`pages_DISABLED/` ve `pages/katilimcilar.html` silindi** (commit `899304e`).
+  İlkinde başka bir stüdyonun ("Qube London") marka adı geçiyordu, ikincisi
+  "gizli" olmasına rağmen herkese açıktı.
+- **Kalkış animasyonu hâlâ gözle görülmedi.** İki oturumdur önizleme paneli
+  kapalı; panel gizliyken tarayıcı `requestAnimationFrame`'i çalıştırmıyor ve
+  scroll'lu ekran görüntüleri boş geliyor. Duruş hâli (scroll 0) doğrulandı.
+  **Performans hiç ölçülmedi** — gerçek telefonda ölçülmeli.
+- **Ses sayfasında Spotify katalogu yok**, sadece düz bağlantı var.
+- **`_site/` derleme çıktısı** git'te izlenmiyor; workflow her push'ta üretiyor.
 
 ## 9. Yeni oturuma verilecekler
 
@@ -213,3 +264,6 @@ Ayar değişikliği gerekmez, ama git geçmişi üretilen dosyalarla dolar.
 
 Ve şu cümle yeter: *"pist-website deposunda `yeni-site` dalında kaldığımız
 yerden devam ediyoruz, DEVAM.md'yi oku."*
+
+> **Önizleme panelini açık tut.** İki oturumdur kapalı olduğu için kalkış
+> animasyonu bir kez bile gözle doğrulanamadı.
