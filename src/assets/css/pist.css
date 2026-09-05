@@ -136,7 +136,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset
   backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
-.topbar .inner{display:flex;align-items:center;gap:14px;height:62px}
+/* Üst çubuk tam genişliğe yayılır: logo en solda, dil seçici en sağda.
+   İçerik sütunu (--maxw) okunabilirlik için dar kalır ama çubuk kalmaz —
+   geniş ekranda ortada toplanmış görünüyordu. */
+.topbar .inner{
+  display:flex;align-items:center;gap:14px;height:62px;
+  max-width:none;
+}
 .topbar nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
 .topbar nav a{
   font-family:var(--tech);font-size:11px;font-weight:500;

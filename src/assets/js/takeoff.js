@@ -328,8 +328,28 @@
     t = span > 0 ? Math.min(1, Math.max(0, window.scrollY / span)) : 1;
   }
 
+  /* --- paneller: scroll ilerlemesine göre yerinde değişirler ---
+     Sayfa görsel olarak kaymıyor; .hero yalnızca scroll mesafesi veriyor.
+     Her panelin data-from/data-to aralığı var; giriş ve çıkışta yumuşak
+     geçiş, ayrıca aralığın ortasına göre hafif dikey kayma uygulanıyor. */
+  var panels = [].slice.call(document.querySelectorAll('.panel'));
+  var panelAralik = panels.map(function (p) {
+    return { el: p, a: parseFloat(p.dataset.from), b: parseFloat(p.dataset.to) };
+  });
+
+  function panelsUpdate() {
+    for (var i = 0; i < panelAralik.length; i++) {
+      var q = panelAralik[i];
+      var o = ss(q.a - 0.07, q.a + 0.07, ts) * (1 - ss(q.b - 0.07, q.b + 0.07, ts));
+      q.el.style.opacity = o.toFixed(3);
+      q.el.style.transform = 'translateY(' + ((ts - (q.a + q.b) / 2) * -92).toFixed(1) + 'px)';
+      q.el.style.visibility = o < 0.02 ? 'hidden' : 'visible';
+    }
+  }
+
   var altEl = document.getElementById('alt');
   var fillEl = document.getElementById('fill');
+  var hintEl = document.querySelector('.scrollhint');
   function fmtAlt(m) {
     if (m < 1000) return Math.round(m) + ' m';
     if (m < 100000) return (m / 1000).toFixed(1) + ' km';
@@ -352,8 +372,11 @@
     vel = Math.abs(ts - tsPrev);
 
     draw();
+    panelsUpdate();
     if (altEl) altEl.textContent = fmtAlt(camY);
     if (fillEl) fillEl.style.height = (ts * 100).toFixed(1) + '%';
+    /* kaydırma ipucu ilk hareketle silinir */
+    if (hintEl) hintEl.style.opacity = ts > 0.02 ? '0' : '1';
 
     if (++frames > 90) {
       frames = 0;

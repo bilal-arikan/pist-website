@@ -7,63 +7,92 @@ title: "Pist Studio — Creative Technology Studio"
 description: "Kendi dijital ürünlerini ve ses işlerini üreten bir stüdyo. İlk ürünümüz Projelio yayında."
 extraCss: /assets/css/home.css
 extraJs: /assets/js/takeoff.js
+noFooter: true
 ---
+
+{#
+  Ana sayfa görsel olarak KAYMAZ. .hero yalnızca scroll mesafesi sağlar;
+  görünen her şey fixed. Scroll kamerayı yükseltir ve panelleri sırayla
+  değiştirir. Panel aralıkları (data-from / data-to) 0–1 scroll ilerlemesi.
+  Referans: ~/Desktop/Pist Studio Marka/prototipler/01-pistten-kalkis.html
+#}
 
 <section class="hero" id="hero">
   <canvas id="sky" aria-hidden="true"></canvas>
   <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="hero-stage">
-    <div class="wrap">
-      <p class="eyebrow" lang="en">{{ site.category.tr }}</p>
-      <h1>Her şey bir pistte başlar.</h1>
-      <p class="lede">{{ site.slogan }} Kendi araçlarımızı geliştiriyoruz — <strong>ilki Projelio</strong>.</p>
-      <div class="ctas">
-        <a class="btn btn-p" href="{{ site.products.projelio }}" rel="noopener">Projelio'yu gör</a>
-        <a class="btn btn-s" href="/tr/urunler/">Ne yapıyoruz</a>
+
+  <div class="stage">
+
+    <div class="panel" data-from="-0.12" data-to="0.20">
+      <div class="wrap">
+        <p class="eyebrow" lang="en">{{ site.category.tr }}</p>
+        <h1>Her şey bir pistte başlar.</h1>
+        <p class="lede">{{ site.slogan }} Kendi araçlarımızı geliştiriyoruz — <strong>ilki Projelio</strong>.</p>
+        <div class="ctas">
+          <a class="btn btn-p" href="{{ site.products.projelio }}" rel="noopener">Projelio'yu gör</a>
+          <a class="btn btn-s" href="/tr/urunler/">Ne yapıyoruz</a>
+        </div>
       </div>
     </div>
+
+    <div class="panel" data-from="0.28" data-to="0.48">
+      <div class="wrap">
+        <p class="eyebrow">Products</p>
+        <h2>Yerden kesilen her fikir bir ürün.</h2>
+        <div class="rows">
+          <a class="row" style="--hue:var(--c-yellow)" href="{{ site.products.projelio }}" rel="noopener">
+            <span class="rk">Products</span>
+            <span class="rt">Projelio</span>
+            <span class="rd">Freelancer'ların projelerini, işlerini ve müşterilerini tek yerden yönettiği araç.</span>
+            <span class="rs">Yayında</span>
+          </a>
+          <div class="row" style="--hue:var(--c-green)">
+            <span class="rk">Products</span>
+            <span class="rt">Sıradaki</span>
+            <span class="rd">Geliştirme aşamasında. Hazır olmadan duyurmuyoruz.</span>
+            <span class="rs">2026</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" data-from="0.56" data-to="0.74">
+      <div class="wrap">
+        <p class="eyebrow">Sound</p>
+        <h2>Ses, bizi buraya getiren şey.</h2>
+        <p class="lede">Müzik prodüksiyonu, sound design, miks ve mastering. Stüdyo kapandı; <strong>üretim kapanmadı</strong>.</p>
+        <div class="ctas">
+          <a class="btn btn-s" href="/tr/ses/">Çıkan işler</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel" data-from="0.82" data-to="1.20">
+      <div class="wrap">
+        <p class="eyebrow">Kármán çizgisi · 100 km</p>
+        <h2>Bir sonraki fikir için pist boş.</h2>
+        <p class="lede">Ürün, ses işi ya da iş birliği — hepsi aynı kutuya düşüyor.</p>
+        <div class="ctas">
+          <a class="btn btn-p" href="/tr/iletisim/">Bize yaz</a>
+        </div>
+        <div class="kapanis">
+          <a href="/tr/urunler/">Ürünler</a>
+          <a href="/tr/ses/">Ses</a>
+          <a href="/tr/hakkinda/">Hakkında</a>
+          <a href="/tr/blog/">Blog</a>
+          <a href="{{ site.social.instagram }}" rel="noopener">Instagram</a>
+          <a href="{{ site.social.linkedin }}" rel="noopener">LinkedIn</a>
+          <a href="{{ i18n.tr.privacyUrl }}">{{ i18n.tr.privacy }}</a>
+          <span class="telif">© {{ site.founded }}–2026 {{ site.name }} · {{ site.location.tr }}</span>
+        </div>
+      </div>
+    </div>
+
   </div>
+
   <div class="gauge" aria-hidden="true">
     <span class="val" id="alt">2 m</span>
     <div class="bar"><div class="fill" id="fill"></div><div class="karman"></div><div class="klabel">Kármán · 100 km</div></div>
   </div>
   <div class="scrollhint" aria-hidden="true"><span class="ln"></span><span>Kalkış için kaydır</span></div>
 </section>
-
-<div class="below">
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Products</p>
-        <h2>Yerden kesilen her fikir bir ürün.</h2>
-      </div>
-      <div class="rows">
-        <a class="row" style="--hue:var(--c-yellow)" href="{{ site.products.projelio }}" rel="noopener">
-          <span class="rk">Products</span>
-          <span class="rt">Projelio</span>
-          <span class="rd">Freelancer'ların projelerini, işlerini ve müşterilerini tek yerden yönettiği araç.</span>
-          <span class="rs">Yayında</span>
-        </a>
-        <div class="row" style="--hue:var(--c-green)">
-          <span class="rk">Products</span>
-          <span class="rt">Sıradaki</span>
-          <span class="rd">Geliştirme aşamasında. Hazır olmadan duyurmuyoruz.</span>
-          <span class="rs">2026</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">Sound</p>
-        <h2>Ses, bizi buraya getiren şey.</h2>
-        <p class="lede">Müzik prodüksiyonu, sound design, miks ve mastering. Stüdyo kapandı; <strong>üretim kapanmadı</strong>.</p>
-      </div>
-      <a class="btn btn-s" href="/tr/ses/">Çıkan işler</a>
-    </div>
-  </section>
-
-</div>
