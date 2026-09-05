@@ -1,0 +1,33 @@
+{% set t = i18n[lang] %}
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="lockup" href="{{ t.home }}">
+          {% include "partials/mark.njk" %}
+          <span class="wm">{{ site.name }}</span>
+        </a>
+        <p class="slogan">{{ site.slogan }}</p>
+      </div>
+      <div>
+        <h4>{{ t.footerNav }}</h4>
+        <ul>{% for item in t.nav %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endfor %}</ul>
+      </div>
+      <div>
+        <h4>{{ t.footerFollow }}</h4>
+        <ul>
+          <li><a href="{{ site.social.instagram }}" rel="noopener">Instagram</a></li>
+          <li><a href="{{ site.social.spotify }}" rel="noopener">Spotify</a></li>
+          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+        </ul>
+        <h4 style="margin-top:22px">{{ t.footerLegal }}</h4>
+        <ul><li><a href="{{ t.privacyUrl }}">{{ t.privacy }}</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© {{ site.founded }}–2026 {{ site.name }}</span>
+      <span>{{ site.location[lang] }}</span>
+      <span lang="en">{{ site.category[lang] }}</span>
+    </div>
+  </div>
+</footer>

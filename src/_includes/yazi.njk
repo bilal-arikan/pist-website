@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+<article class="yazi">
+  <div class="wrap">
+    <a class="geri" href="{{ i18n[lang].blogIndex }}">{{ i18n[lang].blogBack }}</a>
+    <p class="eyebrow" style="color:{{ hue }}">{{ category }}</p>
+    <h1>{{ title }}</h1>
+    <div class="künye">
+      <span>{{ date | tarihTR if lang == 'tr' else date | tarihEN }}</span>
+      <span>{{ readingTime }} {{ i18n[lang].readSuffix }}</span>
+      <span>Pist Studio</span>
+    </div>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+  </div>
+</article>

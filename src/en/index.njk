@@ -1,0 +1,69 @@
+---
+layout: base.njk
+lang: en
+alt: /tr/
+permalink: /en/
+title: "Pist Studio — Creative Technology Studio"
+description: "A studio building its own digital products and sound. Our first product, Projelio, is live."
+extraCss: /assets/css/home.css
+extraJs: /assets/js/takeoff.js
+---
+
+<section class="hero" id="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-stage">
+    <div class="wrap">
+      <p class="eyebrow">{{ site.category.en }}</p>
+      <h1>Everything starts on a runway.</h1>
+      <p class="lede">{{ site.slogan }} We build our own tools — <strong>Projelio is the first</strong>.</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="{{ site.products.projelio }}" rel="noopener">See Projelio</a>
+        <a class="btn btn-s" href="/en/products/">What we do</a>
+      </div>
+    </div>
+  </div>
+  <div class="gauge" aria-hidden="true">
+    <span class="val" id="alt">2 m</span>
+    <div class="bar"><div class="fill" id="fill"></div><div class="karman"></div><div class="klabel">Kármán · 100 km</div></div>
+  </div>
+  <div class="scrollhint" aria-hidden="true"><span class="ln"></span><span>Scroll for takeoff</span></div>
+</section>
+
+<div class="below">
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Products</p>
+        <h2>Every idea that lifts off becomes a product.</h2>
+      </div>
+      <div class="rows">
+        <a class="row" style="--hue:var(--c-yellow)" href="{{ site.products.projelio }}" rel="noopener">
+          <span class="rk">Products</span>
+          <span class="rt">Projelio</span>
+          <span class="rd">A tool where freelancers manage projects, work and clients in one place.</span>
+          <span class="rs">Live</span>
+        </a>
+        <div class="row" style="--hue:var(--c-green)">
+          <span class="rk">Products</span>
+          <span class="rt">Next</span>
+          <span class="rd">In development. We don't announce before it's ready.</span>
+          <span class="rs">2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Sound</p>
+        <h2>Sound is what brought us here.</h2>
+        <p class="lede">Music production, sound design, mixing and mastering. The studio closed; <strong>the work did not</strong>.</p>
+      </div>
+      <a class="btn btn-s" href="/en/sound/">Released work</a>
+    </div>
+  </section>
+
+</div>

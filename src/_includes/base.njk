@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}">
+
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{% if alt %}
+<link rel="alternate" hreflang="{{ lang }}" href="{{ site.url }}{{ page.url }}">
+<link rel="alternate" hreflang="{{ i18n[lang].other }}" href="{{ site.url }}{{ alt }}">
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+{% endif %}
+
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:type" content="{{ ogType or 'website' }}">
+<meta property="og:title" content="{{ title }}">
+<meta property="og:description" content="{{ description }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:locale" content="{{ 'tr_TR' if lang == 'tr' else 'en_US' }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/simge-kare.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,300;110,400&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+{% if extraCss %}<link rel="stylesheet" href="{{ extraCss }}">{% endif %}
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"{{ site.name }}",
+  "url":"{{ site.url }}",
+  "email":"{{ site.email }}",
+  "slogan":"{{ site.slogan }}",
+  "foundingDate":"{{ site.founded }}",
+  "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"},
+  "sameAs":["{{ site.social.instagram }}","{{ site.social.spotify }}"]
+}
+</script>
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+
+<a class="skip" href="#icerik">{{ i18n[lang].skip }}</a>
+
+{% include "partials/topbar.njk" %}
+
+<main id="icerik">
+{{ content | safe }}
+</main>
+
+{% include "partials/footer.njk" %}
+
+{% if extraJs %}<script src="{{ extraJs }}" defer></script>{% endif %}
+</body>
+</html>

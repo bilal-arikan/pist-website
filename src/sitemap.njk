@@ -1,0 +1,22 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{%- for sayfa in collections.all %}
+{%- if sayfa.data.permalink != "/index.html" and sayfa.data.permalink != "/404.html" and sayfa.data.permalink != "/sitemap.xml" %}
+  <url>
+    <loc>{{ site.url }}{{ sayfa.url }}</loc>
+    {%- if sayfa.data.alt %}
+    <xhtml:link rel="alternate" hreflang="{{ sayfa.data.lang }}" href="{{ site.url }}{{ sayfa.url }}"/>
+    <xhtml:link rel="alternate" hreflang="{{ i18n[sayfa.data.lang].other }}" href="{{ site.url }}{{ sayfa.data.alt }}"/>
+    {%- endif %}
+    {%- if sayfa.data.date %}
+    <lastmod>{{ sayfa.data.date | isoTarih }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>

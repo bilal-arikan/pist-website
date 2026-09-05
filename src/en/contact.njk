@@ -1,0 +1,85 @@
+---
+layout: base.njk
+lang: en
+alt: /tr/iletisim/
+permalink: /en/contact/
+title: "Contact — Pist Studio"
+description: "Write to us about product, sound work or partnerships. We usually reply within two business days."
+extraCss: /assets/css/form.css
+extraJs: /assets/js/form.js
+---
+<section class="section" style="border-top:none;padding-bottom:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Contact</p>
+      <h1>Got an idea, or a problem?</h1>
+      <p class="lede">Product, sound work or partnership — it all lands in the same inbox. We usually reply within two business days.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap iletisim">
+  <div>
+    <h3>Prefer to reach us directly</h3>
+    <p class="lede" style="font-size:14.5px;margin-top:12px">The form is optional. If one of these channels suits you better, use it instead.</p>
+    <div class="dogrudan">
+      <a href="mailto:{{ site.email }}"><span class="l">Email</span><span class="v">{{ site.email }}</span></a>
+      <a href="{{ site.social.instagram }}" rel="noopener"><span class="l">Instagram</span><span class="v">@pist.istanbul</span></a>
+      <a href="{{ site.products.projelio }}" rel="noopener"><span class="l">Product support</span><span class="v">projelio.app</span></a>
+      <div><span class="l">Location</span><span class="v">{{ site.location.en }}</span></div>
+    </div>
+  </div>
+
+  <form id="mesaj" novalidate
+        data-mailto="{{ site.email }}"
+        data-hata-ad="Could you tell us your name?"
+        data-hata-eposta="A valid email address is required."
+        data-hata-konu="Pick a subject."
+        data-hata-mesaj="Could you write at least 20 characters?">
+    <div class="ikili">
+      <div class="alan" data-ad="ad">
+        <label for="ad">Name <span class="req">*</span></label>
+        <input id="ad" name="ad" type="text" autocomplete="name" placeholder="Your name">
+        <span class="hata">Could you tell us your name?</span>
+      </div>
+      <div class="alan" data-ad="eposta">
+        <label for="eposta">Email <span class="req">*</span></label>
+        <input id="eposta" name="eposta" type="email" autocomplete="email" placeholder="you@example.com">
+        <span class="hata">A valid email address is required.</span>
+      </div>
+    </div>
+
+    <div class="alan" data-ad="konu">
+      <label for="konu">Subject <span class="req">*</span></label>
+      <select id="konu" name="konu">
+        <option value="">Choose…</option>
+        <option>About Projelio</option>
+        <option>A new product idea</option>
+        <option>Sound / music production</option>
+        <option>Partnership</option>
+        <option>Press</option>
+        <option>Other</option>
+      </select>
+      <span class="hata">Pick a subject.</span>
+    </div>
+
+    <div class="alan" data-ad="mesaj">
+      <label for="mesajmetni">Message <span class="req">*</span></label>
+      <textarea id="mesajmetni" name="mesaj" maxlength="2000" placeholder="What would you like to talk about? The more context, the more useful our reply."></textarea>
+      <span class="sayac"><span id="sayi">0</span> / 2000</span>
+      <span class="hata">Could you write at least 20 characters?</span>
+    </div>
+
+    {# bot tuzağı — insanlar göremez, botlar doldurur #}
+    <input class="tuzak" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="gonder">
+      <button class="btn btn-p" type="submit" id="gonderBtn">Write the message</button>
+      <span class="durum" id="d-gonder">Opening…</span>
+      <span class="durum iyi" id="d-ok">✓ Your email app should be open with the message ready. Press send there.</span>
+      <span class="durum kotu" id="d-hata">Couldn't open your email app. Write to {{ site.email }} directly.</span>
+    </div>
+
+    <p class="kvkk">This form doesn't send anything by itself — it opens your own email app with the message filled in. Nothing is stored on this site and no third-party service sees it.</p>
+  </form>
+</div>

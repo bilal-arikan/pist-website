@@ -1,0 +1,34 @@
+{% set t = i18n[lang] %}
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="{{ t.home }}">
+      {% include "partials/mark.njk" %}
+      <span class="wm">{{ site.name }}</span>
+    </a>
+    <nav aria-label="{{ t.footerNav }}">
+      {%- for item in t.nav %}
+      <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+    {# Karşı dildeki eşdeğer sayfaya git — `alt` her sayfanın frontmatter'ında.
+       Eşi yoksa o dilin ana sayfasına düş. #}
+    <div class="lang" id="dilsec">
+      <a href="{{ page.url if lang == 'tr' else (alt or '/tr/') }}" data-dil="tr"
+         {% if lang == 'tr' %}aria-current="true"{% endif %} hreflang="tr">TR</a>
+      <a href="{{ page.url if lang == 'en' else (alt or '/en/') }}" data-dil="en"
+         {% if lang == 'en' %}aria-current="true"{% endif %} hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+<script>
+/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
+(function () {
+  var k = document.getElementById('dilsec');
+  if (!k) return;
+  k.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dil]');
+    if (!a) return;
+    try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+})();
+</script>

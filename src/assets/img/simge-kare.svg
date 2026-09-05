@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-labelledby="t">
+  <title id="t">Pist Studio</title>
+  <rect width="48" height="48" rx="10" fill="#0B0616"/>
+  <g transform="translate(10.18 4.14) scale(0.8636)">
+    <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+    <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+    <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+    <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+  </g>
+</svg>

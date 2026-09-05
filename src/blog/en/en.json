@@ -1,0 +1,8 @@
+{
+  "layout": "yazi.njk",
+  "lang": "en",
+  "alt": "/tr/blog/",
+  "ogType": "article",
+  "permalink": "/en/blog/{{ slug }}/",
+  "extraCss": "/assets/css/yazi.css"
+}
