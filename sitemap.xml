@@ -17,11 +17,6 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/iletisim/"/>
   </url>
   <url>
-    <loc>https://www.piststudio.com/en/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
-  </url>
-  <url>
     <loc>https://www.piststudio.com/en/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
@@ -52,11 +47,6 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/contact/"/>
   </url>
   <url>
-    <loc>https://www.piststudio.com/tr/</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
-  </url>
-  <url>
     <loc>https://www.piststudio.com/tr/ses/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
@@ -70,6 +60,16 @@
     <loc>https://www.piststudio.com/tr/aydinlatma-metni/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
   </url>
   <url>
     <loc>https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/</loc>
