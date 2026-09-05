@@ -54,7 +54,9 @@
 {{ content | safe }}
 </main>
 
-{% include "partials/footer.njk" %}
+{# Ana sayfada footer ayrı bir blok değil — son panelin içinde.
+   Sayfanın görsel olarak kaymaması için akışta hiçbir şey kalmamalı. #}
+{% if not noFooter %}{% include "partials/footer.njk" %}{% endif %}
 
 {% if extraJs %}<script src="{{ extraJs }}" defer></script>{% endif %}
 </body>

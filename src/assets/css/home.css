@@ -2,16 +2,26 @@
 
 #sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
 
-.hero{position:relative;height:400vh;z-index:1}
-.hero-stage{
-  position:sticky;top:0;height:100vh;
-  display:flex;align-items:flex-start;
-  /* metin üst bölgede dursun — pist lambalarının parlak şeridi alt yarıda kalıyor */
-  padding-top:clamp(96px,17vh,180px);
-  /* sticky kendi yığın bağlamını açar; bu olmadan .wrap'in z-index:2'si
-     bağlamın içinde kalır ve perde (z-index:1) metnin üstünü örter */
-  z-index:2;
+/* Sayfa GÖRSEL OLARAK kaymaz. .hero yalnızca scroll mesafesi sağlar;
+   görünen her şey fixed. Scroll kamerayı yükseltir ve panelleri sırayla
+   değiştirir — prototipteki (01-pistten-kalkis.html) davranış.
+   Panel aralıkları markup'ta data-from / data-to olarak duruyor. */
+.hero{position:relative;height:520vh;z-index:1}
+
+.stage{position:fixed;inset:0;z-index:2;pointer-events:none}
+.stage .wrap{width:100%}
+.panel{
+  position:absolute;inset:0;
+  display:flex;align-items:center;
+  /* üst çubuğun altında ortalansın */
+  padding-top:62px;
+  will-change:opacity,transform;
+  opacity:0;visibility:hidden;
 }
+/* JS yoksa ilk panel görünür kalsın — sayfa boş açılmasın */
+.panel:first-child{opacity:1;visibility:visible}
+.panel a,.panel button{pointer-events:auto}
+
 .hero-scrim{
   position:fixed;inset:0;z-index:1;pointer-events:none;
   background:linear-gradient(180deg,rgba(7,4,15,.55) 0,rgba(7,4,15,0) 46%);
@@ -20,10 +30,33 @@
   content:"";position:absolute;inset:0;
   background:linear-gradient(100deg,rgba(7,4,15,.94) 0%,rgba(7,4,15,.78) 38%,rgba(7,4,15,0) 72%);
 }
-.hero-stage .wrap{position:relative;z-index:2;width:100%}
+
 .hero h1{margin:22px 0;max-width:13ch;text-shadow:0 1px 14px rgba(7,4,15,.95)}
+.hero h2{margin:0 0 20px;max-width:15ch;text-shadow:0 1px 14px rgba(7,4,15,.95)}
 .hero .lede{text-shadow:0 1px 10px rgba(7,4,15,.95)}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+
+/* kapanış paneli — ana sayfada ayrı bir footer yok */
+.panel .kapanis{
+  display:flex;flex-wrap:wrap;gap:14px 26px;align-items:center;
+  margin-top:30px;padding-top:20px;border-top:1px solid var(--line);
+  max-width:640px;
+}
+.panel .kapanis a{
+  font-family:var(--tech);font-size:10.5px;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:var(--tx-dim);text-decoration:none;
+}
+.panel .kapanis a:hover{color:var(--acc)}
+.panel .kapanis .telif{
+  font-family:var(--tech);font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--tx-faint);width:100%;
+}
+
+@media(max-width:720px){
+  .panel{padding-top:96px;align-items:flex-start}
+  .panel .wrap{padding-top:clamp(20px,8vh,64px)}
+}
 
 /* irtifa göstergesi */
 .gauge{
@@ -41,15 +74,10 @@
 @media(max-width:860px){.gauge{display:none}}
 
 .scrollhint{
-  position:absolute;left:var(--gut);bottom:34px;z-index:3;pointer-events:none;
+  position:fixed;left:var(--gut);bottom:34px;z-index:3;pointer-events:none;
+  transition:opacity .4s;
   font-family:var(--tech);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--tx-faint);
   display:flex;align-items:center;gap:10px;
 }
 .scrollhint .ln{width:34px;height:1px;background:currentColor;opacity:.5}
 
-/* hero'dan sonrası — yıldız alanı hafifçe görünmeye devam eder */
-.below{
-  position:relative;z-index:2;
-  background:linear-gradient(180deg,rgba(11,6,22,.72) 0,rgba(11,6,22,.97) 260px,var(--g0) 620px);
-}
-.below .section:first-child{border-top:none}
