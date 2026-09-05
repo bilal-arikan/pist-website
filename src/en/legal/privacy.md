@@ -38,7 +38,8 @@ When you get in touch with us:
 What you put in the message is your choice. **Please do not share special categories
 of data (health, religion, political opinion and similar) with us this way.**
 
-This site sets no advertising or profiling cookies. [ADD ANALYTICS TOOL IF USED]
+This site sets no advertising or profiling cookies, and collects no visitor
+analytics.
 
 ## 3. Why we process it
 

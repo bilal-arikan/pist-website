@@ -49,10 +49,19 @@ jobs:
       - name: Derle
         run: npm run build
 
-      # Doldurulmamış hukuk metni kazara yayına çıkmasın. Bilerek çıkmak
-      # gerekirse bu adıma env: IZIN_VER_YER_TUTUCU: "1" eklenir.
+      # Doldurulmamış hukuk metni kazara yayına çıkmasın.
+      #
+      # ⚠️ GEÇİCİ İSTİSNA (6 Eylül 2026) — kurucunun bilinçli kararı.
+      # Aydınlatma metninde ŞİRKET UNVANI, AÇIK ADRES ve KVKK BAŞVURU
+      # E-POSTASI hâlâ boş; şirket henüz kurulmadığı için doldurulamıyor.
+      # Siteye trafik gelmediği için risk kabul edildi.
+      #
+      # Bilgiler gelip alanlar doldurulunca AŞAĞIDAKİ env BLOĞUNU SİL —
+      # kontrol o an tekrar devreye girer.
       - name: Yayın öncesi kontrol
         run: npm run kontrol
+        env:
+          IZIN_VER_YER_TUTUCU: "1"
 
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

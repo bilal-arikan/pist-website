@@ -38,8 +38,8 @@ Mesaj metnine hangi bilgileri yazacağınız sizin tercihinizdedir. **Özel nite
 kişisel verilerinizi (sağlık, din, siyasi görüş vb.) bu yolla paylaşmamanızı
 öneririz.**
 
-Sitemizde reklam veya profilleme amaçlı çerez kullanılmamaktadır. [ANALİTİK ARACI
-KULLANILIYORSA BURAYA EKLENECEK]
+Sitemizde reklam veya profilleme amaçlı çerez kullanılmamaktadır ve ziyaretçi
+analitiği toplanmamaktadır.
 
 ## 3. İşleme amaçları
 
