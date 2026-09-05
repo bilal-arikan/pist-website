@@ -8,6 +8,9 @@
   display:flex;align-items:flex-start;
   /* metin üst bölgede dursun — pist lambalarının parlak şeridi alt yarıda kalıyor */
   padding-top:clamp(96px,17vh,180px);
+  /* sticky kendi yığın bağlamını açar; bu olmadan .wrap'in z-index:2'si
+     bağlamın içinde kalır ve perde (z-index:1) metnin üstünü örter */
+  z-index:2;
 }
 .hero-scrim{
   position:fixed;inset:0;z-index:1;pointer-events:none;
