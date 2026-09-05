@@ -1,7 +1,8 @@
 # Pist Studio sitesi — devir belgesi
 
 **Son güncelleme:** 6 Eylül 2026 (2. oturum)
-**Dal:** `yeni-site` · **Canlı dal:** `pist` (dokunulmadı)
+**Dal:** `yeni-site` (geliştirme) · **Canlı dal:** `pist`
+**Durum:** 🟢 Yeni site 6 Eylül 2026'da yayına alındı — https://www.piststudio.com/
 
 Bu belge yeni bir oturumun sıfırdan başlamadan devam edebilmesi için yazıldı.
 Marka çalışmasının tamamı ayrı bir klasörde: `~/Desktop/Pist Studio Marka/`
@@ -104,24 +105,22 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 
 ## 4. Sırada ne var
 
-Canlıya çıkmayı **engelleyenler** (bölüm 5'teki tabloda gerekçeleri var):
+Site yayında; bunların hiçbiri yayını engellemiyor.
 
-1. **Aydınlatma metni** — köşeli parantezli 8 alan + avukat incelemesi.
-   Şirket unvanı olmadan veri sorumlusu alanı doldurulamıyor.
-   Bilgiler bu hafta gelecek. `npm run kontrol` bekçilik ediyor.
-
-   *(Gerçek e-posta adresi maddesi kapandı — `info@piststudio.com` teyitli.)*
-
-Engellemeyenler:
-
-3. **Spotify betiği** — `scripts/fetch-spotify.mjs` (henüz yok).
-   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC`. Şu an Ses sayfasında
+1. **Hukuk bilgileri** — şirket unvanı, açık adres, KVKK başvuru e-postası.
+   Geldiğinde iki dosyada 3 alan doldurulacak ve workflow'daki
+   `IZIN_VER_YER_TUTUCU` istisnası silinecek. Avukat incelemesi de yapılmadı.
+2. **Spotify betiği** — `scripts/fetch-spotify.mjs` (henüz yok).
+   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC`. Ses sayfasında şu an
    Spotify'a düz bağlantı var, katalog çekilmiyor.
+3. **Kalkış animasyonu performansı** — gerçek telefonda hiç ölçülmedi.
+   Sitenin en riskli parçası burası.
 4. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
-   `form.js` içindeki `teslim` kısmı değişir, doğrulama aynen kalır.
-   Ama o an KVKK yükümlülüğü de geri geliyor (bkz. bölüm 5).
+   `form.js` içindeki teslim kısmı değişir, doğrulama aynen kalır.
+   Ama o an KVKK yükümlülüğü de geri gelir.
 5. **İngilizce blog** — şu an tek yazı. Diğer ikisi bilinçli olarak
-   Türkçe kaldı; istenirse çevrilir.
+   Türkçe kaldı.
+6. **Search Console** — `sitemap.xml` gönderilmedi. Mülk **www** olmalı.
 
 ## 5. Karar bekleyen konular
 
@@ -167,63 +166,75 @@ de bu yüzden kontrol edilememişti. Bir sonraki oturumda önizleme panelini
 
 ---
 
-## 6. Yayın planı — DURUM
+## 6. Yayın — ✅ CANLIDA (6 Eylül 2026)
 
-Alan adı `www.piststudio.com`, DNS **Squarespace Domains**'te, erişim **Bilal**'de.
-Repo `github.com/bilal-arikan/pist-website`, varsayılan dal `pist`.
+**Site yayında: https://www.piststudio.com/**
+Eski müzik stüdyosu sitesi kaldırıldı.
 
-### ✅ Adım 0 — kapandı (6 Eylül 2026)
+### Nasıl yayınlanıyor
 
-- [x] `info@piststudio.com` teyit edildi, aktif.
-- [x] Analitik kullanılmama kararı alındı, yer tutucular kaldırıldı.
-- [x] **Kalan 3 alan bilinçli olarak boş bırakıldı** — şirket unvanı, açık adres,
-      KVKK başvuru e-postası. Şirket kurulmadığı için doldurulamıyor; siteye
-      trafik gelmediğinden kurucu riski kabul etti.
-      Workflow'daki kontrol adımına dated bir istisna eklendi.
+Depo ayarına **hiç dokunulmadı.** GitHub Pages hâlâ *deploy from a branch*
+modunda ve `pist` dalının **kökünü** servis ediyor; biz de derlenmiş çıktıyı
+oraya koyuyoruz. Bilal'e ihtiyaç kalmadı.
 
-### ✅ Adım 2 — yapıldı (6 Eylül 2026)
+```bash
+# yeni-site dalında geliştir, sonra:
+git checkout pist
+git merge yeni-site
+npm run yayinla          # derle + kontrol + köke senkronla
+git add -A && git commit -m "..." && git push
+```
 
-`yeni-site` → `pist` merge edildi ve push edildi (merge commit `3d0a83a`).
+`npm run yayinla` = `build` + `kontrol` + `scripts/yayinla.mjs`.
+Betik yalnızca `_site` içinde karşılığı olan girdileri kökte değiştirir;
+`src/`, `scripts/`, `package.json` gibi kaynaklara dokunmaz.
 
-**Bu push canlı siteyi değiştirmedi** ve değiştirmesi de beklenmiyordu:
-Pages hâlâ *deploy from a branch* modunda, `pist` kökündeki eski site
-dosyalarına merge hiç dokunmadı. Push sonrası `www.piststudio.com` HTTP 200
-dönmeye devam ediyor.
+> ⚠️ `kontrol` şu an başarısız oluyor (aşağıya bakın). Bilinçli olarak
+> geçmek için: `IZIN_VER_YER_TUTUCU=1 npm run yayinla`
 
-Workflow `pist`e push'ta tetiklendi ama **başarısız olması normal** —
-`actions/configure-pages` Pages kaynağı "GitHub Actions" olmadan hata verir.
-`enablement` girdisi verilmediği için ayarı kendiliğinden değiştirmez.
+### Kökteki dosyalar ÜRETİLMİŞTİR
 
-### ⬜ Adım 1 — Bilal'i bekliyor (tek tık)
+`index.html`, `tr/`, `en/`, `assets/`, `pages/`, `404.html`, `sitemap.xml`,
+`robots.txt`, `CNAME`, `.nojekyll` — hiçbiri elle düzenlenmez. Kaynak `src/`.
 
-`Settings → Pages → Build and deployment → Source`
-değerini *Deploy from a branch* yerine **GitHub Actions** yap.
+`.nojekyll` şart: dal modunda Jekyll devreye girer ve çıktıyı işlemeye
+çalışır.
 
-> Özel alan adı ayarı `www.piststudio.com` olarak kalmalı.
-> `CNAME` dosyası `_site`'a kopyalanıyor, artifact'ta da bulunuyor.
+### Alan adı
 
-### ⬜ Adım 2b — ayar değişince biz
+`piststudio.com` → **301** → `www.piststudio.com`. Canonical, `og:url` ve
+hreflang'ler www'yi gösteriyor; CNAME de www. Üçü tutarlı, doğrulandı.
 
-Actions sekmesinden **"Derle ve yayınla"** workflow'unu `workflow_dispatch`
-ile elle çalıştır. (Yeni bir push beklemeye gerek yok.)
+### Yayın sonrası doğrulama — yapıldı
 
-Sıralama bilinçli: önce push, sonra ayar, hemen ardından elle çalıştırma.
-Böylece eski site, yeni site yayına girene kadar ayakta kalıyor; kesinti
-sadece workflow'un sürdüğü kadar oluyor.
+18 URL'nin hepsi 200: kök, `/tr/` ve `/en/` altındaki 7'şer sayfa,
+`sitemap.xml`, `robots.txt`, `404.html`. Altı eski URL yönlendirmesi
+hedefine düşüyor; yönlendirilmeyen eski sayfalar 404 veriyor.
+Ana sayfada `hero-stage` z-index'i 2 olarak canlıda — parlaklık düzeltmesi
+yayında.
 
-### ⬜ Adım 3 — yayın sonrası doğrulama
+### Kalanlar
 
-- [ ] `https://www.piststudio.com/` kök yönlendirmesi çalışıyor mu
-- [ ] `/tr/` ve `/en/` açılıyor mu, dil değiştirici doğru sayfaya gidiyor mu
-- [ ] Yönlendirilen 6 eski URL yeni hedefine düşüyor mu
-- [ ] Search Console'a `sitemap.xml` gönder
-- [ ] Gerçek telefonda kalkış animasyonunun performansı ölç (hiç ölçülmedi)
-- [ ] Hukuk bilgileri gelince 3 alanı doldur ve **workflow'daki
-      `IZIN_VER_YER_TUTUCU` env bloğunu sil**
+- [ ] **Hukuk bilgileri gelince:** 3 alanı doldur (`src/tr/yasal/…` ve
+      `src/en/legal/…`), sonra `.github/workflows/deploy.yml` içindeki
+      `IZIN_VER_YER_TUTUCU` env bloğunu sil.
+- [ ] Search Console'a `sitemap.xml` gönder (mülk **www** olmalı).
+- [ ] Gerçek telefonda kalkış animasyonunun performansını ölç — hiç ölçülmedi.
+- [ ] Kökte eski proje dosyaları duruyor ve herkese açık servis ediliyor:
+      `PRD.md`, `CONTENT.prd`, `docs/`, `html-classes.txt`. Eski sitede de
+      böyleydi, yeni bir açık değil — ama temizlenebilir.
 
-**Geri dönüş:** eski site `pist` dalının geçmişinde, commit `899304e`.
-Ayrıca yerel yedeği kullanıcıda. Pages ayarını *deploy from a branch*'e geri
-almak da eski siteyi anında geri getirir — dosyalar `pist` kökünde duruyor.
+### Actions moduna geçmek istenirse
+
+`.github/workflows/deploy.yml` hazır ama **uykuda** — otomatik tetikleyicisi
+kaldırıldı ki dal modundayken boşuna kırmızı çalışma üretmesin. Geçiş
+adımları dosyanın başında yazılı.
+
+### Geri dönüş
+
+Eski site `pist` geçmişinde, commit `899304e`. Kullanıcıda ayrıca yerel
+yedek var. Pages ayarına dokunulmadığı için geri dönüş de ayar
+gerektirmiyor — `git revert` yeterli.
 
 ## 7. İçerik nerede
 
