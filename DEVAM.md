@@ -64,6 +64,31 @@ JS kapalıysa iki dile de bağlantı veriyor.
 saplamasıyla yönlendiriliyor (`src/_data/yonlendirmeler.js`). Kalan 12'si —
 kapanan stüdyonun etkinlik ve eğitim sayfaları — bilerek 404'e düşüyor.
 
+### Ana sayfa mimarisi — panel sistemi
+
+Ana sayfa **görsel olarak kaymaz.** Tasarımın en güçlü yanı bu ve prototipten
+(`prototipler/01-pistten-kalkis.html`) birebir taşındı.
+
+- `.hero` 520vh — yalnızca **scroll mesafesi** sağlar, içinde görünen bir şey yok.
+- `.stage` `position:fixed` — görünen her şey burada.
+- İçinde dört `.panel`, her birinin `data-from` / `data-to` aralığı var
+  (0–1 scroll ilerlemesi): hero → Products → Sound → kapanış.
+- Scroll kamerayı yükseltirken paneller **aynı yerde** çapraz geçişle değişir.
+- `takeoff.js` içindeki `panelsUpdate()` bunu sürer: smoothstep giriş/çıkış,
+  artı aralık ortasına göre hafif dikey kayma.
+
+> Panel aralığı değiştirmek istersen markup'taki `data-from`/`data-to`
+> yeter; JS'e dokunmaya gerek yok. Kapsama ölçüldü — 0–1 aralığında
+> ekran hiçbir noktada boş kalmıyor.
+
+**Ana sayfada ayrı footer yoktur.** Akışta bir şey kalsaydı sayfa kayardı;
+footer bağlantıları son panelin içinde. `base.njk`'deki `noFooter` bayrağı
+bunu yönetiyor, diğer sayfalar footer'ını koruyor.
+
+**Üst çubuk tam genişliktedir** (`.topbar .inner{max-width:none}`). İçerik
+sütunu `--maxw:1120px` olarak dar kalır — okunabilirlik için, prototipte de
+öyle. Geniş ekranda logo ve dil seçici ortada toplanmasın diye çubuk ayrıldı.
+
 **Kalkış sahnesi** (`src/assets/js/takeoff.js`): saf Canvas 2D, kütüphane yok.
 Kamera yalnızca hero yüksekliği (400vh) boyunca yükseliyor; sonrasında sayfa
 yıldız alanının üzerinde normal akıyor. Performans optimizasyonları içinde:
