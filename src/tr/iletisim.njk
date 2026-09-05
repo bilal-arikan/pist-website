@@ -1,0 +1,88 @@
+---
+layout: base.njk
+lang: tr
+alt: /en/contact/
+permalink: /tr/iletisim/
+title: "İletişim — Pist Studio"
+description: "Ürün, ses işi ya da iş birliği için bize yazın. Genelde iki iş günü içinde dönüyoruz."
+extraCss: /assets/css/form.css
+extraJs: /assets/js/form.js
+---
+<section class="section" style="border-top:none;padding-bottom:0">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">İletişim</p>
+      <h1>Bir fikrin mi var, yoksa bir sorun mu?</h1>
+      <p class="lede">Ürün, ses işi ya da iş birliği — hepsi aynı kutuya düşüyor. Genelde iki iş günü içinde dönüyoruz.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap iletisim">
+  <div>
+    <h3>Doğrudan ulaşmak istersen</h3>
+    <p class="lede" style="font-size:14.5px;margin-top:12px">Form zorunlu değil. Aşağıdaki kanallardan biri sana daha uygunsa oradan da yazabilirsin.</p>
+    <div class="dogrudan">
+      <a href="mailto:{{ site.email }}"><span class="l">E-posta</span><span class="v">{{ site.email }}</span></a>
+      <a href="{{ site.social.instagram }}" rel="noopener"><span class="l">Instagram</span><span class="v">@pist.istanbul</span></a>
+      <a href="{{ site.products.projelio }}" rel="noopener"><span class="l">Ürün desteği</span><span class="v">projelio.app</span></a>
+      <div><span class="l">Konum</span><span class="v">{{ site.location.tr }}</span></div>
+    </div>
+  </div>
+
+  <form id="mesaj" novalidate>
+    <div class="ikili">
+      <div class="alan" data-ad="ad">
+        <label for="ad">Ad soyad <span class="req">*</span></label>
+        <input id="ad" name="ad" type="text" autocomplete="name" placeholder="Adın">
+        <span class="hata">Adını yazar mısın?</span>
+      </div>
+      <div class="alan" data-ad="eposta">
+        <label for="eposta">E-posta <span class="req">*</span></label>
+        <input id="eposta" name="eposta" type="email" autocomplete="email" placeholder="ornek@site.com">
+        <span class="hata">Geçerli bir e-posta adresi gerekiyor.</span>
+      </div>
+    </div>
+
+    <div class="alan" data-ad="konu">
+      <label for="konu">Konu <span class="req">*</span></label>
+      <select id="konu" name="konu">
+        <option value="">Seç…</option>
+        <option>Projelio hakkında</option>
+        <option>Yeni bir ürün fikri</option>
+        <option>Ses / müzik prodüksiyonu</option>
+        <option>İş birliği veya ortaklık</option>
+        <option>Basın</option>
+        <option>Diğer</option>
+      </select>
+      <span class="hata">Bir konu seç.</span>
+    </div>
+
+    <div class="alan" data-ad="mesaj">
+      <label for="mesajmetni">Mesaj <span class="req">*</span></label>
+      <textarea id="mesajmetni" name="mesaj" maxlength="2000" placeholder="Ne üzerine konuşmak istersin? Bağlam ne kadar netse, dönüşümüz o kadar işe yarar."></textarea>
+      <span class="sayac"><span id="sayi">0</span> / 2000</span>
+      <span class="hata">En az 20 karakter yazar mısın?</span>
+    </div>
+
+    {# bot tuzağı — insanlar göremez, botlar doldurur #}
+    <input class="tuzak" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <div class="alan" data-ad="onay">
+      <label class="onay">
+        <input type="checkbox" id="onay" name="onay">
+        <span>Mesajımın yanıtlanabilmesi için kişisel verilerimin işlenmesini kabul ediyorum. <a href="/tr/aydinlatma-metni/">Aydınlatma Metni</a></span>
+      </label>
+      <span class="hata">Devam etmek için onay vermen gerekiyor.</span>
+    </div>
+
+    <div class="gonder">
+      <button class="btn btn-p" type="submit" id="gonderBtn">Mesajı gönder</button>
+      <span class="durum" id="d-gonder">Gönderiliyor…</span>
+      <span class="durum iyi" id="d-ok">✓ Ulaştı. En geç iki iş günü içinde dönüyoruz.</span>
+      <span class="durum kotu" id="d-hata">Gönderilemedi. Doğrudan {{ site.email }} adresine yazabilirsin.</span>
+    </div>
+
+    <p class="kvkk">Gönderdiğin bilgiler yalnızca mesajını yanıtlamak için kullanılır, üçüncü taraflarla paylaşılmaz.</p>
+  </form>
+</div>
