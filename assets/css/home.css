@@ -16,7 +16,7 @@
    görünen her şey fixed. Scroll kamerayı yükseltir ve panelleri sırayla
    değiştirir — prototipteki (01-pistten-kalkis.html) davranış.
    Panel aralıkları markup'ta data-from / data-to olarak duruyor. */
-.hero{position:relative;height:520vh;z-index:1}
+.hero{position:relative;height:700vh;z-index:1}
 
 .stage{position:fixed;inset:0;z-index:2;pointer-events:none}
 .stage .wrap{width:100%}
@@ -34,11 +34,14 @@
 
 .hero-scrim{
   position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(7,4,15,.55) 0,rgba(7,4,15,0) 46%);
+  /* Perde yalnızca sahneyi karartır, metni değil (.stage z-index:2).
+     Değerler kalkış sahnesi daha canlı görünsün diye hafifletildi;
+     metin okunabilirliğini h1/lede üzerindeki text-shadow taşıyor. */
+  background:linear-gradient(180deg,rgba(7,4,15,.34) 0,rgba(7,4,15,0) 46%);
 }
 .hero-scrim::after{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,rgba(7,4,15,.94) 0%,rgba(7,4,15,.78) 38%,rgba(7,4,15,0) 72%);
+  background:linear-gradient(100deg,rgba(7,4,15,.72) 0%,rgba(7,4,15,.44) 38%,rgba(7,4,15,0) 72%);
 }
 
 .hero h1{margin:22px 0;max-width:13ch;text-shadow:0 1px 14px rgba(7,4,15,.95)}

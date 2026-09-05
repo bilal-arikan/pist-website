@@ -61,31 +61,68 @@
 
       <span class="wm">Pist Studio</span>
     </a>
-    <nav aria-label="Sayfalar">
-      <a href="/tr/urunler/">Ürünler</a>
-      <a href="/tr/ses/">Ses</a>
-      <a href="/tr/hakkinda/">Hakkında</a>
-      <a href="/tr/blog/">Blog</a>
-      <a href="/tr/iletisim/" aria-current="page">İletişim</a>
-    </nav>
+
     
-    <div class="lang" id="dilsec">
-      <a href="/tr/iletisim/" data-dil="tr"
-         aria-current="true" hreflang="tr">TR</a>
-      <a href="/en/contact/" data-dil="en"
-          hreflang="en">EN</a>
+    <button class="menu-btn" id="menuBtn" type="button"
+            aria-expanded="false" aria-controls="menu" aria-label="Menü">
+      <span class="cizgi" aria-hidden="true"></span>
+      <span class="cizgi" aria-hidden="true"></span>
+    </button>
+
+    <div class="menu" id="menu">
+      <nav aria-label="Sayfalar">
+        <a href="/tr/urunler/">Ürünler</a>
+        <a href="/tr/ses/">Ses</a>
+        <a href="/tr/hakkinda/">Hakkında</a>
+        <a href="/tr/blog/">Blog</a>
+        <a href="/tr/iletisim/" aria-current="page">İletişim</a>
+      </nav>
+      
+      <div class="lang" id="dilsec">
+        <a href="/tr/iletisim/" data-dil="tr"
+           aria-current="true" hreflang="tr">TR</a>
+        <a href="/en/contact/" data-dil="en"
+            hreflang="en">EN</a>
+      </div>
     </div>
   </div>
 </header>
 <script>
-/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
 (function () {
+  /* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
   var k = document.getElementById('dilsec');
-  if (!k) return;
-  k.addEventListener('click', function (e) {
+  if (k) k.addEventListener('click', function (e) {
     var a = e.target.closest('a[data-dil]');
     if (!a) return;
     try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+
+  /* Hamburger. Menü mobilde CSS ile kapalı; .acik sınıfı açar.
+     Masaüstünde düğme görünmez ve menü her zaman açıktır. */
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+
+  function kapat() {
+    menu.classList.remove('acik');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var acik = menu.classList.toggle('acik');
+    btn.setAttribute('aria-expanded', acik ? 'true' : 'false');
+  });
+
+  /* Escape kapatsın, odak düğmeye dönsün */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('acik')) { kapat(); btn.focus(); }
+  });
+
+  /* Menü dışına tıklayınca kapansın */
+  document.addEventListener('click', function (e) {
+    if (!menu.classList.contains('acik')) return;
+    if (menu.contains(e.target) || btn.contains(e.target)) return;
+    kapat();
   });
 })();
 </script>
