@@ -1,17 +1,23 @@
 # Pist Studio — GitHub Pages dağıtımı
 #
-# ÖNKOŞUL: Repo ayarlarında Settings → Pages → Build and deployment →
-# Source, "Deploy from a branch" yerine "GitHub Actions" olmalı.
-# Bu ayar yapılmadan workflow hata verir (site etkilenmez).
+# 💤 ŞU AN UYKUDA (6 Eylül 2026).
 #
-# Yalnızca `pist` dalına push edilince yayınlar. Geliştirme `yeni-site`
-# dalında yapılır; hazır olunca `pist`e merge edilir.
+# Site, depo ayarı gerektirmeyen yoldan yayınlanıyor: `npm run yayinla`
+# derlenmiş çıktıyı `pist` dalının köküne senkronluyor ve Pages orayı
+# "deploy from a branch" modunda servis ediyor.
+#
+# Bu workflow, Pages kaynağı "GitHub Actions"a alınırsa devreye girecek.
+# O ayar yapılmadan çalışırsa configure-pages adımında hata verir — bu
+# yüzden otomatik tetikleyici kaldırıldı, boşuna kırmızı çalışma üretmesin.
+#
+# ACTIONS MODUNA GEÇERKEN:
+#   1. Settings → Pages → Source → GitHub Actions
+#   2. Aşağıdaki `push` tetikleyicisini geri aç
+#   3. Kökteki üretilmiş dosyaları temizle (artifact _site olacak)
 
 name: Derle ve yayınla
 
 on:
-  push:
-    branches: [pist]
   workflow_dispatch:
 
 permissions:
