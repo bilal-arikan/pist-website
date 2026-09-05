@@ -5,30 +5,67 @@
       {% include "partials/mark.njk" %}
       <span class="wm">{{ site.name }}</span>
     </a>
-    <nav aria-label="{{ t.footerNav }}">
-      {%- for item in t.nav %}
-      <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
-      {%- endfor %}
-    </nav>
-    {# Karşı dildeki eşdeğer sayfaya git — `alt` her sayfanın frontmatter'ında.
-       Eşi yoksa o dilin ana sayfasına düş. #}
-    <div class="lang" id="dilsec">
-      <a href="{{ page.url if lang == 'tr' else (alt or '/tr/') }}" data-dil="tr"
-         {% if lang == 'tr' %}aria-current="true"{% endif %} hreflang="tr">TR</a>
-      <a href="{{ page.url if lang == 'en' else (alt or '/en/') }}" data-dil="en"
-         {% if lang == 'en' %}aria-current="true"{% endif %} hreflang="en">EN</a>
+
+    {# Mobilde menüyü açar. Masaüstünde CSS ile gizli. #}
+    <button class="menu-btn" id="menuBtn" type="button"
+            aria-expanded="false" aria-controls="menu" aria-label="{{ t.menuLabel }}">
+      <span class="cizgi" aria-hidden="true"></span>
+      <span class="cizgi" aria-hidden="true"></span>
+    </button>
+
+    <div class="menu" id="menu">
+      <nav aria-label="{{ t.footerNav }}">
+        {%- for item in t.nav %}
+        <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {%- endfor %}
+      </nav>
+      {# Karşı dildeki eşdeğer sayfaya git — `alt` her sayfanın frontmatter'ında.
+         Eşi yoksa o dilin ana sayfasına düş. #}
+      <div class="lang" id="dilsec">
+        <a href="{{ page.url if lang == 'tr' else (alt or '/tr/') }}" data-dil="tr"
+           {% if lang == 'tr' %}aria-current="true"{% endif %} hreflang="tr">TR</a>
+        <a href="{{ page.url if lang == 'en' else (alt or '/en/') }}" data-dil="en"
+           {% if lang == 'en' %}aria-current="true"{% endif %} hreflang="en">EN</a>
+      </div>
     </div>
   </div>
 </header>
 <script>
-/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
 (function () {
+  /* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
   var k = document.getElementById('dilsec');
-  if (!k) return;
-  k.addEventListener('click', function (e) {
+  if (k) k.addEventListener('click', function (e) {
     var a = e.target.closest('a[data-dil]');
     if (!a) return;
     try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+
+  /* Hamburger. Menü mobilde CSS ile kapalı; .acik sınıfı açar.
+     Masaüstünde düğme görünmez ve menü her zaman açıktır. */
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+
+  function kapat() {
+    menu.classList.remove('acik');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var acik = menu.classList.toggle('acik');
+    btn.setAttribute('aria-expanded', acik ? 'true' : 'false');
+  });
+
+  /* Escape kapatsın, odak düğmeye dönsün */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('acik')) { kapat(); btn.focus(); }
+  });
+
+  /* Menü dışına tıklayınca kapansın */
+  document.addEventListener('click', function (e) {
+    if (!menu.classList.contains('acik')) return;
+    if (menu.contains(e.target) || btn.contains(e.target)) return;
+    kapat();
   });
 })();
 </script>
