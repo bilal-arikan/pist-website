@@ -1,0 +1,29 @@
+---
+pagination:
+  data: yonlendirmeler
+  size: 1
+  alias: y
+permalink: "{{ y.eski }}"
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>{{ site.name }}</title>
+{# GitHub Pages sunucu tarafı 301 veremiyor. Meta refresh + canonical,
+   statik barındırmada en yakın karşılık. #}
+<meta http-equiv="refresh" content="0; url={{ y.yeni }}">
+<link rel="canonical" href="{{ site.url }}{{ y.yeni }}">
+<meta name="robots" content="noindex,follow">
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0B0616;
+       color:#F2E9F6;font:400 15px/1.6 system-ui,-apple-system,sans-serif;text-align:center}
+  a{color:#FFAA05}
+</style>
+</head>
+<body>
+  <p>Bu sayfa taşındı.<br><a href="{{ y.yeni }}">Yeni adresine git</a></p>
+  <script>location.replace({{ y.yeni | dump | safe }});</script>
+</body>
+</html>
