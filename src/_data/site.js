@@ -2,7 +2,9 @@ export default {
   name: "Pist Studio",
   category: { tr: "Creative Technology Studio", en: "Creative Technology Studio" },
   slogan: "Crafting intelligent digital products and sound.",
-  url: "https://piststudio.com",
+  // CNAME ile aynı host olmalı — canonical, og:url ve hreflang buradan üretiliyor.
+  // Apex'e (piststudio.com) geçiş ayrı ve bilinçli bir taşıma olarak yapılacak.
+  url: "https://www.piststudio.com",
   // TODO: gerçek adres teyit edilecek — piststudio.com'da Google Workspace kurulu
   email: "info@piststudio.com",
   location: { tr: "İstanbul, Türkiye", en: "Istanbul, Türkiye" },

@@ -1,0 +1,72 @@
+---
+permalink: /404.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 — Pist Studio</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,400&family=Instrument+Sans:wght@400;500&family=Oxanium:wght@500&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+<style>
+  .dorttort{min-height:76vh;display:flex;align-items:center}
+  .dorttort .kod{font-family:var(--tech);font-size:11px;letter-spacing:.16em;
+                 text-transform:uppercase;color:var(--acc);margin-bottom:18px}
+  .dorttort h1{max-width:16ch}
+  .dorttort .lede{margin-top:18px}
+  .dorttort .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+  [data-dil]{display:none}
+  [data-dil].acik{display:block}
+</style>
+</head>
+<body>
+<a class="skip" href="#icerik">Skip to content</a>
+<main id="icerik" class="dorttort">
+  <div class="wrap">
+    <p class="kod">404</p>
+
+    <div data-dil="tr">
+      <h1>{{ i18n.tr.notFoundTitle }}</h1>
+      <p class="lede">{{ i18n.tr.notFoundBody }}</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="/tr/">{{ i18n.tr.notFoundCta }}</a>
+        <a class="btn btn-s" href="/tr/blog/">Blog</a>
+      </div>
+    </div>
+
+    <div data-dil="en">
+      <h1>{{ i18n.en.notFoundTitle }}</h1>
+      <p class="lede">{{ i18n.en.notFoundBody }}</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="/en/">{{ i18n.en.notFoundCta }}</a>
+        <a class="btn btn-s" href="/en/blog/">Blog</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+/* Tek sayfa, iki dil. Hangi bölümün açılacağını URL, hatırlanan seçim ve
+   tarayıcı dili sırasıyla belirliyor. JS yoksa ikisi de görünür — kırılmıyor. */
+(function () {
+  var dil;
+  if (location.pathname.indexOf('/tr/') === 0) dil = 'tr';
+  else if (location.pathname.indexOf('/en/') === 0) dil = 'en';
+  if (!dil) { try { dil = localStorage.getItem('pist-dil'); } catch (e) {} }
+  if (dil !== 'tr' && dil !== 'en') {
+    var t = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+    dil = t.toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en';
+  }
+  document.documentElement.lang = dil;
+  var el = document.querySelector('[data-dil="' + dil + '"]');
+  if (el) el.classList.add('acik');
+})();
+</script>
+</body>
+</html>

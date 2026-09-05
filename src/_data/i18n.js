@@ -12,6 +12,11 @@ export default {
     footerNav: "Sayfalar", footerFollow: "Takip et", footerLegal: "Yasal",
     privacy: "Aydınlatma Metni", privacyUrl: "/tr/aydinlatma-metni/",
     rights: "Tüm hakları saklıdır.",
+    blogBack: "← Tüm yazılar", blogIndex: "/tr/blog/",
+    readSuffix: "dk okuma",
+    notFoundTitle: "Bu sayfa yok.",
+    notFoundBody: "Aradığın sayfa taşınmış ya da hiç var olmamış olabilir.",
+    notFoundCta: "Ana sayfaya dön",
   },
   en: {
     code: "en", other: "tr", otherLabel: "TR", home: "/en/",
@@ -26,5 +31,10 @@ export default {
     footerNav: "Pages", footerFollow: "Follow", footerLegal: "Legal",
     privacy: "Privacy Notice", privacyUrl: "/en/privacy/",
     rights: "All rights reserved.",
+    blogBack: "← All posts", blogIndex: "/en/blog/",
+    readSuffix: "min read",
+    notFoundTitle: "This page doesn't exist.",
+    notFoundBody: "The page you're after may have moved, or may never have existed.",
+    notFoundCta: "Back to home",
   },
 };

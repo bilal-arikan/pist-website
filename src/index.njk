@@ -1,0 +1,57 @@
+---
+permalink: /index.html
+eleventyExcludeFromCollections: true
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pist Studio — Creative Technology Studio</title>
+<meta name="description" content="{{ site.slogan }}">
+
+{# Kök sayfa indekslenmemeli — asıl içerik /tr/ ve /en/ altında. #}
+<meta name="robots" content="noindex,follow">
+<link rel="alternate" hreflang="tr" href="{{ site.url }}/tr/">
+<link rel="alternate" hreflang="en" href="{{ site.url }}/en/">
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}/en/">
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+
+<style>
+  html{color-scheme:dark}
+  body{margin:0;min-height:100vh;display:grid;place-items:center;
+       background:#0B0616;color:#F2E9F6;
+       font:400 15px/1.5 system-ui,-apple-system,sans-serif;text-align:center}
+  .k{display:flex;gap:14px;justify-content:center;margin-top:22px}
+  a{color:#FFAA05;text-decoration:none;border:1px solid rgba(255,170,5,.4);
+    padding:10px 20px;letter-spacing:.02em}
+  a:hover,a:focus-visible{background:rgba(255,170,5,.12);outline:none}
+  p{opacity:.62;margin:0}
+</style>
+</head>
+<body>
+  <div>
+    <p>Pist Studio</p>
+    <div class="k">
+      <a href="/tr/" hreflang="tr">Türkçe</a>
+      <a href="/en/" hreflang="en">English</a>
+    </div>
+  </div>
+
+<script>
+/* Dil yönlendirmesi. GitHub Pages statik olduğu için sunucu tarafında
+   coğrafi yönlendirme yapılamıyor; tarayıcı diline bakıyoruz.
+   Kullanıcının elle yaptığı seçim topbar'da localStorage'a yazılıyor
+   ve burada ona öncelik veriliyor. */
+(function () {
+  var dil;
+  try { dil = localStorage.getItem('pist-dil'); } catch (e) {}
+  if (dil !== 'tr' && dil !== 'en') {
+    var t = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+    dil = t.toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en';
+  }
+  location.replace('/' + dil + '/');
+})();
+</script>
+</body>
+</html>

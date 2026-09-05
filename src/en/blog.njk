@@ -1,0 +1,31 @@
+---
+layout: base.njk
+lang: en
+alt: /tr/blog/
+permalink: /en/blog/
+title: "Blog — Pist Studio"
+description: "Working notes on product decisions, sound production and the studio itself."
+extraCss: /assets/css/yazi.css
+---
+<section class="section" style="border-top:none">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Blog</p>
+      <h1>We write about what we make and how we make it.</h1>
+      <p class="lede">Not marketing copy — working notes.</p>
+    </div>
+    <div class="yazilar">
+      {%- for yazi in collections.yazilarEN %}
+      <a href="{{ yazi.url }}" style="--hue:{{ yazi.data.hue }}">
+        <span class="meta">
+          <span class="kat">{{ yazi.data.category }}</span>
+          <span class="tar">{{ yazi.data.date | tarihEN }}</span>
+        </span>
+        <h3>{{ yazi.data.title }}</h3>
+        <span class="ozet">{{ yazi.data.excerpt }}</span>
+        <span class="sure">{{ yazi.data.readingTime }} min read</span>
+      </a>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
