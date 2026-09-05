@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drawing 2,000 stars at 60 fps on canvas</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="https://www.piststudio.com/en/blog/drawing-2000-stars-at-60fps/">
+
+<link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/drawing-2000-stars-at-60fps/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/">
+<link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
+
+
+<meta property="og:site_name" content="Pist Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Drawing 2,000 stars at 60 fps on canvas">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://www.piststudio.com/en/blog/drawing-2000-stars-at-60fps/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/simge-kare.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,300;110,400&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+<link rel="stylesheet" href="/assets/css/yazi.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Pist Studio",
+  "url":"https://www.piststudio.com",
+  "email":"info@piststudio.com",
+  "slogan":"Crafting intelligent digital products and sound.",
+  "foundingDate":"2020",
+  "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"},
+  "sameAs":["https://instagram.com/pist.istanbul","https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#icerik">Skip to content</a>
+
+
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="/en/">
+      <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+      <span class="wm">Pist Studio</span>
+    </a>
+    <nav aria-label="Pages">
+      <a href="/en/products/">Products</a>
+      <a href="/en/sound/">Sound</a>
+      <a href="/en/about/">About</a>
+      <a href="/en/blog/">Blog</a>
+      <a href="/en/contact/">Contact</a>
+    </nav>
+    
+    <div class="lang" id="dilsec">
+      <a href="/tr/blog/" data-dil="tr"
+          hreflang="tr">TR</a>
+      <a href="/en/blog/drawing-2000-stars-at-60fps/" data-dil="en"
+         aria-current="true" hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+<script>
+/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
+(function () {
+  var k = document.getElementById('dilsec');
+  if (!k) return;
+  k.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dil]');
+    if (!a) return;
+    try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+})();
+</script>
+
+
+<main id="icerik">
+<article class="yazi">
+  <div class="wrap">
+    <a class="geri" href="/en/blog/">← All posts</a>
+    <p class="eyebrow" style="color:#9CE085">Engineering</p>
+    <h1>Drawing 2,000 stars at 60 fps on canvas</h1>
+    <div class="künye">
+      <span>22 September 2026</span>
+      <span>11 min read</span>
+      <span>Pist Studio</span>
+    </div>
+    <div class="prose">
+      <p>The opening scene of our site is a takeoff animation: it starts on the ground and climbs as you scroll. The scene holds ~240 runway lights and 2,100 stars, all kept in 3D coordinates and projected with perspective.</p>
+<p>The first version stuttered on desktop. Instead of jumping to WebGL, we first <strong>measured how far 2D canvas would actually go</strong>. Four changes were enough.</p>
+<h2>1. Hoisting trigonometry out of the loop</h2>
+<p>The biggest waste was the dumbest one. The projection function looked like this:</p>
+<pre><code class="language-js">function project(p){
+  var cp = Math.cos(pitch), sp = Math.sin(pitch);
+  // ...
+}
+</code></pre>
+<p><code>pitch</code> is constant for the whole frame. But the function is called for every point — that is <strong>more than 2,300 <code>cos</code>/<code>sin</code> pairs per frame</strong>. Computing the values once at the start of the frame and holding them at module level brought that down to 2.</p>
+<h2>2. <code>fillRect()</code> instead of <code>arc()</code> for small stars</h2>
+<p>This was the clearest win we measured. There are two ways to draw 2,100 stars:</p>
+<pre><code class="language-js">// 2.9 ms
+ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
+
+// 0.9 ms
+ctx.fillRect(x, y, 1, 1);
+</code></pre>
+<p><strong>2.9 ms → 0.9 ms.</strong> Given that the 60 fps budget is 16.7 ms, star paths alone were eating a sixth of the frame. Most stars are one pixel anyway; drawing a circle buys you nothing visually.</p>
+<p>We only use <code>arc()</code> where the radius is larger than one pixel.</p>
+<h2>3. Caching gradients</h2>
+<p>The sky and vignette gradients were being rebuilt every frame:</p>
+<pre><code class="language-js">// every frame — unnecessary
+var sky = ctx.createLinearGradient(0, 0, 0, H);
+sky.addColorStop(0, '#04030A');
+</code></pre>
+<p>These gradients depend only on the window size. We moved them into <code>build()</code> and cached them; they are now rebuilt only on resize.</p>
+<p>The same logic applies to the light glows: instead of generating a radial gradient for every lamp, each of the five lamp types is <strong>rendered to a sprite once</strong> and stamped with <code>drawImage</code>, scaled as needed.</p>
+<h2>4. Capping pixel density</h2>
+<p>This was the real bottleneck, and the least obvious one.</p>
+<p>On a retina display <code>devicePixelRatio</code> is 2. In a 1440×900 window the canvas becomes 2880×1800 = <strong>5.2 million pixels</strong>. And we were filling the full screen five times per frame: sky, ground, vignette, film grain, chroma noise. Two of those covered an area larger than the screen.</p>
+<p>Roughly <strong>28 million pixels per frame</strong>.</p>
+<p>Two changes:</p>
+<ul>
+<li>Cap <code>devicePixelRatio</code> at 1.5 (1.25 on mobile). It is not noticeable by eye, and the pixel count drops by 44%.</li>
+<li>Grain reduced to a single layer, pre-rendered at half resolution and scaled with <code>drawImage</code>. One draw call instead of a pattern fill.</li>
+</ul>
+<p>Result: <strong>~12 million pixels per frame.</strong> Roughly half.</p>
+<p>We also added <code>getContext('2d', { alpha: false })</code> — with a non-transparent canvas the compositing cost drops. The scene fills itself completely with sky anyway, so nothing is lost.</p>
+<h2>Quality tiers</h2>
+<p>Even after optimising, it would be wrong to assume every device performs the same. The loop measures frame time and quietly steps down a tier if it exceeds 23 ms:</p>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Stars</th>
+<th>Disabled</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2,100</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1,400</td>
+<td>lens ghosts, dirt</td>
+</tr>
+<tr>
+<td>2</td>
+<td>900</td>
+<td>+ chromatic aberration</td>
+</tr>
+<tr>
+<td>3</td>
+<td>520</td>
+<td>+ halation</td>
+</tr>
+</tbody>
+</table>
+<p>Mobile starts directly at tier 2. The user notices nothing; the scene gets a little simpler, but it does not stutter.</p>
+<h2>What we learned</h2>
+<p><strong>Measure before reaching for WebGL.</strong> 2D canvas carries far more than we expected, and the complexity WebGL would have added would not have paid for itself in this scene.</p>
+<p><strong>The bottleneck is usually not where you think.</strong> We were blaming the star count; the real cost was in the pixel count of full-screen fills. Touching anything before measuring is wasted time.</p>
+<p><strong>The cheapest optimisation is work you never do.</strong> Putting a frame-constant computation inside a loop is the easiest mistake to find afterwards and the hardest to notice at the time.</p>
+
+    </div>
+  </div>
+</article>
+
+</main>
+
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="lockup" href="/en/">
+          <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+          <span class="wm">Pist Studio</span>
+        </a>
+        <p class="slogan">Crafting intelligent digital products and sound.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul><li><a href="/en/products/">Products</a></li><li><a href="/en/sound/">Sound</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/">Blog</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/pist.istanbul" rel="noopener">Instagram</a></li>
+          <li><a href="https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC" rel="noopener">Spotify</a></li>
+          <li><a href="mailto:info@piststudio.com">info@piststudio.com</a></li>
+        </ul>
+        <h4 style="margin-top:22px">Legal</h4>
+        <ul><li><a href="/en/privacy/">Privacy Notice</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2020–2026 Pist Studio</span>
+      <span>Istanbul, Türkiye</span>
+      <span lang="en">Creative Technology Studio</span>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pist Studio — Creative Technology Studio</title>
+<meta name="description" content="Kendi dijital ürünlerini ve ses işlerini üreten bir stüdyo. İlk ürünümüz Projelio yayında.">
+
+<link rel="canonical" href="https://www.piststudio.com/tr/">
+
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/">
+<link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
+
+
+<meta property="og:site_name" content="Pist Studio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pist Studio — Creative Technology Studio">
+<meta property="og:description" content="Kendi dijital ürünlerini ve ses işlerini üreten bir stüdyo. İlk ürünümüz Projelio yayında.">
+<meta property="og:url" content="https://www.piststudio.com/tr/">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/simge-kare.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,300;110,400&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+<link rel="stylesheet" href="/assets/css/home.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Pist Studio",
+  "url":"https://www.piststudio.com",
+  "email":"info@piststudio.com",
+  "slogan":"Crafting intelligent digital products and sound.",
+  "foundingDate":"2020",
+  "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"},
+  "sameAs":["https://instagram.com/pist.istanbul","https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="/tr/">
+      <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+      <span class="wm">Pist Studio</span>
+    </a>
+    <nav aria-label="Sayfalar">
+      <a href="/tr/urunler/">Ürünler</a>
+      <a href="/tr/ses/">Ses</a>
+      <a href="/tr/hakkinda/">Hakkında</a>
+      <a href="/tr/blog/">Blog</a>
+      <a href="/tr/iletisim/">İletişim</a>
+    </nav>
+    
+    <div class="lang" id="dilsec">
+      <a href="/tr/" data-dil="tr"
+         aria-current="true" hreflang="tr">TR</a>
+      <a href="/en/" data-dil="en"
+          hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+<script>
+/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
+(function () {
+  var k = document.getElementById('dilsec');
+  if (!k) return;
+  k.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dil]');
+    if (!a) return;
+    try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+})();
+</script>
+
+
+<main id="icerik">
+
+<section class="hero" id="hero">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="hero-stage">
+    <div class="wrap">
+      <p class="eyebrow" lang="en">Creative Technology Studio</p>
+      <h1>Her şey bir pistte başlar.</h1>
+      <p class="lede">Crafting intelligent digital products and sound. Kendi araçlarımızı geliştiriyoruz — <strong>ilki Projelio</strong>.</p>
+      <div class="ctas">
+        <a class="btn btn-p" href="https://projelio.app" rel="noopener">Projelio'yu gör</a>
+        <a class="btn btn-s" href="/tr/urunler/">Ne yapıyoruz</a>
+      </div>
+    </div>
+  </div>
+  <div class="gauge" aria-hidden="true">
+    <span class="val" id="alt">2 m</span>
+    <div class="bar"><div class="fill" id="fill"></div><div class="karman"></div><div class="klabel">Kármán · 100 km</div></div>
+  </div>
+  <div class="scrollhint" aria-hidden="true"><span class="ln"></span><span>Kalkış için kaydır</span></div>
+</section>
+
+<div class="below">
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Products</p>
+        <h2>Yerden kesilen her fikir bir ürün.</h2>
+      </div>
+      <div class="rows">
+        <a class="row" style="--hue:var(--c-yellow)" href="https://projelio.app" rel="noopener">
+          <span class="rk">Products</span>
+          <span class="rt">Projelio</span>
+          <span class="rd">Freelancer'ların projelerini, işlerini ve müşterilerini tek yerden yönettiği araç.</span>
+          <span class="rs">Yayında</span>
+        </a>
+        <div class="row" style="--hue:var(--c-green)">
+          <span class="rk">Products</span>
+          <span class="rt">Sıradaki</span>
+          <span class="rd">Geliştirme aşamasında. Hazır olmadan duyurmuyoruz.</span>
+          <span class="rs">2026</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Sound</p>
+        <h2>Ses, bizi buraya getiren şey.</h2>
+        <p class="lede">Müzik prodüksiyonu, sound design, miks ve mastering. Stüdyo kapandı; <strong>üretim kapanmadı</strong>.</p>
+      </div>
+      <a class="btn btn-s" href="/tr/ses/">Çıkan işler</a>
+    </div>
+  </section>
+
+</div>
+
+</main>
+
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="lockup" href="/tr/">
+          <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+          <span class="wm">Pist Studio</span>
+        </a>
+        <p class="slogan">Crafting intelligent digital products and sound.</p>
+      </div>
+      <div>
+        <h4>Sayfalar</h4>
+        <ul><li><a href="/tr/urunler/">Ürünler</a></li><li><a href="/tr/ses/">Ses</a></li><li><a href="/tr/hakkinda/">Hakkında</a></li><li><a href="/tr/blog/">Blog</a></li><li><a href="/tr/iletisim/">İletişim</a></li></ul>
+      </div>
+      <div>
+        <h4>Takip et</h4>
+        <ul>
+          <li><a href="https://instagram.com/pist.istanbul" rel="noopener">Instagram</a></li>
+          <li><a href="https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC" rel="noopener">Spotify</a></li>
+          <li><a href="mailto:info@piststudio.com">info@piststudio.com</a></li>
+        </ul>
+        <h4 style="margin-top:22px">Yasal</h4>
+        <ul><li><a href="/tr/aydinlatma-metni/">Aydınlatma Metni</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2020–2026 Pist Studio</span>
+      <span>İstanbul, Türkiye</span>
+      <span lang="en">Creative Technology Studio</span>
+    </div>
+  </div>
+</footer>
+
+
+<script src="/assets/js/takeoff.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.piststudio.com/en/about/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/about/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/hakkinda/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/contact/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/contact/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/iletisim/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/products/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/products/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/urunler/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/sound/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/hakkinda/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/hakkinda/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/about/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/iletisim/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/iletisim/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/contact/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/ses/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/urunler/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/urunler/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/products/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/aydinlatma-metni/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-09-08</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/freelancer-is-takibi-neyi-olcmeli/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/freelancer-is-takibi-neyi-olcmeli/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-09-15</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/blog/drawing-2000-stars-at-60fps/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/drawing-2000-stars-at-60fps/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/"/>
+    <lastmod>2026-09-22</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-09-22</lastmod>
+  </url>
+</urlset>

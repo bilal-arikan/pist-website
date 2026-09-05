@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</title>
+<meta name="description" content="">
+
+<link rel="canonical" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
+<link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
+
+
+<meta property="og:site_name" content="Pist Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek">
+<meta property="og:description" content="">
+<meta property="og:url" content="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/simge-kare.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,300;110,400&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+<link rel="stylesheet" href="/assets/css/yazi.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Pist Studio",
+  "url":"https://www.piststudio.com",
+  "email":"info@piststudio.com",
+  "slogan":"Crafting intelligent digital products and sound.",
+  "foundingDate":"2020",
+  "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"},
+  "sameAs":["https://instagram.com/pist.istanbul","https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#icerik">İçeriğe geç</a>
+
+
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="/tr/">
+      <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+      <span class="wm">Pist Studio</span>
+    </a>
+    <nav aria-label="Sayfalar">
+      <a href="/tr/urunler/">Ürünler</a>
+      <a href="/tr/ses/">Ses</a>
+      <a href="/tr/hakkinda/">Hakkında</a>
+      <a href="/tr/blog/">Blog</a>
+      <a href="/tr/iletisim/">İletişim</a>
+    </nav>
+    
+    <div class="lang" id="dilsec">
+      <a href="/tr/blog/canvasta-2000-yildiz-60-fps/" data-dil="tr"
+         aria-current="true" hreflang="tr">TR</a>
+      <a href="/en/blog/" data-dil="en"
+          hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+<script>
+/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
+(function () {
+  var k = document.getElementById('dilsec');
+  if (!k) return;
+  k.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dil]');
+    if (!a) return;
+    try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+})();
+</script>
+
+
+<main id="icerik">
+<article class="yazi">
+  <div class="wrap">
+    <a class="geri" href="/tr/blog/">← Tüm yazılar</a>
+    <p class="eyebrow" style="color:#9CE085">Teknik</p>
+    <h1>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</h1>
+    <div class="künye">
+      <span>22 Eylül 2026</span>
+      <span>11 dk okuma</span>
+      <span>Pist Studio</span>
+    </div>
+    <div class="prose">
+      <p>Sitemizin giriş sahnesi bir kalkış animasyonu: yerde başlıyor, kaydırdıkça yükseliyor. Sahnede ~240 pist lambası ve 2.100 yıldız var, hepsi 3B koordinatlarda tutulup perspektifle projekte ediliyor.</p>
+<p>İlk sürüm masaüstünde takılıyordu. WebGL'e geçmek yerine önce <strong>2D canvas'ın nereye kadar dayandığını ölçtük</strong>. Dört değişiklik yetti.</p>
+<h2>1. Trigonometriyi döngüden çıkarmak</h2>
+<p>En büyük israf en aptalcasıydı. Projeksiyon fonksiyonu şöyleydi:</p>
+<pre><code class="language-js">function project(p){
+  var cp = Math.cos(pitch), sp = Math.sin(pitch);
+  // ...
+}
+</code></pre>
+<p><code>pitch</code> kare boyunca sabit. Ama fonksiyon her nokta için çağrılıyor — yani karede <strong>2.300'den fazla <code>cos</code>/<code>sin</code> çifti</strong>. Değerleri kare başında bir kez hesaplayıp modül seviyesinde tutmak bunu 2'ye indirdi.</p>
+<h2>2. Küçük yıldızlar için <code>arc()</code> yerine <code>fillRect()</code></h2>
+<p>Bu ölçtüğümüz en net kazanç oldu. 2.100 yıldızı çizmenin iki yolu:</p>
+<pre><code class="language-js">// 2.9 ms
+ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
+
+// 0.9 ms
+ctx.fillRect(x, y, 1, 1);
+</code></pre>
+<p><strong>2,9 ms → 0,9 ms.</strong> 60 fps bütçesi 16,7 ms olduğuna göre, sadece yıldız yolları karenin altıda birini yiyormuş. Yıldızların çoğu zaten 1 piksel; daire çizmenin görsel karşılığı yok.</p>
+<p>Yalnızca yarıçapı 1 pikselden büyük olanlarda <code>arc()</code> kullanıyoruz.</p>
+<h2>3. Gradyanları önbelleğe almak</h2>
+<p>Gökyüzü ve vinyet gradyanları her karede yeniden üretiliyordu:</p>
+<pre><code class="language-js">// her karede — gereksiz
+var sky = ctx.createLinearGradient(0, 0, 0, H);
+sky.addColorStop(0, '#04030A');
+</code></pre>
+<p>Bu gradyanlar sadece pencere boyutuna bağlı. <code>build()</code> içine taşıyıp önbelleğe aldık; yeniden üretim sadece yeniden boyutlandırmada oluyor.</p>
+<p>Aynı mantık ışık harelerine de uygulandı: her lamba için radyal gradyan üretmek yerine, beş lamba tipinin her biri için <strong>bir kez sprite render edilip</strong> <code>drawImage</code> ile ölçeklenerek basılıyor.</p>
+<h2>4. Piksel yoğunluğunu sınırlamak</h2>
+<p>Asıl darboğaz buydu ve en az göze çarpanıydı.</p>
+<p>Retina bir ekranda <code>devicePixelRatio</code> 2. 1440×900 bir pencerede tuval 2880×1800 = <strong>5,2 milyon piksel</strong> oluyor. Ve karede beş kez tam ekran dolduruyorduk: gökyüzü, zemin, vinyet, film greni, renk gürültüsü. İkisi ekrandan da büyük alanda.</p>
+<p>Kabaca <strong>28 milyon piksel/kare</strong>.</p>
+<p>İki değişiklik:</p>
+<ul>
+<li><code>devicePixelRatio</code> tavanı 1,5 (mobilde 1,25). Gözle fark edilmiyor, piksel sayısı %44 düşüyor.</li>
+<li>Gren tek katmana indirildi ve yarı çözünürlükte önceden render edilip <code>drawImage</code> ile ölçekleniyor. Desen dolgusu yerine tek çizim çağrısı.</li>
+</ul>
+<p>Sonuç: <strong>~12 milyon piksel/kare.</strong> Kabaca yarısı.</p>
+<p>Bir de <code>getContext('2d', { alpha: false })</code> ekledik — tuval şeffaf olmadığı için birleştirme maliyeti düşüyor. Sahne zaten gökyüzüyle tamamen dolduruluyor, kaybedilen bir şey yok.</p>
+<h2>Kalite kademeleri</h2>
+<p>Optimizasyondan sonra bile her cihazın aynı performansı vereceğini varsaymak yanlış olurdu. Döngü kare süresini ölçüyor ve 23 ms'yi aşarsa sessizce kademe iniyor:</p>
+<table>
+<thead>
+<tr>
+<th>Kademe</th>
+<th>Yıldız</th>
+<th>Kapatılan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2.100</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1.400</td>
+<td>mercek hayaletleri, kirlilik</td>
+</tr>
+<tr>
+<td>2</td>
+<td>900</td>
+<td>+ kromatik sapma</td>
+</tr>
+<tr>
+<td>3</td>
+<td>520</td>
+<td>+ halation</td>
+</tr>
+</tbody>
+</table>
+<p>Mobil doğrudan 2. kademede başlıyor. Kullanıcı hiçbir şey fark etmiyor; sahne biraz sadeleşiyor, ama takılmıyor.</p>
+<h2>Ne öğrendik</h2>
+<p><strong>WebGL'e geçmeden önce ölç.</strong> 2D canvas beklediğimizden çok daha fazlasını kaldırıyor, ve WebGL'in getireceği karmaşıklık bu sahne için karşılığını vermezdi.</p>
+<p><strong>Darboğaz genelde sandığın yerde değil.</strong> Biz yıldız sayısını suçluyorduk; asıl maliyet tam ekran dolgularının piksel sayısındaydı. Ölçmeden dokunmak zaman kaybı.</p>
+<p><strong>En ucuz optimizasyon, hiç yapılmayan iştir.</strong> Kare boyunca sabit olan bir hesabı döngüye koymak, sonradan bulunması en kolay ama başta fark edilmesi en zor hata.</p>
+
+    </div>
+  </div>
+</article>
+
+</main>
+
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="lockup" href="/tr/">
+          <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+          <span class="wm">Pist Studio</span>
+        </a>
+        <p class="slogan">Crafting intelligent digital products and sound.</p>
+      </div>
+      <div>
+        <h4>Sayfalar</h4>
+        <ul><li><a href="/tr/urunler/">Ürünler</a></li><li><a href="/tr/ses/">Ses</a></li><li><a href="/tr/hakkinda/">Hakkında</a></li><li><a href="/tr/blog/">Blog</a></li><li><a href="/tr/iletisim/">İletişim</a></li></ul>
+      </div>
+      <div>
+        <h4>Takip et</h4>
+        <ul>
+          <li><a href="https://instagram.com/pist.istanbul" rel="noopener">Instagram</a></li>
+          <li><a href="https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC" rel="noopener">Spotify</a></li>
+          <li><a href="mailto:info@piststudio.com">info@piststudio.com</a></li>
+        </ul>
+        <h4 style="margin-top:22px">Yasal</h4>
+        <ul><li><a href="/tr/aydinlatma-metni/">Aydınlatma Metni</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2020–2026 Pist Studio</span>
+      <span>İstanbul, Türkiye</span>
+      <span lang="en">Creative Technology Studio</span>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>

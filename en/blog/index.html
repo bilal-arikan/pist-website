@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog — Pist Studio</title>
+<meta name="description" content="Working notes on product decisions, sound production and the studio itself.">
+
+<link rel="canonical" href="https://www.piststudio.com/en/blog/">
+
+<link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/">
+<link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
+
+
+<meta property="og:site_name" content="Pist Studio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog — Pist Studio">
+<meta property="og:description" content="Working notes on product decisions, sound production and the studio itself.">
+<meta property="og:url" content="https://www.piststudio.com/en/blog/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/simge-kare.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,300;110,400&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+<link rel="stylesheet" href="/assets/css/yazi.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Pist Studio",
+  "url":"https://www.piststudio.com",
+  "email":"info@piststudio.com",
+  "slogan":"Crafting intelligent digital products and sound.",
+  "foundingDate":"2020",
+  "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"},
+  "sameAs":["https://instagram.com/pist.istanbul","https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#icerik">Skip to content</a>
+
+
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="/en/">
+      <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+      <span class="wm">Pist Studio</span>
+    </a>
+    <nav aria-label="Pages">
+      <a href="/en/products/">Products</a>
+      <a href="/en/sound/">Sound</a>
+      <a href="/en/about/">About</a>
+      <a href="/en/blog/" aria-current="page">Blog</a>
+      <a href="/en/contact/">Contact</a>
+    </nav>
+    
+    <div class="lang" id="dilsec">
+      <a href="/tr/blog/" data-dil="tr"
+          hreflang="tr">TR</a>
+      <a href="/en/blog/" data-dil="en"
+         aria-current="true" hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+<script>
+/* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
+(function () {
+  var k = document.getElementById('dilsec');
+  if (!k) return;
+  k.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dil]');
+    if (!a) return;
+    try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+})();
+</script>
+
+
+<main id="icerik">
+<section class="section" style="border-top:none">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Blog</p>
+      <h1>We write about what we make and how we make it.</h1>
+      <p class="lede">Not marketing copy — working notes.</p>
+    </div>
+    <div class="yazilar">
+      <a href="/en/blog/drawing-2000-stars-at-60fps/" style="--hue:#9CE085">
+        <span class="meta">
+          <span class="kat">Engineering</span>
+          <span class="tar">22 September 2026</span>
+        </span>
+        <h3>Drawing 2,000 stars at 60 fps on canvas</h3>
+        <span class="ozet">Before reaching for WebGL we measured how far 2D canvas would go. Four changes cut frame time in half.</span>
+        <span class="sure">11 min read</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="lockup" href="/en/">
+          <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+          <span class="wm">Pist Studio</span>
+        </a>
+        <p class="slogan">Crafting intelligent digital products and sound.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul><li><a href="/en/products/">Products</a></li><li><a href="/en/sound/">Sound</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/">Blog</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/pist.istanbul" rel="noopener">Instagram</a></li>
+          <li><a href="https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC" rel="noopener">Spotify</a></li>
+          <li><a href="mailto:info@piststudio.com">info@piststudio.com</a></li>
+        </ul>
+        <h4 style="margin-top:22px">Legal</h4>
+        <ul><li><a href="/en/privacy/">Privacy Notice</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2020–2026 Pist Studio</span>
+      <span>Istanbul, Türkiye</span>
+      <span lang="en">Creative Technology Studio</span>
+    </div>
+  </div>
+</footer>
+
+
+
+</body>
+</html>
