@@ -106,10 +106,11 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 
 Canlıya çıkmayı **engelleyenler** (bölüm 5'teki tabloda gerekçeleri var):
 
-1. **Aydınlatma metni** — köşeli parantezli alanlar + avukat incelemesi.
+1. **Aydınlatma metni** — köşeli parantezli 8 alan + avukat incelemesi.
    Şirket unvanı olmadan veri sorumlusu alanı doldurulamıyor.
-2. **Gerçek e-posta adresi** — form artık `site.email`e mailto atıyor,
-   yani adres yanlışsa iletişim tamamen kopuk.
+   Bilgiler bu hafta gelecek. `npm run kontrol` bekçilik ediyor.
+
+   *(Gerçek e-posta adresi maddesi kapandı — `info@piststudio.com` teyitli.)*
 
 Engellemeyenler:
 
@@ -126,8 +127,8 @@ Engellemeyenler:
 
 | # | Konu | Not |
 |---|---|---|
-| 1 | **Gerçek e-posta adresi** ⛔ | `src/_data/site.js` içinde `info@piststudio.com`, teyit edilmedi. **Artık launch'ı engelliyor:** form mailto'ya çevrildi, yani bu adres yanlışsa sitenin tek iletişim yolu kopuk. |
-| 2 | **Aydınlatma metni** ⛔ | 5 köşeli parantezli alan boş, **avukat incelemesi şart**, şirket unvanı yok. Metin mailto'ya göre revize edildi (yurt dışına aktarım ve açık rıza bölümleri kaldırıldı) ama parantezler duruyor. Alternatif: form + hukuk sayfalarını launch'tan çıkarıp doğrudan e-postayla çıkmak. |
+| 1 | ~~Gerçek e-posta adresi~~ | **Kapandı** (6 Eylül 2026). `info@piststudio.com` aktif, erişim kurucuda. Form mailto ile buraya gidiyor — adres değişirse form da değişir. |
+| 2 | **Aydınlatma metni** ⛔ | **Launch'ı engelleyen tek madde.** Sayfa şimdilik doldurulmamış haliyle duruyor; gerekli bilgiler bu hafta gelecek (kurucu, 6 Eylül 2026). Metin mailto'ya göre revize edildi ama 8 köşeli parantezli alan ve avukat incelemesi şartı duruyor. **Emniyet kemeri var:** `npm run kontrol` doldurulmamış alan bulursa dağıtım workflow'u yayınlamadan duruyor. |
 | 3 | ~~Ana sayfa parlaklığı~~ | **Çözüldü** (commit `3ed3c01`). Yığın bağlamı hatasıydı — aşağıya bakın. |
 | 4 | **Hero uzunluğu** | 400vh. Ayarlanabilir tek sayı: `src/assets/css/home.css` içinde `.hero{height:400vh}`. |
 | 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu. |
@@ -175,10 +176,14 @@ Teknik taraf hazır. Sıra şu:
 
 ### Adım 0 — Önce bunlar kapanmalı (bizde)
 
-- [ ] **Gerçek e-posta adresi teyit edilsin** → `src/_data/site.js`.
-      Form mailto'ya gittiği için bu yanlışsa site sessizce iletişimsiz kalır.
-- [ ] **Aydınlatma metni** → avukat + şirket unvanı.
-      Ya doldurulur, ya da form + hukuk sayfaları launch'tan çıkarılır.
+- [x] ~~Gerçek e-posta adresi~~ — `info@piststudio.com` teyit edildi, aktif.
+- [ ] **Aydınlatma metni** → avukat + şirket unvanı. Bilgiler bu hafta gelecek.
+      Doldurulunca `src/tr/yasal/aydinlatma-metni.md` ve
+      `src/en/legal/privacy.md` içindeki köşeli parantezli 8 alan güncellenir.
+
+`npm run kontrol` bu maddenin bekçisi: doldurulmamış alan kaldıysa dağıtım
+workflow'u derleme ile yayınlama arasında durur, site canlıya çıkmaz.
+Bilerek çıkmak gerekirse workflow adımına `IZIN_VER_YER_TUTUCU: "1"` eklenir.
 
 ### Adım 1 — Bilal yapacak (tek tık)
 
