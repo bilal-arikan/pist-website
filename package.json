@@ -1,0 +1,15 @@
+{
+  "name": "pist-studio-website",
+  "version": "1.0.0",
+  "description": "Pist Studio — Creative Technology Studio",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "eleventy --serve --port=8794",
+    "build": "eleventy",
+    "spotify": "node scripts/fetch-spotify.mjs"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+{% set t = i18n[lang] %}
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="{{ t.home }}">
+      {% include "partials/mark.njk" %}
+      <span class="wm">{{ site.name }}</span>
+    </a>
+    <nav aria-label="{{ t.footerNav }}">
+      {%- for item in t.nav %}
+      <a href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+    <div class="lang">
+      <a href="{{ '/tr/' if lang == 'en' else page.url }}" aria-current="{{ 'true' if lang == 'tr' }}" hreflang="tr">TR</a>
+      <a href="{{ '/en/' if lang == 'tr' else page.url }}" aria-current="{{ 'true' if lang == 'en' }}" hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
