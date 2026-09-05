@@ -128,7 +128,7 @@ Engellemeyenler:
 | # | Konu | Not |
 |---|---|---|
 | 1 | ~~Gerçek e-posta adresi~~ | **Kapandı** (6 Eylül 2026). `info@piststudio.com` aktif, erişim kurucuda. Form mailto ile buraya gidiyor — adres değişirse form da değişir. |
-| 2 | **Aydınlatma metni** ⛔ | **Launch'ı engelleyen tek madde.** Sayfa şimdilik doldurulmamış haliyle duruyor; gerekli bilgiler bu hafta gelecek (kurucu, 6 Eylül 2026). Metin mailto'ya göre revize edildi ama 8 köşeli parantezli alan ve avukat incelemesi şartı duruyor. **Emniyet kemeri var:** `npm run kontrol` doldurulmamış alan bulursa dağıtım workflow'u yayınlamadan duruyor. |
+| 2 | **Aydınlatma metni** ⚠️ | **Launch'ı artık engellemiyor — risk bilinçli olarak kabul edildi** (kurucu, 6 Eylül 2026; gerekçe: siteye trafik gelmiyor). Kalan 3 alan (şirket unvanı, açık adres, KVKK başvuru e-postası) şirket kurulmadığı için boş; sayfada köşeli parantez olarak görünecekler. Avukat incelemesi hâlâ yapılmadı. Bilgiler gelince doldurulacak ve workflow'daki `IZIN_VER_YER_TUTUCU` istisnası silinecek. |
 | 3 | ~~Ana sayfa parlaklığı~~ | **Çözüldü** (commit `3ed3c01`). Yığın bağlamı hatasıydı — aşağıya bakın. |
 | 4 | **Hero uzunluğu** | 400vh. Ayarlanabilir tek sayı: `src/assets/css/home.css` içinde `.hero{height:400vh}`. |
 | 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu. |
@@ -167,66 +167,63 @@ de bu yüzden kontrol edilememişti. Bir sonraki oturumda önizleme panelini
 
 ---
 
-## 6. Yayın planı
+## 6. Yayın planı — DURUM
 
-Site **GitHub Pages**'te, `pist` dalının kökünden yayınlanıyor.
 Alan adı `www.piststudio.com`, DNS **Squarespace Domains**'te, erişim **Bilal**'de.
+Repo `github.com/bilal-arikan/pist-website`, varsayılan dal `pist`.
 
-Teknik taraf hazır. Sıra şu:
+### ✅ Adım 0 — kapandı (6 Eylül 2026)
 
-### Adım 0 — Önce bunlar kapanmalı (bizde)
+- [x] `info@piststudio.com` teyit edildi, aktif.
+- [x] Analitik kullanılmama kararı alındı, yer tutucular kaldırıldı.
+- [x] **Kalan 3 alan bilinçli olarak boş bırakıldı** — şirket unvanı, açık adres,
+      KVKK başvuru e-postası. Şirket kurulmadığı için doldurulamıyor; siteye
+      trafik gelmediğinden kurucu riski kabul etti.
+      Workflow'daki kontrol adımına dated bir istisna eklendi.
 
-- [x] ~~Gerçek e-posta adresi~~ — `info@piststudio.com` teyit edildi, aktif.
-- [ ] **Aydınlatma metni** → avukat + şirket unvanı. Bilgiler bu hafta gelecek.
-      Doldurulunca `src/tr/yasal/aydinlatma-metni.md` ve
-      `src/en/legal/privacy.md` içindeki köşeli parantezli 8 alan güncellenir.
+### ✅ Adım 2 — yapıldı (6 Eylül 2026)
 
-`npm run kontrol` bu maddenin bekçisi: doldurulmamış alan kaldıysa dağıtım
-workflow'u derleme ile yayınlama arasında durur, site canlıya çıkmaz.
-Bilerek çıkmak gerekirse workflow adımına `IZIN_VER_YER_TUTUCU: "1"` eklenir.
+`yeni-site` → `pist` merge edildi ve push edildi (merge commit `3d0a83a`).
 
-### Adım 1 — Bilal yapacak (tek tık)
+**Bu push canlı siteyi değiştirmedi** ve değiştirmesi de beklenmiyordu:
+Pages hâlâ *deploy from a branch* modunda, `pist` kökündeki eski site
+dosyalarına merge hiç dokunmadı. Push sonrası `www.piststudio.com` HTTP 200
+dönmeye devam ediyor.
 
-Repo ayarlarında `Settings → Pages → Build and deployment → Source`
+Workflow `pist`e push'ta tetiklendi ama **başarısız olması normal** —
+`actions/configure-pages` Pages kaynağı "GitHub Actions" olmadan hata verir.
+`enablement` girdisi verilmediği için ayarı kendiliğinden değiştirmez.
+
+### ⬜ Adım 1 — Bilal'i bekliyor (tek tık)
+
+`Settings → Pages → Build and deployment → Source`
 değerini *Deploy from a branch* yerine **GitHub Actions** yap.
 
-> ⚠️ Bu ayar değişince site, workflow ilk kez çalışana kadar boşa düşer.
-> Workflow zaten hazır (`.github/workflows/deploy.yml`), o yüzden ayarı
-> değiştirdikten hemen sonra Adım 2'yi yap. Kesinti bir iki dakika.
+> Özel alan adı ayarı `www.piststudio.com` olarak kalmalı.
+> `CNAME` dosyası `_site`'a kopyalanıyor, artifact'ta da bulunuyor.
 
-> Not: Pages özel alan adı ayarı `www.piststudio.com` olarak kalmalı.
-> `CNAME` dosyası `_site`'a kopyalanıyor, yani artifact'ta da bulunuyor.
+### ⬜ Adım 2b — ayar değişince biz
 
-### Adım 2 — Biz yapacağız
+Actions sekmesinden **"Derle ve yayınla"** workflow'unu `workflow_dispatch`
+ile elle çalıştır. (Yeni bir push beklemeye gerek yok.)
 
-```bash
-git checkout pist
-git merge yeni-site
-git push
-```
+Sıralama bilinçli: önce push, sonra ayar, hemen ardından elle çalıştırma.
+Böylece eski site, yeni site yayına girene kadar ayakta kalıyor; kesinti
+sadece workflow'un sürdüğü kadar oluyor.
 
-Workflow `pist` dalına push'ta tetikleniyor.
-
-> Merge sırasında eski site dosyaları (`index.html`, `pages/`, `css/`, `js/`,
-> `img/`, `videos/`) repoda kalmaya devam edecek — ama artifact `_site`
-> olduğu için **yayına çıkmayacaklar.** Temiz kesit budur; ayrıca silmeye
-> gerek yok. İstenirse merge sonrası ayrı bir temizlik commit'i atılır.
-
-### Adım 3 — Yayın sonrası
+### ⬜ Adım 3 — yayın sonrası doğrulama
 
 - [ ] `https://www.piststudio.com/` kök yönlendirmesi çalışıyor mu
 - [ ] `/tr/` ve `/en/` açılıyor mu, dil değiştirici doğru sayfaya gidiyor mu
-- [ ] Search Console'a `sitemap.xml` gönder
 - [ ] Yönlendirilen 6 eski URL yeni hedefine düşüyor mu
+- [ ] Search Console'a `sitemap.xml` gönder
 - [ ] Gerçek telefonda kalkış animasyonunun performansı ölç (hiç ölçülmedi)
+- [ ] Hukuk bilgileri gelince 3 alanı doldur ve **workflow'daki
+      `IZIN_VER_YER_TUTUCU` env bloğunu sil**
 
-**Geri dönüş:** eski site `pist` dalının geçmişinde duruyor (commit `899304e`).
-Ayrıca yerel yedeği kullanıcıda.
-
-### Alternatif (Bilal'e ihtiyaç duymayan)
-Workflow'u, çıktıyı `pist` dalının köküne commit edecek şekilde değiştir.
-Ayar değişikliği gerekmez, ama git geçmişi üretilen dosyalarla dolar ve
-eski dosyalarla çakışmayı elle çözmek gerekir.
+**Geri dönüş:** eski site `pist` dalının geçmişinde, commit `899304e`.
+Ayrıca yerel yedeği kullanıcıda. Pages ayarını *deploy from a branch*'e geri
+almak da eski siteyi anında geri getirir — dosyalar `pist` kökünde duruyor.
 
 ## 7. İçerik nerede
 
