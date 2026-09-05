@@ -30,7 +30,12 @@ extraJs: /assets/js/form.js
     </div>
   </div>
 
-  <form id="mesaj" novalidate>
+  <form id="mesaj" novalidate
+        data-mailto="{{ site.email }}"
+        data-hata-ad="Adını yazar mısın?"
+        data-hata-eposta="Geçerli bir e-posta adresi gerekiyor."
+        data-hata-konu="Bir konu seç."
+        data-hata-mesaj="En az 20 karakter yazar mısın?">
     <div class="ikili">
       <div class="alan" data-ad="ad">
         <label for="ad">Ad soyad <span class="req">*</span></label>
@@ -68,21 +73,13 @@ extraJs: /assets/js/form.js
     {# bot tuzağı — insanlar göremez, botlar doldurur #}
     <input class="tuzak" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-    <div class="alan" data-ad="onay">
-      <label class="onay">
-        <input type="checkbox" id="onay" name="onay">
-        <span>Mesajımın yanıtlanabilmesi için kişisel verilerimin işlenmesini kabul ediyorum. <a href="/tr/aydinlatma-metni/">Aydınlatma Metni</a></span>
-      </label>
-      <span class="hata">Devam etmek için onay vermen gerekiyor.</span>
-    </div>
-
     <div class="gonder">
-      <button class="btn btn-p" type="submit" id="gonderBtn">Mesajı gönder</button>
-      <span class="durum" id="d-gonder">Gönderiliyor…</span>
-      <span class="durum iyi" id="d-ok">✓ Ulaştı. En geç iki iş günü içinde dönüyoruz.</span>
-      <span class="durum kotu" id="d-hata">Gönderilemedi. Doğrudan {{ site.email }} adresine yazabilirsin.</span>
+      <button class="btn btn-p" type="submit" id="gonderBtn">Mesajı yaz</button>
+      <span class="durum" id="d-gonder">Açılıyor…</span>
+      <span class="durum iyi" id="d-ok">✓ E-posta uygulaman mesaj hazır halde açıldı. Göndermeyi oradan yapıyorsun.</span>
+      <span class="durum kotu" id="d-hata">E-posta uygulaman açılamadı. Doğrudan {{ site.email }} adresine yazabilirsin.</span>
     </div>
 
-    <p class="kvkk">Gönderdiğin bilgiler yalnızca mesajını yanıtlamak için kullanılır, üçüncü taraflarla paylaşılmaz.</p>
+    <p class="kvkk">Bu form kendi başına bir şey göndermiyor — kendi e-posta uygulamanı mesaj doldurulmuş halde açıyor. Sitede hiçbir bilgi saklanmıyor, üçüncü taraf bir servis görmüyor.</p>
   </form>
 </div>

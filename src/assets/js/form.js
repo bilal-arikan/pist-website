@@ -1,10 +1,17 @@
-/* İletişim formu — doğrulama ve gönderim */
+/* İletişim formu — doğrulama ve mailto ile teslim
+ *
+ * Form kendi başına hiçbir yere veri göndermiyor: alanları doğrulayıp
+ * kullanıcının kendi e-posta uygulamasını mesaj doldurulmuş halde açıyor.
+ * Üçüncü taraf servis olmadığı için KVKK m.9 yurt dışına aktarım da,
+ * açık rıza kutucuğu da gerekmiyor.
+ *
+ * Arka uç bağlanacaksa: dogrula() aynen kalır, teslim() değişir.
+ */
 (function () {
   var form = document.getElementById('mesaj');
   if (!form) return;
 
-  // TODO: form arka ucu kurulunca gerçek adres yazılacak
-  var ENDPOINT = '';
+  var ADRES = form.getAttribute('data-mailto') || '';
 
   var mesaj = document.getElementById('mesajmetni');
   var sayi = document.getElementById('sayi');
@@ -16,13 +23,13 @@
   mesaj.addEventListener('input', function () { sayi.textContent = mesaj.value.length; });
 
   function alan(ad) { return document.querySelector('.alan[data-ad="' + ad + '"]'); }
+  function deger(id) { var el = document.getElementById(id); return el ? el.value.trim() : ''; }
 
   var KURAL = {
-    ad:     function () { return document.getElementById('ad').value.trim().length >= 2; },
-    eposta: function () { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(document.getElementById('eposta').value.trim()); },
-    konu:   function () { return !!document.getElementById('konu').value; },
-    mesaj:  function () { return mesaj.value.trim().length >= 20; },
-    onay:   function () { return document.getElementById('onay').checked; }
+    ad:     function () { return deger('ad').length >= 2; },
+    eposta: function () { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(deger('eposta')); },
+    konu:   function () { return !!deger('konu'); },
+    mesaj:  function () { return mesaj.value.trim().length >= 20; }
   };
 
   function dogrula() {
@@ -35,9 +42,10 @@
     return ok;
   }
 
-  ['ad', 'eposta', 'konu', 'onay'].forEach(function (id) {
+  ['ad', 'eposta', 'konu'].forEach(function (id) {
     var el = document.getElementById(id);
-    if (el) el.addEventListener('input', function () { if (alan(id === 'onay' ? 'onay' : id).classList.contains('gecersiz')) dogrula(); });
+    if (el) el.addEventListener('input', function () { if (alan(id).classList.contains('gecersiz')) dogrula(); });
+    if (el) el.addEventListener('change', function () { if (alan(id).classList.contains('gecersiz')) dogrula(); });
   });
   mesaj.addEventListener('input', function () { if (alan('mesaj').classList.contains('gecersiz')) dogrula(); });
 
@@ -51,26 +59,25 @@
       return;
     }
 
-    if (!ENDPOINT) {
-      dHata.textContent = 'Form arka ucu henüz bağlanmadı.';
-      dHata.classList.add('acik');
-      return;
-    }
+    // bot tuzağı doluysa sessizce başarılı görün, hiçbir şey yapma
+    var tuzak = form.querySelector('input[name="website"]');
+    if (tuzak && tuzak.value) { dOk.classList.add('acik'); return; }
 
-    btn.disabled = true;
+    if (!ADRES) { dHata.classList.add('acik'); return; }
+
+    var govde = deger('ad') + ' <' + deger('eposta') + '>\n\n' + mesaj.value.trim();
+    var url = 'mailto:' + ADRES +
+              '?subject=' + encodeURIComponent(deger('konu')) +
+              '&body=' + encodeURIComponent(govde);
+
     dGonder.classList.add('acik');
-
-    fetch(ENDPOINT, { method: 'POST', body: new FormData(form) })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r; })
-      .then(function () {
-        dGonder.classList.remove('acik');
-        dOk.classList.add('acik');
-        form.reset(); sayi.textContent = '0';
-      })
-      .catch(function () {
-        dGonder.classList.remove('acik');
-        dHata.classList.add('acik');
-      })
-      .finally(function () { btn.disabled = false; });
+    try {
+      window.location.href = url;
+      dGonder.classList.remove('acik');
+      dOk.classList.add('acik');
+    } catch (e) {
+      dGonder.classList.remove('acik');
+      dHata.classList.add('acik');
+    }
   });
 })();
