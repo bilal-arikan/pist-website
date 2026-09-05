@@ -69,7 +69,8 @@ kapanan stüdyonun etkinlik ve eğitim sayfaları — bilerek 404'e düşüyor.
 Ana sayfa **görsel olarak kaymaz.** Tasarımın en güçlü yanı bu ve prototipten
 (`prototipler/01-pistten-kalkis.html`) birebir taşındı.
 
-- `.hero` 520vh — yalnızca **scroll mesafesi** sağlar, içinde görünen bir şey yok.
+- `.hero` **700vh** — yalnızca **scroll mesafesi** sağlar, içinde görünen bir şey yok.
+  Kalkışın ritmini ayarlayan tek sayı budur; büyütmek geçişleri yavaşlatır.
 - `.stage` `position:fixed` — görünen her şey burada.
 - İçinde dört `.panel`, her birinin `data-from` / `data-to` aralığı var
   (0–1 scroll ilerlemesi): hero → Products → Sound → kapanış.
@@ -89,9 +90,26 @@ bunu yönetiyor, diğer sayfalar footer'ını koruyor.
 sütunu `--maxw:1120px` olarak dar kalır — okunabilirlik için, prototipte de
 öyle. Geniş ekranda logo ve dil seçici ortada toplanmasın diye çubuk ayrıldı.
 
+Ana sayfada çubuk **şeffaftır** (zemin, bulanıklık ve alt çizgi yok) — override
+`home.css`'te, o dosya yalnızca ana sayfada yükleniyor.
+
+**Mobilde (≤720px) menü hamburger'dir.** Nav ve dil seçici tek bir `.menu`
+kabında: masaüstünde sağa yaslı tek satır, mobilde çubuğun altına açılan
+panel. Panel kendi zeminini taşır — ana sayfada çubuk şeffaf olduğu için
+şart. Düğme `aria-expanded` taşıyor; Escape kapatıp odağı düğmeye döndürüyor,
+dışarı tıklama da kapatıyor.
+
+**Dil seçici amber kullanmaz.** Aktif dil `rgba(214,190,245,.12)` zemin ve
+`--tx` metinle işaretlenir. Amber, "arayüz tek renk" kuralı gereği butonlara
+ve aktif nav bağlantısına ayrıldı.
+
+**Perde değerleri** (`.hero-scrim`) sahnenin canlılığını belirler:
+dikey `.34`, yatay `.72 → .44`. Düşürmek sahneyi açar, yükseltmek karartır.
+Perde metni etkilemez — `.stage` z-index:2 ile üstünde.
+
 **Kalkış sahnesi** (`src/assets/js/takeoff.js`): saf Canvas 2D, kütüphane yok.
-Kamera yalnızca hero yüksekliği (400vh) boyunca yükseliyor; sonrasında sayfa
-yıldız alanının üzerinde normal akıyor. Performans optimizasyonları içinde:
+Kamera hero yüksekliği (700vh) boyunca yükseliyor. Sayfa görsel olarak
+kaymıyor — bkz. yukarıdaki panel mimarisi. Performans optimizasyonları içinde:
 sprite önbelleği, kare başına trigonometri, DPR tavanı 1.5 (mobilde 1.25),
 otomatik kalite kademeleri (kare süresi 23 ms'yi aşarsa iner).
 
@@ -154,7 +172,7 @@ Site yayında; bunların hiçbiri yayını engellemiyor.
 | 1 | ~~Gerçek e-posta adresi~~ | **Kapandı** (6 Eylül 2026). `info@piststudio.com` aktif, erişim kurucuda. Form mailto ile buraya gidiyor — adres değişirse form da değişir. |
 | 2 | **Aydınlatma metni** ⚠️ | **Launch'ı artık engellemiyor — risk bilinçli olarak kabul edildi** (kurucu, 6 Eylül 2026; gerekçe: siteye trafik gelmiyor). Kalan 3 alan (şirket unvanı, açık adres, KVKK başvuru e-postası) şirket kurulmadığı için boş; sayfada köşeli parantez olarak görünecekler. Avukat incelemesi hâlâ yapılmadı. Bilgiler gelince doldurulacak ve workflow'daki `IZIN_VER_YER_TUTUCU` istisnası silinecek. |
 | 3 | ~~Ana sayfa parlaklığı~~ | **Çözüldü** (commit `3ed3c01`). Yığın bağlamı hatasıydı — aşağıya bakın. |
-| 4 | **Hero uzunluğu** | 400vh. Ayarlanabilir tek sayı: `src/assets/css/home.css` içinde `.hero{height:400vh}`. |
+| 4 | ~~Hero uzunluğu~~ | 700vh olarak ayarlandı. Değiştirmek istersen tek sayı: `src/assets/css/home.css` içinde `.hero{height:700vh}`. |
 | 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu. |
 | 6 | **Apex'e geçiş** | Launch `www.piststudio.com` üzerinden yapılıyor; `site.url` CNAME ile hizalandı. Apex'e (`piststudio.com`) geçiş DNS değişikliği gerektiriyor (Squarespace, erişim Bilal'de) ve ayrı, bilinçli bir taşıma olarak planlandı. |
 | 7 | **Yönlendirilmeyen 12 eski sayfa** | Karşılığı olmadığı için 404'e düşüyorlar. Liste ve gerekçe `src/_data/yonlendirmeler.js` başındaki yorumda. İtiraz varsa oradan eklenir. |
