@@ -5,7 +5,8 @@ export default {
   // CNAME ile aynı host olmalı — canonical, og:url ve hreflang buradan üretiliyor.
   // Apex'e (piststudio.com) geçiş ayrı ve bilinçli bir taşıma olarak yapılacak.
   url: "https://www.piststudio.com",
-  // TODO: gerçek adres teyit edilecek — piststudio.com'da Google Workspace kurulu
+  // Teyit edildi (6 Eylül 2026): adres aktif ve erişim kurucuda.
+  // İletişim formu buraya mailto atıyor — değiştirilirse form da değişir.
   email: "info@piststudio.com",
   location: { tr: "İstanbul, Türkiye", en: "Istanbul, Türkiye" },
   founded: 2020,

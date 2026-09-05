@@ -49,6 +49,11 @@ jobs:
       - name: Derle
         run: npm run build
 
+      # Doldurulmamış hukuk metni kazara yayına çıkmasın. Bilerek çıkmak
+      # gerekirse bu adıma env: IZIN_VER_YER_TUTUCU: "1" eklenir.
+      - name: Yayın öncesi kontrol
+        run: npm run kontrol
+
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
