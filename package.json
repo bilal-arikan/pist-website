@@ -8,7 +8,8 @@
     "dev": "eleventy --serve --port=8794",
     "build": "eleventy",
     "spotify": "node scripts/fetch-spotify.mjs",
-    "kontrol": "node scripts/kontrol.mjs"
+    "kontrol": "node scripts/kontrol.mjs",
+    "yayinla": "npm run build && npm run kontrol && node scripts/yayinla.mjs"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"

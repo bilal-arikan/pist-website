@@ -2,6 +2,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ "robots.txt": "robots.txt" });
+  // GitHub Pages dal modunda Jekyll'i devre dışı bırakır. Olmazsa Jekyll
+  // çıktıyı işlemeye çalışır ve "_" ile başlayan yolları atlar.
+  eleventyConfig.addPassthroughCopy({ ".nojekyll": ".nojekyll" });
 
   // Türkçe tarih: 8 Eylül 2026
   const AYLAR = ["Ocak","Şubat","Mart","Nisan","Mayıs","Haziran",
