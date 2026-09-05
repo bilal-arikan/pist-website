@@ -2,6 +2,16 @@
 
 #sky{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
 
+/* Ana sayfada üst çubuk animasyonun ÜSTÜNDE durur: zemin, bulanıklık ve
+   alt çizgi yok. Okunabilirliği .hero-scrim'in üst kenarındaki karartma
+   taşıyor (180deg, .55 → 0). Bu dosya yalnızca ana sayfada yüklendiği
+   için diğer sayfaların opak çubuğu etkilenmiyor. */
+.topbar{
+  background:none;
+  backdrop-filter:none;
+  border-bottom:none;
+}
+
 /* Sayfa GÖRSEL OLARAK kaymaz. .hero yalnızca scroll mesafesi sağlar;
    görünen her şey fixed. Scroll kamerayı yükseltir ve panelleri sırayla
    değiştirir — prototipteki (01-pistten-kalkis.html) davranış.
