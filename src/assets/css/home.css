@@ -17,8 +17,6 @@
   backdrop-filter:none;
   border-bottom:none;
 }
-/* Üstte ve altta lastik bant esnemesini kapat — kalkış sahnesi sabit kalsın */
-html{overscroll-behavior-y:none}
 
 /* Sayfa GÖRSEL OLARAK kaymaz. .hero yalnızca scroll mesafesi sağlar;
    görünen her şey fixed. Scroll kamerayı yükseltir ve panelleri sırayla
@@ -30,9 +28,12 @@ html{overscroll-behavior-y:none}
 .stage .wrap{width:100%}
 .panel{
   position:absolute;inset:0;
-  display:flex;align-items:center;
-  /* üst çubuğun altında ortalansın */
-  padding-top:62px;
+  display:flex;
+  /* Simetrik dolgu: tek yönlü padding-top merkezi 62px aşağı kaydırıyordu.
+     `safe`, içerik ekrana sığmadığında ortalamak yerine üstten başlatır —
+     yoksa uzun panel iki uçtan birden kırpılırdı. */
+  align-items:safe center;
+  padding-block:clamp(76px,9vh,92px);
   will-change:opacity,transform;
   opacity:0;visibility:hidden;
 }
@@ -77,9 +78,6 @@ html{overscroll-behavior-y:none}
 }
 
 @media(max-width:720px){
-  .panel{padding-top:96px;align-items:flex-start}
-  .panel .wrap{padding-top:clamp(20px,8vh,64px)}
-
   /* Son panel: menü ve telif satırı ekranın altına insin.
      Masaüstünde metnin hemen altında kalmaya devam ediyor. */
   .panel:last-child{align-items:stretch;padding-bottom:26px}

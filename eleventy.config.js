@@ -15,6 +15,9 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addFilter("tarihEN", (d) => new Date(d).toLocaleDateString("en-GB",
     { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }));
+  // 1 → "01" — katalog sıra numaraları için
+  eleventyConfig.addFilter("ikiHane", (n) => String(n).padStart(2, "0"));
+
   eleventyConfig.addFilter("isoTarih", (d) => new Date(d).toISOString().slice(0, 10));
 
   // blog koleksiyonları

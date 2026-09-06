@@ -58,6 +58,9 @@
    Sayfanın görsel olarak kaymaması için akışta hiçbir şey kalmamalı. #}
 {% if not noFooter %}{% include "partials/footer.njk" %}{% endif %}
 
+{# Blok kaydırma — kendi kendini gating ediyor: ana sayfada ve tek bloklu
+   sayfalarda hiç devreye girmiyor. #}
+<script src="/assets/js/blok.js" defer></script>
 {% if extraJs %}<script src="{{ extraJs }}" defer></script>{% endif %}
 </body>
 </html>

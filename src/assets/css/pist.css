@@ -47,7 +47,12 @@
 
 *,*::before,*::after{box-sizing:border-box}
 
-html{color-scheme:dark}
+html{
+  color-scheme:dark;
+  /* Lastik bant esnemesi kapalı: sayfa sonunda/başında zıplama olmuyor,
+     sabit konumlu öğeler (üst çubuk, kalkış sahnesi) yerinden oynamıyor. */
+  overscroll-behavior-y:none;
+}
 
 body{
   margin:0;
@@ -272,6 +277,49 @@ a.urun:hover{border-color:var(--hue,var(--acc));background:var(--g2);transform:t
   font-family:var(--tech);font-size:10.5px;font-weight:600;letter-spacing:.12em;
   text-transform:uppercase;color:var(--hue,var(--acc));
 }
+
+/* ---------------- katalog (Sound) ---------------- */
+
+.katalog{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.katalog .satir{
+  /* Sütunlar açıkça yerleştiriliyor — auto bırakılınca yıl sütunu
+     içeriğinden dar kalıp metni sıkıştırıyordu. */
+  display:grid;grid-template-columns:34px minmax(0,1fr) 46px 46px;
+  align-items:center;gap:4px 18px;
+  padding:13px 0;border-bottom:1px solid var(--line-soft);
+  text-decoration:none;color:inherit;
+  transition:background .2s,padding-left .2s;
+}
+a.katalog-satir:hover{background:rgba(36,16,64,.4);padding-left:10px}
+.katalog .no{
+  grid-column:1;grid-row:1/3;
+  font-family:var(--tech);font-size:11px;color:var(--tx-faint);
+  font-variant-numeric:tabular-nums;
+}
+.katalog .ad{grid-column:2;grid-row:1;font-size:15.5px;color:var(--tx);line-height:1.35}
+.katalog .sanatci{
+  grid-column:2;grid-row:2;font-size:13px;color:var(--tx-dim);line-height:1.4;
+}
+.katalog .yil{
+  grid-column:3;grid-row:1/3;
+  font-family:var(--tech);font-size:11px;color:var(--tx-faint);
+  font-variant-numeric:tabular-nums;
+}
+.katalog .sure{
+  grid-column:4;grid-row:1/3;
+  font-family:var(--tech);font-size:11px;color:var(--tx-faint);
+  font-variant-numeric:tabular-nums;text-align:right;
+}
+@media(max-width:560px){
+  .katalog .satir{grid-template-columns:28px minmax(0,1fr) 44px;gap:3px 12px}
+  .katalog .sure{grid-column:3}
+  .katalog .yil{display:none}
+}
+.katalog-bos{
+  border:1px solid var(--line);background:var(--g1);
+  padding:clamp(22px,3vw,32px);
+}
+.katalog-bos p{font-size:14px;color:var(--tx-soft);line-height:1.6;margin:0 0 16px;max-width:52ch}
 
 /* ---------------- hizmet kartları (Sound) ---------------- */
 
