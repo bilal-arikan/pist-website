@@ -56,3 +56,26 @@
 @media(max-width:520px){
   .pf{grid-template-columns:72px minmax(0,1fr);gap:0 16px;padding:18px 16px}
 }
+
+/* --- Parça listesi (Spotify künyeleri) --- */
+.pf-kapak-kare{aspect-ratio:1/1}
+.pf-sarki .pf-govde{gap:5px}
+.pf-sarki .pf-yon{
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;line-height:1.45;
+}
+.pf-baglanti{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px;
+  font-family:var(--tech);font-size:10.5px;letter-spacing:.06em;color:var(--tx-faint);
+}
+.dinle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border:1px solid var(--line-soft);border-radius:50%;
+  color:var(--tx-dim);flex:none;transition:color .16s,border-color .16s;
+}
+.dinle:hover{color:var(--hue,var(--acc));border-color:var(--hue,var(--acc))}
+.dinle:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.pf-albom{
+  min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:22ch;
+}
+.pf-sure{font-variant-numeric:tabular-nums;margin-left:auto}

@@ -18,6 +18,12 @@ export default function (eleventyConfig) {
   // 1 → "01" — katalog sıra numaraları için
   eleventyConfig.addFilter("ikiHane", (n) => String(n).padStart(2, "0"));
 
+  // "sarkilar:muzik" → sarkilar dizisinin o kategorideki parçaları
+  eleventyConfig.addFilter("kategoriye", (liste, kaynak) =>
+    (liste || []).filter((s) => s.kategori === String(kaynak).split(":")[1]));
+  // 2024-01-26 → 2024
+  eleventyConfig.addFilter("yil", (d) => String(d || "").slice(0, 4));
+
   eleventyConfig.addFilter("isoTarih", (d) => new Date(d).toISOString().slice(0, 10));
 
   // blog koleksiyonları

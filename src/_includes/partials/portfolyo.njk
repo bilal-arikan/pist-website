@@ -40,6 +40,52 @@
     <p class="pf-not">{{ i18n[lang].isKaynakNot }}</p>
   </div>
 </section>
+{% elif is.kaynak and "sarkilar:" in is.kaynak %}
+{% set liste = sarkilar | kategoriye(is.kaynak) %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ i18n[lang].isKunye }}</h2>
+      <p class="lede">{{ liste | length }} {{ i18n[lang].sarkiAdet }}</p>
+    </div>
+    <ul class="portfolyo portfolyo-sarki">
+      {%- for s in liste %}
+      <li class="pf pf-sarki">
+        <div class="pf-kapak pf-kapak-kare">
+          {% if s.kapak %}<img src="{{ s.kapak }}" alt="{{ s.baslik }}{% if s.album and s.album != s.baslik %} — {{ s.album }}{% endif %}"
+               loading="lazy" decoding="async" referrerpolicy="no-referrer" width="120" height="120">
+          {% else %}<img src="/assets/img/portfolyo/kapaksiz.svg" alt="{{ s.baslik }}" loading="lazy" decoding="async">{% endif %}
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">{{ i18n[lang].sarkiTur[s.tur] or s.tur }}</span>
+            <span class="pf-yil">{{ s.tarih | yil }}</span>
+          </p>
+          <h3>{{ s.baslik }}</h3>
+          <p class="pf-yon">{{ s.sanatcilar }}</p>
+          {% if s.roller | length %}<p class="pf-katki">{{ i18n[lang].sarkiRol }}: {% for r in s.roller %}{{ i18n[lang].sarkiRolAd[r] or r }}{{ ", " if not loop.last }}{% endfor %}</p>{% endif %}
+          <p class="pf-baglanti">
+            <a class="dinle dinle-spotify" href="{{ s.spotifyUrl }}" rel="noopener" target="_blank"
+               aria-label="{{ s.baslik }} — {{ i18n[lang].sarkiSpotify }}" title="{{ i18n[lang].sarkiSpotify }}">
+              <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.5 17.31a.75.75 0 0 1-1.03.25c-2.82-1.72-6.37-2.11-10.55-1.16a.75.75 0 1 1-.33-1.46c4.57-1.04 8.5-.59 11.66 1.34.35.22.46.68.25 1.03zm1.47-3.27a.94.94 0 0 1-1.29.31c-3.23-1.98-8.15-2.56-11.97-1.4a.94.94 0 1 1-.54-1.79c4.36-1.32 9.78-.68 13.49 1.6.44.27.58.85.31 1.28zm.13-3.4C15.23 8.34 8.9 8.13 5.2 9.25a1.12 1.12 0 1 1-.65-2.15C8.8 5.81 15.79 6.06 20.2 8.68a1.12 1.12 0 1 1-1.14 1.93l-.01.03z"/></svg>
+            </a>
+            {% if s.appleUrl %}
+            <a class="dinle dinle-apple" href="{{ s.appleUrl }}" rel="noopener" target="_blank"
+               aria-label="{{ s.baslik }} — {{ i18n[lang].sarkiApple }}" title="{{ i18n[lang].sarkiApple }}">
+              <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.05 12.54c-.02-2.2 1.79-3.25 1.87-3.3-1.02-1.49-2.6-1.7-3.17-1.72-1.35-.14-2.63.79-3.32.79-.68 0-1.74-.77-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.73.73 1.05 1.6 2.23 2.75 2.19 1.1-.05 1.52-.71 2.85-.71s1.71.71 2.87.69c1.19-.02 1.94-1.07 2.66-2.13.84-1.22 1.19-2.4 1.21-2.46-.03-.01-2.32-.89-2.34-3.53zM14.88 5.6c.6-.74 1.01-1.75.9-2.77-.87.04-1.94.59-2.57 1.31-.56.64-1.06 1.68-.93 2.67.98.08 1.98-.5 2.6-1.21z"/></svg>
+            </a>
+            {% endif %}
+            {% if s.album and s.album != s.baslik %}<span class="pf-albom">{{ s.album }}</span>{% endif %}
+            <span class="pf-sure">{{ s.sure }}</span>
+          </p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="pf-not">{{ i18n[lang].sarkiNotMuzik if "muzik" in is.kaynak else i18n[lang].sarkiNotMiks }}</p>
+  </div>
+</section>
+
 {% else %}
 <section class="section">
   <div class="wrap">

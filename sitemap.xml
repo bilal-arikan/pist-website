@@ -117,6 +117,21 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
   </url>
   <url>
+    <loc>https://www.piststudio.com/en/sound/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/ses/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
+  </url>
+  <url>
     <loc>https://www.piststudio.com/en/sound/music-production/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/music-production/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/muzik-produksiyonu/"/>
@@ -132,16 +147,6 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/miks-mastering/"/>
   </url>
   <url>
-    <loc>https://www.piststudio.com/en/sound/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
-  </url>
-  <url>
-    <loc>https://www.piststudio.com/tr/</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
-  </url>
-  <url>
     <loc>https://www.piststudio.com/tr/ses/muzik-produksiyonu/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/muzik-produksiyonu/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/music-production/"/>
@@ -155,11 +160,6 @@
     <loc>https://www.piststudio.com/tr/ses/miks-mastering/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/miks-mastering/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/mixing-mastering/"/>
-  </url>
-  <url>
-    <loc>https://www.piststudio.com/tr/ses/</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
   </url>
   <url>
     <loc>https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/</loc>

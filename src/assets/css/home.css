@@ -82,6 +82,9 @@
      Masaüstünde metnin hemen altında kalmaya devam ediyor. */
   .panel:last-child{align-items:stretch;padding-bottom:26px}
   .panel:last-child .wrap{display:flex;flex-direction:column}
+  /* İki `auto` boşluğu paylaşır: metin bloğu, alt barın üstünde kalan
+     alanın dikey ortasına oturur; alt bar aşağıda kalmaya devam eder. */
+  .panel:last-child .wrap > :first-child{margin-top:auto}
   .panel:last-child .kapanis{margin-top:auto;margin-bottom:0}
 }
 

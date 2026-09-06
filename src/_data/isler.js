@@ -8,13 +8,13 @@ export default [
     id: "muzik",
     hue: "var(--c-coral)",
     gorsel: "/assets/img/is/muzik.svg",
-    kaynak: null,
+    kaynak: "sarkilar:muzik",
     tr: {
       ad: "Müzik prodüksiyonu",
       ozet: "Şarkının fikirden yayına giden yolu.",
       url: "/tr/ses/muzik-produksiyonu/",
       baslik: "Müzik prodüksiyonu — Pist Studio",
-      aciklama: "Şarkının fikirden yayına giden yolu. Bağımsız sanatçılar ve markalar için proje bazlı müzik prodüksiyonu.",
+      aciklama: "Bağımsız sanatçılar ve markalar için müzik prodüksiyonu. Spotify künyelerinde adımızın geçtiği 43 parça.",
       giris: "Bir şarkı fikirden yayına giderken çok kere biçim değiştirir. Aranjman, kayıt, düzenleme ve son karar — hepsi aynı masada."
     },
     en: {
@@ -22,7 +22,7 @@ export default [
       ozet: "From idea to release.",
       url: "/en/sound/music-production/",
       baslik: "Music production — Pist Studio",
-      aciklama: "From idea to release. Project-based music production for independent artists and brands.",
+      aciklama: "Music production for independent artists and brands. 43 tracks where we appear in the Spotify credits.",
       giris: "A song changes shape many times between the idea and the release. Arrangement, recording, editing and the final call — all at the same desk."
     }
   },
@@ -52,13 +52,13 @@ export default [
     id: "miks",
     hue: "var(--c-lavender)",
     gorsel: "/assets/img/is/miks.svg",
-    kaynak: null,
+    kaynak: "sarkilar:miks",
     tr: {
       ad: "Miks ve mastering",
       ozet: "Kaydı yayına hazır hale getirmek.",
       url: "/tr/ses/miks-mastering/",
       baslik: "Miks ve mastering — Pist Studio",
-      aciklama: "Kaydı yayına hazır hale getirmek. Miks, mastering ve yayın formatları.",
+      aciklama: "Miks, mastering ve yayın formatları. Stüdyodan geçmiş 41 parça.",
       giris: "İyi bir kayıt, yanlış bir mikste kaybolur. Bu iş dengeyi kurmak ve kaydı gideceği yere hazırlamakla ilgili."
     },
     en: {
@@ -66,7 +66,7 @@ export default [
       ozet: "Getting a recording ready to release.",
       url: "/en/sound/mixing-mastering/",
       baslik: "Mixing and mastering — Pist Studio",
-      aciklama: "Getting a recording ready to release. Mixing, mastering and delivery formats.",
+      aciklama: "Mixing, mastering and delivery formats. 41 tracks that came through the studio.",
       giris: "A good recording gets lost in a bad mix. This work is about balance, and about preparing a record for wherever it is going."
     }
   }

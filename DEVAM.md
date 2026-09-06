@@ -225,35 +225,81 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 
 ---
 
+## 3b. Şarkı portfolyoları (6 Eylül 2026)
+
+84 parçanın Spotify künyesi `src/_data/sarkilar.js` içinde. Kaynak: her
+parçanın Spotify sayfasındaki "Katkıda bulunanlar" penceresi.
+
+**Sınıflandırma kuralı** (kurucunun talimatı + bir yorum):
+
+| Durum | Gittiği portfolyo | Adet |
+|---|---|---|
+| Künyede adı söz/beste/aranjede geçiyor | Müzik prodüksiyonu | 19 |
+| Künyede adı **yalnızca** prodüksiyonda geçiyor | Müzik prodüksiyonu | 24 |
+| Künyede adı hiç geçmiyor | Miks ve mastering | 41 |
+
+Kurucunun kuralı ilk ve üçüncü satırı söylüyordu; ortadaki durum (Prodüktör
+olarak geçiyor ama besteci değil) kuralda yoktu. Prodüktörlük müzik
+prodüksiyonu sayıldı. **Değiştirmek tek satır:** `src/_data/sarkilar.js`
+üreticisinde `kategori` ataması.
+
+**Ad varyantları.** Kurucu künyelerde beş ayrı yazımla geçiyor:
+Can Kiremitci · Yiğitcan Kiremitci · Yiğitcan Kiremitçi · Yiğit Can Kiremitci
+· **Can Doe** (sanatçı takma adı). Can Doe eşleşmesi verinin kendisinden
+doğrulandı: `25-senin-olamam` sanatçı "Can Doe", beste "Yiğit Can Kiremitci";
+`56-kendime-not` sanatçı "Can Doe", söz "Can Kiremitci". Eşleştirme regex'i
+beşini de yakalıyor.
+
+**Dürüstlük notu.** Miks/mastering listesindeki 41 parçada künyede adımız
+geçmiyor; sayfanın altındaki not bunu açıkça yazıyor ve listenin stüdyo
+kaydına dayandığını, bağımsız doğrulanmadığını söylüyor.
+
+**Kapak görselleri** Spotify CDN'inden (`i.scdn.co`) doğrudan çekiliyor,
+kopyalanmıyor — Spotify geliştirici şartları görsellerin indirilip
+saklanmasına izin vermiyor.
+
+**Apple Music.** Her kayıtta `appleUrl: null` duruyor ve şablon dolu olduğunda
+ikinci bir simge basıyor. Linkler geldiğinde **yalnızca veri dosyası**
+değişecek; şablon ve CSS'e dokunmaya gerek yok.
+
+Rol adları Spotify'dan Türkçe geliyor; İngilizce sayfada `i18n.en.sarkiRolAd`
+sözlüğüyle çevriliyor. Yeni bir rol adı çıkarsa sözlüğe eklenmezse olduğu gibi
+basılır (bozulmaz, sadece Türkçe kalır).
+
+---
+
 ## 4. Sırada ne var
 
 Site yayında; bunların hiçbiri yayını engellemiyor.
 
-1. **Ses katalogunu doldur** ⚠️ — tek eksik: hangi parçalar listelenecek.
+1. **Apple Music linkleri** — `src/_data/sarkilar.js` içindeki `appleUrl`
+   alanları dolacak. Şablon hazır (bölüm 3b).
+
+2. **Ses katalogunu doldur** ⚠️ — tek eksik: hangi parçalar listelenecek.
    Kurucu Spotify'da listeyi açıp parçaları seçer (sağ tık → Share →
    Copy links), bağlantılar `src/_data/parcalar.txt`'ye satır satır yazılır,
    `npm run spotify` çalıştırılır. Altyapı hazır ve test edildi.
    **Çalma listesi ucunu tekrar denemeye kalkma** — bölüm 2'deki tabloya bak.
 
-2. **Hukuk bilgileri** — şirket unvanı, açık adres, KVKK başvuru e-postası.
+3. **Hukuk bilgileri** — şirket unvanı, açık adres, KVKK başvuru e-postası.
    Geldiğinde iki dosyada 3 alan doldurulacak ve `.github/workflows/deploy.yml`
    içindeki `IZIN_VER_YER_TUTUCU` istisnası silinecek. Avukat incelemesi de
    hâlâ yapılmadı.
 
-3. **Kalkış animasyonu performansı** — gerçek telefonda **hiç ölçülmedi**.
+4. **Kalkış animasyonu performansı** — gerçek telefonda **hiç ölçülmedi**.
    Sitenin en riskli parçası burası ve iki oturumdur ölçülemedi.
 
-4. **İngilizce blog** — 13 Türkçe yazıya karşı 1 İngilizce yazı var.
+5. **İngilizce blog** — 13 Türkçe yazıya karşı 1 İngilizce yazı var.
    Çevrilecekse öncelik SEO yazılarında; stüdyo hikâyesi Türkçe kalabilir.
 
-5. **Search Console** — `sitemap.xml` gönderilmedi. Mülk **www** olmalı
+6. **Search Console** — `sitemap.xml` gönderilmedi. Mülk **www** olmalı
    (apex değil — bkz. bölüm 6, alan adı).
 
-6. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
+7. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
    `form.js` içindeki teslim kısmı değişir, doğrulama aynen kalır.
    Ama o an KVKK yükümlülüğü ve açık rıza kutucuğu da geri gelir.
 
-7. **Güvenlik borcu** 🔐 — Spotify client secret ve refresh token
+8. **Güvenlik borcu** 🔐 — Spotify client secret ve refresh token
    6 Eylül 2026 oturumunda sohbete yapıştırıldı. Dashboard'dan secret'ı
    yenile; bu refresh token'ı da geçersiz kılar. Sonra `npm run spotify-yetki`.
 
@@ -351,12 +397,13 @@ yayında.
 
 ### Kalanlar
 
-- [ ] **Ses katalogu** — `src/_data/parcalar.txt` doldurulacak (bölüm 4/1).
+- [ ] **Apple Music linkleri** — `sarkilar.js` içindeki `appleUrl` alanları.
+- [ ] **Ses katalogu** — `src/_data/parcalar.txt` doldurulacak (bölüm 4/2).
 - [ ] **Hukuk bilgileri** — 3 alan + workflow'daki `IZIN_VER_YER_TUTUCU`
       bloğunun silinmesi.
 - [ ] Search Console'a `sitemap.xml` gönder (mülk **www**).
 - [ ] Gerçek telefonda kalkış animasyonunun performansını ölç.
-- [ ] Spotify client secret'ı yenile (güvenlik borcu, bölüm 4/7).
+- [ ] Spotify client secret'ı yenile (güvenlik borcu, bölüm 4/8).
 - [ ] Kökteki eski proje dosyalarını temizle: `PRD.md`, `CONTENT.prd`,
       `docs/`, `html-classes.txt`. Herkese açık servis ediliyorlar.
 
