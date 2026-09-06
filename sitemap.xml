@@ -162,6 +162,9 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/mixing-mastering/"/>
   </url>
   <url>
+    <loc>https://www.piststudio.com/tr/arsiv/</loc>
+  </url>
+  <url>
     <loc>https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
