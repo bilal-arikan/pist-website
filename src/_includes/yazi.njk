@@ -1,6 +1,12 @@
 ---
 layout: base.njk
 ---
+{# Koleksiyon tarihe göre yeniden eskiye sıralı.
+   Dizide bir önceki öğe DAHA YENİ, bir sonraki öğe DAHA ESKİ yazıdır. #}
+{% set koleksiyon = collections.yazilarTR if lang == 'tr' else collections.yazilarEN %}
+{% set yeniYazi = koleksiyon | getPreviousCollectionItem(page) %}
+{% set eskiYazi = koleksiyon | getNextCollectionItem(page) %}
+
 <article class="yazi">
   <div class="wrap">
     <a class="geri" href="{{ i18n[lang].blogIndex }}">{{ i18n[lang].blogBack }}</a>
@@ -14,5 +20,25 @@ layout: base.njk
     <div class="prose">
       {{ content | safe }}
     </div>
+
+    {% if eskiYazi or yeniYazi %}
+    <nav class="yazi-gezinme" aria-label="{{ i18n[lang].yaziGezinme }}">
+      {% if eskiYazi %}
+      <a class="yg yg-onceki" href="{{ eskiYazi.url }}" style="--hue:{{ eskiYazi.data.hue }}">
+        <span class="yg-yon">← {{ i18n[lang].yaziOnceki }}</span>
+        <span class="yg-kat">{{ eskiYazi.data.category }}</span>
+        <span class="yg-baslik">{{ eskiYazi.data.title }}</span>
+      </a>
+      {% else %}<span></span>{% endif %}
+
+      {% if yeniYazi %}
+      <a class="yg yg-sonraki" href="{{ yeniYazi.url }}" style="--hue:{{ yeniYazi.data.hue }}">
+        <span class="yg-yon">{{ i18n[lang].yaziSonraki }} →</span>
+        <span class="yg-kat">{{ yeniYazi.data.category }}</span>
+        <span class="yg-baslik">{{ yeniYazi.data.title }}</span>
+      </a>
+      {% endif %}
+    </nav>
+    {% endif %}
   </div>
 </article>
