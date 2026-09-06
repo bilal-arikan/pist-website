@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.piststudio.com/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/aydinlatma-metni/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
+  </url>
+  <url>
     <loc>https://www.piststudio.com/en/about/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/about/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/hakkinda/"/>
@@ -17,9 +27,9 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/iletisim/"/>
   </url>
   <url>
-    <loc>https://www.piststudio.com/en/privacy/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
+    <loc>https://www.piststudio.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
   </url>
   <url>
     <loc>https://www.piststudio.com/en/products/</loc>
@@ -47,6 +57,11 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/contact/"/>
   </url>
   <url>
+    <loc>https://www.piststudio.com/tr/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
+  </url>
+  <url>
     <loc>https://www.piststudio.com/tr/ses/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
@@ -55,21 +70,6 @@
     <loc>https://www.piststudio.com/tr/urunler/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/urunler/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/products/"/>
-  </url>
-  <url>
-    <loc>https://www.piststudio.com/tr/aydinlatma-metni/</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
-  </url>
-  <url>
-    <loc>https://www.piststudio.com/en/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
-  </url>
-  <url>
-    <loc>https://www.piststudio.com/tr/</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
   </url>
   <url>
     <loc>https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/</loc>

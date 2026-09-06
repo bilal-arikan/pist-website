@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="İş takibi">
+  <defs>
+    <linearGradient id="tz" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="300" fill="url(#tz)"/>
+  <g opacity=".12" stroke="#E4CDF1" stroke-width="1"><path d="M60 84h380M60 132h380M60 180h380M60 228h380"/></g>
+  <!-- haftalık çubuklar -->
+  <g fill="#FFD62C">
+    <rect x="76"  y="168" width="26" height="60" opacity=".30"/>
+    <rect x="126" y="132" width="26" height="96" opacity=".45"/>
+    <rect x="176" y="150" width="26" height="78" opacity=".38"/>
+    <rect x="226" y="96"  width="26" height="132" opacity=".95"/>
+    <rect x="276" y="120" width="26" height="108" opacity=".55"/>
+    <rect x="326" y="186" width="26" height="42" opacity=".26"/>
+    <rect x="376" y="204" width="26" height="24" opacity=".18"/>
+  </g>
+  <rect x="60" y="228" width="380" height="1.5" fill="#A684BD" opacity=".5"/>
+  <circle cx="239" cy="96" r="4" fill="#FFAA05"/>
+</svg>
