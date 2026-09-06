@@ -37,11 +37,6 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/urunler/"/>
   </url>
   <url>
-    <loc>https://www.piststudio.com/en/sound/</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
-  </url>
-  <url>
     <loc>https://www.piststudio.com/tr/blog/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
@@ -62,14 +57,19 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/"/>
   </url>
   <url>
-    <loc>https://www.piststudio.com/tr/ses/</loc>
-    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
-  </url>
-  <url>
     <loc>https://www.piststudio.com/tr/urunler/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/urunler/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/products/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/sound/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/ses/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
   </url>
   <url>
     <loc>https://www.piststudio.com/tr/blog/pist-lambasi-neden-amber/</loc>
