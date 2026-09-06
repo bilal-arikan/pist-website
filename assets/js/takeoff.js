@@ -110,8 +110,8 @@
 
     vigGrad = g.createRadialGradient(W / 2, H * 0.52, Math.min(W, H) * 0.30, W / 2, H * 0.52, Math.max(W, H) * 0.78);
     vigGrad.addColorStop(0, 'rgba(0,0,0,0)');
-    vigGrad.addColorStop(0.62, 'rgba(4,2,10,0.22)');
-    vigGrad.addColorStop(1, 'rgba(2,1,8,0.62)');
+    vigGrad.addColorStop(0.62, 'rgba(4,2,10,0.12)');
+    vigGrad.addColorStop(1, 'rgba(2,1,8,0.42)');
   }
 
   function push(x, y, z, kind, k, mid) {
@@ -197,7 +197,7 @@
     g.fillRect(-4, 0, W + 8, H);
 
     /* yıldızlar */
-    var starVis = 0.30 + ts * 0.70;
+    var starVis = 0.48 + ts * 0.52;
     var n = Math.min(Q.stars, stars.length);
     for (var i = 0; i < n; i++) {
       var s0 = stars[i];
@@ -277,17 +277,17 @@
 
         if (Q.halation && a2 > 0.48 && !L.mid) {
           var hw = bw * 2.1;
-          g.globalAlpha = Math.min(0.16, a2 * 0.045);
+          g.globalAlpha = Math.min(0.24, a2 * 0.065);
           g.drawImage(sp, px - hw / 2, py - (hw / 2) * stretch, hw, hw * stretch);
         }
 
-        g.globalAlpha = Math.min(1, a2 * 0.58);
+        g.globalAlpha = Math.min(1, a2 * 0.80);
         g.drawImage(sp, px - bw / 2, py - (bw / 2) * stretch, bw, bw * stretch);
 
         if (Q.chroma && bw > 12) {
           var ca = Math.min(1.6, Math.abs(px - W / 2) / W * 3.2);
           if (ca > 0.35) {
-            g.globalAlpha = Math.min(0.16, a2 * 0.10);
+            g.globalAlpha = Math.min(0.22, a2 * 0.14);
             g.drawImage(sp, px - bw / 2 + ca, py - (bw / 2) * stretch, bw, bw * stretch);
             g.drawImage(sp, px - bw / 2 - ca, py - (bw / 2) * stretch, bw, bw * stretch);
           }
@@ -295,7 +295,7 @@
 
         if (!L.mid && psc > 1.9 && a2 > 0.38) {
           var gw2 = Math.min(180, bw * 1.9);
-          g.globalAlpha = Math.min(0.34, a2 * 0.24);
+          g.globalAlpha = Math.min(0.46, a2 * 0.32);
           g.drawImage(glare, px - gw2 / 2, py - gw2 * 0.05, gw2, gw2 * 0.1);
         }
 
@@ -304,7 +304,7 @@
         g.beginPath(); g.arc(px, py, core, 0, 6.2832); g.fill();
 
         if (!L.mid && groundVis > 0.02 && psc > 0.5) {
-          g.globalAlpha = Math.min(0.30, a2 * 0.15 * groundVis);
+          g.globalAlpha = Math.min(0.40, a2 * 0.21 * groundVis);
           g.drawImage(sp, px - bw * 0.26, py, bw * 0.52, bw * 1.6);
         }
       }
@@ -316,7 +316,7 @@
     g.fillRect(0, 0, W, H);
 
     if (grainCv) {
-      g.globalAlpha = 0.06;
+      g.globalAlpha = 0.045;
       g.drawImage(grainCv, -((clock * 31) % 48), -((clock * 47) % 48), grainCv.width * 2, grainCv.height * 2);
       g.globalAlpha = 1;
     }

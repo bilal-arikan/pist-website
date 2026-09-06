@@ -1,15 +1,31 @@
 /* Blok kaydırma — çizgiyle ayrılan bölümler arasında tek hamlede geçiş.
  *
- * Her kaydırma hareketi bir sonraki ya da önceki bloğu ekranın dikey
- * ortasına oturtur; serbest kaydırma yerine bloktan bloğa geçilir.
+ * Ekrana SIĞAN bloklarda kaydırma hareketi bir sonraki/önceki bloğa geçirir.
+ * Ekrana SIĞMAYAN bloklarda hiç karışmaz — kullanıcı serbestçe okur.
  *
- * Kendini şu koşullarda devre dışı bırakır:
+ * Devre dışı kaldığı durumlar:
  *   - kullanıcı azaltılmış hareket istemişse
- *   - sayfada ikiden az blok varsa (blog listesi, iletişim, yazı sayfaları)
- *   - blok ekrana sığmıyorsa (o blok normal kayar, içeriği kırpılmasın)
+ *   - sayfada ikiden az blok varsa
+ *   - içinde bulunulan blok ekrana sığmıyorsa
  *   - odak bir form alanındaysa ya da mobil menü açıksa
  *
- * Klavye ve kaydırma çubuğu her zaman serbest bırakılıyor: kaçış yolu kalsın.
+ * --- Neden bu sürüm ---
+ * Önceki iki sürümde kaydırma kilitlenebiliyordu:
+ *
+ * 1. "Sessizlik" koşuluna bağlı yeniden kurulma (kurulu = true ancak olaylar
+ *    90 ms susarsa) kesintisiz kaydırmada ASLA gerçekleşmiyordu; her olay
+ *    sonOlay'ı tazeliyor, kilit hiç açılmıyor ve preventDefault sayfayı
+ *    tamamen durduruyordu. Uzun listelerde kaçınılmazdı.
+ *    Artık yeniden kurulma yalnızca ZAMANA bağlı — kullanıcı ne yaparsa
+ *    yapsın BEKLE ms sonra kesin açılıyor.
+ *
+ * 2. Hedef blok ekrana sığmıyorsa ortalanıyordu; 26 kayıtlık bir listenin
+ *    başı atlanıyordu. Artık uzun bloğa aşağı inerken başına, yukarı
+ *    çıkarken sonuna gidiliyor — okuma yönü korunuyor.
+ *
+ * 3. "En yakın merkez" ile blok seçimi, uzun bir bloğun içindeyken komşu
+ *    kısa bloğu seçebiliyordu ve serbest kaydırma yanlışlıkla kesiliyordu.
+ *    Artık önce ekran ortasını İÇEREN blok aranıyor.
  */
 (function () {
   var azalt = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -23,79 +39,124 @@
   var alt = document.querySelector('body > footer');
   if (alt) bloklar.push(alt);
 
-  var SURE = 620;       // kilit süresi — animasyon bitmeden ikinci hamle almasın
-  var PAY = 24;         // blok "sığıyor" sayılırken bırakılan pay
-  var kilit = false;
-  var son = 0;
+  var SURE = 520;   // tween süresi (ms)
+  var BEKLE = 640;  // hamleler arası en kısa süre — momentum kuyruğunu yutar
+  var PAY = 24;     // blok "sığıyor" sayılırken bırakılan pay
+  var ESIK = 34;    // hamle sayılması için gereken toplam delta
+  var UST = 72;     // uzun bloğun başına giderken bırakılan üst boşluk
 
-  function merkezi(el) {
-    var r = el.getBoundingClientRect();
-    return window.scrollY + r.top + r.height / 2 - window.innerHeight / 2;
-  }
+  var animasyon = null;
+  var birikim = 0;
+  var sonHamle = 0;
 
-  /* Ekran ortasına en yakın blok */
+  function ustu(el) { return window.scrollY + el.getBoundingClientRect().top; }
+  function sigiyorMu(el) { return el.getBoundingClientRect().height <= window.innerHeight - PAY; }
+
+  /* Ekran ortasını içeren blok. Hiçbirinin içinde değilsek en yakın merkezli. */
   function simdiki() {
     var orta = window.scrollY + window.innerHeight / 2;
-    var enIyi = 0, enKisa = Infinity;
     for (var i = 0; i < bloklar.length; i++) {
       var r = bloklar[i].getBoundingClientRect();
-      var m = window.scrollY + r.top + r.height / 2;
-      var d = Math.abs(m - orta);
-      if (d < enKisa) { enKisa = d; enIyi = i; }
+      var u = window.scrollY + r.top;
+      if (orta >= u && orta < u + r.height) return i;
+    }
+    var enIyi = 0, enKisa = Infinity;
+    for (var j = 0; j < bloklar.length; j++) {
+      var q = bloklar[j].getBoundingClientRect();
+      var d = Math.abs(window.scrollY + q.top + q.height / 2 - orta);
+      if (d < enKisa) { enKisa = d; enIyi = j; }
     }
     return enIyi;
   }
 
-  function sigiyorMu(el) {
-    return el.getBoundingClientRect().height <= window.innerHeight - PAY;
+  /* Sığan blok ortalanır.
+     Sığmayan blokta okuma yönü korunur: aşağı inerken başına, yukarı
+     çıkarken sonuna gidilir. Yoksa listenin sonundan footer'a inip geri
+     dönünce 21.000 pikselin en başına fırlıyordu. */
+  function hedefY(el, yon) {
+    var r = el.getBoundingClientRect();
+    if (sigiyorMu(el)) return ustu(el) + r.height / 2 - window.innerHeight / 2;
+    if (yon < 0) return ustu(el) + r.height - window.innerHeight + UST;
+    return ustu(el) - UST;
   }
 
-  function git(i) {
-    if (i < 0 || i > bloklar.length - 1) return false;
-    var y = Math.max(0, Math.round(merkezi(bloklar[i])));
+  function egri(x) {
+    return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+  }
+
+  function kaydir(hedef) {
+    var bas = window.scrollY;
+    var yol = hedef - bas;
+    if (Math.abs(yol) < 2) return;
+    var t0 = null;
+    if (animasyon) cancelAnimationFrame(animasyon);
+    animasyon = requestAnimationFrame(function adim(zaman) {
+      if (t0 === null) t0 = zaman;
+      var p = Math.min(1, (zaman - t0) / SURE);
+      window.scrollTo(0, Math.round(bas + yol * egri(p)));
+      if (p < 1) animasyon = requestAnimationFrame(adim);
+      else animasyon = null;
+    });
+  }
+
+  function git(i, yon) {
+    if (i < 0 || i > bloklar.length - 1) return;
     var enFazla = document.documentElement.scrollHeight - window.innerHeight;
-    kilit = true;
-    window.scrollTo({ top: Math.min(y, enFazla), behavior: 'smooth' });
-    setTimeout(function () { kilit = false; }, SURE);
-    return true;
+    kaydir(Math.min(Math.max(0, Math.round(hedefY(bloklar[i], yon))), enFazla));
   }
 
   function devrediMi() {
     var a = document.activeElement;
     if (a && /^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName)) return true;
     var menu = document.getElementById('menu');
-    if (menu && menu.classList.contains('acik')) return true;
-    return false;
-  }
-
-  /* Şu an içinde bulunduğumuz blok ekrana sığmıyorsa karışma */
-  function serbestMi() {
-    var b = bloklar[simdiki()];
-    return b && !sigiyorMu(b);
+    return !!(menu && menu.classList.contains('acik'));
   }
 
   window.addEventListener('wheel', function (e) {
-    if (devrediMi() || serbestMi()) return;
-    if (Math.abs(e.deltaY) < 4) return;
+    if (devrediMi()) return;
+
+    var i = simdiki();
+    /* Uzun blok: hiç karışmıyoruz, sayfa kendi kaydırmasıyla akıyor. */
+    if (!sigiyorMu(bloklar[i])) { birikim = 0; return; }
+
+    /* Buradan sonrası bize ait — yerel kaydırma tween ile yarışmasın. */
     e.preventDefault();
-    var t = Date.now();
-    if (kilit || t - son < 120) return;
-    son = t;
-    git(simdiki() + (e.deltaY > 0 ? 1 : -1));
+
+    var simdi = Date.now();
+    /* Yalnızca ZAMANA bağlı: kullanıcı ne yaparsa yapsın BEKLE sonra açılır. */
+    if (simdi - sonHamle < BEKLE) { birikim = 0; return; }
+
+    birikim += e.deltaY;
+    if (Math.abs(birikim) < ESIK) return;
+
+    var yon = birikim > 0 ? 1 : -1;
+    birikim = 0;
+    sonHamle = simdi;
+    git(i + yon, yon);
   }, { passive: false });
 
-  /* Dokunmatik: dikey kaydırma hareketi bir blok ilerletir */
+  /* Dokunmatik */
   var y0 = null;
   window.addEventListener('touchstart', function (e) {
     y0 = e.touches.length === 1 ? e.touches[0].clientY : null;
   }, { passive: true });
 
   window.addEventListener('touchend', function (e) {
-    if (y0 === null || devrediMi() || serbestMi()) { y0 = null; return; }
-    var y1 = (e.changedTouches[0] || {}).clientY;
-    var d = y0 - y1;
+    if (y0 === null || devrediMi()) { y0 = null; return; }
+    var i = simdiki();
+    if (!sigiyorMu(bloklar[i])) { y0 = null; return; }
+    var d = y0 - ((e.changedTouches[0] || {}).clientY || y0);
     y0 = null;
-    if (Math.abs(d) < 46 || kilit) return;
-    git(simdiki() + (d > 0 ? 1 : -1));
+    var simdi = Date.now();
+    if (Math.abs(d) < 46 || simdi - sonHamle < BEKLE) return;
+    var ty = d > 0 ? 1 : -1;
+    sonHamle = simdi;
+    git(i + ty, ty);
+  }, { passive: true });
+
+  /* Klavye ve kaydırma çubuğu her zaman serbest: kullanıcı animasyonu böler. */
+  window.addEventListener('keydown', function () {
+    if (animasyon) { cancelAnimationFrame(animasyon); animasyon = null; }
+    sonHamle = 0;
   }, { passive: true });
 })();

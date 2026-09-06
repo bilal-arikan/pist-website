@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sound design — Pist Studio</title>
+
+<meta name="description" content="Sound design and music for feature films, shorts and documentaries. 26 works since 2013.">
+
+<link rel="canonical" href="https://www.piststudio.com/en/sound/sound-design/">
+
+<link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/sound-design/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/ses-tasarimi/">
+<link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
+
+
+<meta property="og:site_name" content="Pist Studio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sound design — Pist Studio">
+<meta property="og:description" content="Sound design and music for feature films, shorts and documentaries. 26 works since 2013.">
+<meta property="og:url" content="https://www.piststudio.com/en/sound/sound-design/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/assets/img/simge.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/simge-kare.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@110,300;110,400&family=Instrument+Sans:wght@400;500;600&family=Oxanium:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/assets/css/pist.css">
+<link rel="stylesheet" href="/assets/css/portfolyo.css">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Pist Studio",
+  "url":"https://www.piststudio.com",
+  "email":"info@piststudio.com",
+  "slogan":"Crafting intelligent digital products and sound.",
+  "foundingDate":"2020",
+  "address":{"@type":"PostalAddress","addressLocality":"İstanbul","addressCountry":"TR"},
+  "sameAs":["https://instagram.com/pist.istanbul","https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC"]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#icerik">Skip to content</a>
+
+
+<header class="topbar">
+  <div class="wrap inner">
+    <a class="lockup" href="/en/">
+      <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+      <span class="wm">Pist Studio</span>
+    </a>
+
+    
+    <button class="menu-btn" id="menuBtn" type="button"
+            aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <span class="cizgi" aria-hidden="true"></span>
+      <span class="cizgi" aria-hidden="true"></span>
+    </button>
+
+    <div class="menu" id="menu">
+      <nav aria-label="Pages">
+        <a href="/en/products/">Products</a>
+        <a href="/en/sound/">Sound</a>
+        <a href="/en/about/">About</a>
+        <a href="/en/blog/">Blog</a>
+        <a href="/en/contact/">Contact</a>
+      </nav>
+      
+      <div class="lang" id="dilsec">
+        <a href="/tr/ses/ses-tasarimi/" data-dil="tr"
+            hreflang="tr">TR</a>
+        <a href="/en/sound/sound-design/" data-dil="en"
+           aria-current="true" hreflang="en">EN</a>
+      </div>
+    </div>
+  </div>
+</header>
+<script>
+(function () {
+  /* Elle yapılan dil seçimini hatırla — kök `/` bir dahaki sefere buna bakıyor. */
+  var k = document.getElementById('dilsec');
+  if (k) k.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-dil]');
+    if (!a) return;
+    try { localStorage.setItem('pist-dil', a.getAttribute('data-dil')); } catch (err) {}
+  });
+
+  /* Hamburger. Menü mobilde CSS ile kapalı; .acik sınıfı açar.
+     Masaüstünde düğme görünmez ve menü her zaman açıktır. */
+  var btn = document.getElementById('menuBtn');
+  var menu = document.getElementById('menu');
+  if (!btn || !menu) return;
+
+  function kapat() {
+    menu.classList.remove('acik');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', function () {
+    var acik = menu.classList.toggle('acik');
+    btn.setAttribute('aria-expanded', acik ? 'true' : 'false');
+  });
+
+  /* Escape kapatsın, odak düğmeye dönsün */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('acik')) { kapat(); btn.focus(); }
+  });
+
+  /* Menü dışına tıklayınca kapansın */
+  document.addEventListener('click', function (e) {
+    if (!menu.classList.contains('acik')) return;
+    if (menu.contains(e.target) || btn.contains(e.target)) return;
+    kapat();
+  });
+})();
+</script>
+
+
+<main id="icerik">
+
+<section class="section" style="border-top:none">
+  <div class="wrap">
+    <a class="geri" href="/en/sound/">← Sound</a>
+    <div class="section-head" style="margin-top:18px">
+      <p class="eyebrow" style="color:var(--c-orange)">Sound · Work</p>
+      <h1>Sound design</h1>
+      <p class="lede">An image alone is only half of it. On the work below we handled both the sound design and the music.</p>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Credits</h2>
+      <p class="lede">26 works</p>
+    </div>
+    <ul class="portfolyo">
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Teşekkürler Süpermen — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2020</span>
+          </p>
+          <h3>Teşekkürler Süpermen</h3>
+          <p class="pf-yon">Director: Ozan Sertdemir</p>
+          <p class="pf-aciklama">Market çalışanı Hayati, Evren’i kurtarmasının ardından beklenmedik biçimde bir kahramana dönüşür. Bu yeni imaj, reklam dünyasının ilgisiyle başka bir boyut kazanır. Ozan Sertdemir’in kara komedisi, sıradan bir insanın kahraman olarak sunulmasının yarattığı dönüşümü anlatır.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/gece-gelen.jpg"
+               alt="Gece Gelen: Cin Bebek — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            <span class="pf-yil">2019</span>
+          </p>
+          <h3>Gece Gelen: Cin Bebek</h3>
+          <p class="pf-yon">Director: Bülent Aydoslu</p>
+          <p class="pf-aciklama">Doğa’nın köydeki yaşamı, kendisine musallat olan doğaüstü varlıkla birlikte bir kâbusa dönüşür. İçinde bulunduğu durumdan kurtulmak için aradığı çözüm, onu yeni bir anlaşmaya sürükler. Bülent Aydoslu’nun korku filmi, bu çıkış arayışını izler.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Kaçış — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2019</span>
+          </p>
+          <h3>Kaçış</h3>
+          
+          <p class="pf-aciklama">Kaçış, 2019 yılı müzik çalışmalarımız arasında yer alan bir kısa film projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/maraton.jpg"
+               alt="Maraton — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2019</span>
+          </p>
+          <h3>Maraton</h3>
+          <p class="pf-yon">Director: Alper Akdeniz</p>
+          <p class="pf-aciklama">Teknolojinin insan yaşamıyla kurduğu ilişki, kesintisiz bir çekimde anlatılıyor. Alper Akdeniz’in İzmir’de çektiği Maraton, kısa süresine yoğun bir görsel anlatı sığdıran deneysel bir film. Gündelik hayatın akışı ve teknolojinin etkisi aynı kadrajda buluşuyor.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Sauseerig — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Promotional Film</span>
+            <span class="pf-yil">2019</span>
+          </p>
+          <h3>Sauseerig</h3>
+          
+          <p class="pf-aciklama">Sauseerig, 2019 yılı müzik çalışmalarımız arasında yer alan bir tanıtım filmi projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/tavsan.jpg"
+               alt="Tavşan — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2019</span>
+          </p>
+          <h3>Tavşan</h3>
+          <p class="pf-yon">Director: Abdullah Rıdvan Can</p>
+          <p class="pf-aciklama">Başarılı atlet Zeynep’ten, yaklaşan yarışta diğer koşuculara tempo sağlayan “tavşan atlet” rolünü üstlenmesi istenir. Abdullah Rıdvan Can’ın kısa filmi, spor dünyasındaki bu görevi hikâyesinin merkezine yerleştirir ve yarışa Zeynep’in bulunduğu yerden bakar.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/ismetse-olur.jpg"
+               alt="İsmetse Olur — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            <span class="pf-yil">2019</span>
+          </p>
+          <h3>İsmetse Olur</h3>
+          <p class="pf-yon">Director: Umut Kaya</p>
+          <p class="pf-aciklama">Kısmetli köyüne gelen dolandırıcılar, köylülere bir bukalemun çiftliği kurmayı önerir. Köyün saf delikanlısı İsmet’in varlığı ise hesaplarını bozar. Umut Kaya’nın komedisi, kolay kazanç vaadini köy yaşamı ve beklenmedik karşılaşmalar üzerinden anlatır.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/bekci.jpg"
+               alt="Bekçi — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Bekçi</h3>
+          <p class="pf-yon">Director: Durmuş Akbulut</p>
+          <p class="pf-aciklama">Mezarlıkta gece bekçiliği yapan Salih’in düzeni, karşılaştığı kişiler ve gördüğü rüyalarla değişmeye başlar. Gerçekle düş arasındaki sınır belirsizleşirken gece, başka bir anlam kazanır. Durmuş Akbulut’un filmi, gündelik bir görevin içinden tekinsiz bir dünya kurar.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/ecinni.jpg"
+               alt="Ecinni — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Ecinni</h3>
+          <p class="pf-yon">Director: Mehmet Sağlam</p>
+          <p class="pf-aciklama">Çocukluğunda kardeşini kaybeden Kadir, arkadaşlarıyla birlikte eski bir köyde belgesel çekmek için yola çıkar. Yolculuk sırasında başlayan tuhaf olaylar, geçmişiyle kurduğu bağı yeniden açığa çıkarır. Mehmet Sağlam’ın korku filmi, bir çekim ekibinin yolculuğunu doğaüstü bir karşılaşmaya dönüştürür.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/firtina-murat.jpg"
+               alt="Fırtına Murat — En Uzun Gece — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Fırtına Murat — En Uzun Gece</h3>
+          <p class="pf-yon">Director: Orhan Kılıç</p>
+          <p class="pf-aciklama">Bir kamyonda bulunan ölü göçmenler, Komiser Murat’ı organ ticaretine uzanan bir soruşturmanın içine çeker. Murat, suçun izini sürerken adalet ve hukuk arasında zor kararlarla karşılaşır. Orhan Kılıç’ın polisiye filmi, En Uzun Gece adıyla da biliniyor.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Kestik — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Kestik</h3>
+          
+          <p class="pf-aciklama">Kestik, 2018 yılı müzik çalışmalarımız arasında yer alan bir kısa film projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Kimliklerim, Semtim — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Documentary</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Kimliklerim, Semtim</h3>
+          
+          <p class="pf-aciklama">Kimliklerim, Semtim, 2018 yılı müzik çalışmalarımız arasında yer alan bir belgesel projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Kötü Film — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Kötü Film</h3>
+          
+          <p class="pf-aciklama">Kötü Film, 2018 yılı müzik çalışmalarımız arasında yer alan bir kısa film projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/sonsuz-zaman-icinde.jpg"
+               alt="Sonsuz Zaman İçinde — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Sonsuz Zaman İçinde</h3>
+          <p class="pf-yon">Director: Emre Doğan</p>
+          <p class="pf-aciklama">Küçük bir kız, doğum için şehre giden annesini büyükannesi ve büyükbabasıyla bekler. Yeni doğacak kardeşinin sağlığıyla kendi davranışları arasında kurulan bağ, onu ağır bir sorumluluk duygusuyla karşı karşıya bırakır. Emre Doğan’ın filmi, çocukluk deneyimini aile ve inanışlar üzerinden anlatır.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Varlık — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2018</span>
+          </p>
+          <h3>Varlık</h3>
+          
+          <p class="pf-aciklama">Varlık, 2018 yılı müzik çalışmalarımız arasında yer alan bir kısa film projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Dal — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Documentary</span>
+            <span class="pf-yil">2017</span>
+          </p>
+          <h3>Dal</h3>
+          
+          <p class="pf-aciklama">Dal, 2017 yılı müzik çalışmalarımız arasında yer alan bir belgesel projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Kader — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature</span>
+            <span class="pf-yil">2017</span>
+          </p>
+          <h3>Kader</h3>
+          
+          <p class="pf-aciklama">Kader, 2017 yılı müzik çalışmalarımız arasında yer alan bir uzun metraj projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/noradrenalin.jpg"
+               alt="Noradrenalin — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2017</span>
+          </p>
+          <h3>Noradrenalin</h3>
+          <p class="pf-yon">Director: Antonio Özçevik</p>
+          <p class="pf-aciklama">Aşkın yasaklandığı 2030 yılında Eşref, hasta annesine bakarken çevresindeki toplumsal çözülmeyle de yüzleşir. Noradrenalin, kişisel bir bakım hikâyesini karanlık bir gelecek tasavvuruyla buluşturan distopik bir kısa film.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Son Akşam Yemeği — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2017</span>
+          </p>
+          <h3>Son Akşam Yemeği</h3>
+          <p class="pf-yon">Director: Hatice Aşkın</p>
+          <p class="pf-aciklama">Şef Levent, arkadaşı Kurtuluş’un sıra dışı iş fikriyle karşılaşır: Acı çeken insanlara son yemeklerini sunan bir şirket kurmak. Hatice Aşkın’ın kısa filmi, bu teklif üzerinden insan yaşamına ve acıya ilişkin rahatsız edici bir soruyu gündeme getirir.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/umut-avcilari.jpg"
+               alt="Umut Avcıları — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            <span class="pf-yil">2017</span>
+          </p>
+          <h3>Umut Avcıları</h3>
+          <p class="pf-yon">Director: İlker Çavga</p>
+          <p class="pf-aciklama">Anıtkaya’da yaşayan dört arkadaş, define bulma umuduyla bir maceraya atılır. Paris’ten köye dönen bir iş insanının gelişiyle yolları kesişir; hayaller ve beklenmedik olaylar birbirine karışır. Umut Avcıları, köy yaşamını bir define arayışının çevresinde anlatan bir komedi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Bukle — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Public Service Film</span>
+            <span class="pf-yil">2016</span>
+          </p>
+          <h3>Bukle</h3>
+          <p class="pf-yon">Director: Ömer Gümüşer</p>
+          <p class="pf-aciklama">LÖSEV için hazırlanan Bukle, lösemi konusunda farkındalık yaratmayı amaçlayan bir kamu spotu. Ömer Gümüşer’in kısa yapımı, toplumsal bir meseleyi sinema aracılığıyla görünür kılıyor.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Aya — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2015</span>
+          </p>
+          <h3>Aya</h3>
+          
+          <p class="pf-aciklama">Aya, 2015 yılı müzik çalışmalarımız arasında yer alan bir kısa film projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/kapaksiz.svg"
+               alt="Perdenin Ardından — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Short Film</span>
+            <span class="pf-yil">2013</span>
+          </p>
+          <h3>Perdenin Ardından</h3>
+          
+          <p class="pf-aciklama">Perdenin Ardından, 2013 yılı müzik çalışmalarımız arasında yer alan bir kısa film projesi.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/ecinni-2.jpg"
+               alt="Ecinni 2: Tılsımlı Mezar — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            
+          </p>
+          <h3>Ecinni 2: Tılsımlı Mezar</h3>
+          <p class="pf-yon">Director: Mehmet Sağlam</p>
+          <p class="pf-aciklama">Yılmaz, Sinan, Eda ve Sema, eski bir rahibenin mezarındaki bileziğin peşine düşer. Mezarın açılmasıyla birlikte tılsımlar bozulur ve arayışları korkutucu olaylara sürüklenir. Ecinni serisinin ikinci filmi, ilk filmin köyüne yeni bir hikâyeyle geri döner.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/ecinni-3.jpg"
+               alt="Ecinni 3: Issız Çığlık — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Feature Film</span>
+            
+          </p>
+          <h3>Ecinni 3: Issız Çığlık</h3>
+          <p class="pf-yon">Director: Mehmet Sağlam</p>
+          <p class="pf-aciklama">Zeynep’in gördüğü gizemli görüntüler, ailesinin yaşamını etkileyen bir dizi olayın başlangıcı olur. Küçük kardeşi Elif’in kaybolmasıyla birlikte bilinmeyenin peşindeki arayış derinleşir. Ecinni serisinin üçüncü filmi, aile bağlarını doğaüstü bir tehdidin içinde ele alır.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="/assets/img/portfolyo/ege-gunesi.jpg"
+               alt="Ege Güneşi — poster" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">Documentary</span>
+            
+          </p>
+          <h3>Ege Güneşi</h3>
+          <p class="pf-yon">Director: Ömer Gümüşer</p>
+          <p class="pf-aciklama">İzmir’deki bir lunaparkın çalışanları, eski dönme dolabın sökülmesi ve değişen çalışma koşullarıyla birlikte belirsiz bir döneme girer. Ömer Gümüşer’in belgeseli, eğlencenin arkasındaki emeğe yaklaşır; iş, geçim ve gelecek kaygısını çalışanların gündelik yaşamları içinde takip eder.</p>
+          <p class="pf-katki">Contribution: Sound design / Music</p>
+        </div>
+      </li>
+    </ul>
+    <p class="pf-not">Credits are based on studio records and have not been independently verified.</p>
+  </div>
+</section>
+
+
+
+</main>
+
+
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <a class="lockup" href="/en/">
+          <svg class="mark" viewBox="0 0 32 46" aria-hidden="true" focusable="false">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#F2E9F6"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#F2E9F6"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</svg>
+
+          <span class="wm">Pist Studio</span>
+        </a>
+        <p class="slogan">Crafting intelligent digital products and sound.</p>
+      </div>
+      <div>
+        <h4>Pages</h4>
+        <ul><li><a href="/en/products/">Products</a></li><li><a href="/en/sound/">Sound</a></li><li><a href="/en/about/">About</a></li><li><a href="/en/blog/">Blog</a></li><li><a href="/en/contact/">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Follow</h4>
+        <ul>
+          <li><a href="https://instagram.com/pist.istanbul" rel="noopener">Instagram</a></li>
+          <li><a href="https://open.spotify.com/playlist/1OnQcPOHG6KV5BIEu9BZIC" rel="noopener">Spotify</a></li>
+          <li><a href="mailto:info@piststudio.com">info@piststudio.com</a></li>
+        </ul>
+        <h4 style="margin-top:22px">Legal</h4>
+        <ul><li><a href="/en/privacy/">Privacy Notice</a></li></ul>
+      </div>
+    </div>
+    <div class="base">
+      <span>© 2020–2026 Pist Studio</span>
+      <span>Istanbul, Türkiye</span>
+      <span lang="en">Creative Technology Studio</span>
+    </div>
+  </div>
+</footer>
+
+
+
+<script src="/assets/js/blok.js" defer></script>
+
+</body>
+</html>

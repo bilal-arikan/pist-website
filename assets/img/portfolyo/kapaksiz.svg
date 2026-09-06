@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 440" role="img" aria-label="Kapak görseli yok">
+<rect width="320" height="440" fill="#150A28"/>
+<defs><pattern id="k" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#A99BC4" stroke-width=".5" opacity=".12"/></pattern></defs>
+<rect width="320" height="440" fill="url(#k)"/>
+<g transform="translate(144 190) scale(1.1)" opacity=".5">
+  <path d="M16 1 C18.4 4.9 20.2 9.2 21 14 H11 C11.8 9.2 13.6 4.9 16 1 Z" fill="#FFAA05"/>
+  <path d="M11 17 H21 V37 H11 Z" fill="#A99BC4"/>
+  <path d="M8 26 L3 37 H8 Z M24 26 L29 37 H24 Z" fill="#A99BC4"/>
+  <path d="M12.5 40 H19.5 L16 45 Z" fill="#FFAA05"/>
+</g>
+</svg>

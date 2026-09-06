@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Müzik prodüksiyonu — dalga formu ve zarf eğrisi">
+<defs><pattern id="iz" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="#FD605B" stroke-width=".5" opacity=".14"/></pattern></defs><rect width="320" height="180" fill="url(#iz)"/>
+<g stroke="#FD605B" fill="none">
+  <path d="M20 90 H300" stroke-width=".75" opacity=".35"/>
+  <g stroke-width="1.6" opacity=".9">
+    <path d="M34 90v-8M42 90v-19M50 90v-31M58 90v-44M66 90v-52M74 90v-38M82 90v-26M90 90v-41M98 90v-57M106 90v-63M114 90v-49M122 90v-33M130 90v-22M138 90v-36M146 90v-54M154 90v-61M162 90v-45M170 90v-29M178 90v-17M186 90v-31M194 90v-47M202 90v-38M210 90v-25M218 90v-14M226 90v-23M234 90v-34M242 90v-27M250 90v-16M258 90v-9M266 90v-13M274 90v-7"/>
+    <path d="M34 90v8M42 90v19M50 90v31M58 90v44M66 90v52M74 90v38M82 90v26M90 90v41M98 90v57M106 90v63M114 90v49M122 90v33M130 90v22M138 90v36M146 90v54M154 90v61M162 90v45M170 90v29M178 90v17M186 90v31M194 90v47M202 90v38M210 90v25M218 90v14M226 90v23M234 90v34M242 90v27M250 90v16M258 90v9M266 90v13M274 90v7"/>
+  </g>
+  <path d="M34 82C60 20 92 12 106 27s34 66 56 46 44-52 70-40 26 30 34 34" stroke-width="1.2" opacity=".5" stroke-dasharray="3 3"/>
+  <g stroke-width=".75" opacity=".45">
+    <path d="M20 34h8M20 62h8M20 118h8M20 146h8"/>
+  </g>
+</g>
+</svg>
