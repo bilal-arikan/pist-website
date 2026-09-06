@@ -219,6 +219,14 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 - Gövde: **Instrument Sans** 400
 - Teknik katman: **Oxanium** 500 — yalnızca sayı, etiket, meta. Başlığa çıkarma.
 
+**Kopya kuralı — "stüdyo kapandı" yasak.** Kurucu 6 Eylül 2026'da bunu
+netleştirdi: sitenin hiçbir yerinde stüdyonun kapandığını söyleyen bir cümle
+olmayacak. Dört yerde vardı, dördü de değişti (ana sayfa Sound paneli TR/EN,
+`ses.njk` / `sound.njk` girişleri). Yerlerine kapanış anlatısı değil iş
+konuluyor: ana sayfada "2013'ten bugüne 84 parça, 26 film". Hakkında
+sayfasındaki 2024 satırı stüdyonun **açılışını** anlatıyor, kalması sorun
+değil. Yeni metin yazarken bu kuralı gözet.
+
 **Mobil son panel.** Ana sayfanın "Bize ulaşın" paneli mobilde diğer üç
 panelle **aynı noktada** ortalanıyor (375x812 ve 375x667'de ölçüldü: metin
 merkezi = viewport merkezi). Bunu sağlamak için alt bar (`.kapanis`) akıştan
