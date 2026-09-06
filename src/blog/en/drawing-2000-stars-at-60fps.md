@@ -6,6 +6,7 @@ date: 2026-09-22
 category: "Engineering"
 hue: "#9CE085"
 excerpt: "Before reaching for WebGL we measured how far 2D canvas would go. Four changes cut frame time in half."
+gorsel: "/assets/img/gorsel/yazi-canvas.svg"
 readingTime: 11
 ---
 

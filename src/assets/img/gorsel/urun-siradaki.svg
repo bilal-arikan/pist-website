@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Sıradaki ürün">
+  <defs>
+    <linearGradient id="sz" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/>
+    </linearGradient>
+    <pattern id="nokta" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#9CE085" opacity=".26"/>
+    </pattern>
+  </defs>
+  <rect width="480" height="300" fill="url(#sz)"/>
+  <rect width="480" height="300" fill="url(#nokta)"/>
+  <rect x="96" y="80" width="288" height="140" fill="none" stroke="#9CE085" stroke-opacity=".5"
+        stroke-width="1.5" stroke-dasharray="9 8"/>
+  <g stroke="#9CE085" stroke-opacity=".85" stroke-width="2">
+    <path d="M240 128v44M218 150h44"/>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Projelio">
+  <defs>
+    <linearGradient id="pz" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/>
+    </linearGradient>
+  </defs>
+  <rect width="480" height="300" fill="url(#pz)"/>
+  <g opacity=".10" stroke="#E4CDF1" stroke-width="1">
+    <path d="M0 60h480M0 120h480M0 180h480M0 240h480"/>
+  </g>
+  <!-- iş satırları -->
+  <g>
+    <rect x="60" y="74" width="240" height="10" fill="#FFD62C" opacity=".92"/>
+    <rect x="60" y="104" width="164" height="10" fill="#FFD62C" opacity=".55"/>
+    <rect x="60" y="134" width="290" height="10" fill="#FFD62C" opacity=".34"/>
+    <rect x="60" y="164" width="120" height="10" fill="#FFD62C" opacity=".20"/>
+  </g>
+  <!-- durum noktaları -->
+  <g>
+    <circle cx="40" cy="79" r="5" fill="#9CE085"/>
+    <circle cx="40" cy="109" r="5" fill="#FFAA05"/>
+    <circle cx="40" cy="139" r="5" fill="#A684BD"/>
+    <circle cx="40" cy="169" r="5" fill="#6E6087"/>
+  </g>
+  <!-- ilerleme -->
+  <rect x="60" y="222" width="360" height="2" fill="#E4CDF1" opacity=".16"/>
+  <rect x="60" y="222" width="228" height="2" fill="#FFD62C"/>
+  <text x="60" y="252" fill="#6E6087" font-family="Oxanium,monospace" font-size="13" letter-spacing="2.4">63%</text>
+</svg>

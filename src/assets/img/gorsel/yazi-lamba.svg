@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Pist lambaları">
+  <defs>
+    <linearGradient id="lz" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B0616"/><stop offset=".62" stop-color="#150A28"/><stop offset="1" stop-color="#241040"/>
+    </linearGradient>
+    <radialGradient id="hare"><stop offset="0" stop-color="#FFAA05" stop-opacity=".85"/><stop offset="1" stop-color="#FFAA05" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="480" height="300" fill="url(#lz)"/>
+  <!-- ufuk -->
+  <rect y="168" width="480" height="1" fill="#571055" opacity=".7"/>
+  <!-- perspektifte kenar lambaları -->
+  <g>
+    <circle cx="240" cy="172" r="18" fill="url(#hare)"/><circle cx="240" cy="172" r="2" fill="#FFF6E2"/>
+    <circle cx="196" cy="182" r="22" fill="url(#hare)"/><circle cx="196" cy="182" r="2.6" fill="#FFF6E2"/>
+    <circle cx="286" cy="182" r="22" fill="url(#hare)"/><circle cx="286" cy="182" r="2.6" fill="#FFF6E2"/>
+    <circle cx="140" cy="204" r="28" fill="url(#hare)"/><circle cx="140" cy="204" r="3.4" fill="#FFF6E2"/>
+    <circle cx="344" cy="204" r="28" fill="url(#hare)"/><circle cx="344" cy="204" r="3.4" fill="#FFF6E2"/>
+    <circle cx="62" cy="240" r="36" fill="url(#hare)"/><circle cx="62" cy="240" r="4.4" fill="#FFF6E2"/>
+    <circle cx="424" cy="240" r="36" fill="url(#hare)"/><circle cx="424" cy="240" r="4.4" fill="#FFF6E2"/>
+  </g>
+  <!-- merkez hattı -->
+  <g fill="#E4CDF1" opacity=".5">
+    <rect x="238" y="186" width="4" height="8"/><rect x="237" y="206" width="6" height="11"/>
+    <rect x="235" y="234" width="10" height="15"/><rect x="232" y="270" width="16" height="22"/>
+  </g>
+</svg>

@@ -6,6 +6,7 @@ date: 2026-09-15
 category: "Products"
 hue: "#FFD62C"
 excerpt: "Çoğu freelancer yanlış şeyi ölçüyor. Saat tutmak tek başına bir şey anlatmıyor; üç sayı ise her şeyi değiştiriyor."
+gorsel: "/assets/img/gorsel/yazi-takip.svg"
 readingTime: 8
 ---
 
