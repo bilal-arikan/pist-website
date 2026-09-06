@@ -3,6 +3,9 @@ pagination:
   data: isler
   size: 1
   alias: is
+  # Eleventy varsayılanı yalnızca ilk sayfayı koleksiyona ekliyor;
+  # bu olmadan portfolyo sayfalarının 4'ü sitemap'e girmiyordu.
+  addAllPagesToCollections: true
 permalink: "{{ is.tr.url }}"
 layout: base.njk
 lang: tr
