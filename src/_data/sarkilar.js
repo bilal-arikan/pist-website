@@ -1,14 +1,19 @@
-/* Spotify künyeleri — kaynak: her parçanın Spotify sayfasındaki
- * "Katkıda bulunanlar" penceresi (kontrol tarihi 2026-09-06).
+/* Spotify künyeleri + Apple Music bağlantıları.
+ * Kaynak: her parçanın Spotify sayfasındaki "Katkıda bulunanlar" penceresi
+ * (kontrol 2026-09-06) ve Apple Music katalog eşleştirmesi.
+ *
+ * Prodüksiyon alanı Spotify'ın kendi künyesinden geliyor. Kaynak dosyada
+ * bunun yanında sonradan eklenmiş bir "Miks & Mastering" alanı daha vardı;
+ * kurucunun talimatıyla o alan yok sayıldı.
  *
  * kategori:
- *   "muzik" — künyede kurucunun adı geçiyor (söz/beste/aranje ya da prodüksiyon).
- *             Hangi rolle geçtiği `roller` alanında duruyor.
- *   "miks"  — künyede adı hiç geçmiyor. Spotify künyeleri miks/mastering
- *             mühendisini çoğu kayıtta listelemediği için bu işler stüdyonun
- *             kendi kaydına dayanıyor; sayfada bu not açıkça yazılı.
+ *   "muzik" — künyede kurucunun adı geçiyor (söz/beste/aranje ya da
+ *             prodüksiyon), ya da kurucu o parçanın prodüktörlüğünü beyan etti.
+ *   "miks"  — ikisi de yok. Spotify künyeleri miks/mastering mühendisini
+ *             çoğu kayıtta listelemez; bu liste stüdyo kaydına dayanıyor.
  *
- * appleUrl bilerek null: Apple Music linkleri geldiğinde yalnızca bu alan dolar.
+ * beyan:true — roller Spotify künyesinden değil, kurucunun beyanından geliyor.
+ *              Sayfa altındaki not bunu açıkça söylüyor.
  */
 export default [
   {
@@ -22,7 +27,7 @@ export default [
     "sure": "5:11",
     "spotifyUrl": "https://open.spotify.com/track/4DITSSPpEvVIbqckXbbElm",
     "spotifyId": "4DITSSPpEvVIbqckXbbElm",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/y%C3%BCr%C3%BCyorum-dikenlerin-%C3%BCst%C3%BCnde/1894923600?i=1894923601",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273515c0e71b09d04d27c83cc79",
     "sozBeste": "Can Kiremitci: Besteci; Hasan Kaplan: Yazar",
     "produksiyon": "Can Kiremitci: Prodüktör; Burak Ataş: Ses Mühendisi",
@@ -32,6 +37,7 @@ export default [
       "Besteci",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -45,7 +51,7 @@ export default [
     "sure": "2:11",
     "spotifyUrl": "https://open.spotify.com/track/0Pdl3rgS5g4LdRRyhyPFNR",
     "spotifyId": "0Pdl3rgS5g4LdRRyhyPFNR",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/kalbim-sana-emanet/1829683832?i=1829683834",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273dbe8fc9352aafa0e120d4865",
     "sozBeste": "Unal Tuzun: Besteci, Söz Yazarı",
     "produksiyon": "Yiğitcan Kiremitci: Mix Mühendisi, Kayıt Mühendisi, Mastering Mühendisi, Prodüktör",
@@ -57,6 +63,7 @@ export default [
       "Mastering Mühendisi",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -70,14 +77,17 @@ export default [
     "sure": "2:54",
     "spotifyUrl": "https://open.spotify.com/track/6JHBLX3nbUPrZyWnHjqVYp",
     "spotifyId": "6JHBLX3nbUPrZyWnHjqVYp",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/ars%C4%B1z%C4%B1m/1807072152?i=1807072158",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27338de0b6235b489cd89e1ad9a",
     "sozBeste": "İBrahim İVen: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Pist",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "paramparca",
@@ -90,14 +100,17 @@ export default [
     "sure": "2:45",
     "spotifyUrl": "https://open.spotify.com/track/24Yo7z0ws6MXN5BsktX8wS",
     "spotifyId": "24Yo7z0ws6MXN5BsktX8wS",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/parampar%C3%A7a/1796892082?i=1796892083",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273ee7b5f2fc97a8e1bde71b72c",
     "sozBeste": "Cemre Kıralioğlu: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Pist",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "burden",
@@ -110,14 +123,17 @@ export default [
     "sure": "4:22",
     "spotifyUrl": "https://open.spotify.com/track/23ntfobihVmq6oJIFsdO0g",
     "spotifyId": "23ntfobihVmq6oJIFsdO0g",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/burden/1796665099?i=1796665100",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273412f1e3ef61c72881746e783",
     "sozBeste": "Samar Halim: Söz Yazarı, Besteci",
     "produksiyon": "Samar Halim: Stüdyo Prodüktörü, Stüdyo Personeli",
     "digerKunye": null,
     "kunyeKaynagi": "Samar in Silence",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "uzuldugum-zamanlarda",
@@ -130,13 +146,14 @@ export default [
     "sure": "3:07",
     "spotifyUrl": "https://open.spotify.com/track/12lZ76ibE7cuD2kIR8D89i",
     "spotifyId": "12lZ76ibE7cuD2kIR8D89i",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/%C3%BCz%C3%BCld%C3%BC%C4%9F%C3%BCm-zamanlarda/1794240098?i=1794240102",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27309bbed7d5bb8e8d7c90f070e",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Bayhan Prodüksiyon",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -159,6 +176,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -172,7 +190,7 @@ export default [
     "sure": "2:58",
     "spotifyUrl": "https://open.spotify.com/track/3OyyolJWLu6bejynQnjFYN",
     "spotifyId": "3OyyolJWLu6bejynQnjFYN",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/bendeki-sen/1789576990?i=1789576995",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2731d72746a3606ff758f1578a9",
     "sozBeste": "İBrahim İVen: Besteci, Söz Yazarı",
     "produksiyon": "Can Kiremitci: Prodüktör",
@@ -181,6 +199,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -194,7 +213,7 @@ export default [
     "sure": "3:17",
     "spotifyUrl": "https://open.spotify.com/track/59a5SVlwZmu4eM1884qUmD",
     "spotifyId": "59a5SVlwZmu4eM1884qUmD",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/gelincik/1782684666?i=1782685162",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273ad93e4f15ea3f4fabf013622",
     "sozBeste": "Cemre Kıralioğlu: Besteci, Söz Yazarı",
     "produksiyon": "Can Kiremitci: Prodüktör",
@@ -203,6 +222,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -216,7 +236,7 @@ export default [
     "sure": "2:36",
     "spotifyUrl": "https://open.spotify.com/track/5QocrcPDrYHOLKsNaGYW98",
     "spotifyId": "5QocrcPDrYHOLKsNaGYW98",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/yok-yere/1774146660?i=1774146661",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273b03011d28a68bff31e7a2be1",
     "sozBeste": "Cemre Kıralioğlu: Besteci, Söz Yazarı; Shahin Yarali: Besteci, Söz Yazarı",
     "produksiyon": "Yiğitcan Kiremitci: Prodüktör",
@@ -225,6 +245,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -238,7 +259,7 @@ export default [
     "sure": "2:14",
     "spotifyUrl": "https://open.spotify.com/track/3j8M5ON91qpVuvyqiM5yl5",
     "spotifyId": "3j8M5ON91qpVuvyqiM5yl5",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/ben-yan%C4%B1ld%C4%B1m/1773758977?i=1773758982",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273206a00f7d67c334bdca81d00",
     "sozBeste": "Cemre Kıralioğlu: Besteci, Söz Yazarı, Aranjör; Can Kiremitci: Aranjör; Engin Hızarcı: Aranjör",
     "produksiyon": null,
@@ -247,6 +268,7 @@ export default [
     "roller": [
       "Aranjör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -260,7 +282,7 @@ export default [
     "sure": "2:19",
     "spotifyUrl": "https://open.spotify.com/track/373fTOuW1GBxQZR3sMHxjX",
     "spotifyId": "373fTOuW1GBxQZR3sMHxjX",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/zehirlendim/1770800206?i=1770800315",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27337545bf0b96f79b6c88adc8a",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı; Can Kiremitci: Aranjör",
     "produksiyon": "Can Kiremitci: Prodüktör",
@@ -270,6 +292,7 @@ export default [
       "Aranjör",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -283,7 +306,7 @@ export default [
     "sure": "2:14",
     "spotifyUrl": "https://open.spotify.com/track/0UqmgJ47W4WU3xw8iLAyib",
     "spotifyId": "0UqmgJ47W4WU3xw8iLAyib",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/holly/1769016475?i=1769016714",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273d5ee41f8caee12549322fc9c",
     "sozBeste": "zei: Besteci",
     "produksiyon": "Can Kiremitci: Prodüktör",
@@ -292,6 +315,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -305,7 +329,7 @@ export default [
     "sure": "2:17",
     "spotifyUrl": "https://open.spotify.com/track/6mqkIxWERlGJ7AMjS1nXI6",
     "spotifyId": "6mqkIxWERlGJ7AMjS1nXI6",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/olay/1765345429?i=1765345452",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2736236540f7bdfa8f6fa639889",
     "sozBeste": "Cemre Kıralioğlu: Besteci, Söz Yazarı",
     "produksiyon": "Can Kiremitci: Prodüktör",
@@ -314,6 +338,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -327,7 +352,7 @@ export default [
     "sure": "2:54",
     "spotifyUrl": "https://open.spotify.com/track/13n0yHb4lidng6qEkLASaP",
     "spotifyId": "13n0yHb4lidng6qEkLASaP",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/%C3%A7ok-sevdim/1765114559?i=1765114567",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273aa56aa57d0447eae6a4d6a08",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı; Can Kiremitci: Aranjör",
     "produksiyon": null,
@@ -336,6 +361,7 @@ export default [
     "roller": [
       "Aranjör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -349,14 +375,17 @@ export default [
     "sure": "2:53",
     "spotifyUrl": "https://open.spotify.com/track/2GH9hqWAyoEe0sSbO2TzjW",
     "spotifyId": "2GH9hqWAyoEe0sSbO2TzjW",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/sen-olmadan/6766922654?i=6766922656",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27349c631e6a0027855e5b47d96",
     "sozBeste": "MURAT YILDIZ: Besteci, Söz Yazarı",
     "produksiyon": "MURAT YILDIZ: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "SOYKAN MÜZİK",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "lucifer",
@@ -369,7 +398,7 @@ export default [
     "sure": "2:38",
     "spotifyUrl": "https://open.spotify.com/track/43cLvPWSAX7RadiOB6ZaDC",
     "spotifyId": "43cLvPWSAX7RadiOB6ZaDC",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/lucifer/1757668750?i=1757669292",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273261257759fc6477bf4d2259d",
     "sozBeste": "zei: Besteci",
     "produksiyon": "Can Kiremitci: Prodüktör",
@@ -378,6 +407,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -391,7 +421,7 @@ export default [
     "sure": "2:43",
     "spotifyUrl": "https://open.spotify.com/track/238wbgbcWPejxUdxqKfKRS",
     "spotifyId": "238wbgbcWPejxUdxqKfKRS",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/zehirlenebilir-hayat%C4%B1m/1743759752?i=1743759979",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2737948ad8bb7bffd3974623ffa",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı; Can Kiremitci: Aranjör",
     "produksiyon": "Mustafa Kır: Prodüktör; Can Kiremitci: Prodüktör",
@@ -401,6 +431,7 @@ export default [
       "Aranjör",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -414,14 +445,17 @@ export default [
     "sure": "4:06",
     "spotifyUrl": "https://open.spotify.com/track/1iVXmRfjHBp88gcCUl3D4c",
     "spotifyId": "1iVXmRfjHBp88gcCUl3D4c",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/still-hung-up/1729642668?i=1729642670",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273a97ec36e8d3332e0f7cbf4e0",
     "sozBeste": "Samar Halim: Söz Yazarı, Besteci",
     "produksiyon": "Samar Halim: Stüdyo Prodüktörü",
     "digerKunye": null,
     "kunyeKaynagi": "Samar in Silence",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "oh-well",
@@ -434,14 +468,17 @@ export default [
     "sure": "4:14",
     "spotifyUrl": "https://open.spotify.com/track/1C1ex2PyxgHNChpVwKEIud",
     "spotifyId": "1C1ex2PyxgHNChpVwKEIud",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/oh-well/1729642668?i=1729642669",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273a97ec36e8d3332e0f7cbf4e0",
     "sozBeste": "Samar Halim: Söz Yazarı, Besteci",
     "produksiyon": "Samar Halim: Stüdyo Prodüktörü",
     "digerKunye": null,
     "kunyeKaynagi": "Samar in Silence",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "belki-bi-gun-anlarsin",
@@ -454,7 +491,7 @@ export default [
     "sure": "2:25",
     "spotifyUrl": "https://open.spotify.com/track/0ddXQ4eNqVOr1YacLki5Xa",
     "spotifyId": "0ddXQ4eNqVOr1YacLki5Xa",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/belki-bi-g%C3%BCn-anlars%C4%B1n/1730540941?i=1730541332",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2730ec85e0f1c362ee96c8f4834",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı, Aranjör; Can Kiremitci: Aranjör",
     "produksiyon": "Mustafa Kır: Prodüktör; Can Kiremitci: Prodüktör",
@@ -464,6 +501,7 @@ export default [
       "Aranjör",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -477,7 +515,7 @@ export default [
     "sure": "4:12",
     "spotifyUrl": "https://open.spotify.com/track/2D6QNdWOXLi9HB6Kbp0iNz",
     "spotifyId": "2D6QNdWOXLi9HB6Kbp0iNz",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/biz-seninle/1724806836?i=1724807687",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2737662cca52acb3f645788f215",
     "sozBeste": "İbrahim İven: Besteci, Söz Yazarı, Aranjör; Yiğitcan Kiremitçi: Aranjör",
     "produksiyon": "Yiğitcan Kiremitçi: Prodüktör",
@@ -487,6 +525,7 @@ export default [
       "Aranjör",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -500,7 +539,7 @@ export default [
     "sure": "3:23",
     "spotifyUrl": "https://open.spotify.com/track/6ZtjAYRUacYINAf1aPFvlj",
     "spotifyId": "6ZtjAYRUacYINAf1aPFvlj",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/karanl%C4%B1k-sokaklar/1713513954?i=1713513967",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273de968ee56db78d84782da2d7",
     "sozBeste": "İbrahim İven: Besteci, Söz Yazarı",
     "produksiyon": "Burak Atlas: Prodüktör; Can Doe: Prodüktör",
@@ -509,6 +548,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -522,7 +562,7 @@ export default [
     "sure": "3:05",
     "spotifyUrl": "https://open.spotify.com/track/2kQNYcY2fY67niZt3xhMnF",
     "spotifyId": "2kQNYcY2fY67niZt3xhMnF",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/anlatt%C4%B1m-ama-anlamad%C4%B1n/1712882337?i=1712882356",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273f8b7684d6f12244015d9af9b",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -531,6 +571,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -544,13 +585,14 @@ export default [
     "sure": "3:27",
     "spotifyUrl": "https://open.spotify.com/track/45WgA7LsG6BduYo4HFi1cU",
     "spotifyId": "45WgA7LsG6BduYo4HFi1cU",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/kald%C4%B1r%C4%B1mlar/1713384289?i=1713384303",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2734494ab5abcdc0d6dc35a61f0",
     "sozBeste": "Furkan Kızılay: Besteci; Alphan Kurtoğlu: Besteci",
     "produksiyon": "Turan Oğuzhan: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "51 Music",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -564,13 +606,14 @@ export default [
     "sure": "3:28",
     "spotifyUrl": "https://open.spotify.com/track/2JBROCH5Tr9Zv9eBo3BPHA",
     "spotifyId": "2JBROCH5Tr9Zv9eBo3BPHA",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/bombo%C5%9Fum/1873493141?i=1873493142",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27363333d6a9bbee1ca978b28be",
     "sozBeste": "Eren Can Erdoğan: Söz Yazarı, Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Eren Can Music",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -584,14 +627,17 @@ export default [
     "sure": "3:10",
     "spotifyUrl": "https://open.spotify.com/track/0TixanAcRezYMF7f5bsvHS",
     "spotifyId": "0TixanAcRezYMF7f5bsvHS",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/bir-i-leri-bir-geri/1703262444?i=1703262450",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27301ac17858289bc260f1d2072",
     "sozBeste": "İbrahim İven: Besteci, Söz Yazarı",
     "produksiyon": "İlkay Emre Gökgöz: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Pink Limo Entertainment",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "en-sonunda-terk-ettim-sehrimi",
@@ -604,7 +650,7 @@ export default [
     "sure": "3:19",
     "spotifyUrl": "https://open.spotify.com/track/5GIisFHTMmJAO497d906SO",
     "spotifyId": "5GIisFHTMmJAO497d906SO",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/en-sonunda-terk-ettim-%C5%9Fehrimi/1697289370?i=1697289690",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2733b2a4f9b2024d35517c780f3",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Mustafa Kır: Prodüktör; Muharrem Salcı: Prodüktör; Can Doe: Prodüktör",
@@ -613,6 +659,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -626,14 +673,17 @@ export default [
     "sure": "3:05",
     "spotifyUrl": "https://open.spotify.com/track/5oqMAVqTqy9z3sRXQZW55q",
     "spotifyId": "5oqMAVqTqy9z3sRXQZW55q",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/karma/1692644023?i=1692644025",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273c0aec2c498cf8018aef029e0",
     "sozBeste": "İrem BAYKUT: Söz Yazarı, Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "iREM B",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "paralel-evren",
@@ -646,14 +696,17 @@ export default [
     "sure": "3:02",
     "spotifyUrl": "https://open.spotify.com/track/39jktOzwaSVUsdRqbMA9sG",
     "spotifyId": "39jktOzwaSVUsdRqbMA9sG",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/paralel-evren/1692470287?i=1692470288",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273abe7c83a4c9f5a1187f95459",
     "sozBeste": "İrem BAYKUT: Söz Yazarı, Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "iREM B",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "ara",
@@ -666,7 +719,7 @@ export default [
     "sure": "2:30",
     "spotifyUrl": "https://open.spotify.com/track/1E3HDNrkcA7p2bmh2UXUfQ",
     "spotifyId": "1E3HDNrkcA7p2bmh2UXUfQ",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/ara/1690169300?i=1690169302",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2735f93270962106cece82d2a28",
     "sozBeste": "Sheyh Ree: Besteci, Söz Yazarı",
     "produksiyon": "Ozade: Prodüktör; Khasbeat: Prodüktör; CanDoe: Prodüktör",
@@ -675,6 +728,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -688,7 +742,7 @@ export default [
     "sure": "3:15",
     "spotifyUrl": "https://open.spotify.com/track/7rYzT6YWTTt4mImjt0U33a",
     "spotifyId": "7rYzT6YWTTt4mImjt0U33a",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/deli-gibi-%C3%B6zleyeceksin/1687458129?i=1687458135",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273eb1f87d7f6194919986deddb",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -697,6 +751,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -710,13 +765,14 @@ export default [
     "sure": "3:02",
     "spotifyUrl": "https://open.spotify.com/track/2PFRbbF4hhHbUPhYT8yejb",
     "spotifyId": "2PFRbbF4hhHbUPhYT8yejb",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/geri-ver/1686142181?i=1686142737",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273c9c82ec30076ce7f5b732ece",
     "sozBeste": "Kaan Cengiz: Besteci, Söz Yazarı; Göksel Kadir Yüksel: Besteci; Yusuf Ensar Budak: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "GARAJ",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -730,13 +786,14 @@ export default [
     "sure": "3:59",
     "spotifyUrl": "https://open.spotify.com/track/3J6hGpbg3GCKQoST3CMIGJ",
     "spotifyId": "3J6hGpbg3GCKQoST3CMIGJ",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/yaln%C4%B1z-mum/1665434601?i=1665434609",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2734ef8b35c99ee0ce1da85f86d",
     "sozBeste": "Kaan Cengiz: Besteci, Söz Yazarı; Göksel Kadir Yüksel: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "GARAJ",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -750,7 +807,7 @@ export default [
     "sure": "3:21",
     "spotifyUrl": "https://open.spotify.com/track/3ezIz7ELH4CI0HMfOvtQlT",
     "spotifyId": "3ezIz7ELH4CI0HMfOvtQlT",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/hep-d%C3%BC%C5%9Ferdim-depresyonlara/1663448145?i=1663448775",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2738884992e8272fd678dfe771e",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -759,6 +816,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -772,7 +830,7 @@ export default [
     "sure": "3:10",
     "spotifyUrl": "https://open.spotify.com/track/26hb0wz7ohGPSOHLOnants",
     "spotifyId": "26hb0wz7ohGPSOHLOnants",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/al%C4%B1%C5%9Ft%C4%B1m-%C3%BCz%C3%BClmeye/1663448145?i=1663448770",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2738884992e8272fd678dfe771e",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -781,6 +839,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -794,7 +853,7 @@ export default [
     "sure": "3:10",
     "spotifyUrl": "https://open.spotify.com/track/2xFiJX7xL04l2HmwtQVsdm",
     "spotifyId": "2xFiJX7xL04l2HmwtQVsdm",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/al%C4%B1%C5%9Ft%C4%B1m-%C3%BCz%C3%BClmeye/1647449822?i=1647449826",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27302b7a35bb4c6a02c4b9b6799",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -803,6 +862,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -816,13 +876,14 @@ export default [
     "sure": "4:48",
     "spotifyUrl": "https://open.spotify.com/track/6mybIBrFSKvtDee5BRC9SR",
     "spotifyId": "6mybIBrFSKvtDee5BRC9SR",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/kafam%C4%B1n-i-%C3%A7inde/1649585159?i=1649585161",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2738fb75ea887967c573a94d86a",
     "sozBeste": null,
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "The Nashor",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -836,7 +897,7 @@ export default [
     "sure": "3:34",
     "spotifyUrl": "https://open.spotify.com/track/1OkrkPe2L8afD26lx3nHvL",
     "spotifyId": "1OkrkPe2L8afD26lx3nHvL",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/dumanlar-var-%C3%BCzerimde/1642406089?i=1642406237",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273c659767e3de39fdbb7ae7872",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -845,6 +906,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -858,13 +920,14 @@ export default [
     "sure": "1:49",
     "spotifyUrl": "https://open.spotify.com/track/2xHSseoH3da5nAgczO6cld",
     "spotifyId": "2xHSseoH3da5nAgczO6cld",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/yerdeyim/1641138092?i=1641138093",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2738ce62fb0c9df5fd0afc212e3",
     "sozBeste": "Oğuzhan Atmaca: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Vibe Global",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -878,13 +941,14 @@ export default [
     "sure": "3:46",
     "spotifyUrl": "https://open.spotify.com/track/3FNVjyslNt6ddqgYd30bdh",
     "spotifyId": "3FNVjyslNt6ddqgYd30bdh",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/film-gibi/1638738653?i=1638738895",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273c5f1d88bf0764ba711e53705",
     "sozBeste": "Caner Öner: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "GARAJ",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -898,13 +962,14 @@ export default [
     "sure": "3:20",
     "spotifyUrl": "https://open.spotify.com/track/5jf9Zj1ebsD5gerVZzZ0X4",
     "spotifyId": "5jf9Zj1ebsD5gerVZzZ0X4",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/us/album/obsession/1636797844?i=1636797852",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2734d3a235922c8c6a377fd1657",
     "sozBeste": "Emin Arslan: Besteci, Söz Yazarı; Burkut Kum: Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Hypers",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -918,7 +983,7 @@ export default [
     "sure": "3:37",
     "spotifyUrl": "https://open.spotify.com/track/5ps4DiaUpc6l96ixypIXkn",
     "spotifyId": "5ps4DiaUpc6l96ixypIXkn",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/sabah%C4%B1n-d%C3%B6rt-bu%C3%A7u%C4%9Funda/1636044080?i=1636044084",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273e54680d8a54825250f74c831",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -927,6 +992,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -940,13 +1006,14 @@ export default [
     "sure": "3:59",
     "spotifyUrl": "https://open.spotify.com/track/3PzbUhBM3E6fg5pO2bVsYG",
     "spotifyId": "3PzbUhBM3E6fg5pO2bVsYG",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/eksik/1636149091?i=1636149092",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273a3d39d3bcca1b5b0319aa3b8",
     "sozBeste": "Kaan Cengiz: Söz Yazarı, Besteci; Kadir Yüksel: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Bulut Atlası",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -960,13 +1027,14 @@ export default [
     "sure": "3:56",
     "spotifyUrl": "https://open.spotify.com/track/6SZ3yJnBTblz1H3wy1fiMm",
     "spotifyId": "6SZ3yJnBTblz1H3wy1fiMm",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/senden-sonra/1632683786?i=1632683791",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27362a4da3ed2976d223cdeba70",
     "sozBeste": "Caner Öner: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "GARAJ",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -980,13 +1048,14 @@ export default [
     "sure": "3:42",
     "spotifyUrl": "https://open.spotify.com/track/4Eild2yen2paQsQCKmKvZX",
     "spotifyId": "4Eild2yen2paQsQCKmKvZX",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/yolu-bitti-feat-nihan-do%C4%9Fa/1626188071?i=1626188412",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2735235b5d9c627ad0df5a0c88d",
     "sozBeste": "Caner Öner: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "GARAJ",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1000,7 +1069,7 @@ export default [
     "sure": "2:25",
     "spotifyUrl": "https://open.spotify.com/track/0yeCkdVYxTUdQ6HaTsqTZY",
     "spotifyId": "0yeCkdVYxTUdQ6HaTsqTZY",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/m%C3%BCtemadiyen/1626206782?i=1626207038",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27350c8a6b368210f15cf9650ea",
     "sozBeste": "Yiğitcan Kiremitçi: Besteci, Söz Yazarı",
     "produksiyon": null,
@@ -1010,6 +1079,7 @@ export default [
       "Besteci",
       "Söz Yazarı"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1023,13 +1093,14 @@ export default [
     "sure": "3:05",
     "spotifyUrl": "https://open.spotify.com/track/7bcSr0rUNWA4o7PaUS68Sq",
     "spotifyId": "7bcSr0rUNWA4o7PaUS68Sq",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/g%C3%B6r%C3%BCr-g%C3%B6rmez/1627347438?i=1627347439",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273a435ff2f88b65081254e0855",
     "sozBeste": "Can Berk Genceroğlu: Söz Yazarı, Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "3933929 Records DK2",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1043,7 +1114,7 @@ export default [
     "sure": "3:02",
     "spotifyUrl": "https://open.spotify.com/track/2ENvruWpQW39J1uvllWjXr",
     "spotifyId": "2ENvruWpQW39J1uvllWjXr",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/k%C4%B1rm%C4%B1z%C4%B1-vosvos/1619168767?i=1619168775",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273f14483b051ee697e7a519127",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1052,6 +1123,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1065,13 +1137,14 @@ export default [
     "sure": "4:44",
     "spotifyUrl": "https://open.spotify.com/track/09XdTTkccEcbkBEuQqUr4e",
     "spotifyId": "09XdTTkccEcbkBEuQqUr4e",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/son-kadehler-kalkt%C4%B1/1621806729?i=1621806733",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273b5c1d60585ae55978ade99a6",
     "sozBeste": "Caner Öner: Besteci, Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "GARAJ",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1085,13 +1158,14 @@ export default [
     "sure": "4:01",
     "spotifyUrl": "https://open.spotify.com/track/6YSDW5vQrV6X9jPFlkRYGV",
     "spotifyId": "6YSDW5vQrV6X9jPFlkRYGV",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/bana-a%C5%9Fk-yok-mu/1623830724?i=1623831317",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273e61f55066eb9465abe036523",
     "sozBeste": "Kaan Cengiz: Besteci, Söz Yazarı; Göksel Kadir Yüksel: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "DMC",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1105,7 +1179,7 @@ export default [
     "sure": "3:55",
     "spotifyUrl": "https://open.spotify.com/track/4fkBt4R5wnHiHLKFdXhFgf",
     "spotifyId": "4fkBt4R5wnHiHLKFdXhFgf",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/deli-gibi-%C3%B6zledim/1619168526?i=1619168552",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2731901880012a06f831002982b",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1114,6 +1188,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1127,13 +1202,14 @@ export default [
     "sure": "2:44",
     "spotifyUrl": "https://open.spotify.com/track/0y8976efiDyFxENxeLCVJB",
     "spotifyId": "0y8976efiDyFxENxeLCVJB",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/daha-derine/1619527934?i=1619527945",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27381714b710f0039586f4a7abb",
     "sozBeste": "Emin Arslan: Besteci, Söz Yazarı; Emirhan Ermenek: Besteci; Mehmet Salih Kuzal: Besteci",
     "produksiyon": "Bixi Blake: Prodüktör; Yvng Demo: Prodüktör; Nightvision: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Hypers",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1147,14 +1223,17 @@ export default [
     "sure": "3:26",
     "spotifyUrl": "https://open.spotify.com/track/1KuxcIjvfEw5PVGK5iNtgA",
     "spotifyId": "1KuxcIjvfEw5PVGK5iNtgA",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/unfazed/1620708447?i=1620708448",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2730336aa108675f358a7998c38",
     "sozBeste": "Samar Halim: Söz Yazarı, Besteci",
     "produksiyon": "Samar Halim: Stüdyo Prodüktörü",
     "digerKunye": null,
     "kunyeKaynagi": "Silence Records",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "kirmizi",
@@ -1167,7 +1246,7 @@ export default [
     "sure": "2:56",
     "spotifyUrl": "https://open.spotify.com/track/4qbWO39xCOUfH0f79siE0H",
     "spotifyId": "4qbWO39xCOUfH0f79siE0H",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/k%C4%B1rm%C4%B1z%C4%B1/1619135361?i=1619136039",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2737cd9cb1b6489885d31fd057b",
     "sozBeste": "Yiğitcan Kiremitçi: Besteci, Söz Yazarı",
     "produksiyon": null,
@@ -1177,6 +1256,7 @@ export default [
       "Besteci",
       "Söz Yazarı"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1190,7 +1270,7 @@ export default [
     "sure": "3:03",
     "spotifyUrl": "https://open.spotify.com/track/4P8CK6rQv1N52WNSkjgR8q",
     "spotifyId": "4P8CK6rQv1N52WNSkjgR8q",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/yara-ald%C4%B1m/1618084079?i=1618084081",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273c25067f3700a7403270c12db",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı, Aranjör; Can Doe: Aranjör; Muharrem Salcı: Aranjör",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1200,6 +1280,7 @@ export default [
       "Aranjör",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1213,13 +1294,14 @@ export default [
     "sure": "3:33",
     "spotifyUrl": "https://open.spotify.com/track/5smU9yNqndLtk1SZua2SBk",
     "spotifyId": "5smU9yNqndLtk1SZua2SBk",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/hepsi-sen-ve-ben/1616389429?i=1616389433",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273b9952bd66be5f1daaa6c1276",
     "sozBeste": "Kaan Cengiz: Besteci, Söz Yazarı, Aranjör; Göksel Kadir Yüksel: Besteci, Aranjör",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "DMC",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1233,13 +1315,14 @@ export default [
     "sure": "2:48",
     "spotifyUrl": "https://open.spotify.com/track/4GBc3jN4IGnoCW97YWvdoI",
     "spotifyId": "4GBc3jN4IGnoCW97YWvdoI",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/al-beni-bas-yaralar%C4%B1na/1615375161?i=1615375166",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273cb47a72314c47d20711df62c",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Furkan Yekta Özgenç: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Joojee",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1253,7 +1336,7 @@ export default [
     "sure": "2:47",
     "spotifyUrl": "https://open.spotify.com/track/1dovjjWBiGWmEL7Fv2GuOF",
     "spotifyId": "1dovjjWBiGWmEL7Fv2GuOF",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/beklemem-ondan/1614942821?i=1614942832",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2737a679a31382b91033fb1639f",
     "sozBeste": "Yiğitcan Kiremitçi: Besteci, Söz Yazarı, Aranjör",
     "produksiyon": null,
@@ -1264,6 +1347,7 @@ export default [
       "Söz Yazarı",
       "Aranjör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1277,13 +1361,14 @@ export default [
     "sure": "3:24",
     "spotifyUrl": "https://open.spotify.com/track/0AsCRM37KbwUOxE4e2My7u",
     "spotifyId": "0AsCRM37KbwUOxE4e2My7u",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/ne-kadar-uza%C4%9F%C4%B1m/1612298548?i=1612298837",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2737947ba32a6c106f7ce1a8c35",
     "sozBeste": "İdil Tavşanlı: Besteci; Ömer Çelik: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Apartment Disco",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1297,7 +1382,7 @@ export default [
     "sure": "3:21",
     "spotifyUrl": "https://open.spotify.com/track/4o004de5sLBuR1Kio9ToPB",
     "spotifyId": "4o004de5sLBuR1Kio9ToPB",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/niye-benle-sava%C5%9Ft%C4%B1n/1613350041?i=1613350046",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27384b59f1fb1c275a468e7acb4",
     "sozBeste": "Mustafa Kır: Besteci, Söz Yazarı, Aranjör; Yiğitcan Kiremitçi: Aranjör; Muharrem Salcı: Aranjör",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1307,6 +1392,7 @@ export default [
       "Aranjör",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1320,13 +1406,14 @@ export default [
     "sure": "2:41",
     "spotifyUrl": "https://open.spotify.com/track/6yxIrN4Jj3uWI6hMhC1bac",
     "spotifyId": "6yxIrN4Jj3uWI6hMhC1bac",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/depresyon-g%C3%BCzelim/1611169794?i=1611169801",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273925dde2cfa6ec51c4264e7c9",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Furkan Yekta Özgenç: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Joojee",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1340,7 +1427,7 @@ export default [
     "sure": "3:39",
     "spotifyUrl": "https://open.spotify.com/track/4yFpXnBAycyxVYRvPak4Nx",
     "spotifyId": "4yFpXnBAycyxVYRvPak4Nx",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/f%C4%B1rt%C4%B1na/1610379022?i=1610379029",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2734778b47ef261e5c14513ced3",
     "sozBeste": "Yiğitcan Kiremitçi: Besteci, Söz Yazarı; Can Doe: Aranjör",
     "produksiyon": null,
@@ -1351,6 +1438,7 @@ export default [
       "Söz Yazarı",
       "Aranjör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1364,13 +1452,14 @@ export default [
     "sure": "2:34",
     "spotifyUrl": "https://open.spotify.com/track/3fevNLGvjPEjMzS8v8wwLZ",
     "spotifyId": "3fevNLGvjPEjMzS8v8wwLZ",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/kalbinde-lunapark/1608959551?i=1608959948",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273245e2db810231268c1b0182d",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Furkan Yekta Özgenç: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Joojee",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1384,7 +1473,7 @@ export default [
     "sure": "2:22",
     "spotifyUrl": "https://open.spotify.com/track/4abo86SrlMSYq0Mxy7Qisw",
     "spotifyId": "4abo86SrlMSYq0Mxy7Qisw",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/anne-ben/1606421289?i=1606421300",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27333ddabead5f74cd8b88f9f3f",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Can Doe: Prodüktör",
@@ -1393,6 +1482,7 @@ export default [
     "roller": [
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1406,7 +1496,7 @@ export default [
     "sure": "3:27",
     "spotifyUrl": "https://open.spotify.com/track/3tmyhqzH7VFtMFzDb3TkfA",
     "spotifyId": "3tmyhqzH7VFtMFzDb3TkfA",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/i-stanbul/1605818307?i=1605818315",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27324f76ed05b1f2f29f631b384",
     "sozBeste": "Can Doe: Besteci, Söz Yazarı, Aranjör",
     "produksiyon": null,
@@ -1417,6 +1507,7 @@ export default [
       "Söz Yazarı",
       "Aranjör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1430,13 +1521,14 @@ export default [
     "sure": "2:47",
     "spotifyUrl": "https://open.spotify.com/track/4gmr6Qfgkgt0lZ1rJEjDTX",
     "spotifyId": "4gmr6Qfgkgt0lZ1rJEjDTX",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/derin/1604193940?i=1604193948",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273a710e38ffea6136a43635eec",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Furkan Yekta Özgenç: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Joojee",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1450,13 +1542,14 @@ export default [
     "sure": "3:07",
     "spotifyUrl": "https://open.spotify.com/track/6uns3tmutyWVLjGqijSIRY",
     "spotifyId": "6uns3tmutyWVLjGqijSIRY",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/beni-%C3%A7ek/1601234941?i=1601235338",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273f411fe6e4d5cfd7fd72cb61a",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Furkan Yekta Özgenç: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Joojee",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1470,13 +1563,14 @@ export default [
     "sure": "2:34",
     "spotifyUrl": "https://open.spotify.com/track/4Bhihc4uaqoD7MzXxy9tM0",
     "spotifyId": "4Bhihc4uaqoD7MzXxy9tM0",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/%C3%A7ok-g%C3%B6%C3%A7-ald%C4%B1m-suriyeden/1598250977?i=1598250983",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2732df59e19d0c598bcdf1cce19",
     "sozBeste": "Uğur Uras Ustaoğlu: Besteci, Söz Yazarı",
     "produksiyon": "Uğur Uras Ustaoğlu: Prodüktör; Furkan Yekta Özgenç: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "Joojee",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1490,13 +1584,14 @@ export default [
     "sure": "4:23",
     "spotifyUrl": "https://open.spotify.com/track/26aBwDb2Lge4uS8NfEUK71",
     "spotifyId": "26aBwDb2Lge4uS8NfEUK71",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/bombalar/1612426749?i=1612426758",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27365afb737b695dc38359b906e",
     "sozBeste": "İdil Tavşanlı: Besteci; Ömer Çelik: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Morrie Records",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1510,14 +1605,17 @@ export default [
     "sure": "3:19",
     "spotifyUrl": "https://open.spotify.com/track/26kwwiJFI6045HHvvkAyWO",
     "spotifyId": "26kwwiJFI6045HHvvkAyWO",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/all-i-know/1590780437?i=1590780438",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273e02b5a59a6b7f62a0d3700b1",
     "sozBeste": "Samar Halim: Söz Yazarı, Besteci",
     "produksiyon": "Samar Halim: Stüdyo Prodüktörü",
     "digerKunye": null,
     "kunyeKaynagi": "Silence Records",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "adalarin-karsisi",
@@ -1530,13 +1628,14 @@ export default [
     "sure": "3:34",
     "spotifyUrl": "https://open.spotify.com/track/0rXaEpUg0zcrvR0II58c8h",
     "spotifyId": "0rXaEpUg0zcrvR0II58c8h",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/adalar%C4%B1n-kar%C5%9F%C4%B1s%C4%B1/1781554247?i=1781554248",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273598bb0fbb7c0c33fc94675b0",
     "sozBeste": "Yaren Arduçluoğlu: Besteci; Berkay Eren: Besteci",
     "produksiyon": "Berkay Eren: Prodüktör",
     "digerKunye": null,
     "kunyeKaynagi": "PYST by Gazel Müzik",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1550,7 +1649,7 @@ export default [
     "sure": "3:35",
     "spotifyUrl": "https://open.spotify.com/track/5rGtaGukQ1Wo30meTwd2OJ",
     "spotifyId": "5rGtaGukQ1Wo30meTwd2OJ",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/soluk-solu%C4%9Fa/1762964991?i=1762964992",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273704d16ad16ebecb5e062dacd",
     "sozBeste": "Burak Gözen: Besteci; Yiğit Can Kiremitci: Besteci",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1560,6 +1659,7 @@ export default [
       "Besteci",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1573,7 +1673,7 @@ export default [
     "sure": "4:04",
     "spotifyUrl": "https://open.spotify.com/track/1y0tAAwiVHD4h5Oxfdi8aP",
     "spotifyId": "1y0tAAwiVHD4h5Oxfdi8aP",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/senin-olamam/1772263683?i=1772263690",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273387d20f3ac3fe1cfeb2f3edb",
     "sozBeste": "Yiğit Can Kiremitci: Besteci",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1583,6 +1683,7 @@ export default [
       "Besteci",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1596,13 +1697,14 @@ export default [
     "sure": "2:52",
     "spotifyUrl": "https://open.spotify.com/track/3vm6UTXPSUKV3e2lJ0tpQI",
     "spotifyId": "3vm6UTXPSUKV3e2lJ0tpQI",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/son-durak/1781704369?i=1781704376",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2738e04db0d7a73f010a0d9ab59",
     "sozBeste": "Yaren Arduçluoğlu: Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "PYST",
     "roller": [],
+    "beyan": false,
     "kategori": "miks"
   },
   {
@@ -1626,6 +1728,7 @@ export default [
       "Besteci",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1639,14 +1742,17 @@ export default [
     "sure": "3:06",
     "spotifyUrl": "https://open.spotify.com/track/3h1mfcKwM1CUP2UHjMpoDe",
     "spotifyId": "3h1mfcKwM1CUP2UHjMpoDe",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/y%C4%B1llar-ge%C3%A7mi%C5%9F/1546511698?i=1546511699",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273851c14843c533d60c5a3783b",
     "sozBeste": "Mustafa Kır: Söz Yazarı, Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Böyleyken Böyle",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "kafama-gore",
@@ -1659,14 +1765,17 @@ export default [
     "sure": "3:14",
     "spotifyUrl": "https://open.spotify.com/track/1HJouh4LSF2kwwwABbHIy6",
     "spotifyId": "1HJouh4LSF2kwwwABbHIy6",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/kafama-g%C3%B6re/1531431182?i=1531431183",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273d81a5d96b61249277c7f2aea",
     "sozBeste": "Barış Uysal: Söz Yazarı, Besteci",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "ceamüzik",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "yuruyorum-karanliga-dogru",
@@ -1689,6 +1798,7 @@ export default [
       "Besteci",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1702,14 +1812,17 @@ export default [
     "sure": "2:41",
     "spotifyUrl": "https://open.spotify.com/track/2ZxZNJSbyzA393w8vlmalW",
     "spotifyId": "2ZxZNJSbyzA393w8vlmalW",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/gamble-bingo/1650897186?i=1650897187",
     "kapak": "https://i.scdn.co/image/ab67616d0000b27340c6481b94e4c7cb0498bef1",
     "sozBeste": "Mert Pilge: Söz Yazarı; Yiğit Taşcılar: Söz Yazarı",
     "produksiyon": null,
     "digerKunye": null,
     "kunyeKaynagi": "Epidemik Yapım",
-    "roller": [],
-    "kategori": "miks"
+    "roller": [
+      "Prodüktör"
+    ],
+    "beyan": true,
+    "kategori": "muzik"
   },
   {
     "slug": "o-da-bendim",
@@ -1722,7 +1835,7 @@ export default [
     "sure": "4:28",
     "spotifyUrl": "https://open.spotify.com/track/6eO7sUUPhQs2ak0IH0QXA4",
     "spotifyId": "6eO7sUUPhQs2ak0IH0QXA4",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/o-da-bendim/1527832858?i=1527832863",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273ba8cddceb1e0af7b5069c10b",
     "sozBeste": "Mustafa Kır: Söz Yazarı, Besteci; Can Doe: Aranjör",
     "produksiyon": null,
@@ -1731,6 +1844,7 @@ export default [
     "roller": [
       "Aranjör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1744,7 +1858,7 @@ export default [
     "sure": "2:27",
     "spotifyUrl": "https://open.spotify.com/track/6LYcGCRYkdJ4nMMs6wzPw6",
     "spotifyId": "6LYcGCRYkdJ4nMMs6wzPw6",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/alsam-seni-feat-furkan-k%C4%B1z%C4%B1lay/1772103613?i=1772103616",
     "kapak": "https://i.scdn.co/image/ab67616d0000b2739ece22edbdc7215181247f5c",
     "sozBeste": "Atılay Kebapcıoğlu: Besteci; Yiğit Can Kiremitci: Besteci",
     "produksiyon": "Can Doe: Prodüktör",
@@ -1754,6 +1868,7 @@ export default [
       "Besteci",
       "Prodüktör"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1767,7 +1882,7 @@ export default [
     "sure": "2:44",
     "spotifyUrl": "https://open.spotify.com/track/6kEjqFog7AiSmAn9aPcBAV",
     "spotifyId": "6kEjqFog7AiSmAn9aPcBAV",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/us/album/yoyo/1513629996?i=1513629998",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273e2ba5dfff50c15d28619a6fc",
     "sozBeste": "Mert Pilge: Söz Yazarı; Can Kiremitci: Besteci",
     "produksiyon": "Burak Demirörs: Vokal Mühendisi; Garage Underground: Stüdyo Personeli",
@@ -1776,6 +1891,7 @@ export default [
     "roller": [
       "Besteci"
     ],
+    "beyan": false,
     "kategori": "muzik"
   },
   {
@@ -1789,7 +1905,7 @@ export default [
     "sure": "3:15",
     "spotifyUrl": "https://open.spotify.com/track/7B8JhVXBE1gGRRgnYKsU4M",
     "spotifyId": "7B8JhVXBE1gGRRgnYKsU4M",
-    "appleUrl": null,
+    "appleUrl": "https://music.apple.com/tr/album/kendime-not/1649112152?i=1649112155",
     "kapak": "https://i.scdn.co/image/ab67616d0000b273d3cc07d95569868193d954e6",
     "sozBeste": "Can Kiremitci: Söz Yazarı",
     "produksiyon": null,
@@ -1798,6 +1914,7 @@ export default [
     "roller": [
       "Söz Yazarı"
     ],
+    "beyan": false,
     "kategori": "muzik"
   }
 ];

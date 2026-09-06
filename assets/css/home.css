@@ -78,14 +78,20 @@
 }
 
 @media(max-width:720px){
-  /* Son panel: menü ve telif satırı ekranın altına insin.
-     Masaüstünde metnin hemen altında kalmaya devam ediyor. */
-  .panel:last-child{align-items:stretch;padding-bottom:26px}
-  .panel:last-child .wrap{display:flex;flex-direction:column}
-  /* İki `auto` boşluğu paylaşır: metin bloğu, alt barın üstünde kalan
-     alanın dikey ortasına oturur; alt bar aşağıda kalmaya devam eder. */
-  .panel:last-child .wrap > :first-child{margin-top:auto}
-  .panel:last-child .kapanis{margin-top:auto;margin-bottom:0}
+  /* Son panel: metin diğer panellerle birebir aynı yerde ortalansın.
+     Bunun için alt bar akıştan çıkarılıp panelin altına sabitleniyor;
+     panelin alt dolgusu da alt barın kapladığı yeri boş bırakıyor.
+     Masaüstünde alt bar metnin hemen altında akışta kalmaya devam ediyor. */
+  /* Dolgu simetrik kalıyor: metin diğer panellerle aynı noktada ortalanıyor. */
+  .panel:last-child .kapanis{
+    position:absolute;left:var(--gut);right:var(--gut);bottom:26px;
+    margin:0;max-width:none;
+  }
+}
+/* Çok kısa ekranda metin ile alt bar birbirine değiyor (320x568'de 2px kalıyordu).
+   Orada tam ortalamayı bırakıp çakışmama önceliğe geçiyor. */
+@media(max-width:720px) and (max-height:640px){
+  .panel:last-child{padding-bottom:180px}
 }
 
 /* irtifa göstergesi */
