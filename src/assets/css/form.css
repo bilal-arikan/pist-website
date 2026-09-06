@@ -1,30 +1,45 @@
-/* İletişim */
-.iletisim{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(34px,5vw,60px);padding-block:clamp(38px,5.5vw,64px) clamp(60px,9vw,110px)}
-@media(min-width:900px){.iletisim{grid-template-columns:.85fr 1.15fr}}
-.dogrudan{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:24px}
+/* İletişim — form ilk ekranda tam görünsün.
+   Önce ayrı bir hero bölümü vardı ve form katlamanın altına düşüyordu.
+   Başlık artık sol sütunun içinde; blok tek ekrana oturuyor. */
+.iletisim-ekran{
+  min-height:calc(100vh - 62px);
+  min-height:calc(100svh - 62px);
+  display:flex;align-items:center;
+  padding-block:clamp(18px,3.4vh,42px);
+}
+.iletisim{
+  display:grid;grid-template-columns:minmax(0,1fr);
+  gap:clamp(24px,3.6vw,48px);width:100%;
+}
+@media(min-width:900px){.iletisim{grid-template-columns:.9fr 1.1fr;align-items:start}}
+.iletisim .eyebrow{margin-bottom:clamp(14px,1.8vw,20px)}
+.iletisim h1{font-size:clamp(27px,3.5vw,44px);margin:0 0 12px;max-width:17ch}
+.iletisim .lede{font-size:clamp(14px,1.45vw,15.5px);max-width:42ch}
+
+.dogrudan{display:flex;flex-direction:column;border-top:1px solid var(--line);margin-top:clamp(18px,2.4vw,26px)}
 .dogrudan a,.dogrudan div{
   display:flex;justify-content:space-between;gap:16px;align-items:baseline;
-  padding:14px 0;border-bottom:1px solid var(--line-soft);text-decoration:none;color:var(--tx);
+  padding:11px 0;border-bottom:1px solid var(--line-soft);text-decoration:none;color:var(--tx);
 }
 .dogrudan a:hover{color:var(--acc)}
 .dogrudan .l{font-family:var(--tech);font-size:10.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--tx-faint)}
 .dogrudan .v{font-size:14.5px}
 
-form{display:flex;flex-direction:column;gap:20px}
-.alan{display:flex;flex-direction:column;gap:8px}
+form{display:flex;flex-direction:column;gap:clamp(12px,1.6vh,18px)}
+.alan{display:flex;flex-direction:column;gap:6px}
 .alan label{font-family:var(--tech);font-size:10.5px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--tx-dim)}
 .alan label .req{color:var(--acc)}
 .alan input,.alan textarea,.alan select{
   font-family:var(--body);font-size:15px;color:var(--tx);
-  background:var(--g1);border:1px solid var(--line);padding:12px 14px;width:100%;
+  background:var(--g1);border:1px solid var(--line);padding:10px 13px;width:100%;
 }
-.alan textarea{min-height:150px;resize:vertical;line-height:1.6}
+.alan textarea{min-height:clamp(88px,14vh,140px);resize:vertical;line-height:1.55}
 .alan input:focus,.alan textarea:focus,.alan select:focus{outline:2px solid var(--acc);outline-offset:-1px;border-color:transparent}
 .alan input::placeholder,.alan textarea::placeholder{color:var(--tx-faint)}
 .alan .hata{font-family:var(--tech);font-size:11px;letter-spacing:.06em;color:var(--c-coral);display:none}
 .alan.gecersiz input,.alan.gecersiz textarea,.alan.gecersiz select{border-color:var(--c-coral)}
 .alan.gecersiz .hata{display:block}
-.ikili{display:grid;grid-template-columns:minmax(0,1fr);gap:20px}
+.ikili{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(12px,1.6vh,18px)}
 @media(min-width:560px){.ikili{grid-template-columns:1fr 1fr}}
 .sayac{font-family:var(--tech);font-size:10.5px;letter-spacing:.08em;color:var(--tx-faint);text-align:right;font-variant-numeric:tabular-nums}
 
@@ -38,5 +53,5 @@ form{display:flex;flex-direction:column;gap:20px}
 .durum.acik{display:block}
 .durum.iyi{color:var(--c-green)}
 .durum.kotu{color:var(--c-coral)}
-.kvkk{font-size:12.5px;color:var(--tx-faint);line-height:1.6;max-width:52ch}
+.kvkk{font-size:11.5px;color:var(--tx-faint);line-height:1.55;max-width:52ch;margin:0}
 .kvkk a{color:var(--tx-dim)}

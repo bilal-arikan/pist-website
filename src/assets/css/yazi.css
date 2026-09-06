@@ -49,20 +49,30 @@
 /* liste */
 .yazilar{display:flex;flex-direction:column;border-top:1px solid var(--line)}
 .yazilar a{
-  display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 24px;
+  display:grid;grid-template-columns:auto 148px minmax(0,1fr);gap:6px 24px;
   padding:26px 0 26px 18px;border-bottom:1px solid var(--line);
   text-decoration:none;color:inherit;position:relative;
 }
+/* Kapak görseli — satır düzenini bozmadan sola oturur */
+.yazilar .kapak{
+  grid-column:2;grid-row:1/4;align-self:start;
+  width:148px;height:auto;aspect-ratio:8/5;object-fit:cover;
+  border:1px solid var(--line);
+  filter:saturate(.92);
+  transition:filter .25s,border-color .25s;
+}
+.yazilar a:hover .kapak{filter:saturate(1.12);border-color:var(--hue)}
 .yazilar a::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:2px;background:var(--hue)}
 .yazilar a:hover{background:rgba(36,16,64,.34)}
 .yazilar .meta{grid-column:1;grid-row:1/4;display:flex;flex-direction:column;gap:5px;min-width:104px}
 .yazilar .kat{font-family:var(--tech);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--hue)}
 .yazilar .tar{font-family:var(--tech);font-size:11px;color:var(--tx-faint);font-variant-numeric:tabular-nums}
-.yazilar h3{grid-column:2;font-size:clamp(19px,2.3vw,24px);margin:0}
-.yazilar .ozet{grid-column:2;font-size:14.5px;color:var(--tx-dim);max-width:62ch;line-height:1.55}
-.yazilar .sure{grid-column:2;font-family:var(--tech);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx-faint)}
+.yazilar h3{grid-column:3;font-size:clamp(19px,2.3vw,24px);margin:0}
+.yazilar .ozet{grid-column:3;font-size:14.5px;color:var(--tx-dim);max-width:62ch;line-height:1.55}
+.yazilar .sure{grid-column:3;font-family:var(--tech);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx-faint)}
 @media(max-width:620px){
   .yazilar a{grid-template-columns:minmax(0,1fr)}
   .yazilar .meta{grid-column:1;grid-row:auto;flex-direction:row;gap:14px;align-items:baseline;margin-bottom:8px}
   .yazilar h3,.yazilar .ozet,.yazilar .sure{grid-column:1}
+  .yazilar .kapak{grid-column:1;grid-row:auto;width:100%;margin-bottom:14px}
 }

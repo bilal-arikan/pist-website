@@ -17,6 +17,9 @@ extraCss: /assets/css/yazi.css
     <div class="yazilar">
       {%- for yazi in collections.yazilarEN %}
       <a href="{{ yazi.url }}" style="--hue:{{ yazi.data.hue }}">
+        {%- if yazi.data.gorsel %}
+        <img class="kapak" src="{{ yazi.data.gorsel }}" alt="" width="480" height="300" loading="lazy" decoding="async">
+        {%- endif %}
         <span class="meta">
           <span class="kat">{{ yazi.data.category }}</span>
           <span class="tar">{{ yazi.data.date | tarihEN }}</span>

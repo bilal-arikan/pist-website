@@ -4,13 +4,21 @@
 
 /* Ana sayfada üst çubuk animasyonun ÜSTÜNDE durur: zemin, bulanıklık ve
    alt çizgi yok. Okunabilirliği .hero-scrim'in üst kenarındaki karartma
-   taşıyor (180deg, .55 → 0). Bu dosya yalnızca ana sayfada yüklendiği
-   için diğer sayfaların opak çubuğu etkilenmiyor. */
+   taşıyor. Bu dosya yalnızca ana sayfada yüklendiği için diğer sayfaların
+   opak çubuğu etkilenmiyor.
+
+   position:fixed — sticky değil. Sticky belgeyle birlikte akışta durduğu
+   için sayfanın en üstünde yukarı kaydırılınca lastik bant esnemesiyle
+   birlikte aşağı kayıp yerine oturuyordu. Fixed olunca çubuk hiç oynamıyor.
+   Akıştan çıkması sorun değil: paneller zaten fixed ve padding-top taşıyor. */
 .topbar{
+  position:fixed;top:0;left:0;right:0;
   background:none;
   backdrop-filter:none;
   border-bottom:none;
 }
+/* Üstte ve altta lastik bant esnemesini kapat — kalkış sahnesi sabit kalsın */
+html{overscroll-behavior-y:none}
 
 /* Sayfa GÖRSEL OLARAK kaymaz. .hero yalnızca scroll mesafesi sağlar;
    görünen her şey fixed. Scroll kamerayı yükseltir ve panelleri sırayla
@@ -44,7 +52,9 @@
   background:linear-gradient(100deg,rgba(7,4,15,.72) 0%,rgba(7,4,15,.44) 38%,rgba(7,4,15,0) 72%);
 }
 
-.hero h1{margin:22px 0;max-width:13ch;text-shadow:0 1px 14px rgba(7,4,15,.95)}
+/* Etiket ile başlık arasına nefes (panellerde .section-head yok) */
+.hero .eyebrow{margin-bottom:clamp(24px,3vw,36px)}
+.hero h1{margin:0 0 22px;max-width:13ch;text-shadow:0 1px 14px rgba(7,4,15,.95)}
 .hero h2{margin:0 0 20px;max-width:15ch;text-shadow:0 1px 14px rgba(7,4,15,.95)}
 .hero .lede{text-shadow:0 1px 10px rgba(7,4,15,.95)}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
@@ -69,6 +79,12 @@
 @media(max-width:720px){
   .panel{padding-top:96px;align-items:flex-start}
   .panel .wrap{padding-top:clamp(20px,8vh,64px)}
+
+  /* Son panel: menü ve telif satırı ekranın altına insin.
+     Masaüstünde metnin hemen altında kalmaya devam ediyor. */
+  .panel:last-child{align-items:stretch;padding-bottom:26px}
+  .panel:last-child .wrap{display:flex;flex-direction:column}
+  .panel:last-child .kapanis{margin-top:auto;margin-bottom:0}
 }
 
 /* irtifa göstergesi */

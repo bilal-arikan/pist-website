@@ -6,6 +6,7 @@ date: 2026-09-22
 category: "Teknik"
 hue: "#9CE085"
 excerpt: "WebGL'e geçmeden önce 2D canvas'ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi."
+gorsel: "/assets/img/gorsel/yazi-canvas.svg"
 readingTime: 11
 ---
 

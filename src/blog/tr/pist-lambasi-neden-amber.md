@@ -6,6 +6,7 @@ date: 2026-09-08
 category: "Stüdyo"
 hue: "#FFAA05"
 excerpt: "Marka rengini seçmedik, bulduk. Havaalanı aydınlatma standardı, kimlik çalışmasının en beklenmedik kaynağı oldu."
+gorsel: "/assets/img/gorsel/yazi-lamba.svg"
 readingTime: 6
 ---
 
