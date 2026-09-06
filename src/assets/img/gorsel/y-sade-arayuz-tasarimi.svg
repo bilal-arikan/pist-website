@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Arayüz hiyerarşisi">
+  <defs><linearGradient id="z" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/></linearGradient></defs>
+  <rect width="480" height="300" fill="url(#z)"/>
+  <rect x="60" y="52" width="360" height="196" fill="none" stroke="#FFD62C" stroke-opacity=".22"/>
+  <rect x="84" y="78" width="150" height="12" fill="#FFD62C" opacity=".95"/>
+  <rect x="84" y="106" width="230" height="6" fill="#CFC6E4" opacity=".3"/>
+  <rect x="84" y="122" width="196" height="6" fill="#CFC6E4" opacity=".22"/>
+  <rect x="84" y="154" width="104" height="30" fill="#FFD62C"/>
+  <rect x="200" y="154" width="104" height="30" fill="none" stroke="#CFC6E4" stroke-opacity=".28"/>
+  <rect x="84" y="208" width="60" height="5" fill="#6E6087" opacity=".5"/>
+</svg>

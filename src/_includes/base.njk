@@ -3,8 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{{ title }}</title>
-<meta name="description" content="{{ description }}">
+<title>{{ seo_title or title }}</title>
+{# description yoksa excerpt'e düş — blog yazılarında meta açıklaması boş kalıyordu #}
+<meta name="description" content="{{ description or excerpt }}">
 
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 {% if alt %}
@@ -16,7 +17,7 @@
 <meta property="og:site_name" content="{{ site.name }}">
 <meta property="og:type" content="{{ ogType or 'website' }}">
 <meta property="og:title" content="{{ title }}">
-<meta property="og:description" content="{{ description }}">
+<meta property="og:description" content="{{ description or excerpt }}">
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:locale" content="{{ 'tr_TR' if lang == 'tr' else 'en_US' }}">
 <meta name="twitter:card" content="summary_large_image">

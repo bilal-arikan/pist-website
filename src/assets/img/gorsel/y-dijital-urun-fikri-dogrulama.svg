@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Fikirlerin elenmesi">
+  <defs><linearGradient id="z" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/></linearGradient></defs>
+  <rect width="480" height="300" fill="url(#z)"/>
+  <g fill="#FFD62C">
+    <circle cx="60" cy="70" r="4" opacity=".25"/><circle cx="120" cy="58" r="4" opacity=".25"/>
+    <circle cx="180" cy="76" r="4" opacity=".3"/><circle cx="240" cy="54" r="4" opacity=".25"/>
+    <circle cx="300" cy="72" r="4" opacity=".3"/><circle cx="360" cy="60" r="4" opacity=".25"/>
+    <circle cx="420" cy="78" r="4" opacity=".2"/>
+    <circle cx="150" cy="150" r="5" opacity=".55"/><circle cx="240" cy="146" r="5" opacity=".6"/>
+    <circle cx="330" cy="152" r="5" opacity=".5"/>
+    <circle cx="240" cy="226" r="9"/>
+  </g>
+  <path d="M60 92 240 210M420 96 240 210" stroke="#FFD62C" stroke-opacity=".2" stroke-width="1"/>
+</svg>

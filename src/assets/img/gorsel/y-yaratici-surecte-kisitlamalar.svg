@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Daralan çerçeve">
+  <defs><linearGradient id="z" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/></linearGradient></defs>
+  <rect width="480" height="300" fill="url(#z)"/>
+  <rect x="46" y="40" width="388" height="220" fill="none" stroke="#FFAA05" stroke-opacity=".18" stroke-width="1"/>
+  <rect x="92" y="66" width="296" height="168" fill="none" stroke="#FFAA05" stroke-opacity=".34" stroke-width="1"/>
+  <rect x="138" y="92" width="204" height="116" fill="none" stroke="#FFAA05" stroke-opacity=".55" stroke-width="1.4"/>
+  <rect x="184" y="118" width="112" height="64" fill="#FFAA05" fill-opacity=".9"/>
+</svg>

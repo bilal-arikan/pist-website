@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Araç karşılaştırma">
+  <defs><linearGradient id="z" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/></linearGradient></defs>
+  <rect width="480" height="300" fill="url(#z)"/>
+  <g stroke="#E4CDF1" stroke-opacity=".12"><path d="M60 96h360M60 148h360M60 200h360"/></g>
+  <rect x="88" y="112" width="76" height="118" fill="#FFD62C" opacity=".26"/>
+  <rect x="202" y="72" width="76" height="158" fill="#FFD62C" opacity=".95"/>
+  <rect x="316" y="140" width="76" height="90" fill="#FFD62C" opacity=".2"/>
+  <rect x="60" y="230" width="360" height="1.5" fill="#A684BD" opacity=".45"/>
+  <circle cx="240" cy="72" r="4" fill="#FFAA05"/>
+</svg>
