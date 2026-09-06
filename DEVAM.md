@@ -36,7 +36,7 @@ Sonra: **http://127.0.0.1:8794/tr/**
 
 Eleventy 3 kurulumu, kaynak `src/`, çıktı `_site/`. Derleme ~0,3 saniye.
 
-**Tamamlanan sayfalar (20, iki dil):**
+**Tamamlanan sayfalar (30, iki dil):**
 
 | Rol | Türkçe | English |
 |---|---|---|
@@ -46,15 +46,30 @@ Eleventy 3 kurulumu, kaynak `src/`, çıktı `_site/`. Derleme ~0,3 saniye.
 | Sound | `/tr/ses/` | `/en/sound/` |
 | Hakkında | `/tr/hakkinda/` | `/en/about/` |
 | Blog | `/tr/blog/` | `/en/blog/` |
-| Yazı | 3 yazı | 1 yazı (canvas) |
+| Yazı | **13 yazı** | 1 yazı (canvas) |
 | İletişim | `/tr/iletisim/` | `/en/contact/` |
 | Aydınlatma / Privacy | `/tr/aydinlatma-metni/` | `/en/privacy/` |
 | 404 | `/404.html` (tek sayfa, iki dil) | ← aynı |
-| sitemap | `/sitemap.xml` (18 URL) | ← aynı |
+| sitemap | `/sitemap.xml` (28 URL) | ← aynı |
 
-Blog yazılarının üçü de Türkçe yazıldı; yalnızca **canvas yazısı** İngilizceye
-çevrildi. Gerekçe içerik notunda: organik trafik Türkiye'den gelecek, teknik
-yazının ise uluslararası arama karşılığı var.
+**Blog: 13 Türkçe yazı.** İlk üçü stüdyonun kendi hikâyesi ve teknik notları;
+sonraki 10'u SEO odaklı yazılar (6 Eylül 2026'da eklendi, kurucu tarafından
+yazdırıldı). İngilizce tarafta yalnızca **canvas yazısı** var — gerekçe içerik
+notunda: organik trafik Türkiye'den gelecek, teknik yazının ise uluslararası
+arama karşılığı var. Diğerlerinin çevrilmesi açık bir iş.
+
+Yazı frontmatter'ı: `title, slug, lang, date, category, hue, excerpt,
+description, gorsel, readingTime` (+ isteğe bağlı `seo_title, etiketler,
+ilgili`). Dikkat: alan adı **`etiketler`**, `tags` DEĞİL — Eleventy `tags`'ten
+otomatik koleksiyon üretiyor ve istemediğimiz koleksiyonlar oluşuyor.
+
+Gövdeye `# Başlık` yazma — `yazi.njk` zaten `<h1>` basıyor, yoksa iki H1 olur.
+
+Kategori → renk eşlemesi sabit ("bir öğe, bir renk"):
+`Stüdyo #FFAA05` · `Products #FFD62C` · `Sound #FD605B` · `Teknik #9CE085`
+
+Her yazının kapak görseli var: `src/assets/img/gorsel/y-<slug>.svg`.
+Hepsi elle çizilmiş SVG — stok fotoğraf yok, lisans sorunu yok.
 
 **Kök `/`** tarayıcı diline bakıp `/tr/` ya da `/en/`'e yönlendiriyor; elle
 yapılan dil seçimi `localStorage`'da (`pist-dil`) hatırlanıyor. Sayfa `noindex`,
@@ -103,14 +118,52 @@ Kaçış yolları bilinçli — scroll ele geçirmek riskli bir hamle:
 - klavye ve kaydırma çubuğu hiç kısıtlanmadı
 - alt bilgi de bir durak — yoksa son bloktan sonra footer'a ulaşılamıyordu
 
-### Ses katalogu
+### Ses katalogu — ⚠️ ÖNCE BUNU OKU
 
 Spotify **gömme oynatıcısı yok**. Liste derleme anında çekilip kendi
 tasarımımızla basılıyor (`.katalog`): ziyaretçinin tarayıcısından Spotify'a
 istek gitmiyor, üçüncü taraf çerezi düşmüyor.
 
+**Çalma listesinden çekme YOLU KAPALI. Tekrar deneme, zaman kaybı.**
+6 Eylül 2026'da anahtarlarla ölçüldü ve doğrulandı:
+
+| Uç nokta | Durum |
+|---|---|
+| `/tracks/{id}` tekil parça | ✅ açık |
+| `/albums/{id}` ve `/albums/{id}/tracks` | ✅ açık |
+| `/search` | ✅ açık |
+| `/me/playlists` | ✅ açık |
+| `/playlists/{id}/tracks` | ❌ **403** |
+| `/tracks?ids=` toplu | ❌ 403 |
+| `/artists/{id}/top-tracks` | ❌ 403 |
+
+403, listenin **sahibi olan kullanıcı jetonuyla** ve `playlist-read-private`
+kapsamı verilmiş halde bile geliyor. Kullanıcı kimliği ile liste sahibi
+kimliğinin eşleştiği doğrulandı. Meta veriden `tracks` alanı da siliniyor.
+`market`, `additional_types`, `fields` varyantlarının hepsi denendi.
+
+Sebep: Spotify **Development Mode** kısıtı. Extended Quota ise artık pratikte
+kurumsal sözleşme gerektiriyor — bizim için yol değil.
+
+**Bu yüzden katalog `src/_data/parcalar.txt`'den üretiliyor:** her satıra bir
+Spotify parça bağlantısı. Hangi parçaların listeleneceğini biz seçiyoruz;
+ad, sanatçı, albüm, yıl ve süre yine Spotify'dan derleme anında geliyor —
+elle veri girilmiyor, yazım hatası ve bayatlama riski yok.
+
 Akış: `npm run spotify` → `src/_data/katalog.json` → `ses.njk` / `sound.njk`.
-Anahtar yoksa liste boş kalır ve sayfa bunu açıkça söyler.
+`parcalar.txt` boşsa liste boş kalır ve sayfa bunu açıkça söyler.
+
+**Uydurma parça adı konmadı ve konmamalı** — gerçek bir stüdyonun
+diskografisi bu; olmayan işi varmış gibi göstermek doğru olmaz.
+
+**Anahtarlar:** `.env` dosyasında (gitignore'da, depoda yok). Betikler
+`scripts/ortam.mjs` ile onu okuyor; CI'da GitHub Secrets kazanıyor.
+Tazeleme jetonunu yenilemek gerekirse: `npm run spotify-yetki`
+(önce Spotify Dashboard → Redirect URIs'e `http://127.0.0.1:8899/callback`).
+
+> 🔐 **Güvenlik borcu:** client secret ve refresh token 6 Eylül 2026
+> oturumunda sohbete yapıştırıldı. Dashboard'dan secret'ı yenilemek ikisini
+> birden geçersiz kılar; sonra `npm run spotify-yetki` ile yeniden alınır.
 
 **Üst çubuk tam genişliktedir** (`.topbar .inner{max-width:none}`). İçerik
 sütunu `--maxw:1120px` olarak dar kalır — okunabilirlik için, prototipte de
@@ -176,26 +229,33 @@ oradan değiştirir; başka yerde renk kodu yazılmadı.
 
 Site yayında; bunların hiçbiri yayını engellemiyor.
 
-1. **Hukuk bilgileri** — şirket unvanı, açık adres, KVKK başvuru e-postası.
-   Geldiğinde iki dosyada 3 alan doldurulacak ve workflow'daki
-   `IZIN_VER_YER_TUTUCU` istisnası silinecek. Avukat incelemesi de yapılmadı.
-2. **Spotify anahtarları** ⚠️ — betik yazıldı (`scripts/fetch-spotify.mjs`)
-   ve liste bileşeni hazır, ama **katalog boş**. Eksik olan tek şey:
-   `SPOTIFY_CLIENT_ID` ve `SPOTIFY_CLIENT_SECRET`
-   (developer.spotify.com → Dashboard), repo Secrets'a eklenecek.
-   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC`. Anahtar yoksa betik sessizce
-   atlıyor, derleme kırılmıyor. Alternatif: parça listesini elle
-   `src/_data/katalog.json`'a yazmak.
-   **Uydurma parça adı konmadı** — gerçek diskografi, olmayan işi varmış
-   gibi göstermek doğru olmaz. Sayfa durumu açıkça söylüyor.
-3. **Kalkış animasyonu performansı** — gerçek telefonda hiç ölçülmedi.
-   Sitenin en riskli parçası burası.
-4. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
+1. **Ses katalogunu doldur** ⚠️ — tek eksik: hangi parçalar listelenecek.
+   Kurucu Spotify'da listeyi açıp parçaları seçer (sağ tık → Share →
+   Copy links), bağlantılar `src/_data/parcalar.txt`'ye satır satır yazılır,
+   `npm run spotify` çalıştırılır. Altyapı hazır ve test edildi.
+   **Çalma listesi ucunu tekrar denemeye kalkma** — bölüm 2'deki tabloya bak.
+
+2. **Hukuk bilgileri** — şirket unvanı, açık adres, KVKK başvuru e-postası.
+   Geldiğinde iki dosyada 3 alan doldurulacak ve `.github/workflows/deploy.yml`
+   içindeki `IZIN_VER_YER_TUTUCU` istisnası silinecek. Avukat incelemesi de
+   hâlâ yapılmadı.
+
+3. **Kalkış animasyonu performansı** — gerçek telefonda **hiç ölçülmedi**.
+   Sitenin en riskli parçası burası ve iki oturumdur ölçülemedi.
+
+4. **İngilizce blog** — 13 Türkçe yazıya karşı 1 İngilizce yazı var.
+   Çevrilecekse öncelik SEO yazılarında; stüdyo hikâyesi Türkçe kalabilir.
+
+5. **Search Console** — `sitemap.xml` gönderilmedi. Mülk **www** olmalı
+   (apex değil — bkz. bölüm 6, alan adı).
+
+6. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
    `form.js` içindeki teslim kısmı değişir, doğrulama aynen kalır.
-   Ama o an KVKK yükümlülüğü de geri gelir.
-5. **İngilizce blog** — şu an tek yazı. Diğer ikisi bilinçli olarak
-   Türkçe kaldı.
-6. **Search Console** — `sitemap.xml` gönderilmedi. Mülk **www** olmalı.
+   Ama o an KVKK yükümlülüğü ve açık rıza kutucuğu da geri gelir.
+
+7. **Güvenlik borcu** 🔐 — Spotify client secret ve refresh token
+   6 Eylül 2026 oturumunda sohbete yapıştırıldı. Dashboard'dan secret'ı
+   yenile; bu refresh token'ı da geçersiz kılar. Sonra `npm run spotify-yetki`.
 
 ## 5. Karar bekleyen konular
 
@@ -207,7 +267,8 @@ Site yayında; bunların hiçbiri yayını engellemiyor.
 | 4 | ~~Hero uzunluğu~~ | 700vh olarak ayarlandı. Değiştirmek istersen tek sayı: `src/assets/css/home.css` içinde `.hero{height:700vh}`. |
 | 5 | **Markanın büyük harf yazımı** | Footer'da `© 2020–2026 PİST STUDİO` çıkıyor. Doğrusu `PIST STUDIO` mu `PİST STUDİO` mu — şirket hafızasında **A02** altında açık konu. |
 | 6 | **Apex'e geçiş** | Launch `www.piststudio.com` üzerinden yapılıyor; `site.url` CNAME ile hizalandı. Apex'e (`piststudio.com`) geçiş DNS değişikliği gerektiriyor (Squarespace, erişim Bilal'de) ve ayrı, bilinçli bir taşıma olarak planlandı. |
-| 7 | **Yönlendirilmeyen 12 eski sayfa** | Karşılığı olmadığı için 404'e düşüyorlar. Liste ve gerekçe `src/_data/yonlendirmeler.js` başındaki yorumda. İtiraz varsa oradan eklenir. |
+| 7 | **İngilizce kelime oyunu** | EN ana sayfadan pist esprileri kaldırıldı (kurucu isteği). Ama `/en/about/` sayfasındaki *"In Turkish, pist means three things…"* paragrafı **bilerek bırakıldı** — orası kelime oyunu değil, adı yabancı okura anlatan tek yer. Kurucuya soruldu, cevap gelmedi. |
+| 8 | **Yönlendirilmeyen 12 eski sayfa** | Karşılığı olmadığı için 404'e düşüyorlar. Liste ve gerekçe `src/_data/yonlendirmeler.js` başındaki yorumda. İtiraz varsa oradan eklenir. |
 
 ### Ana sayfa parlaklığı — kapanış notu (6 Eylül 2026)
 
@@ -290,14 +351,14 @@ yayında.
 
 ### Kalanlar
 
-- [ ] **Hukuk bilgileri gelince:** 3 alanı doldur (`src/tr/yasal/…` ve
-      `src/en/legal/…`), sonra `.github/workflows/deploy.yml` içindeki
-      `IZIN_VER_YER_TUTUCU` env bloğunu sil.
-- [ ] Search Console'a `sitemap.xml` gönder (mülk **www** olmalı).
-- [ ] Gerçek telefonda kalkış animasyonunun performansını ölç — hiç ölçülmedi.
-- [ ] Kökte eski proje dosyaları duruyor ve herkese açık servis ediliyor:
-      `PRD.md`, `CONTENT.prd`, `docs/`, `html-classes.txt`. Eski sitede de
-      böyleydi, yeni bir açık değil — ama temizlenebilir.
+- [ ] **Ses katalogu** — `src/_data/parcalar.txt` doldurulacak (bölüm 4/1).
+- [ ] **Hukuk bilgileri** — 3 alan + workflow'daki `IZIN_VER_YER_TUTUCU`
+      bloğunun silinmesi.
+- [ ] Search Console'a `sitemap.xml` gönder (mülk **www**).
+- [ ] Gerçek telefonda kalkış animasyonunun performansını ölç.
+- [ ] Spotify client secret'ı yenile (güvenlik borcu, bölüm 4/7).
+- [ ] Kökteki eski proje dosyalarını temizle: `PRD.md`, `CONTENT.prd`,
+      `docs/`, `html-classes.txt`. Herkese açık servis ediliyorlar.
 
 ### Actions moduna geçmek istenirse
 
@@ -331,19 +392,23 @@ gerektirmiyor — `git revert` yeterli.
 
 ## 8. Bilinen durumlar
 
-- **Eski site dosyaları hâlâ repoda** (`index.html`, `pages/`, `css/`, `js/`,
-  `img/`, `videos/`). `pist` dalında canlı olduğu için silinmedi. Actions
-  dağıtımına geçilince artifact `_site` olacağı için yayına çıkmayacaklar.
-- **`pages_DISABLED/` ve `pages/katilimcilar.html` silindi** (commit `899304e`).
-  İlkinde başka bir stüdyonun ("Qube London") marka adı geçiyordu, ikincisi
-  "gizli" olmasına rağmen herkese açıktı.
-- **Kalkış animasyonu hâlâ gözle görülmedi.** İki oturumdur önizleme paneli
+- **Eski site dosyaları hâlâ repoda** (`docs/`, `PRD.md`, `CONTENT.prd`,
+  `html-classes.txt`). Kökten servis edildikleri için herkese açıklar —
+  eski sitede de öyleydi, yeni bir açık değil, ama temizlenebilir.
+- **Kalkış animasyonu hiç gözle görülmedi.** Üç oturumdur önizleme paneli
   kapalı; panel gizliyken tarayıcı `requestAnimationFrame`'i çalıştırmıyor ve
-  scroll'lu ekran görüntüleri boş geliyor. Duruş hâli (scroll 0) doğrulandı.
-  **Performans hiç ölçülmedi** — gerçek telefonda ölçülmeli.
-- **Ses katalogu boş** — betik ve liste bileşeni hazır, anahtarlar eksik.
-  Gömme oynatıcı bilinçli olarak yok; liste derleme anında basılıyor.
-- **`_site/` derleme çıktısı** git'te izlenmiyor; workflow her push'ta üretiyor.
+  scroll'lu ekran görüntüleri boş geliyor. Duruş hâli (scroll 0) doğrulandı,
+  panel geçiş mantığı DOM üzerinden ölçüldü — ama hareketin nasıl
+  hissettirdiği bilinmiyor. **Performans da hiç ölçülmedi.**
+- **Ses katalogu boş** — altyapı hazır, `parcalar.txt` doldurulmayı bekliyor.
+- **`.env` dosyası yalnızca yerelde.** Gitignore'da olduğu için depoda yok.
+  Başka bir makinede devam edilecekse Spotify anahtarlarının yeniden
+  girilmesi gerekir (ya da GitHub Secrets kullanılır).
+- **`_site/` derleme çıktısı** git'te izlenmiyor; `npm run yayinla` üretip
+  köke senkronluyor.
+- **404 sayfasında iki `<h1>` var** — iki dil bloğu, JS kapalıyken ikisi de
+  görünsün diye. Aktif olmayan `display:none`, yani ekran okuyucudan gizli.
+  Bilinçli, kusur değil.
 
 ## 9. Yeni oturuma verilecekler
 
@@ -354,5 +419,20 @@ gerektirmiyor — `git revert` yeterli.
 Ve şu cümle yeter: *"pist-website deposunda `yeni-site` dalında kaldığımız
 yerden devam ediyoruz, DEVAM.md'yi oku."*
 
-> **Önizleme panelini açık tut.** İki oturumdur kapalı olduğu için kalkış
-> animasyonu bir kez bile gözle doğrulanamadı.
+### Yeni oturumun ilk beş dakikada bilmesi gerekenler
+
+- **Site canlıda:** https://www.piststudio.com/ — `pist` dalının kökünden.
+  Yayın komutu `npm run yayinla`, sonra `pist`e commit + push. Bölüm 6.
+- **Geliştirme `yeni-site` dalında**, yayın `pist` dalında. Değişiklik
+  `yeni-site`'ta yapılır, `pist`e merge edilir, `yayinla` çalıştırılır.
+- **Kökteki `index.html`, `tr/`, `en/`, `assets/` ÜRETİLMİŞTİR** — elle
+  düzenleme, kaynak `src/` altında.
+- **`npm run kontrol` şu an bilerek başarısız** (hukuk metninde 3 boş alan)
+  ve workflow'da geçici istisna var. Bölüm 4, madde 2.
+- **Spotify çalma listesi ucunu deneme** — kapalı, ölçüldü. Bölüm 2.
+- **Önizleme panelini AÇIK TUT.** Üç oturumdur kapalı olduğu için kalkış
+  animasyonu bir kez bile gözle doğrulanamadı.
+
+> **Not:** 6 Eylül 2026 oturumu kullanıcı limitine takıldığı için burada
+> kesildi. O ana kadarki her şey commit edilip yayınlandı; çalışma ağacı
+> temizdi.
