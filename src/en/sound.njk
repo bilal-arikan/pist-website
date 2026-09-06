@@ -45,11 +45,30 @@ description: "Music production, sound design, mixing and mastering. Project-base
 <section class="section">
   <div class="wrap">
     <div class="section-head">
+      <p class="eyebrow">Catalogue</p>
       <h2>Released work</h2>
-      <p class="lede">The catalogue is pulled from Spotify. No manual updates.</p>
+      <p class="lede">The list is pulled from Spotify at build time. No embedded player — nothing on this page calls Spotify from your browser.</p>
     </div>
-    {# TODO: Spotify verisi bağlanacak — "Pist Projects" çalma listesi #}
-    <a class="btn btn-s" href="{{ site.social.spotify }}" rel="noopener">Listen on Spotify</a>
+
+    {%- if katalog.parcalar and katalog.parcalar.length %}
+    <div class="katalog">
+      {%- for p in katalog.parcalar %}
+      <a class="satir katalog-satir" href="{{ p.baglanti }}" rel="noopener">
+        <span class="no">{{ loop.index | ikiHane }}</span>
+        <span class="ad">{{ p.ad }}</span>
+        <span class="sanatci">{{ p.sanatcilar }}</span>
+        <span class="yil">{{ p.yil }}</span>
+        <span class="sure">{{ p.sure }}</span>
+      </a>
+      {%- endfor %}
+    </div>
+    <p class="tech" style="margin-top:18px">{{ katalog.parcalar.length }} tracks · updated {{ katalog.guncelleme }}</p>
+    {%- else %}
+    <div class="katalog-bos">
+      <p><strong>The catalogue is not connected yet.</strong> Once the Spotify keys are in place the list will appear here in our own design. We are not filling it with invented track names.</p>
+      <a class="btn btn-s" href="{{ site.social.spotify }}" rel="noopener">Listen on Spotify for now</a>
+    </div>
+    {%- endif %}
   </div>
 </section>
 

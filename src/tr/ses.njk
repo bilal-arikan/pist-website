@@ -45,11 +45,30 @@ description: "Müzik prodüksiyonu, sound design, miks ve mastering. Bağımsız
 <section class="section">
   <div class="wrap">
     <div class="section-head">
+      <p class="eyebrow">Katalog</p>
       <h2>Çıkan işler</h2>
-      <p class="lede">Katalog Spotify'dan çekilir. Elle güncelleme yok.</p>
+      <p class="lede">Liste Spotify'dan derleme anında çekiliyor. Sayfada gömme oynatıcı yok — ziyaretçinin tarayıcısından Spotify'a istek gitmiyor.</p>
     </div>
-    {# TODO: Spotify verisi bağlanacak — "Pist Projects" çalma listesi #}
-    <a class="btn btn-s" href="{{ site.social.spotify }}" rel="noopener">Spotify'da dinle</a>
+
+    {%- if katalog.parcalar and katalog.parcalar.length %}
+    <div class="katalog">
+      {%- for p in katalog.parcalar %}
+      <a class="satir katalog-satir" href="{{ p.baglanti }}" rel="noopener">
+        <span class="no">{{ loop.index | ikiHane }}</span>
+        <span class="ad">{{ p.ad }}</span>
+        <span class="sanatci">{{ p.sanatcilar }}</span>
+        <span class="yil">{{ p.yil }}</span>
+        <span class="sure">{{ p.sure }}</span>
+      </a>
+      {%- endfor %}
+    </div>
+    <p class="tech" style="margin-top:18px">{{ katalog.parcalar.length }} parça · güncelleme {{ katalog.guncelleme }}</p>
+    {%- else %}
+    <div class="katalog-bos">
+      <p><strong>Katalog henüz bağlanmadı.</strong> Spotify anahtarları tanımlanınca liste burada, kendi tasarımımızla görünecek. Uydurma parça adı koymuyoruz.</p>
+      <a class="btn btn-s" href="{{ site.social.spotify }}" rel="noopener">Şimdilik Spotify'da dinle</a>
+    </div>
+    {%- endif %}
   </div>
 </section>
 
