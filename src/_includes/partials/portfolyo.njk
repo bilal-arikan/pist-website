@@ -1,0 +1,53 @@
+{% set y = is[lang] %}
+<section class="section" style="border-top:none">
+  <div class="wrap">
+    <a class="geri" href="{{ '/tr/ses/' if lang == 'tr' else '/en/sound/' }}">{{ i18n[lang].isGeri }}</a>
+    <div class="section-head" style="margin-top:18px">
+      <p class="eyebrow" style="color:{{ is.hue }}">{{ i18n[lang].isEtiket }}</p>
+      <h1>{{ y.ad }}</h1>
+      <p class="lede">{{ y.giris }}</p>
+    </div>
+  </div>
+</section>
+
+{% if is.kaynak == 'filmler' %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ i18n[lang].isKunye }}</h2>
+      <p class="lede">{{ filmler | length }} {{ i18n[lang].isAdet }}</p>
+    </div>
+    <ul class="portfolyo">
+      {%- for f in filmler %}
+      <li class="pf">
+        <div class="pf-kapak">
+          <img src="{{ f.gorsel or '/assets/img/portfolyo/kapaksiz.svg' }}"
+               alt="{{ f.baslik }}{{ i18n[lang].isAfis }}" loading="lazy" decoding="async">
+        </div>
+        <div class="pf-govde">
+          <p class="pf-ust">
+            <span class="pf-tur">{{ f.tur if lang == 'tr' else f.turEN }}</span>
+            {% if f.yil %}<span class="pf-yil">{{ f.yil }}</span>{% endif %}
+          </p>
+          <h3>{{ f.baslik }}</h3>
+          {% if f.yonetmen %}<p class="pf-yon">{{ i18n[lang].isYonetmen }}: {{ f.yonetmen }}</p>{% endif %}
+          <p class="pf-aciklama">{{ f.aciklama }}</p>
+          <p class="pf-katki">{{ i18n[lang].isKatki }}</p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="pf-not">{{ i18n[lang].isKaynakNot }}</p>
+  </div>
+</section>
+{% else %}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>{{ i18n[lang].isBosBaslik }}</h2>
+      <p class="lede">{{ i18n[lang].isBosMetin }}</p>
+    </div>
+    <a class="btn btn-p" href="{{ '/tr/iletisim/' if lang == 'tr' else '/en/contact/' }}">{{ i18n[lang].isBosCta }}</a>
+  </div>
+</section>
+{% endif %}

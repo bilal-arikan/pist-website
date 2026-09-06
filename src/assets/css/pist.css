@@ -371,3 +371,22 @@ a.katalog-satir:hover{background:rgba(36,16,64,.4);padding-left:10px}
 @media (prefers-reduced-motion: reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
+
+/* --- iş kartları: blueprint çizimli ve tıklanabilir ---
+   Not: çizimlerin rengi SVG dosyalarına gömülü. <img> ile yüklenen SVG
+   sayfadan currentColor miras alamıyor, izole render ediliyor. */
+.hizmet-bag{text-decoration:none;color:inherit;transition:background .18s ease}
+.hizmet-bag:hover{background:var(--g2)}
+.hizmet-cizim{
+  display:block;margin:-4px -4px 6px;
+  border:1px solid var(--line-soft);background:rgba(11,6,22,.5);
+  aspect-ratio:16/9;overflow:hidden;
+}
+.hizmet-cizim img{width:100%;height:100%;object-fit:cover;display:block;opacity:.85}
+.hizmet-bag:hover .hizmet-cizim img{opacity:1}
+.hizmet-git{
+  font-family:var(--tech);font-size:10px;font-weight:600;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--tx-faint);
+  margin-top:auto;padding-top:8px;
+}
+.hizmet-bag:hover .hizmet-git{color:var(--acc)}

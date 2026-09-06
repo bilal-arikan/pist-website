@@ -2,6 +2,8 @@ export default {
   name: "Pist Studio",
   category: { tr: "Creative Technology Studio", en: "Creative Technology Studio" },
   slogan: "Crafting intelligent digital products and sound.",
+  // Türkçe sayfalarda kullanılır; İngilizce slogan marka varlığı olarak korunur
+  sloganTR: "Akıllı dijital ürünler ve ses işleri üretiyoruz.",
   // CNAME ile aynı host olmalı — canonical, og:url ve hreflang buradan üretiliyor.
   // Apex'e (piststudio.com) geçiş ayrı ve bilinçli bir taşıma olarak yapılacak.
   url: "https://www.piststudio.com",

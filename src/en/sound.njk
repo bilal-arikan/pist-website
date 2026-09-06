@@ -23,21 +23,17 @@ description: "Music production, sound design, mixing and mastering. Project-base
       <h2>Three crafts, one discipline.</h2>
     </div>
     <div class="hizmetler">
-      <div class="hizmet" style="--hue:var(--c-coral)">
-        <span class="no">01</span>
-        <h3>Music production</h3>
-        <p>From idea to release.</p>
-      </div>
-      <div class="hizmet" style="--hue:var(--c-orange)">
-        <span class="no">02</span>
-        <h3>Sound design</h3>
-        <p>Sound for visuals, products and spaces.</p>
-      </div>
-      <div class="hizmet" style="--hue:var(--c-lavender)">
-        <span class="no">03</span>
-        <h3>Mixing and mastering</h3>
-        <p>Getting a recording ready to release.</p>
-      </div>
+      {%- for is in isler %}
+      <a class="hizmet hizmet-bag" href="{{ is.en.url }}" style="--hue:{{ is.hue }}">
+        <span class="hizmet-cizim" aria-hidden="true">
+          <img src="{{ is.gorsel }}" alt="" loading="lazy" decoding="async">
+        </span>
+        <span class="no">{{ "0" + (loop.index | string) }}</span>
+        <h3>{{ is.en.ad }}</h3>
+        <p>{{ is.en.ozet }}</p>
+        <span class="hizmet-git">{{ i18n.en.isKarti }} →</span>
+      </a>
+      {%- endfor %}
     </div>
   </div>
 </section>

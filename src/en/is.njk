@@ -1,0 +1,15 @@
+---
+pagination:
+  data: isler
+  size: 1
+  alias: is
+permalink: "{{ is.en.url }}"
+layout: base.njk
+lang: en
+extraCss: /assets/css/portfolyo.css
+eleventyComputed:
+  title: "{{ is.en.baslik }}"
+  description: "{{ is.en.aciklama }}"
+  alt: "{{ is.tr.url }}"
+---
+{% include "partials/portfolyo.njk" %}
