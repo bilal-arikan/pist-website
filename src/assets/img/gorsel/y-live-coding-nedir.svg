@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Döngü">
+  <defs><linearGradient id="z" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/></linearGradient></defs>
+  <rect width="480" height="300" fill="url(#z)"/>
+  <path d="M240 74a76 76 0 11-53.7 22.3" fill="none" stroke="#FD605B" stroke-opacity=".8" stroke-width="2"/>
+  <path d="M180 84l6 22 22-6" fill="none" stroke="#FD605B" stroke-width="2"/>
+  <g fill="#FD605B">
+    <circle cx="240" cy="74" r="5"/><circle cx="316" cy="150" r="5" opacity=".7"/>
+    <circle cx="240" cy="226" r="5" opacity=".5"/><circle cx="164" cy="150" r="5" opacity=".7"/>
+  </g>
+  <text x="196" y="142" fill="#CFC6E4" font-family="Oxanium,monospace" font-size="17" letter-spacing="1" opacity=".85">loop</text>
+  <text x="196" y="168" fill="#6E6087" font-family="Oxanium,monospace" font-size="13" letter-spacing="1">x 4</text>
+</svg>
