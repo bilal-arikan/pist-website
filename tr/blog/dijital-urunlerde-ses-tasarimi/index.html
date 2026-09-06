@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</title>
+<title>Dijital Ürünlerde Ses Tasarımı: Bildirimden Deneyime</title>
 
-<meta name="description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
+<meta name="description" content="Dijital ürünlerde ses tasarımı nasıl yapılır? Bildirimlerin işlevini, sessiz kullanım seçeneklerini ve erişilebilir geri bildirimi birlikte değerlendirin.">
 
-<link rel="canonical" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="canonical" href="https://www.piststudio.com/tr/blog/dijital-urunlerde-ses-tasarimi/">
 
-<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/dijital-urunlerde-ses-tasarimi/">
 <link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
 <link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
 
 
 <meta property="og:site_name" content="Pist Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek">
-<meta property="og:description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
-<meta property="og:url" content="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<meta property="og:title" content="Dijital Ürünlerde Ses Tasarımı: Bildirimden Deneyime">
+<meta property="og:description" content="Dijital ürünlerde ses tasarımı nasıl yapılır? Bildirimlerin işlevini, sessiz kullanım seçeneklerini ve erişilebilir geri bildirimi birlikte değerlendirin.">
+<meta property="og:url" content="https://www.piststudio.com/tr/blog/dijital-urunlerde-ses-tasarimi/">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -80,7 +80,7 @@
       </nav>
       
       <div class="lang" id="dilsec">
-        <a href="/tr/blog/canvasta-2000-yildiz-60-fps/" data-dil="tr"
+        <a href="/tr/blog/dijital-urunlerde-ses-tasarimi/" data-dil="tr"
            aria-current="true" hreflang="tr">TR</a>
         <a href="/en/blog/" data-dil="en"
             hreflang="en">EN</a>
@@ -133,91 +133,65 @@
 <article class="yazi">
   <div class="wrap">
     <a class="geri" href="/tr/blog/">← Tüm yazılar</a>
-    <p class="eyebrow" style="color:#9CE085">Teknik</p>
-    <h1>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</h1>
+    <p class="eyebrow" style="color:#FD605B">Sound</p>
+    <h1>Dijital Ürünlerde Ses Tasarımı: Bildirimden Deneyime</h1>
     <div class="künye">
-      <span>22 Eylül 2026</span>
-      <span>11 dk okuma</span>
+      <span>25 Ağustos 2026</span>
+      <span>3 dk okuma</span>
       <span>Pist Studio</span>
     </div>
     <div class="prose">
-      <p>Sitemizin giriş sahnesi bir kalkış animasyonu: yerde başlıyor, kaydırdıkça yükseliyor. Sahnede ~240 pist lambası ve 2.100 yıldız var, hepsi 3B koordinatlarda tutulup perspektifle projekte ediliyor.</p>
-<p>İlk sürüm masaüstünde takılıyordu. WebGL'e geçmek yerine önce <strong>2D canvas'ın nereye kadar dayandığını ölçtük</strong>. Dört değişiklik yetti.</p>
-<h2>1. Trigonometriyi döngüden çıkarmak</h2>
-<p>En büyük israf en aptalcasıydı. Projeksiyon fonksiyonu şöyleydi:</p>
-<pre><code class="language-js">function project(p){
-  var cp = Math.cos(pitch), sp = Math.sin(pitch);
-  // ...
-}
-</code></pre>
-<p><code>pitch</code> kare boyunca sabit. Ama fonksiyon her nokta için çağrılıyor — yani karede <strong>2.300'den fazla <code>cos</code>/<code>sin</code> çifti</strong>. Değerleri kare başında bir kez hesaplayıp modül seviyesinde tutmak bunu 2'ye indirdi.</p>
-<h2>2. Küçük yıldızlar için <code>arc()</code> yerine <code>fillRect()</code></h2>
-<p>Bu ölçtüğümüz en net kazanç oldu. 2.100 yıldızı çizmenin iki yolu:</p>
-<pre><code class="language-js">// 2.9 ms
-ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-
-// 0.9 ms
-ctx.fillRect(x, y, 1, 1);
-</code></pre>
-<p><strong>2,9 ms → 0,9 ms.</strong> 60 fps bütçesi 16,7 ms olduğuna göre, sadece yıldız yolları karenin altıda birini yiyormuş. Yıldızların çoğu zaten 1 piksel; daire çizmenin görsel karşılığı yok.</p>
-<p>Yalnızca yarıçapı 1 pikselden büyük olanlarda <code>arc()</code> kullanıyoruz.</p>
-<h2>3. Gradyanları önbelleğe almak</h2>
-<p>Gökyüzü ve vinyet gradyanları her karede yeniden üretiliyordu:</p>
-<pre><code class="language-js">// her karede — gereksiz
-var sky = ctx.createLinearGradient(0, 0, 0, H);
-sky.addColorStop(0, '#04030A');
-</code></pre>
-<p>Bu gradyanlar sadece pencere boyutuna bağlı. <code>build()</code> içine taşıyıp önbelleğe aldık; yeniden üretim sadece yeniden boyutlandırmada oluyor.</p>
-<p>Aynı mantık ışık harelerine de uygulandı: her lamba için radyal gradyan üretmek yerine, beş lamba tipinin her biri için <strong>bir kez sprite render edilip</strong> <code>drawImage</code> ile ölçeklenerek basılıyor.</p>
-<h2>4. Piksel yoğunluğunu sınırlamak</h2>
-<p>Asıl darboğaz buydu ve en az göze çarpanıydı.</p>
-<p>Retina bir ekranda <code>devicePixelRatio</code> 2. 1440×900 bir pencerede tuval 2880×1800 = <strong>5,2 milyon piksel</strong> oluyor. Ve karede beş kez tam ekran dolduruyorduk: gökyüzü, zemin, vinyet, film greni, renk gürültüsü. İkisi ekrandan da büyük alanda.</p>
-<p>Kabaca <strong>28 milyon piksel/kare</strong>.</p>
-<p>İki değişiklik:</p>
-<ul>
-<li><code>devicePixelRatio</code> tavanı 1,5 (mobilde 1,25). Gözle fark edilmiyor, piksel sayısı %44 düşüyor.</li>
-<li>Gren tek katmana indirildi ve yarı çözünürlükte önceden render edilip <code>drawImage</code> ile ölçekleniyor. Desen dolgusu yerine tek çizim çağrısı.</li>
-</ul>
-<p>Sonuç: <strong>~12 milyon piksel/kare.</strong> Kabaca yarısı.</p>
-<p>Bir de <code>getContext('2d', { alpha: false })</code> ekledik — tuval şeffaf olmadığı için birleştirme maliyeti düşüyor. Sahne zaten gökyüzüyle tamamen dolduruluyor, kaybedilen bir şey yok.</p>
-<h2>Kalite kademeleri</h2>
-<p>Optimizasyondan sonra bile her cihazın aynı performansı vereceğini varsaymak yanlış olurdu. Döngü kare süresini ölçüyor ve 23 ms'yi aşarsa sessizce kademe iniyor:</p>
+      <p>Dijital ürünlerde ses tasarımı, bir etkileşimin anlamını ve hissini işitsel öğelerle destekleme işidir. Bir işlemin tamamlanmasını, dikkat gerektiren bir durumu veya uygulamanın karakterini duyurabilir. Her etkileşimin ses çıkarması gerekmez. İlk karar, sesin o anda ne işe yarayacağıdır.</p>
+<p>Bir dosya işlemi arka planda sürerken tamamlanma sesi faydalı olabilir. Kullanıcının zaten baktığı ekranda her küçük değişiklikte ses çalması ise gereksiz olabilir. Aynı sesin anlamı, kullanım bağlamıyla değişir.</p>
+<h2>Önce sesin görevini yazın</h2>
+<p>Ses üretmeye başlamadan önce uygulamadaki olayları listeleyin. Hangileri bilgi veriyor, hangileri kullanıcıdan eylem bekliyor? Bir olayın kaç kez tekrarlanacağını da düşünün.</p>
+<p>Örnek bir ürün için basit bir çalışma tablosu kurulabilir:</p>
 <table>
 <thead>
 <tr>
-<th>Kademe</th>
-<th>Yıldız</th>
-<th>Kapatılan</th>
+<th>Olay</th>
+<th>Kullanıcının ihtiyacı</th>
+<th>Tasarımda sınanacak yaklaşım</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>0</td>
-<td>2.100</td>
-<td>—</td>
+<td>Uzun işlem tamamlandı</td>
+<td>Başka işe bakarken sonucu fark etmek</td>
+<td>Kısa, isteğe bağlı tamamlanma sesi</td>
 </tr>
 <tr>
-<td>1</td>
-<td>1.400</td>
-<td>mercek hayaletleri, kirlilik</td>
+<td>Formda eksik alan var</td>
+<td>Eksik bilginin yerini bulmak</td>
+<td>Açık metin ve alan işareti</td>
 </tr>
 <tr>
-<td>2</td>
-<td>900</td>
-<td>+ kromatik sapma</td>
+<td>Yeni mesaj geldi</td>
+<td>Mesajı uygun zamanda değerlendirmek</td>
+<td>Bildirim tercihlerine bağlı ses</td>
 </tr>
 <tr>
-<td>3</td>
-<td>520</td>
-<td>+ halation</td>
+<td>Kritik işlem onaylanacak</td>
+<td>Eylemin sonucunu anlamak</td>
+<td>Önce anlaşılır açıklama ve kontrol</td>
 </tr>
 </tbody>
 </table>
-<p>Mobil doğrudan 2. kademede başlıyor. Kullanıcı hiçbir şey fark etmiyor; sahne biraz sadeleşiyor, ama takılmıyor.</p>
-<h2>Ne öğrendik</h2>
-<p><strong>WebGL'e geçmeden önce ölç.</strong> 2D canvas beklediğimizden çok daha fazlasını kaldırıyor, ve WebGL'in getireceği karmaşıklık bu sahne için karşılığını vermezdi.</p>
-<p><strong>Darboğaz genelde sandığın yerde değil.</strong> Biz yıldız sayısını suçluyorduk; asıl maliyet tam ekran dolgularının piksel sayısındaydı. Ölçmeden dokunmak zaman kaybı.</p>
-<p><strong>En ucuz optimizasyon, hiç yapılmayan iştir.</strong> Kare boyunca sabit olan bir hesabı döngüye koymak, sonradan bulunması en kolay ama başta fark edilmesi en zor hata.</p>
+<p>Bu tablo hazır bir kural seti değildir. Ürünün bağlamına göre deneyebileceğiniz bir başlangıçtır. Özellikle sık tekrarlanan sesleri gerçek kullanım temposunda sınamak gerekir.</p>
+<h2>Bir ses ailesi kurun</h2>
+<p>Tamamlanma, uyarı ve yeni içerik seslerinin birbirinden ayırt edilebilmesi yararlıdır. Aynı zamanda aynı ürüne ait hissedilebilirler. Bunun için süre, ritim, tını ve sesin başlama-bitiş biçimi üzerinde birlikte çalışabilirsiniz.</p>
+<p>Üç farklı ses dosyasını tek tek beğenmek yeterli olmaz. Arka arkaya geldiğinde nasıl bir ilişki kurduklarını dinleyin. Bir uyarının tamamlanma hissi verip vermediğine, kısa aralıklarla tekrarlandığında yorucu olup olmadığına bakın.</p>
+<p>“Daha güçlü” geri bildirim isteğini yalnızca ses seviyesini artırarak çözmeye çalışmayın. Olayın sıklığını, kullanıcının dikkatini ve sesin süresini birlikte değerlendirin.</p>
+<h2>Sessiz kullanım da tamamlanmış bir deneyim olmalı</h2>
+<p>Bir ürün, sesi kapalı kullanan kişiye de ne olduğunu anlatmalıdır. Kullanıcı toplantıda olabilir, cihazının sesi kapalı olabilir veya işitsel bildirimleri tercih etmeyebilir. Tamamlanan iş, hata ve bekleme durumlarını görünür biçimde sunun.</p>
+<p>W3C’nin durum mesajları açıklaması, bu bilgilerin yardımcı teknolojiler tarafından da algılanabilmesine odaklanır. Bir sesin çalması, durum bilgisini tek başına erişilebilir kılmaz. <a href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">W3C — Understanding Status Messages</a></p>
+<p>Ses kontrolü de erişilebilirlik açısından önemlidir. WCAG 2.1’in ilgili ölçütü, web sayfasında üç saniyeden uzun otomatik ses için durdurma, duraklatma veya sistem sesinden bağımsız ses düzeyi kontrolü ister. Bu asgari koşul, kısa seslerin her bağlamda uygun olduğu anlamına gelmez. <a href="https://www.w3.org/WAI/WCAG21/Understanding/audio-control">W3C — Understanding Audio Control</a></p>
+<h2>Kullanım bağlamında dinleyin</h2>
+<p>Ses tasarımını yalnızca üretildiği kulaklıkta kontrol etmek dar bir değerlendirme olur. Telefon ve dizüstü bilgisayar gibi hedef cihazlarda, uygulamanın diğer sesleriyle birlikte deneyin. Sesin gecikmesi veya görsel durumdan önce çalması, yanlış bir tamamlanma algısı yaratabilir.</p>
+<p>Küçük bir kullanıcı denemesinde “Bu sesi beğendiniz mi?” sorusunun yanına “Sizce ne oldu?” sorusunu ekleyin. Ses estetik açıdan hoş bulunabilir ama işlevi anlaşılmayabilir. Yorumları olay türüne göre kaydedin.</p>
+<h2>Products ve Sound arasındaki bağlantı</h2>
+<p>Pist Studio’nun Products ve Sound yapısı, ürün deneyimiyle ses üretimini birlikte düşünmeye alan açıyor. Bu kesişimde amaç, arayüze sürekli dikkat isteyen bir katman eklemek değil; sesin gerçekten anlam kattığı anları seçmek.</p>
+<p>Bir sonraki ürün akışınızda tek bir olay belirleyin. Önce o olayın sessiz hâlde açıkça anlaşıldığından emin olun. Sonra sesin deneyime ne kattığını sınayın. Böylece ses, ürünün karakteriyle ve kullanıcının işiyle birlikte şekillenir.</p>
 
     </div>
   </div>

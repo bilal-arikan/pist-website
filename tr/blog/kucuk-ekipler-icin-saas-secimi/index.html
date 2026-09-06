@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</title>
+<title>Küçük Ekipler İçin SaaS Seçimi: İş Akışından Başlayın</title>
 
-<meta name="description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
+<meta name="description" content="Küçük ekipler için SaaS seçerken iş akışı, ilk kullanım, veri aktarımı ve ekip alışkanlıklarını değerlendirin. Deneme sürecinizi somut görevlerle planlayın.">
 
-<link rel="canonical" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="canonical" href="https://www.piststudio.com/tr/blog/kucuk-ekipler-icin-saas-secimi/">
 
-<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/kucuk-ekipler-icin-saas-secimi/">
 <link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
 <link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
 
 
 <meta property="og:site_name" content="Pist Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek">
-<meta property="og:description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
-<meta property="og:url" content="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<meta property="og:title" content="Küçük Ekipler İçin SaaS Seçimi: İş Akışından Başlayın">
+<meta property="og:description" content="Küçük ekipler için SaaS seçerken iş akışı, ilk kullanım, veri aktarımı ve ekip alışkanlıklarını değerlendirin. Deneme sürecinizi somut görevlerle planlayın.">
+<meta property="og:url" content="https://www.piststudio.com/tr/blog/kucuk-ekipler-icin-saas-secimi/">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -80,7 +80,7 @@
       </nav>
       
       <div class="lang" id="dilsec">
-        <a href="/tr/blog/canvasta-2000-yildiz-60-fps/" data-dil="tr"
+        <a href="/tr/blog/kucuk-ekipler-icin-saas-secimi/" data-dil="tr"
            aria-current="true" hreflang="tr">TR</a>
         <a href="/en/blog/" data-dil="en"
             hreflang="en">EN</a>
@@ -133,91 +133,42 @@
 <article class="yazi">
   <div class="wrap">
     <a class="geri" href="/tr/blog/">← Tüm yazılar</a>
-    <p class="eyebrow" style="color:#9CE085">Teknik</p>
-    <h1>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</h1>
+    <p class="eyebrow" style="color:#FFD62C">Products</p>
+    <h1>Küçük Ekipler İçin SaaS Seçimi: İş Akışından Başlayın</h1>
     <div class="künye">
-      <span>22 Eylül 2026</span>
-      <span>11 dk okuma</span>
+      <span>4 Ağustos 2026</span>
+      <span>3 dk okuma</span>
       <span>Pist Studio</span>
     </div>
     <div class="prose">
-      <p>Sitemizin giriş sahnesi bir kalkış animasyonu: yerde başlıyor, kaydırdıkça yükseliyor. Sahnede ~240 pist lambası ve 2.100 yıldız var, hepsi 3B koordinatlarda tutulup perspektifle projekte ediliyor.</p>
-<p>İlk sürüm masaüstünde takılıyordu. WebGL'e geçmek yerine önce <strong>2D canvas'ın nereye kadar dayandığını ölçtük</strong>. Dört değişiklik yetti.</p>
-<h2>1. Trigonometriyi döngüden çıkarmak</h2>
-<p>En büyük israf en aptalcasıydı. Projeksiyon fonksiyonu şöyleydi:</p>
-<pre><code class="language-js">function project(p){
-  var cp = Math.cos(pitch), sp = Math.sin(pitch);
-  // ...
-}
-</code></pre>
-<p><code>pitch</code> kare boyunca sabit. Ama fonksiyon her nokta için çağrılıyor — yani karede <strong>2.300'den fazla <code>cos</code>/<code>sin</code> çifti</strong>. Değerleri kare başında bir kez hesaplayıp modül seviyesinde tutmak bunu 2'ye indirdi.</p>
-<h2>2. Küçük yıldızlar için <code>arc()</code> yerine <code>fillRect()</code></h2>
-<p>Bu ölçtüğümüz en net kazanç oldu. 2.100 yıldızı çizmenin iki yolu:</p>
-<pre><code class="language-js">// 2.9 ms
-ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-
-// 0.9 ms
-ctx.fillRect(x, y, 1, 1);
-</code></pre>
-<p><strong>2,9 ms → 0,9 ms.</strong> 60 fps bütçesi 16,7 ms olduğuna göre, sadece yıldız yolları karenin altıda birini yiyormuş. Yıldızların çoğu zaten 1 piksel; daire çizmenin görsel karşılığı yok.</p>
-<p>Yalnızca yarıçapı 1 pikselden büyük olanlarda <code>arc()</code> kullanıyoruz.</p>
-<h2>3. Gradyanları önbelleğe almak</h2>
-<p>Gökyüzü ve vinyet gradyanları her karede yeniden üretiliyordu:</p>
-<pre><code class="language-js">// her karede — gereksiz
-var sky = ctx.createLinearGradient(0, 0, 0, H);
-sky.addColorStop(0, '#04030A');
-</code></pre>
-<p>Bu gradyanlar sadece pencere boyutuna bağlı. <code>build()</code> içine taşıyıp önbelleğe aldık; yeniden üretim sadece yeniden boyutlandırmada oluyor.</p>
-<p>Aynı mantık ışık harelerine de uygulandı: her lamba için radyal gradyan üretmek yerine, beş lamba tipinin her biri için <strong>bir kez sprite render edilip</strong> <code>drawImage</code> ile ölçeklenerek basılıyor.</p>
-<h2>4. Piksel yoğunluğunu sınırlamak</h2>
-<p>Asıl darboğaz buydu ve en az göze çarpanıydı.</p>
-<p>Retina bir ekranda <code>devicePixelRatio</code> 2. 1440×900 bir pencerede tuval 2880×1800 = <strong>5,2 milyon piksel</strong> oluyor. Ve karede beş kez tam ekran dolduruyorduk: gökyüzü, zemin, vinyet, film greni, renk gürültüsü. İkisi ekrandan da büyük alanda.</p>
-<p>Kabaca <strong>28 milyon piksel/kare</strong>.</p>
-<p>İki değişiklik:</p>
-<ul>
-<li><code>devicePixelRatio</code> tavanı 1,5 (mobilde 1,25). Gözle fark edilmiyor, piksel sayısı %44 düşüyor.</li>
-<li>Gren tek katmana indirildi ve yarı çözünürlükte önceden render edilip <code>drawImage</code> ile ölçekleniyor. Desen dolgusu yerine tek çizim çağrısı.</li>
-</ul>
-<p>Sonuç: <strong>~12 milyon piksel/kare.</strong> Kabaca yarısı.</p>
-<p>Bir de <code>getContext('2d', { alpha: false })</code> ekledik — tuval şeffaf olmadığı için birleştirme maliyeti düşüyor. Sahne zaten gökyüzüyle tamamen dolduruluyor, kaybedilen bir şey yok.</p>
-<h2>Kalite kademeleri</h2>
-<p>Optimizasyondan sonra bile her cihazın aynı performansı vereceğini varsaymak yanlış olurdu. Döngü kare süresini ölçüyor ve 23 ms'yi aşarsa sessizce kademe iniyor:</p>
-<table>
-<thead>
-<tr>
-<th>Kademe</th>
-<th>Yıldız</th>
-<th>Kapatılan</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>2.100</td>
-<td>—</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1.400</td>
-<td>mercek hayaletleri, kirlilik</td>
-</tr>
-<tr>
-<td>2</td>
-<td>900</td>
-<td>+ kromatik sapma</td>
-</tr>
-<tr>
-<td>3</td>
-<td>520</td>
-<td>+ halation</td>
-</tr>
-</tbody>
-</table>
-<p>Mobil doğrudan 2. kademede başlıyor. Kullanıcı hiçbir şey fark etmiyor; sahne biraz sadeleşiyor, ama takılmıyor.</p>
-<h2>Ne öğrendik</h2>
-<p><strong>WebGL'e geçmeden önce ölç.</strong> 2D canvas beklediğimizden çok daha fazlasını kaldırıyor, ve WebGL'in getireceği karmaşıklık bu sahne için karşılığını vermezdi.</p>
-<p><strong>Darboğaz genelde sandığın yerde değil.</strong> Biz yıldız sayısını suçluyorduk; asıl maliyet tam ekran dolgularının piksel sayısındaydı. Ölçmeden dokunmak zaman kaybı.</p>
-<p><strong>En ucuz optimizasyon, hiç yapılmayan iştir.</strong> Kare boyunca sabit olan bir hesabı döngüye koymak, sonradan bulunması en kolay ama başta fark edilmesi en zor hata.</p>
+      <p>Küçük ekipler için SaaS seçimi, ekibin tekrar eden bir işini hangi aracın daha anlaşılır ve sürdürülebilir hâle getirdiğini değerlendirmektir. SaaS, yazılımın bir hizmet olarak sunulduğu modeli ifade eder. Birçok SaaS ürünü tarayıcı üzerinden kullanılır; değerlendirmede asıl belirleyici, ekibin o yazılımla günlük işini yürütebilmesidir.</p>
+<p>Özellik listesine bakmadan önce bugün aksayan işi tarif edin. “Her şey tek yerde olsun” iyi bir dilek olabilir. Fakat hangi bilginin nerede kaybolduğunu açıklamaz. “Müşteriden gelen son karar görev kaydına geçmiyor” gibi bir cümle, seçim sürecine daha sağlam bir başlangıç verir.</p>
+<h2>Araç değiştirmeye değer sorunu bulun</h2>
+<p>Bir hafta boyunca hangi bilgiyi tekrar tekrar aradığınızı not edin. Ekip üyelerinin birbirine sorduğu sorulara bakın. Yanıtı zaten var olan ama bulunamayan sorular, araç ve süreç tasarımı için yararlı ipuçlarıdır.</p>
+<p>Ardından sorunun kaynağını ayırın. İşin sorumlusu hiç belirlenmemişse, yazılım tek başına karar vermez. Sorumlu belli olduğu hâlde bilgi farklı yerlerde kalıyorsa, ortak bir kayıt yardımcı olabilir. Bu ayrım, yeni bir araçtan ne beklediğinizi netleştirir.</p>
+<p>Deneme öncesi “iyileşme” tanımını yazın. Örneğin herkesin haftalık görüşmeye gelmeden önce kendi bekleyen işini bulabilmesi. Bu, yalnızca daha modern görünen bir arayüzden daha somut bir ölçüttür.</p>
+<h2>Demo yerine gerçek bir iş deneyin</h2>
+<p>Ürünün hazırlanmış örnek ekranı düzenli görünür. Sizin dosya isimleriniz, eksik kayıtlarınız ve değişen öncelikleriniz ise daha dağınık olabilir. Bu yüzden denemeye küçük ama gerçekçi bir senaryoyla başlayın.</p>
+<p>Örnek bir görev seti şöyle olabilir:</p>
+<ol>
+<li>Yeni bir iş kaydı açın ve sorumlusunu belirleyin.</li>
+<li>İşi başka bir ekip üyesine devredin.</li>
+<li>Bir bilgi eksik olduğunda nasıl geri döneceğinize bakın.</li>
+<li>Tamamlanan işin geçmişini bulun.</li>
+<li>Kaydı dışarı aktararak çıktının okunabilirliğini kontrol edin.</li>
+</ol>
+<p>İlk denemede gereksiz kişisel veya hassas veri kullanmayın. Gerçeğe benzeyen örnek kayıtlar, temel akışı görmek için yeterli olabilir. Daha sonra gerçek kullanıma geçişin koşullarını ayrıca değerlendirin.</p>
+<h2>Kurulumu ve ekip katılımını birlikte değerlendirin</h2>
+<p>Bir aracın ilk kurulumu kolay olabilir; ekibin ortak biçimde kullanması daha fazla karar gerektirebilir. Kim kayıt açacak, durum adları ne anlama gelecek ve hangi bilgi zorunlu tutulacak? Bunlar belirsizse aynı araç içinde de farklı çalışma biçimleri oluşabilir.</p>
+<p>Denemeye yalnızca satın alma kararını veren kişiyi dahil etmeyin. Günlük işi yürüten kişi ile sonuçları takip eden kişinin ihtiyaçları farklı olabilir. İkisinin de birkaç işi tamamlamasını izleyin. Yardım olmadan yapılamayan adımları kaydedin.</p>
+<p>Bildirimleri de bu sırada deneyin. Her değişikliğin herkese ulaşması yerine, hangi bilginin kimin eylemini gerektirdiğini düşünün. Aracın bu ayrımı destekleyip desteklemediğine bakın.</p>
+<h2>Kullanımı amaca uygun ölçün</h2>
+<p>Oturum açma sayısı, aracın işinize yarayıp yaramadığını tek başına anlatmaz. Tamamlanan işler, bulunamayan bilgiler ve ihtiyaç duyulan yardım daha açıklayıcı olabilir.</p>
+<p>GOV.UK’nin hizmet başarısını ölçme rehberi, ölçümleri hizmetin amacıyla ilişkilendirmeye ve performans verilerini kullanıcı araştırmasıyla birlikte değerlendirmeye yer verir. Aynı düşünceyi küçük bir ekip denemesine uyarlayabilirsiniz. <a href="https://www.gov.uk/service-manual/measuring-success/measuring-the-success-of-your-service">GOV.UK — Measuring the success of your service</a></p>
+<p>Deneme sonunda “çok özellik var” yerine şu cümleyi tamamlayın: “Bu araçla … işini daha rahat yapabildik; … noktasında hâlâ zorlanıyoruz.”</p>
+<h2>Çıkış yolunu da kontrol edin</h2>
+<p>Veriyi dışarı aktarma, kullanıcı yetkilerini değiştirme ve hesabı kapatma adımlarını satın alma kararından önce inceleyin. Bir dışa aktarım düğmesinin bulunması yeterli değildir; çıkan dosyanın ihtiyaç duyduğunuz alanları taşıması gerekir.</p>
+<p>Pist Studio’nun ürün bakışında, aracın değeri kullanım sırasında görünür olmalıdır. Küçük bir ekip için iyi seçim de bu şekilde ortaya çıkar: Ekibin gerçek işiyle sınanmış, sınırları anlaşılmış ve günlük rutinde yeri belli bir ürün.</p>
 
     </div>
   </div>

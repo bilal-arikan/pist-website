@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</title>
+<title>Creative Technology Studio Nedir? Pist Studio’nun Yaklaşımı</title>
 
-<meta name="description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
+<meta name="description" content="Creative Technology Studio yaklaşımını keşfedin. Pist Studio’nun dijital ürün geliştirme ve ses üretimini Products ve Sound altında nasıl buluşturduğunu okuyun.">
 
-<link rel="canonical" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="canonical" href="https://www.piststudio.com/tr/blog/creative-technology-studio-nedir/">
 
-<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/creative-technology-studio-nedir/">
 <link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
 <link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
 
 
 <meta property="og:site_name" content="Pist Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek">
-<meta property="og:description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
-<meta property="og:url" content="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<meta property="og:title" content="Creative Technology Studio Nedir? Pist Studio’nun Yaklaşımı">
+<meta property="og:description" content="Creative Technology Studio yaklaşımını keşfedin. Pist Studio’nun dijital ürün geliştirme ve ses üretimini Products ve Sound altında nasıl buluşturduğunu okuyun.">
+<meta property="og:url" content="https://www.piststudio.com/tr/blog/creative-technology-studio-nedir/">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -80,7 +80,7 @@
       </nav>
       
       <div class="lang" id="dilsec">
-        <a href="/tr/blog/canvasta-2000-yildiz-60-fps/" data-dil="tr"
+        <a href="/tr/blog/creative-technology-studio-nedir/" data-dil="tr"
            aria-current="true" hreflang="tr">TR</a>
         <a href="/en/blog/" data-dil="en"
             hreflang="en">EN</a>
@@ -133,91 +133,38 @@
 <article class="yazi">
   <div class="wrap">
     <a class="geri" href="/tr/blog/">← Tüm yazılar</a>
-    <p class="eyebrow" style="color:#9CE085">Teknik</p>
-    <h1>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</h1>
+    <p class="eyebrow" style="color:#FFAA05">Stüdyo</p>
+    <h1>Creative Technology Studio Nedir? Pist Studio’nun Yaklaşımı</h1>
     <div class="künye">
-      <span>22 Eylül 2026</span>
-      <span>11 dk okuma</span>
+      <span>30 Haziran 2026</span>
+      <span>3 dk okuma</span>
       <span>Pist Studio</span>
     </div>
     <div class="prose">
-      <p>Sitemizin giriş sahnesi bir kalkış animasyonu: yerde başlıyor, kaydırdıkça yükseliyor. Sahnede ~240 pist lambası ve 2.100 yıldız var, hepsi 3B koordinatlarda tutulup perspektifle projekte ediliyor.</p>
-<p>İlk sürüm masaüstünde takılıyordu. WebGL'e geçmek yerine önce <strong>2D canvas'ın nereye kadar dayandığını ölçtük</strong>. Dört değişiklik yetti.</p>
-<h2>1. Trigonometriyi döngüden çıkarmak</h2>
-<p>En büyük israf en aptalcasıydı. Projeksiyon fonksiyonu şöyleydi:</p>
-<pre><code class="language-js">function project(p){
-  var cp = Math.cos(pitch), sp = Math.sin(pitch);
-  // ...
-}
-</code></pre>
-<p><code>pitch</code> kare boyunca sabit. Ama fonksiyon her nokta için çağrılıyor — yani karede <strong>2.300'den fazla <code>cos</code>/<code>sin</code> çifti</strong>. Değerleri kare başında bir kez hesaplayıp modül seviyesinde tutmak bunu 2'ye indirdi.</p>
-<h2>2. Küçük yıldızlar için <code>arc()</code> yerine <code>fillRect()</code></h2>
-<p>Bu ölçtüğümüz en net kazanç oldu. 2.100 yıldızı çizmenin iki yolu:</p>
-<pre><code class="language-js">// 2.9 ms
-ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-
-// 0.9 ms
-ctx.fillRect(x, y, 1, 1);
-</code></pre>
-<p><strong>2,9 ms → 0,9 ms.</strong> 60 fps bütçesi 16,7 ms olduğuna göre, sadece yıldız yolları karenin altıda birini yiyormuş. Yıldızların çoğu zaten 1 piksel; daire çizmenin görsel karşılığı yok.</p>
-<p>Yalnızca yarıçapı 1 pikselden büyük olanlarda <code>arc()</code> kullanıyoruz.</p>
-<h2>3. Gradyanları önbelleğe almak</h2>
-<p>Gökyüzü ve vinyet gradyanları her karede yeniden üretiliyordu:</p>
-<pre><code class="language-js">// her karede — gereksiz
-var sky = ctx.createLinearGradient(0, 0, 0, H);
-sky.addColorStop(0, '#04030A');
-</code></pre>
-<p>Bu gradyanlar sadece pencere boyutuna bağlı. <code>build()</code> içine taşıyıp önbelleğe aldık; yeniden üretim sadece yeniden boyutlandırmada oluyor.</p>
-<p>Aynı mantık ışık harelerine de uygulandı: her lamba için radyal gradyan üretmek yerine, beş lamba tipinin her biri için <strong>bir kez sprite render edilip</strong> <code>drawImage</code> ile ölçeklenerek basılıyor.</p>
-<h2>4. Piksel yoğunluğunu sınırlamak</h2>
-<p>Asıl darboğaz buydu ve en az göze çarpanıydı.</p>
-<p>Retina bir ekranda <code>devicePixelRatio</code> 2. 1440×900 bir pencerede tuval 2880×1800 = <strong>5,2 milyon piksel</strong> oluyor. Ve karede beş kez tam ekran dolduruyorduk: gökyüzü, zemin, vinyet, film greni, renk gürültüsü. İkisi ekrandan da büyük alanda.</p>
-<p>Kabaca <strong>28 milyon piksel/kare</strong>.</p>
-<p>İki değişiklik:</p>
+      <p>Creative Technology Studio, tasarım, yazılım ve yaratıcı üretimi birlikte ele alan bir çalışma yaklaşımını anlatır. Tek bir standart organizasyon biçimi yoktur. Bu tanımı anlamlı kılan, stüdyonun hangi işleri ürettiği ve teknolojiyi hangi amaçla kullandığıdır.</p>
+<p>Pist Studio için karşılığı somut: kendi dijital ürünlerini geliştirmek ve bağımsız ses işleri üretmek. Products ve Sound, aynı üretim kültürünün iki kolu. Birinde uygulamalar ve dijital araçlar; diğerinde müzik prodüksiyonu, ses tasarımı ve miks/mastering var.</p>
+<h2>Bir ürün stüdyosu ne üretir?</h2>
+<p>Bir dijital ürün, belirli bir ihtiyaca tekrar tekrar cevap verebilen bir araçtır. Kullanıcının işini takip etmesine, bilgiye ulaşmasına veya bir şey üretmesine yardımcı olabilir. İlk sürümün yayınlanması bu işin başlangıçlarından biridir. Kullanıcıların nerede takıldığını görmek ve ürünü geliştirmek de üretimin parçasıdır.</p>
+<p>Pist Studio’nun yönü, kendi ürünlerini geliştiren bir yayıncı ve ürün stüdyosu olmak. Bu yaklaşım, hangi problemin çözülmeye değer olduğuna ilişkin sorumluluğu da beraberinde getirir. Güzel görünen bir ekranın yanında, neden var olduğu anlaşılabilen bir ürün gerekir.</p>
+<p>Örneğin bir ekip aracı düşünelim. Görev kartları, grafikler ve bildirimler tek başına ürünün değerini açıklamaz. Ekip üyeleri bir sonraki işi anlayabiliyor mu? Bir kararın neden alındığını bulabiliyor mu? Ürün üzerine konuşmayı bu sorularla başlatmak daha verimlidir.</p>
+<h2>Yaratıcılık ile teknik disiplin nasıl birlikte çalışır?</h2>
+<p>Deneysel üretimde bir fikrin nereye varacağını baştan bütünüyle bilemeyiz. Yine de deneyi sınayacak bir çerçeve kurabiliriz. Bir etkileşimin anlaşılmasını, bir akışın tamamlanmasını veya bir sesin amaçlanan hissi taşımasını kontrol edebiliriz.</p>
+<p>Design Council’ın Double Diamond modeli, problemi keşfetme ve tanımlama ile çözüm geliştirme ve sınama aşamalarını birbirine bağlar. Süreç yeni öğrenmelerle önceki aşamalara dönebilir. Bu, yaratıcı araştırmanın uygulama disipliniyle birlikte yürüyebileceğini gösteren yararlı bir çerçevedir. <a href="https://www.designcouncil.org.uk/resources/framework-for-innovation/">Design Council — Framework for Innovation</a></p>
+<p>Pist açısından bu birlikteliğin karşılığı, merakın üretilen işte görünmesidir. Bir teknolojiyi yalnızca güncel olduğu için kullanmak yerine, ortaya çıkardığı deneyime bakmak gerekir. Daha anlaşılır bir araç, daha karakterli bir ses veya daha akıcı bir kullanım, somut değerlendirme alanlarıdır.</p>
+<h2>Products ve Sound neden aynı çatı altında?</h2>
+<p>Bir müzik düzenlemesinde hangi öğenin öne çıkacağına karar verirsiniz. Bir arayüzde de kullanıcının önce neyi görmesi gerektiğini belirlersiniz. Ses katmanları arasında alan açmak ile ekrandaki bilgi sırasını düzenlemek farklı uzmanlıklar gerektirir; ancak ikisinde de seçim yapmak önemlidir.</p>
+<p>Bu ilişki, yazılım ile müziğin aynı şey olduğu anlamına gelmez. Kodun çalışması, bir arayüzün anlaşılması ve bir parçanın duygusal karşılığı ayrı ölçütlerle değerlendirilir. Disiplinlerin birlikteliği, bu farkları korurken birbirinden öğrenmeye alan açar.</p>
+<p>Products, Pist Studio’nun ana büyüme odağıdır. Sound ise müzikten gelen birikimi ve yaratıcı ses üretimini taşır. Buradaki studio sözcüğü bir üretim pratiğini anlatır. Ses işleri de bu çerçevede eser ve portföy üzerinden anlam kazanır.</p>
+<h2>Bir stüdyonun yaklaşımı nasıl değerlendirilir?</h2>
+<p>Bir tanımın ardından şu sorulara bakmak faydalıdır:</p>
 <ul>
-<li><code>devicePixelRatio</code> tavanı 1,5 (mobilde 1,25). Gözle fark edilmiyor, piksel sayısı %44 düşüyor.</li>
-<li>Gren tek katmana indirildi ve yarı çözünürlükte önceden render edilip <code>drawImage</code> ile ölçekleniyor. Desen dolgusu yerine tek çizim çağrısı.</li>
+<li>Ortaya çıkan ürün hangi ihtiyacı karşılıyor?</li>
+<li>Kullanıcı deneyimi ve teknik işleyiş birbirini destekliyor mu?</li>
+<li>Ses veya tasarım tercihleri işin karakterine hizmet ediyor mu?</li>
+<li>Üretimin arkasındaki kararlar somut örneklerle açıklanabiliyor mu?</li>
 </ul>
-<p>Sonuç: <strong>~12 milyon piksel/kare.</strong> Kabaca yarısı.</p>
-<p>Bir de <code>getContext('2d', { alpha: false })</code> ekledik — tuval şeffaf olmadığı için birleştirme maliyeti düşüyor. Sahne zaten gökyüzüyle tamamen dolduruluyor, kaybedilen bir şey yok.</p>
-<h2>Kalite kademeleri</h2>
-<p>Optimizasyondan sonra bile her cihazın aynı performansı vereceğini varsaymak yanlış olurdu. Döngü kare süresini ölçüyor ve 23 ms'yi aşarsa sessizce kademe iniyor:</p>
-<table>
-<thead>
-<tr>
-<th>Kademe</th>
-<th>Yıldız</th>
-<th>Kapatılan</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>2.100</td>
-<td>—</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1.400</td>
-<td>mercek hayaletleri, kirlilik</td>
-</tr>
-<tr>
-<td>2</td>
-<td>900</td>
-<td>+ kromatik sapma</td>
-</tr>
-<tr>
-<td>3</td>
-<td>520</td>
-<td>+ halation</td>
-</tr>
-</tbody>
-</table>
-<p>Mobil doğrudan 2. kademede başlıyor. Kullanıcı hiçbir şey fark etmiyor; sahne biraz sadeleşiyor, ama takılmıyor.</p>
-<h2>Ne öğrendik</h2>
-<p><strong>WebGL'e geçmeden önce ölç.</strong> 2D canvas beklediğimizden çok daha fazlasını kaldırıyor, ve WebGL'in getireceği karmaşıklık bu sahne için karşılığını vermezdi.</p>
-<p><strong>Darboğaz genelde sandığın yerde değil.</strong> Biz yıldız sayısını suçluyorduk; asıl maliyet tam ekran dolgularının piksel sayısındaydı. Ölçmeden dokunmak zaman kaybı.</p>
-<p><strong>En ucuz optimizasyon, hiç yapılmayan iştir.</strong> Kare boyunca sabit olan bir hesabı döngüye koymak, sonradan bulunması en kolay ama başta fark edilmesi en zor hata.</p>
+<p>Bu sorular, iddialı sıfatların ötesinde konuşmayı sağlar. Bizim için de Pist Studio’nun kimliği, geliştirdiğimiz ürünlerde ve ürettiğimiz ses işlerinde karşılığını bulmalı.</p>
+<p>“Crafting intelligent digital products and sound.” bu yönün ifadesi. Dijital ürün ve ses üretimini aynı çatı altında tutarken, her işin kendi kullanımına ve karakterine özen göstermek istiyoruz.</p>
 
     </div>
   </div>

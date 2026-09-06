@@ -2,6 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://www.piststudio.com/tr/blog/creative-technology-studio-nedir/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/creative-technology-studio-nedir/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-06-30</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/yaratici-surecte-kisitlamalar/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/yaratici-surecte-kisitlamalar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-07-07</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/dijital-urun-fikri-dogrulama/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/dijital-urun-fikri-dogrulama/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-07-14</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/mvp-nedir-ilk-surum-kapsami/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/mvp-nedir-ilk-surum-kapsami/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-07-21</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/sade-arayuz-tasarimi/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/sade-arayuz-tasarimi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-07-28</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/kucuk-ekipler-icin-saas-secimi/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/kucuk-ekipler-icin-saas-secimi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-08-04</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/yapay-zeka-urun-tasarimi/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/yapay-zeka-urun-tasarimi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-08-11</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/miks-ve-mastering-farki/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/miks-ve-mastering-farki/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-08-18</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/dijital-urunlerde-ses-tasarimi/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/dijital-urunlerde-ses-tasarimi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-08-25</lastmod>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/blog/live-coding-nedir/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/live-coding-nedir/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/"/>
+    <lastmod>2026-09-01</lastmod>
+  </url>
+  <url>
     <loc>https://www.piststudio.com/en/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/privacy/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/aydinlatma-metni/"/>

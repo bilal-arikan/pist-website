@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</title>
+<title>MVP Nedir? İlk Sürümün Kapsamı Nasıl Belirlenir?</title>
 
-<meta name="description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
+<meta name="description" content="MVP nedir, ilk sürüme hangi özellikler alınmalı? Tek bir kullanıcı işine odaklanarak kapsamı daraltmayı ve ürün fikrini ölçülebilir biçimde sınamayı öğrenin.">
 
-<link rel="canonical" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="canonical" href="https://www.piststudio.com/tr/blog/mvp-nedir-ilk-surum-kapsami/">
 
-<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/mvp-nedir-ilk-surum-kapsami/">
 <link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
 <link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
 
 
 <meta property="og:site_name" content="Pist Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek">
-<meta property="og:description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
-<meta property="og:url" content="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<meta property="og:title" content="MVP Nedir? İlk Sürümün Kapsamı Nasıl Belirlenir?">
+<meta property="og:description" content="MVP nedir, ilk sürüme hangi özellikler alınmalı? Tek bir kullanıcı işine odaklanarak kapsamı daraltmayı ve ürün fikrini ölçülebilir biçimde sınamayı öğrenin.">
+<meta property="og:url" content="https://www.piststudio.com/tr/blog/mvp-nedir-ilk-surum-kapsami/">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -80,7 +80,7 @@
       </nav>
       
       <div class="lang" id="dilsec">
-        <a href="/tr/blog/canvasta-2000-yildiz-60-fps/" data-dil="tr"
+        <a href="/tr/blog/mvp-nedir-ilk-surum-kapsami/" data-dil="tr"
            aria-current="true" hreflang="tr">TR</a>
         <a href="/en/blog/" data-dil="en"
             hreflang="en">EN</a>
@@ -133,91 +133,36 @@
 <article class="yazi">
   <div class="wrap">
     <a class="geri" href="/tr/blog/">← Tüm yazılar</a>
-    <p class="eyebrow" style="color:#9CE085">Teknik</p>
-    <h1>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</h1>
+    <p class="eyebrow" style="color:#FFD62C">Products</p>
+    <h1>MVP Nedir? İlk Sürümün Kapsamı Nasıl Belirlenir?</h1>
     <div class="künye">
-      <span>22 Eylül 2026</span>
-      <span>11 dk okuma</span>
+      <span>21 Temmuz 2026</span>
+      <span>2 dk okuma</span>
       <span>Pist Studio</span>
     </div>
     <div class="prose">
-      <p>Sitemizin giriş sahnesi bir kalkış animasyonu: yerde başlıyor, kaydırdıkça yükseliyor. Sahnede ~240 pist lambası ve 2.100 yıldız var, hepsi 3B koordinatlarda tutulup perspektifle projekte ediliyor.</p>
-<p>İlk sürüm masaüstünde takılıyordu. WebGL'e geçmek yerine önce <strong>2D canvas'ın nereye kadar dayandığını ölçtük</strong>. Dört değişiklik yetti.</p>
-<h2>1. Trigonometriyi döngüden çıkarmak</h2>
-<p>En büyük israf en aptalcasıydı. Projeksiyon fonksiyonu şöyleydi:</p>
-<pre><code class="language-js">function project(p){
-  var cp = Math.cos(pitch), sp = Math.sin(pitch);
-  // ...
-}
-</code></pre>
-<p><code>pitch</code> kare boyunca sabit. Ama fonksiyon her nokta için çağrılıyor — yani karede <strong>2.300'den fazla <code>cos</code>/<code>sin</code> çifti</strong>. Değerleri kare başında bir kez hesaplayıp modül seviyesinde tutmak bunu 2'ye indirdi.</p>
-<h2>2. Küçük yıldızlar için <code>arc()</code> yerine <code>fillRect()</code></h2>
-<p>Bu ölçtüğümüz en net kazanç oldu. 2.100 yıldızı çizmenin iki yolu:</p>
-<pre><code class="language-js">// 2.9 ms
-ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-
-// 0.9 ms
-ctx.fillRect(x, y, 1, 1);
-</code></pre>
-<p><strong>2,9 ms → 0,9 ms.</strong> 60 fps bütçesi 16,7 ms olduğuna göre, sadece yıldız yolları karenin altıda birini yiyormuş. Yıldızların çoğu zaten 1 piksel; daire çizmenin görsel karşılığı yok.</p>
-<p>Yalnızca yarıçapı 1 pikselden büyük olanlarda <code>arc()</code> kullanıyoruz.</p>
-<h2>3. Gradyanları önbelleğe almak</h2>
-<p>Gökyüzü ve vinyet gradyanları her karede yeniden üretiliyordu:</p>
-<pre><code class="language-js">// her karede — gereksiz
-var sky = ctx.createLinearGradient(0, 0, 0, H);
-sky.addColorStop(0, '#04030A');
-</code></pre>
-<p>Bu gradyanlar sadece pencere boyutuna bağlı. <code>build()</code> içine taşıyıp önbelleğe aldık; yeniden üretim sadece yeniden boyutlandırmada oluyor.</p>
-<p>Aynı mantık ışık harelerine de uygulandı: her lamba için radyal gradyan üretmek yerine, beş lamba tipinin her biri için <strong>bir kez sprite render edilip</strong> <code>drawImage</code> ile ölçeklenerek basılıyor.</p>
-<h2>4. Piksel yoğunluğunu sınırlamak</h2>
-<p>Asıl darboğaz buydu ve en az göze çarpanıydı.</p>
-<p>Retina bir ekranda <code>devicePixelRatio</code> 2. 1440×900 bir pencerede tuval 2880×1800 = <strong>5,2 milyon piksel</strong> oluyor. Ve karede beş kez tam ekran dolduruyorduk: gökyüzü, zemin, vinyet, film greni, renk gürültüsü. İkisi ekrandan da büyük alanda.</p>
-<p>Kabaca <strong>28 milyon piksel/kare</strong>.</p>
-<p>İki değişiklik:</p>
-<ul>
-<li><code>devicePixelRatio</code> tavanı 1,5 (mobilde 1,25). Gözle fark edilmiyor, piksel sayısı %44 düşüyor.</li>
-<li>Gren tek katmana indirildi ve yarı çözünürlükte önceden render edilip <code>drawImage</code> ile ölçekleniyor. Desen dolgusu yerine tek çizim çağrısı.</li>
-</ul>
-<p>Sonuç: <strong>~12 milyon piksel/kare.</strong> Kabaca yarısı.</p>
-<p>Bir de <code>getContext('2d', { alpha: false })</code> ekledik — tuval şeffaf olmadığı için birleştirme maliyeti düşüyor. Sahne zaten gökyüzüyle tamamen dolduruluyor, kaybedilen bir şey yok.</p>
-<h2>Kalite kademeleri</h2>
-<p>Optimizasyondan sonra bile her cihazın aynı performansı vereceğini varsaymak yanlış olurdu. Döngü kare süresini ölçüyor ve 23 ms'yi aşarsa sessizce kademe iniyor:</p>
-<table>
-<thead>
-<tr>
-<th>Kademe</th>
-<th>Yıldız</th>
-<th>Kapatılan</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>2.100</td>
-<td>—</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1.400</td>
-<td>mercek hayaletleri, kirlilik</td>
-</tr>
-<tr>
-<td>2</td>
-<td>900</td>
-<td>+ kromatik sapma</td>
-</tr>
-<tr>
-<td>3</td>
-<td>520</td>
-<td>+ halation</td>
-</tr>
-</tbody>
-</table>
-<p>Mobil doğrudan 2. kademede başlıyor. Kullanıcı hiçbir şey fark etmiyor; sahne biraz sadeleşiyor, ama takılmıyor.</p>
-<h2>Ne öğrendik</h2>
-<p><strong>WebGL'e geçmeden önce ölç.</strong> 2D canvas beklediğimizden çok daha fazlasını kaldırıyor, ve WebGL'in getireceği karmaşıklık bu sahne için karşılığını vermezdi.</p>
-<p><strong>Darboğaz genelde sandığın yerde değil.</strong> Biz yıldız sayısını suçluyorduk; asıl maliyet tam ekran dolgularının piksel sayısındaydı. Ölçmeden dokunmak zaman kaybı.</p>
-<p><strong>En ucuz optimizasyon, hiç yapılmayan iştir.</strong> Kare boyunca sabit olan bir hesabı döngüye koymak, sonradan bulunması en kolay ama başta fark edilmesi en zor hata.</p>
+      <p>MVP, minimum viable product ifadesinin kısaltmasıdır. Ürün geliştirmede, temel bir değer önerisini gerçek kullanımla sınayabilecek en dar ürün kapsamını anlatmak için kullanılır. Burada “minimum”, yalnızca az sayıda ekran veya özellik demek değildir. Kullanıcının anlamlı bir işi tamamlayabilmesi gerekir.</p>
+<p>Bir ilk sürümün sınırı, öğrenmek istediğiniz soruya göre çizilmelidir. “İnsanlar bunu kullanabilir mi?”, “Bu sonuç işlerine yarıyor mu?” ve “Tekrar kullanıyorlar mı?” farklı sorulardır. Tek bir lansmanın hepsini kesin biçimde cevaplamasını beklemeyin.</p>
+<h2>İlk sürüm için tek bir ana iş seçin</h2>
+<p>Bir ürün fikrinin çevresinde çok sayıda özellik birikir. Takvim, rapor, sohbet, otomasyon ve kişiselleştirme kendi başlarına faydalı görünebilir. İlk sürümde hepsinin bulunması gerekip gerekmediğini anlamak için şu cümleyi tamamlayın:</p>
+<p>“Bu ürün sayesinde kullanıcı, … işini baştan sona tamamlayabilecek.”</p>
+<p>Örnek bir dosya değerlendirme aracında bu iş, bir dosyayı paylaşmak ve karşı tarafın kararını görmek olabilir. Tema seçimi veya gelişmiş istatistikler bu ana işin ön koşulu olmayabilir. Buna karşılık yanlış kişiye dosya gösterilmesini önlemek temel gereksinimdir.</p>
+<h2>Özellikleri üç soruyla değerlendirin</h2>
+<p>İlk soru, özelliğin ana iş için zorunlu olup olmadığıdır. Kullanıcı bu özellik olmadan işi tamamlayamıyorsa kapsamda kalması güçlü bir adaydır.</p>
+<p>İkinci soru, özelliğin sınadığınız varsayımla ilişkili olup olmadığıdır. İlk öğrenme hedefiniz dosya onayını kolaylaştırmaksa, geniş bir raporlama alanı bu soruya cevap vermeyebilir.</p>
+<p>Üçüncü soru, özelliğin ertelenmesinin doğuracağı sonuçtur. Görsel bir seçenek sonraya kalabilir. Kullanıcının verisini kaybetmesine neden olacak bir boşluk aynı biçimde ele alınamaz.</p>
+<p>Bu değerlendirmeyi kısa bir karar notuyla yapın. “Şimdilik yok” cümlesinin yanına nedenini ve hangi gözlemden sonra yeniden bakacağınızı ekleyin. Böylece kapsam dışına çıkan fikirler her toplantıda baştan tartışılmaz.</p>
+<h2>Prototip ile çalışan ilk sürümü ayırın</h2>
+<p>Tıklanabilir bir prototip, insanların ekranı anlamasını sınamak için kullanışlıdır. Ancak verilerin gerçekten kaydedildiğini veya ürünün günlük işte sürdürülebilir olduğunu göstermez. Çalışan bir ilk sürüm ise gerçek işlemleri ve bunların sonuçlarını gözlemleme fırsatı verir.</p>
+<p>GOV.UK’nin keşif yaklaşımı, çözüm geliştirmeye bağlanmadan önce problemin anlaşılmasına önem verir. Bu ayrım MVP için de yararlıdır: Problem hâlâ belirsizse, önce daha ucuz bir araştırma adımı gerekebilir. <a href="https://www.gov.uk/service-manual/agile-delivery/how-the-discovery-phase-works">GOV.UK — How the discovery phase works</a></p>
+<p>Hangi aracı kullanırsanız kullanın, sınamanın sınırını belirtin. Bir ekranı beğenmek, o ürün için ödeme yapmakla aynı kanıt değildir.</p>
+<h2>Küçük kapsamda da hata anlarını düşünün</h2>
+<p>İlk sürüm tasarlarken yalnızca başarılı akışı çizmek eksik bir resim oluşturur. Dosya yüklenmezse ne olur? Bağlantı kesilirse kullanıcı yaptığı işi kaybeder mi? Yanlış bilgi girildiğinde geri dönülebilir mi?</p>
+<p>Her olasılık için karmaşık bir sistem kurmanız gerekmez. Ancak sık karşılaşılabilecek sorunlarda kullanıcıya anlaşılır bir durum ve ilerleme yolu sunmalısınız. Küçük bir ürünün de verdiği sözü tutması gerekir.</p>
+<h2>İlk sürümden ne öğrendiğinizi yazın</h2>
+<p>Yayın sonrasında yalnızca kayıt sayısına bakmayın. Ana işi başlatan ve tamamlayan kişileri, yardım istenen adımları ve uygun zaman aralığında geri dönüşü inceleyin. Ürün haftada bir kullanılan bir işi çözüyorsa, günlük kullanım beklentisi yanıltıcı olabilir.</p>
+<p>Bulguları üç başlıkta toplayın: işe yarayanlar, zorlayanlar ve henüz bilinmeyenler. Sonraki sürümü bu ayrımdan çıkarın.</p>
+<p>Pist Studio’nun ürün geliştirme yönü için iyi bir ilk sürüm, anlaşılır bir amacı olan ve geliştirilecek yönleri görünür kılan sürümdür. Kapsamı daraltırken o amacı koruyun; yeni özellik eklerken de aynı soruya dönün: Kullanıcının hangi işini daha iyi tamamlamasını sağlıyor?</p>
 
     </div>
   </div>

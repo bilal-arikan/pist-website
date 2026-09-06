@@ -3,22 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</title>
+<title>Miks ve Mastering Farkı: Bir Parça Yayına Nasıl Hazırlanır?</title>
 
-<meta name="description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
+<meta name="description" content="Miks ve mastering farkını öğrenin. Parçanızı yayına hazırlarken kanal dengesi, son dinleme, dosya teslimi ve loudness normalizasyonunu doğru değerlendirin.">
 
-<link rel="canonical" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="canonical" href="https://www.piststudio.com/tr/blog/miks-ve-mastering-farki/">
 
-<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/blog/miks-ve-mastering-farki/">
 <link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/blog/">
 <link rel="alternate" hreflang="x-default" href="https://www.piststudio.com/en/">
 
 
 <meta property="og:site_name" content="Pist Studio">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek">
-<meta property="og:description" content="WebGL&#39;e geçmeden önce 2D canvas&#39;ın nereye kadar dayandığını ölçtük. Dört değişiklik, kare süresini yarıya indirdi.">
-<meta property="og:url" content="https://www.piststudio.com/tr/blog/canvasta-2000-yildiz-60-fps/">
+<meta property="og:title" content="Miks ve Mastering Farkı: Bir Parça Yayına Nasıl Hazırlanır?">
+<meta property="og:description" content="Miks ve mastering farkını öğrenin. Parçanızı yayına hazırlarken kanal dengesi, son dinleme, dosya teslimi ve loudness normalizasyonunu doğru değerlendirin.">
+<meta property="og:url" content="https://www.piststudio.com/tr/blog/miks-ve-mastering-farki/">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -80,7 +80,7 @@
       </nav>
       
       <div class="lang" id="dilsec">
-        <a href="/tr/blog/canvasta-2000-yildiz-60-fps/" data-dil="tr"
+        <a href="/tr/blog/miks-ve-mastering-farki/" data-dil="tr"
            aria-current="true" hreflang="tr">TR</a>
         <a href="/en/blog/" data-dil="en"
             hreflang="en">EN</a>
@@ -133,91 +133,33 @@
 <article class="yazi">
   <div class="wrap">
     <a class="geri" href="/tr/blog/">← Tüm yazılar</a>
-    <p class="eyebrow" style="color:#9CE085">Teknik</p>
-    <h1>Canvas&#39;ta 2.000 yıldızı 60 fps&#39;te çizmek</h1>
+    <p class="eyebrow" style="color:#FD605B">Sound</p>
+    <h1>Miks ve Mastering Farkı: Bir Parça Yayına Nasıl Hazırlanır?</h1>
     <div class="künye">
-      <span>22 Eylül 2026</span>
-      <span>11 dk okuma</span>
+      <span>18 Ağustos 2026</span>
+      <span>2 dk okuma</span>
       <span>Pist Studio</span>
     </div>
     <div class="prose">
-      <p>Sitemizin giriş sahnesi bir kalkış animasyonu: yerde başlıyor, kaydırdıkça yükseliyor. Sahnede ~240 pist lambası ve 2.100 yıldız var, hepsi 3B koordinatlarda tutulup perspektifle projekte ediliyor.</p>
-<p>İlk sürüm masaüstünde takılıyordu. WebGL'e geçmek yerine önce <strong>2D canvas'ın nereye kadar dayandığını ölçtük</strong>. Dört değişiklik yetti.</p>
-<h2>1. Trigonometriyi döngüden çıkarmak</h2>
-<p>En büyük israf en aptalcasıydı. Projeksiyon fonksiyonu şöyleydi:</p>
-<pre><code class="language-js">function project(p){
-  var cp = Math.cos(pitch), sp = Math.sin(pitch);
-  // ...
-}
-</code></pre>
-<p><code>pitch</code> kare boyunca sabit. Ama fonksiyon her nokta için çağrılıyor — yani karede <strong>2.300'den fazla <code>cos</code>/<code>sin</code> çifti</strong>. Değerleri kare başında bir kez hesaplayıp modül seviyesinde tutmak bunu 2'ye indirdi.</p>
-<h2>2. Küçük yıldızlar için <code>arc()</code> yerine <code>fillRect()</code></h2>
-<p>Bu ölçtüğümüz en net kazanç oldu. 2.100 yıldızı çizmenin iki yolu:</p>
-<pre><code class="language-js">// 2.9 ms
-ctx.beginPath(); ctx.arc(x, y, r, 0, 6.2832); ctx.fill();
-
-// 0.9 ms
-ctx.fillRect(x, y, 1, 1);
-</code></pre>
-<p><strong>2,9 ms → 0,9 ms.</strong> 60 fps bütçesi 16,7 ms olduğuna göre, sadece yıldız yolları karenin altıda birini yiyormuş. Yıldızların çoğu zaten 1 piksel; daire çizmenin görsel karşılığı yok.</p>
-<p>Yalnızca yarıçapı 1 pikselden büyük olanlarda <code>arc()</code> kullanıyoruz.</p>
-<h2>3. Gradyanları önbelleğe almak</h2>
-<p>Gökyüzü ve vinyet gradyanları her karede yeniden üretiliyordu:</p>
-<pre><code class="language-js">// her karede — gereksiz
-var sky = ctx.createLinearGradient(0, 0, 0, H);
-sky.addColorStop(0, '#04030A');
-</code></pre>
-<p>Bu gradyanlar sadece pencere boyutuna bağlı. <code>build()</code> içine taşıyıp önbelleğe aldık; yeniden üretim sadece yeniden boyutlandırmada oluyor.</p>
-<p>Aynı mantık ışık harelerine de uygulandı: her lamba için radyal gradyan üretmek yerine, beş lamba tipinin her biri için <strong>bir kez sprite render edilip</strong> <code>drawImage</code> ile ölçeklenerek basılıyor.</p>
-<h2>4. Piksel yoğunluğunu sınırlamak</h2>
-<p>Asıl darboğaz buydu ve en az göze çarpanıydı.</p>
-<p>Retina bir ekranda <code>devicePixelRatio</code> 2. 1440×900 bir pencerede tuval 2880×1800 = <strong>5,2 milyon piksel</strong> oluyor. Ve karede beş kez tam ekran dolduruyorduk: gökyüzü, zemin, vinyet, film greni, renk gürültüsü. İkisi ekrandan da büyük alanda.</p>
-<p>Kabaca <strong>28 milyon piksel/kare</strong>.</p>
-<p>İki değişiklik:</p>
-<ul>
-<li><code>devicePixelRatio</code> tavanı 1,5 (mobilde 1,25). Gözle fark edilmiyor, piksel sayısı %44 düşüyor.</li>
-<li>Gren tek katmana indirildi ve yarı çözünürlükte önceden render edilip <code>drawImage</code> ile ölçekleniyor. Desen dolgusu yerine tek çizim çağrısı.</li>
-</ul>
-<p>Sonuç: <strong>~12 milyon piksel/kare.</strong> Kabaca yarısı.</p>
-<p>Bir de <code>getContext('2d', { alpha: false })</code> ekledik — tuval şeffaf olmadığı için birleştirme maliyeti düşüyor. Sahne zaten gökyüzüyle tamamen dolduruluyor, kaybedilen bir şey yok.</p>
-<h2>Kalite kademeleri</h2>
-<p>Optimizasyondan sonra bile her cihazın aynı performansı vereceğini varsaymak yanlış olurdu. Döngü kare süresini ölçüyor ve 23 ms'yi aşarsa sessizce kademe iniyor:</p>
-<table>
-<thead>
-<tr>
-<th>Kademe</th>
-<th>Yıldız</th>
-<th>Kapatılan</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>2.100</td>
-<td>—</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1.400</td>
-<td>mercek hayaletleri, kirlilik</td>
-</tr>
-<tr>
-<td>2</td>
-<td>900</td>
-<td>+ kromatik sapma</td>
-</tr>
-<tr>
-<td>3</td>
-<td>520</td>
-<td>+ halation</td>
-</tr>
-</tbody>
-</table>
-<p>Mobil doğrudan 2. kademede başlıyor. Kullanıcı hiçbir şey fark etmiyor; sahne biraz sadeleşiyor, ama takılmıyor.</p>
-<h2>Ne öğrendik</h2>
-<p><strong>WebGL'e geçmeden önce ölç.</strong> 2D canvas beklediğimizden çok daha fazlasını kaldırıyor, ve WebGL'in getireceği karmaşıklık bu sahne için karşılığını vermezdi.</p>
-<p><strong>Darboğaz genelde sandığın yerde değil.</strong> Biz yıldız sayısını suçluyorduk; asıl maliyet tam ekran dolgularının piksel sayısındaydı. Ölçmeden dokunmak zaman kaybı.</p>
-<p><strong>En ucuz optimizasyon, hiç yapılmayan iştir.</strong> Kare boyunca sabit olan bir hesabı döngüye koymak, sonradan bulunması en kolay ama başta fark edilmesi en zor hata.</p>
+      <p>Miks ve mastering, bir müzik kaydının farklı ölçeklerde ele alındığı iki aşamadır. Miks, vokal ve enstrümanlar gibi öğelerin parça içindeki ilişkisini düzenler. Mastering ise tamamlanmış miksin genel dengesini, bütünlüğünü ve yayına hazırlığını ele alır. Bu ayrım, bir sorunun hangi aşamada çözülmesi gerektiğini anlamaya yardımcı olur. <a href="https://www.izotope.com/community/blog/what-is-the-difference-between-mixing-and-mastering">iZotope — What is the difference between mixing and mastering?</a></p>
+<p>Bir vokalin belirli kelimelerde kaybolması ile parçanın genel ses seviyesinin değerlendirilmesi aynı müdahaleyi gerektirmez. Önce sorunu tanımlamak, doğru aşamaya dönmeyi kolaylaştırır.</p>
+<h2>Miks sırasında hangi ilişkilere bakılır?</h2>
+<p>Mikste dinleyicinin hangi öğeyi takip edeceği, seslerin birbirini nasıl etkilediği ve parçanın bölümleri arasındaki akış üzerinde çalışılır. Seviye, panorama, frekans dengesi, dinamikler ve efektler bu kararları uygulamak için kullanılan araçlardır.</p>
+<p>Pratik bir başlangıç, parçayı dinlerken bölüm bölüm kısa not almaktır. “Vokal kötü” yerine “İkinci kıtada son kelimeler anlaşılmıyor” yazın. “Nakarat küçük” yerine, önceki bölümden geçişte neyin eksildiğini tarif edin. Böylece yapılacak değişiklik daha somut hâle gelir.</p>
+<p>Aynı anda çok sayıda müdahale yapmak değerlendirmeyi zorlaştırabilir. Bir sorunu seçin, değişikliği uygulayın ve önceki sürümle karşılaştırın. Düzenlemenin etkisini duymadan yeni işlem eklemeyin.</p>
+<h2>Mastering öncesinde hangi kararlar bitmiş olmalı?</h2>
+<p>Aranje, seçilen performans ve belirgin kanal dengeleri mümkün olduğunca netleşmiş olmalıdır. Vokal tercihi hâlâ tartışılıyorsa veya bir enstrümanın değiştirilmesi bekleniyorsa, son aşamaya geçmek erken olabilir.</p>
+<p>Teslim öncesinde parçayı baştan sona dinleyin. Başlangıç ve bitişi, efekt kuyruklarını, sessizlikleri ve istenmeyen sesleri kontrol edin. Birkaç sistemde dinlerken her cihazı aynı duyurmaya çalışmak yerine, müziğin temel ilişkilerinin korunup korunmadığına bakın.</p>
+<p>Başka biriyle çalışıyorsanız dosya biçimini, örnekleme hızını, bit derinliğini ve miks üzerindeki işlemleri teslimden önce konuşun. Her proje için tek bir sihirli ayar varsaymayın. Karakteri belirleyen bir ana kanal işlemi varsa bunu açıklamak ve gerektiğinde karşılaştırma sürümü sunmak iletişimi kolaylaştırır.</p>
+<h2>Mastering ile yüksek ses aynı şey mi?</h2>
+<p>Ses yüksekliği, mastering değerlendirmesinin bir parçasıdır. Ancak parçanın karakterini yalnızca yüksek ses üzerinden değerlendirmek eksik kalır. Sertlik, hareket, bölüm farkları ve dinleme yorgunluğu da dikkate alınmalıdır.</p>
+<p>Karşılaştırma yaparken ses seviyelerini yaklaştırın. Daha yüksek çalan sürümü otomatik olarak daha iyi sanmamak için bu adım yararlıdır. Ardından değişikliğin müzikal etkisine odaklanın: Vurucu öğeler korunuyor mu, sesler dengeli mi, parça uzun dinlemede nasıl hissettiriyor?</p>
+<h2>Spotify normalizasyonu nasıl düşünülmeli?</h2>
+<p>Spotify, farklı kayıtların algılanan ses yüksekliğini dengelemek için oynatma sırasında normalizasyon uygular. Resmî rehberde normal seviye için −14 LUFS belirtilir; cihaz ve dinleme ayarlarına göre davranış değişebilir. Spotify ayrıca mastering tavsiyelerinde −14 integrated LUFS ve −1 dBTP altında true peak hedefi verir; daha yüksek masterlar için true peak’in −2 dB altında tutulmasını önerir. Bunlar platforma ait tavsiyelerdir. <a href="https://support.spotify.com/us/artists/article/loudness-normalization/">Spotify — Loudness normalization</a></p>
+<p>Bu değerleri bütün müziğin tek bir estetikte üretilmesi gerektiği biçiminde yorumlamayın. Hedef platformun teknik rehberini, parçanın müzikal ihtiyacıyla birlikte değerlendirin. Dağıtım kanalınızın güncel dosya gereksinimlerini de ayrıca kontrol edin.</p>
+<h2>Revizyon notunu duyulabilir bir olaya bağlayın</h2>
+<p>İyi bir geri bildirim, zaman aralığı ve gözlem içerir. “1:12’de vokal girişinin ilk kelimesi geride kalıyor” gibi bir not, “Daha profesyonel olsun” ifadesinden daha açıklayıcıdır. Referans parça kullanıyorsanız hangi yönüne işaret ettiğinizi belirtin.</p>
+<p>Pist Studio’nun Sound yaklaşımında teknik kararlar, eserin karakteriyle birlikte ele alınır. Yayına hazırlıkta amaç, parçanın ne söylemek istediğini daha açık duyurmak. Miks ile mastering arasındaki iş bölümünü bilmek, bu süreci daha bilinçli yürütmenizi sağlar.</p>
 
     </div>
   </div>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-label="Model ve insan kontrolü">
+  <defs><linearGradient id="z" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#150A28"/><stop offset="1" stop-color="#0B0616"/></linearGradient></defs>
+  <rect width="480" height="300" fill="url(#z)"/>
+  <g stroke="#FFD62C" stroke-opacity=".28" stroke-width="1">
+    <path d="M96 96 200 150 96 204M200 150 316 150M316 150 396 104M316 150 396 196"/>
+  </g>
+  <g fill="#FFD62C">
+    <circle cx="96" cy="96" r="6" opacity=".5"/><circle cx="96" cy="204" r="6" opacity=".5"/>
+    <circle cx="200" cy="150" r="9"/><circle cx="316" cy="150" r="6" opacity=".7"/>
+  </g>
+  <rect x="380" y="88" width="32" height="32" fill="none" stroke="#9CE085" stroke-width="1.5"/>
+  <path d="M388 104l6 6 12-12" stroke="#9CE085" stroke-width="2" fill="none"/>
+  <rect x="380" y="180" width="32" height="32" fill="none" stroke="#FD605B" stroke-width="1.5"/>
+  <path d="M388 188l16 16M404 188l-16 16" stroke="#FD605B" stroke-width="2"/>
+</svg>
