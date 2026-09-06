@@ -1,0 +1,14 @@
+# Ses sayfasındaki "Çıkan işler" listesi — her satıra bir Spotify parça bağlantısı.
+#
+# NEDEN BÖYLE: Spotify, Development Mode'daki uygulamalara çalma listesi
+# içeriğini vermiyor (/playlists/{id}/tracks → 403; listenin sahibi olarak
+# ve doğru kapsamlarla bile). Tekil parça uç noktası ise açık. Bu yüzden
+# hangi parçaların listeleneceğini burada tutuyoruz; ad, sanatçı, albüm,
+# yıl ve süre bilgisi derleme anında Spotify'dan geliyor — elle yazılmıyor,
+# yani yazım hatası ya da bayat veri riski yok.
+#
+# Bağlantıyı almak: Spotify'da parçaya sağ tık → Share → Copy Song Link
+# Sıra buradaki sıradır. # ile başlayan satırlar yok sayılır.
+#
+# Örnek:
+# https://open.spotify.com/track/11dFghVXANMlKmJXsNCbNl
