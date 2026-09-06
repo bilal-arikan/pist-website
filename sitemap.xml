@@ -122,6 +122,16 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/muzik-produksiyonu/"/>
   </url>
   <url>
+    <loc>https://www.piststudio.com/en/sound/sound-design/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/sound-design/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/ses-tasarimi/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/en/sound/mixing-mastering/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/mixing-mastering/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/miks-mastering/"/>
+  </url>
+  <url>
     <loc>https://www.piststudio.com/en/sound/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/"/>
@@ -135,6 +145,16 @@
     <loc>https://www.piststudio.com/tr/ses/muzik-produksiyonu/</loc>
     <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/muzik-produksiyonu/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/music-production/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/ses/ses-tasarimi/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/ses-tasarimi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/sound-design/"/>
+  </url>
+  <url>
+    <loc>https://www.piststudio.com/tr/ses/miks-mastering/</loc>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://www.piststudio.com/tr/ses/miks-mastering/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.piststudio.com/en/sound/mixing-mastering/"/>
   </url>
   <url>
     <loc>https://www.piststudio.com/tr/ses/</loc>
