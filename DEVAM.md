@@ -86,6 +86,32 @@ Ana sayfa **görsel olarak kaymaz.** Tasarımın en güçlü yanı bu ve prototi
 footer bağlantıları son panelin içinde. `base.njk`'deki `noFooter` bayrağı
 bunu yönetiyor, diğer sayfalar footer'ını koruyor.
 
+### Ana sayfa dışı: blok kaydırma
+
+`src/assets/js/blok.js` — çizgiyle ayrılan bölümlerde her kaydırma hareketi
+bir sonraki ya da önceki bloğu ekranın dikey ortasına oturtuyor.
+
+Betik **kendini gating ediyor**: `main .section` sayısı ikiden azsa hiç
+devreye girmiyor. Şu an yalnızca Ürünler (3), Ses (4) ve Hakkında (3)
+sayfalarında aktif; ana sayfa, blog listesi, yazı sayfaları ve iletişim
+serbest kalıyor. Yeni sayfada blok sayısı ikiyi geçerse kendiliğinden açılır.
+
+Kaçış yolları bilinçli — scroll ele geçirmek riskli bir hamle:
+- `prefers-reduced-motion` varsa tamamen kapalı
+- blok ekrana sığmıyorsa o blok normal kayıyor (içerik kırpılmasın)
+- form alanında odak varken ya da mobil menü açıkken karışmıyor
+- klavye ve kaydırma çubuğu hiç kısıtlanmadı
+- alt bilgi de bir durak — yoksa son bloktan sonra footer'a ulaşılamıyordu
+
+### Ses katalogu
+
+Spotify **gömme oynatıcısı yok**. Liste derleme anında çekilip kendi
+tasarımımızla basılıyor (`.katalog`): ziyaretçinin tarayıcısından Spotify'a
+istek gitmiyor, üçüncü taraf çerezi düşmüyor.
+
+Akış: `npm run spotify` → `src/_data/katalog.json` → `ses.njk` / `sound.njk`.
+Anahtar yoksa liste boş kalır ve sayfa bunu açıkça söyler.
+
 **Üst çubuk tam genişliktedir** (`.topbar .inner{max-width:none}`). İçerik
 sütunu `--maxw:1120px` olarak dar kalır — okunabilirlik için, prototipte de
 öyle. Geniş ekranda logo ve dil seçici ortada toplanmasın diye çubuk ayrıldı.
@@ -153,9 +179,15 @@ Site yayında; bunların hiçbiri yayını engellemiyor.
 1. **Hukuk bilgileri** — şirket unvanı, açık adres, KVKK başvuru e-postası.
    Geldiğinde iki dosyada 3 alan doldurulacak ve workflow'daki
    `IZIN_VER_YER_TUTUCU` istisnası silinecek. Avukat incelemesi de yapılmadı.
-2. **Spotify betiği** — `scripts/fetch-spotify.mjs` (henüz yok).
-   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC`. Ses sayfasında şu an
-   Spotify'a düz bağlantı var, katalog çekilmiyor.
+2. **Spotify anahtarları** ⚠️ — betik yazıldı (`scripts/fetch-spotify.mjs`)
+   ve liste bileşeni hazır, ama **katalog boş**. Eksik olan tek şey:
+   `SPOTIFY_CLIENT_ID` ve `SPOTIFY_CLIENT_SECRET`
+   (developer.spotify.com → Dashboard), repo Secrets'a eklenecek.
+   Çalma listesi: `1OnQcPOHG6KV5BIEu9BZIC`. Anahtar yoksa betik sessizce
+   atlıyor, derleme kırılmıyor. Alternatif: parça listesini elle
+   `src/_data/katalog.json`'a yazmak.
+   **Uydurma parça adı konmadı** — gerçek diskografi, olmayan işi varmış
+   gibi göstermek doğru olmaz. Sayfa durumu açıkça söylüyor.
 3. **Kalkış animasyonu performansı** — gerçek telefonda hiç ölçülmedi.
    Sitenin en riskli parçası burası.
 4. **Form arka ucu** — mailto çalışıyor. Gerçek arka uç istenirse
@@ -309,7 +341,8 @@ gerektirmiyor — `git revert` yeterli.
   kapalı; panel gizliyken tarayıcı `requestAnimationFrame`'i çalıştırmıyor ve
   scroll'lu ekran görüntüleri boş geliyor. Duruş hâli (scroll 0) doğrulandı.
   **Performans hiç ölçülmedi** — gerçek telefonda ölçülmeli.
-- **Ses sayfasında Spotify katalogu yok**, sadece düz bağlantı var.
+- **Ses katalogu boş** — betik ve liste bileşeni hazır, anahtarlar eksik.
+  Gömme oynatıcı bilinçli olarak yok; liste derleme anında basılıyor.
 - **`_site/` derleme çıktısı** git'te izlenmiyor; workflow her push'ta üretiyor.
 
 ## 9. Yeni oturuma verilecekler
