@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" role="img" aria-label="Ses tasarımı — görüntüye katmanların eklenmesi">
+<defs><pattern id="iz" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0H0V16" fill="none" stroke="#FF7816" stroke-width=".5" opacity=".14"/></pattern></defs><rect width="320" height="180" fill="url(#iz)"/>
+<g stroke="#FF7816" fill="none">
+  <rect x="30" y="26" width="118" height="66" stroke-width="1.4" opacity=".9"/>
+  <g stroke-width="1" opacity=".55">
+    <rect x="34" y="30" width="7" height="7"/><rect x="34" y="43" width="7" height="7"/>
+    <rect x="34" y="56" width="7" height="7"/><rect x="34" y="69" width="7" height="7"/>
+    <rect x="34" y="81" width="7" height="7"/>
+    <rect x="137" y="30" width="7" height="7"/><rect x="137" y="43" width="7" height="7"/>
+    <rect x="137" y="56" width="7" height="7"/><rect x="137" y="69" width="7" height="7"/>
+    <rect x="137" y="81" width="7" height="7"/>
+  </g>
+  <path d="M52 78l18-24 14 17 16-27 22 34" stroke-width="1.2" opacity=".55"/>
+  <g stroke-width="1.3" opacity=".85">
+    <path d="M30 116h96M30 132h96M30 148h96"/>
+  </g>
+  <g stroke-width="1.1" opacity=".7">
+    <path d="M126 116c34 0 42 16 60 16M126 132h60M126 148c34 0 42-16 60-16"/>
+    <path d="M186 132h84"/>
+    <path d="M264 126l8 6-8 6"/>
+  </g>
+  <circle cx="186" cy="132" r="4" stroke-width="1.2" opacity=".9"/>
+</g>
+</svg>
