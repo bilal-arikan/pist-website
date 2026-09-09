@@ -6,3 +6,7 @@ server.log
 
 # Claude Code yerel ayarları
 .claude/
+
+# Çalışma çıktıları — site içeriği değil, kökten servis edilmemeli
+output/
+tmp/
