@@ -177,7 +177,15 @@
     camY = 2 * Math.pow(60000, e * e * 0.62 + e * 0.38);
     camZ = ts * 900;
     pitch = e * 0.44;
-    f = Math.min(H, 940) * 1.06;
+    /* Odak uzaklığı yalnızca yüksekliğe bağlıydı; dar/portre ekranda yatay
+       görüş açısı çöküyordu. Pistin yarı genişliği 22.5 m, lamba aralığı 60 m:
+       en yakın lamba sırasının kadraja girmesi için f <= W * 60/45 gerekiyor.
+       Ölçüm (önce): masaüstü 1440x900'de 30 m'den itibaren lambalar görünürken
+       mobil 375x812'de ancak 103 m'den sonrası görünüyordu — pistin yakın ve
+       geniş kısmı tamamen kadraj dışındaydı.
+       W*1.25 sınırı yalnızca portre ekranlarda devreye giriyor; masaüstünde
+       W*1.25 zaten H'den büyük olduğu için değer değişmiyor. */
+    f = Math.min(H, W * 1.25, 940) * 1.06;
     CP = Math.cos(pitch); SP = Math.sin(pitch);
 
     var shake = reduce ? 0 : (Math.sin(clock * 0.7) * 0.9 + Math.sin(clock * 1.9 + 1.2) * 0.5) * (0.4 + vel * 26);

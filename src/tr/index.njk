@@ -28,8 +28,12 @@ noFooter: true
         <p class="eyebrow" lang="en">{{ site.category.tr }}</p>
         <h1>Her şey bir <span class="pist pist-tek">pist</span>'te başlar.</h1>
         <p class="lede">{{ site.sloganTR }} Kendi araçlarımızı geliştiriyoruz — <strong>ilki Projelio</strong>.</p>
+        {# Amber buton kaldırıldı (9 Eylül 2026): ilk panelde en dikkat çeken
+           öğe olduğu için ziyaretçiler oraya tıklayıp doğrudan projelio.app'e
+           gidiyor ve siteyi hiç gezmeden terk ediyordu. Projelio ikinci panelde
+           ve Ürünler sayfasında zaten var — gizlenmiş değil, sadece ilk hamle
+           olmaktan çıkarıldı. #}
         <div class="ctas">
-          <a class="btn btn-p" href="{{ site.products.projelio }}" rel="noopener">Projelio'yu gör</a>
           <a class="btn btn-s" href="/tr/urunler/">Ne yapıyoruz</a>
         </div>
       </div>
