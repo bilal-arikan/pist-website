@@ -94,6 +94,27 @@
   .panel:last-child{padding-bottom:180px}
 }
 
+/* ---- mobil portre: metin üstte, sahne altta ----
+   Ortalanan metin tam ufuk bandına oturuyor ve pisti kapatıyordu; üstteki
+   yarı ise boş kalıyordu. Metin üste alınınca ufuk (H*0.58) ve altındaki
+   pist açıkta kalıyor. Sahnenin görüş açısı ayrıca takeoff.js'te düzeltildi. */
+@media(max-width:720px) and (orientation:portrait){
+  .panel{
+    align-items:flex-start;
+    padding-block:80px 24px;
+  }
+  .hero h1{font-size:clamp(30px,8.6vw,38px)}
+  .hero h2{font-size:clamp(26px,7.4vw,33px)}
+  .hero .lede{font-size:14.5px;line-height:1.5}
+  .hero .eyebrow{margin-bottom:18px}
+  .hero .ctas{margin-top:24px}
+
+  /* Perde hafifletildi: metin artık koyu gökyüzünün üzerinde duruyor,
+     pistin üstünü karartmaya gerek kalmadı. */
+  .hero-scrim{background:linear-gradient(180deg,rgba(7,4,15,.42) 0,rgba(7,4,15,0) 40%)}
+  .hero-scrim::after{background:none}
+}
+
 /* irtifa göstergesi */
 .gauge{
   position:fixed;right:var(--gut);top:50%;transform:translateY(-50%);z-index:3;
@@ -141,4 +162,36 @@
   font-weight:500;
   font-size:1.0em;
   letter-spacing:-.018em;
+}
+
+/* ---- kısa ekran (yatay telefon) ----
+   Ölçüm (önce): 812x375'te dört panelin dördü de taşıyordu — içerik 403-607px
+   gerektiriyor, ekranda 375px var. Sabit 152px dolgu tek başına yüksekliğin
+   %40'ıydı. Tipografi ve dolgu burada yüksekliğe göre küçülüyor.
+   Bu blok dosyanın SONUNDA durmalı: .scrollhint ve .gauge gibi kuralları
+   ezmesi gerekiyor, eşit özgüllükte sonra gelen kazanıyor. */
+@media(max-height:560px){
+  .panel{
+    align-items:safe center;
+    padding-block:54px 12px;
+  }
+  .hero .eyebrow{margin-bottom:9px;font-size:10px}
+  .hero h1{font-size:clamp(21px,6.6vh,30px);margin-bottom:9px}
+  .hero h2{font-size:clamp(19px,5.8vh,26px);margin-bottom:7px}
+  .hero .lede{font-size:12.5px;line-height:1.42}
+  .hero .ctas{margin-top:12px;gap:8px}
+  .hero .ctas .btn{padding:8px 15px;font-size:12px}
+  .hero .rows{margin-top:2px}
+  .hero .row{padding:7px 0 7px 14px}
+  .hero .row .rd{display:none}          /* açıklama satırı: yerimiz yok */
+
+  .scrollhint,.gauge{display:none}      /* dar yükseklikte yer kaplıyorlar */
+
+  /* Son panel: alt bar akışa dönüyor ve sıkışıyor, yoksa 23px taşıyordu. */
+  .panel:last-child{padding-bottom:12px}
+  .panel:last-child .kapanis{
+    position:static;margin-top:10px;padding-top:9px;gap:6px 14px;max-width:none;
+  }
+  .panel:last-child .kapanis a{font-size:9.5px}
+  .panel .kapanis .telif{display:none}
 }
