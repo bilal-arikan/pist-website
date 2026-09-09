@@ -1,7 +1,7 @@
 # Pist Studio sitesi — devir belgesi
 
-**Son güncelleme:** 6 Eylül 2026 (2. oturum)
-**Dal:** `yeni-site` (geliştirme) · **Canlı dal:** `pist`
+**Son güncelleme:** 9 Eylül 2026
+**Dal:** çalışma **doğrudan `pist`** dalında yürüyor (bkz. aşağıdaki not)
 **Durum:** 🟢 Yeni site 6 Eylül 2026'da yayına alındı — https://www.piststudio.com/
 
 Bu belge yeni bir oturumun sıfırdan başlamadan devam edebilmesi için yazıldı.
@@ -14,7 +14,6 @@ Marka çalışmasının tamamı ayrı bir klasörde: `~/Desktop/Pist Studio Mark
 
 ```bash
 cd ~/Desktop/EXPORT/pist-website
-git checkout yeni-site
 npm install
 npm run build          # _site/ üretir
 ```
@@ -164,6 +163,44 @@ Tazeleme jetonunu yenilemek gerekirse: `npm run spotify-yetki`
 > 🔐 **Güvenlik borcu:** client secret ve refresh token 6 Eylül 2026
 > oturumunda sohbete yapıştırıldı. Dashboard'dan secret'ı yenilemek ikisini
 > birden geçersiz kılar; sonra `npm run spotify-yetki` ile yeniden alınır.
+
+### Mobil kadraj — 9 Eylül 2026
+
+Mobilde sahnenin sönük görünmesinin nedeni CSS değil, **projeksiyondu**.
+`takeoff.js` içinde odak uzaklığı yalnızca yüksekliğe bağlıydı, bu da dar
+ekranda yatay görüş açısını çökertiyordu. Pistin yarı genişliği 22.5 m ve
+lamba aralığı 60 m olduğuna göre en yakın lamba sırasının kadraja girmesi
+için `f <= W * 60/45` gerekiyor.
+
+Görünen en yakın lamba (ölçüldü):
+
+| Ekran | Önce | Sonra |
+|---|---|---|
+| Masaüstü 1440×900 | 30 m | 30 m |
+| Tablet 768×1024 | 58 m | 58 m |
+| Mobil 375×812 | **103 m** | **60 m** |
+| Küçük 360×640 | 85 m | 60 m |
+
+`f = Math.min(H, W * 1.25, 940) * 1.06` — `W*1.25` sınırı yalnızca portre
+ekranlarda bağlanıyor, masaüstünde değer aynı kalıyor.
+
+**Mobil portrede metin üsttedir** (`orientation:portrait` bloğu). Ortalanınca
+tam ufuk bandına (H*0.58) oturup pisti kapatıyordu. Perde de orada
+hafifletildi; metin zaten koyu gökyüzünün üzerinde.
+
+**Kısa ekran bloğu** (`max-height:560px`) yatay çevrim içindir. Ölçüm: önce
+812×375'te dört panelin dördü de taşıyordu (içerik 403–607px, ekran 375px,
+üstelik sabit 152px dolgu yüksekliğin %40'ı). Blok **dosyanın sonunda
+durmalı** — `.scrollhint` ve `.gauge` kurallarını ezmesi gerekiyor ve eşit
+özgüllükte sonra gelen kazanıyor.
+
+### Giriş panelinde amber buton yok
+
+İlk panelde amber "Projelio'yu gör" butonu vardı; ekrandaki en dikkat çekici
+öğe olduğu için ziyaretçiler oraya tıklayıp doğrudan projelio.app'e gidiyor
+ve siteyi hiç gezmeden terk ediyordu (kurucu gözlemi, 9 Eylül 2026).
+Kaldırıldı. Hero'daki tek amber buton son paneldeki "Bize yaz".
+Projelio ikinci panelde ve Ürünler sayfasında duruyor.
 
 **Üst çubuk tam genişliktedir** (`.topbar .inner{max-width:none}`). İçerik
 sütunu `--maxw:1120px` olarak dar kalır — okunabilirlik için, prototipte de
@@ -377,12 +414,20 @@ modunda ve `pist` dalının **kökünü** servis ediyor; biz de derlenmiş çık
 oraya koyuyoruz. Bilal'e ihtiyaç kalmadı.
 
 ```bash
-# yeni-site dalında geliştir, sonra:
-git checkout pist
-git merge yeni-site
+# pist dalında geliştir, sonra:
 npm run yayinla          # derle + kontrol + köke senkronla
 git add -A && git commit -m "..." && git push
 ```
+
+> ⚠️ `npm run kontrol` şu an **bilerek başarısız** — aydınlatma metninde
+> 6 yer tutucu var. Geçmek için `IZIN_VER_YER_TUTUCU=1 npm run yayinla`,
+> ya da adımları ayrı çalıştır: `npm run build && node scripts/yayinla.mjs`.
+
+> **Dal notu (9 Eylül 2026):** Belge başlangıçta `yeni-site`'ta geliştirip
+> `pist`e merge etmeyi anlatıyordu. Uygulamada çalışma bir süredir doğrudan
+> `pist` üzerinde yürüyor ve `yeni-site` 5 commit geride kaldı. İki dallı
+> akışa dönülecekse önce `yeni-site` `pist`e eşitlenmeli:
+> `git checkout yeni-site && git merge --ff-only pist`
 
 `npm run yayinla` = `build` + `kontrol` + `scripts/yayinla.mjs`.
 Betik yalnızca `_site` içinde karşılığı olan girdileri kökte değiştirir;
@@ -479,15 +524,15 @@ gerektirmiyor — `git revert` yeterli.
 2. `~/Desktop/Pist Studio Marka/DEVAM.md`
 3. `~/Desktop/Pist Studio Marka/kaynak/Pist_Studio_Sirket_Hafizasi_v1_1.docx`
 
-Ve şu cümle yeter: *"pist-website deposunda `yeni-site` dalında kaldığımız
-yerden devam ediyoruz, DEVAM.md'yi oku."*
+Ve şu cümle yeter: *"pist-website deposunda kaldığımız yerden devam
+ediyoruz, DEVAM.md'yi oku."*
 
 ### Yeni oturumun ilk beş dakikada bilmesi gerekenler
 
 - **Site canlıda:** https://www.piststudio.com/ — `pist` dalının kökünden.
   Yayın komutu `npm run yayinla`, sonra `pist`e commit + push. Bölüm 6.
-- **Geliştirme `yeni-site` dalında**, yayın `pist` dalında. Değişiklik
-  `yeni-site`'ta yapılır, `pist`e merge edilir, `yayinla` çalıştırılır.
+- **Çalışma doğrudan `pist` dalında.** Değişiklik yapılır, `npm run yayinla`
+  çalıştırılır, kökteki üretilmiş dosyalarla birlikte commit + push edilir.
 - **Kökteki `index.html`, `tr/`, `en/`, `assets/` ÜRETİLMİŞTİR** — elle
   düzenleme, kaynak `src/` altında.
 - **`npm run kontrol` şu an bilerek başarısız** (hukuk metninde 3 boş alan)
