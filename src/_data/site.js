@@ -12,7 +12,14 @@ export default {
   email: "info@piststudio.com",
   location: { tr: "İstanbul, Türkiye", en: "Istanbul, Türkiye" },
   founded: 2020,
-  products: { projelio: "https://projelio.app" },
+  products: {
+    projelio: "https://projelio.app",
+    muziklio: "https://muziklio.com",
+    tavukkirala: "https://tavukkirala.com",
+  },
+  musteriIsleri: {
+    netsaglik: "https://netsaglikmedikal.com",
+  },
   social: {
     instagram: "https://instagram.com/pist.istanbul",
     linkedin: "https://www.linkedin.com/company/pist-studio",

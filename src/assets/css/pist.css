@@ -246,7 +246,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset
 
 .urunler{
   display:grid;gap:clamp(18px,2.6vw,30px);
-  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
+  grid-template-columns:repeat(auto-fill,minmax(290px,1fr));
 }
 .urun{
   display:flex;flex-direction:column;

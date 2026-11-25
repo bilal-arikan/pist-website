@@ -194,6 +194,22 @@ hafifletildi; metin zaten koyu gökyüzünün üzerinde.
 durmalı** — `.scrollhint` ve `.gauge` kurallarını ezmesi gerekiyor ve eşit
 özgüllükte sonra gelen kazanıyor.
 
+### Ürünler ve müşteri işleri — 25 Kasım 2026
+
+Ürünler: **Projelio** (sarı), **Müziklio** (lila), **TavukKirala** (turuncu,
+"Yakında"). "Sıradaki" kartı ve ana sayfa satırı kaldırıldı. Ürünler
+sayfasına ayrı bir **Müşteri işleri** bölümü eklendi: **Net Sağlık Medikal**
+(yeşil). Bağlantılar `site.js` → `products` / `musteriIsleri` içinde.
+Giriş metnindeki "ajans değiliz, müşteri işi almıyoruz" cümlesi kurucu
+kararıyla yumuşatıldı: asıl iş kendi ürünlerimiz, müşteri işi az sayıda.
+
+Kapak görselleri (`urun-*.jpg`) şimdilik sitelerin 1280x800 ekran
+görüntüsü — kurucu kendi görsellerini tasarlayıp değiştirecek.
+
+Ana sayfa Products paneli üç satırla kısa telefonlarda taşıyordu (375x667'de
+64px). `max-height:700px` altında satır açıklaması gizleniyor (`home.css`).
+`.urunler` ızgarası `auto-fill`: tek kart tüm genişliğe yayılmasın diye.
+
 ### Giriş panelinde amber buton yok
 
 İlk panelde amber "Projelio'yu gör" butonu vardı; ekrandaki en dikkat çekici

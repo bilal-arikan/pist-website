@@ -94,6 +94,13 @@
   .panel:last-child{padding-bottom:180px}
 }
 
+/* Kısa telefon ekranında Products panelindeki üç satır taşıyordu
+   (375x667'de içerik 731px'e, 360x640'ta 695px'e iniyordu). Açıklama
+   cümlesi gizlenince ürün adı ve durumu kalıyor. */
+@media(max-width:720px) and (max-height:700px){
+  .hero .row .rd{display:none}
+}
+
 /* ---- mobil portre: metin üstte, sahne altta ----
    Ortalanan metin tam ufuk bandına oturuyor ve pisti kapatıyordu; üstteki
    yarı ise boş kalıyordu. Metin üste alınınca ufuk (H*0.58) ve altındaki
